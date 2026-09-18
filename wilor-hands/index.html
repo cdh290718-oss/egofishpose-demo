@@ -1,0 +1,94 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>自动 WiLoR 手部融合：八帧对比</title><style>body{font:16px/1.6 system-ui;background:#15191e;color:#eee;max-width:1600px;margin:24px auto;padding:0 18px}a{color:#94cfff}img{max-width:100%;height:auto}table{border-collapse:collapse}td,th{padding:8px;border:1px solid #556}details{margin:12px 0}summary{cursor:pointer}section{margin-top:40px}pre{white-space:pre-wrap}select{padding:8px}section[hidden]{display:none}</style><h1>自动 WiLoR 手部融合：八帧对比</h1><p>左：原 Sapiens2 身体结果；中：新增 WiLoR 自动手部融合；右：历史人工优化。三者均从各自 SMPL-X 参数重建，用同一鱼眼标定和渲染方式显示。</p><p>拟合仅使用 Sapiens2 和 WiLoR 自动预测，不读取人工标注。保留原身体角度上限及深度约束，输出标准连续 SMPL-X 网格。每幅图独立优化，本实验未进行双视角公共三维状态融合。</p><p><a href="metrics.csv">逐帧指标 CSV</a> · <a href="#run_report_zh">运行报告</a> · <a href="#visual_review_zh">视觉复核</a> · <a href="contact_sheet_fused.jpg">Cam3 / Cam4 八帧汇总图</a></p><p>下表为已匹配 WiLoR 手部点的二维拟合 RMSE（px），越低越好。它衡量对自动目标的贴合，不能当作独立真实精度。人工肘腕指标见 CSV；此前遮挡 cam3 的肘部左右标注疑点仍然保留。</p><table><tr><th>场景 / 相机</th><th>融合前</th><th>自动手部融合后</th><th>历史人工</th></tr><tr><td>condition_01_normal_pose / cam3</td><td>57.25</td><td>7.60</td><td>54.75</td></tr><tr><td>condition_01_normal_pose / cam4</td><td>45.82</td><td>8.77</td><td>56.56</td></tr><tr><td>condition_02_hand_object_interaction / cam3</td><td>30.89</td><td>6.43</td><td>44.98</td></tr><tr><td>condition_02_hand_object_interaction / cam4</td><td>41.31</td><td>6.10</td><td>121.59</td></tr><tr><td>condition_03_hand_object_occlusion / cam3</td><td>238.88</td><td>194.08</td><td>5839.16</td></tr><tr><td>condition_03_hand_object_occlusion / cam4</td><td>105.17</td><td>82.99</td><td>261.78</td></tr><tr><td>condition_04_failure_case / cam3</td><td>154.41</td><td>87.42</td><td>33.94</td></tr><tr><td>condition_04_failure_case / cam4</td><td>346.86</td><td>64.43</td><td>119.92</td></tr></table><p>相机筛选 <select id="camera"><option value="all">全部</option><option>cam3</option><option>cam4</option></select></p><section data-camera="cam3"><h2>condition_01_normal_pose / cam3</h2><p>cam3_left_lower_t15.000s_f000895；接入 2 只手，未检测到：无</p><img loading="lazy" src="images/cam3_left_lower_t15.000s_f000895_comparison.jpg"><details><summary>原始输入图片</summary><img loading="lazy" src="images/cam3_left_lower_t15.000s_f000895_original.jpg"></details><details><summary>手部放大对比</summary><img loading="lazy" src="images/cam3_left_lower_t15.000s_f000895_hands.jpg"></details><details><summary>自动目标与拟合投影（绿圈：WiLoR；红点：SMPL-X）</summary><img loading="lazy" src="images/cam3_left_lower_t15.000s_f000895_targets.jpg"></details><details><summary>已有八帧示例图（历史渲染，仅作视觉参考）</summary><img loading="lazy" src="images/cam3_left_lower_t15.000s_f000895_previous_illustration.jpg"></details></section><section data-camera="cam4"><h2>condition_01_normal_pose / cam4</h2><p>cam4_right_lower_t15.000s_f000895；接入 2 只手，未检测到：无</p><img loading="lazy" src="images/cam4_right_lower_t15.000s_f000895_comparison.jpg"><details><summary>原始输入图片</summary><img loading="lazy" src="images/cam4_right_lower_t15.000s_f000895_original.jpg"></details><details><summary>手部放大对比</summary><img loading="lazy" src="images/cam4_right_lower_t15.000s_f000895_hands.jpg"></details><details><summary>自动目标与拟合投影（绿圈：WiLoR；红点：SMPL-X）</summary><img loading="lazy" src="images/cam4_right_lower_t15.000s_f000895_targets.jpg"></details><details><summary>已有八帧示例图（历史渲染，仅作视觉参考）</summary><img loading="lazy" src="images/cam4_right_lower_t15.000s_f000895_previous_illustration.jpg"></details></section><section data-camera="cam3"><h2>condition_02_hand_object_interaction / cam3</h2><p>cam3_left_lower_t037.000s_f002209；接入 2 只手，未检测到：无</p><img loading="lazy" src="images/cam3_left_lower_t037.000s_f002209_comparison.jpg"><details><summary>原始输入图片</summary><img loading="lazy" src="images/cam3_left_lower_t037.000s_f002209_original.jpg"></details><details><summary>手部放大对比</summary><img loading="lazy" src="images/cam3_left_lower_t037.000s_f002209_hands.jpg"></details><details><summary>自动目标与拟合投影（绿圈：WiLoR；红点：SMPL-X）</summary><img loading="lazy" src="images/cam3_left_lower_t037.000s_f002209_targets.jpg"></details><details><summary>已有八帧示例图（历史渲染，仅作视觉参考）</summary><img loading="lazy" src="images/cam3_left_lower_t037.000s_f002209_previous_illustration.jpg"></details></section><section data-camera="cam4"><h2>condition_02_hand_object_interaction / cam4</h2><p>cam4_right_lower_t037.000s_f002208；接入 2 只手，未检测到：无</p><img loading="lazy" src="images/cam4_right_lower_t037.000s_f002208_comparison.jpg"><details><summary>原始输入图片</summary><img loading="lazy" src="images/cam4_right_lower_t037.000s_f002208_original.jpg"></details><details><summary>手部放大对比</summary><img loading="lazy" src="images/cam4_right_lower_t037.000s_f002208_hands.jpg"></details><details><summary>自动目标与拟合投影（绿圈：WiLoR；红点：SMPL-X）</summary><img loading="lazy" src="images/cam4_right_lower_t037.000s_f002208_targets.jpg"></details><details><summary>已有八帧示例图（历史渲染，仅作视觉参考）</summary><img loading="lazy" src="images/cam4_right_lower_t037.000s_f002208_previous_illustration.jpg"></details></section><section data-camera="cam3"><h2>condition_03_hand_object_occlusion / cam3</h2><p>cam3_left_lower_t45.000s_f002686；接入 1 只手，未检测到：right</p><img loading="lazy" src="images/cam3_left_lower_t45.000s_f002686_comparison.jpg"><details><summary>原始输入图片</summary><img loading="lazy" src="images/cam3_left_lower_t45.000s_f002686_original.jpg"></details><details><summary>手部放大对比</summary><img loading="lazy" src="images/cam3_left_lower_t45.000s_f002686_hands.jpg"></details><details><summary>自动目标与拟合投影（绿圈：WiLoR；红点：SMPL-X）</summary><img loading="lazy" src="images/cam3_left_lower_t45.000s_f002686_targets.jpg"></details><details><summary>已有八帧示例图（历史渲染，仅作视觉参考）</summary><img loading="lazy" src="images/cam3_left_lower_t45.000s_f002686_previous_illustration.jpg"></details></section><section data-camera="cam4"><h2>condition_03_hand_object_occlusion / cam4</h2><p>cam4_right_lower_t45.000s_f002686；接入 2 只手，未检测到：无</p><img loading="lazy" src="images/cam4_right_lower_t45.000s_f002686_comparison.jpg"><details><summary>原始输入图片</summary><img loading="lazy" src="images/cam4_right_lower_t45.000s_f002686_original.jpg"></details><details><summary>手部放大对比</summary><img loading="lazy" src="images/cam4_right_lower_t45.000s_f002686_hands.jpg"></details><details><summary>自动目标与拟合投影（绿圈：WiLoR；红点：SMPL-X）</summary><img loading="lazy" src="images/cam4_right_lower_t45.000s_f002686_targets.jpg"></details><details><summary>已有八帧示例图（历史渲染，仅作视觉参考）</summary><img loading="lazy" src="images/cam4_right_lower_t45.000s_f002686_previous_illustration.jpg"></details></section><section data-camera="cam3"><h2>condition_04_failure_case / cam3</h2><p>cam3_left_lower_t35.000s_f002089；接入 2 只手，未检测到：无</p><img loading="lazy" src="images/cam3_left_lower_t35.000s_f002089_comparison.jpg"><details><summary>原始输入图片</summary><img loading="lazy" src="images/cam3_left_lower_t35.000s_f002089_original.jpg"></details><details><summary>手部放大对比</summary><img loading="lazy" src="images/cam3_left_lower_t35.000s_f002089_hands.jpg"></details><details><summary>自动目标与拟合投影（绿圈：WiLoR；红点：SMPL-X）</summary><img loading="lazy" src="images/cam3_left_lower_t35.000s_f002089_targets.jpg"></details><details><summary>已有八帧示例图（历史渲染，仅作视觉参考）</summary><img loading="lazy" src="images/cam3_left_lower_t35.000s_f002089_previous_illustration.jpg"></details></section><section data-camera="cam4"><h2>condition_04_failure_case / cam4</h2><p>cam4_right_lower_t35.000s_f002089；接入 1 只手，未检测到：left</p><img loading="lazy" src="images/cam4_right_lower_t35.000s_f002089_comparison.jpg"><details><summary>原始输入图片</summary><img loading="lazy" src="images/cam4_right_lower_t35.000s_f002089_original.jpg"></details><details><summary>手部放大对比</summary><img loading="lazy" src="images/cam4_right_lower_t35.000s_f002089_hands.jpg"></details><details><summary>自动目标与拟合投影（绿圈：WiLoR；红点：SMPL-X）</summary><img loading="lazy" src="images/cam4_right_lower_t35.000s_f002089_targets.jpg"></details><details><summary>已有八帧示例图（历史渲染，仅作视觉参考）</summary><img loading="lazy" src="images/cam4_right_lower_t35.000s_f002089_previous_illustration.jpg"></details></section><script>document.getElementById('camera').onchange=function(){document.querySelectorAll('section').forEach(s=>s.hidden=this.value!=='all'&&s.dataset.camera!==this.value)}</script><details id="run_report_zh"><summary>运行与验收报告</summary><pre># 八帧自动 WiLoR → SMPL-X 手部融合
+
+最终结果目录：`EgoFishPose/experiments/sapiens2_wilor_eight_conditions_20260918_v3`。本实验在原八帧 Sapiens2 第二阶段结果上新增手部融合，不训练网络，不读取人工标注进行优化。8/8 帧完成，14/16 个“图像中的左右手槽位”获得 WiLoR 自动匹配；两个未检测到的手保留原手指姿态。
+
+## 结果
+
+对全部 294 个已匹配 WiLoR 自动手部点，pooled 二维 RMSE 从 **137.13 px** 降至 **71.37 px**，下降 48.0%。这是对优化目标的拟合误差，不是独立真值精度。遮挡、低置信度和视角模型不匹配仍可能使自动目标错误。
+
+| 场景 / 相机 | 接入手数 | 手部拟合：融合前 px | 融合后 px | 身体自动点 RMSE 变化 px |
+|---|---:|---:|---:|---:|
+| condition_01_normal_pose / cam3 | 2 | 57.25 | 7.60 | -1.00 |
+| condition_01_normal_pose / cam4 | 2 | 45.82 | 8.77 | +0.19 |
+| condition_02_hand_object_interaction / cam3 | 2 | 30.89 | 6.43 | +2.12 |
+| condition_02_hand_object_interaction / cam4 | 2 | 41.31 | 6.10 | +1.15 |
+| condition_03_hand_object_occlusion / cam3 | 1 | 238.88 | 194.08 | +5.00 |
+| condition_03_hand_object_occlusion / cam4 | 2 | 105.17 | 82.99 | +5.00 |
+| condition_04_failure_case / cam3 | 2 | 154.41 | 87.42 | +5.00 |
+| condition_04_failure_case / cam4 | 1 | 346.86 | 64.43 | +5.00 |
+
+历史人工与当前结果统一从 SMPL-X 参数在 CPU 重建，使用相同原图、鱼眼标定及渲染器。其手部可能偏离 WiLoR，个别预测甚至投影到图外，不能仅凭这个自监督目标指标判定绝对优劣。历史人工参数重建与其旧 GPU 缓存存在亚毫米差异，因此本次肘腕分数与先前报告可有小差别。
+
+## 自动输入与左右手匹配
+
+- 身体初值：`sapiens2_eight_conditions_20260915_v2/frames/.../stage2/automatic/refined_params.npz`。
+- WiLoR：复用 `WiLoR/output/egosmplx_8pictures_wilor_v3_20260827` 的原始 detector + MANO 回归缓存；检查了生成脚本，且8张源图 SHA256 与本次图片全部一致。未复用历史人工手腕调整或混合网格。
+- 输入清单 `automatic_input_manifest.json` 仅包含自动数据；对初值、原第一阶段、Sapiens2、WiLoR、标定及原图保存/核对哈希。
+- 匹配为全局一对一分配：Sapiens2 自动腕点（不足时自动身体腕点）、WiLoR 检测置信度和左右手类别联合决定。置信度至少0.25，腕点距离不超过150px，至少12个手部点在图内。类别冲突作为惩罚，允许几何证据修正；具体记录在逐帧 `automatic_hand_assignment.json`。
+- cam3遮挡：右手无检测；cam4失败：左手无检测。cam4遮挡左手与cam4失败右手的检测类别与自动匹配相反，已明确记录。后者检测置信度约0.303，应谨慎解读。
+
+## 模型接入与优化
+
+WiLoR MANOLayer 的15个局部旋转作为绝对手指旋转。左手进行一次镜像转换，再减去实际 SMPL-X 层的 hand_mean，写入 left/right_hand_pose，避免重复添加均值。保留 SMPL-X betas，不把 MANO 形状参数直接复制到身体模型。未复制 WiLoR 假设相机下的平移和根朝向。
+
+以该手指姿态为先验，用真实 Scaramuzza 鱼眼投影将统一 SMPL-X 的21手部点与 WiLoR 原图点拟合，身体继续对齐原 Sapiens2 自动目标。优化19个身体关节、整体旋转和平移，以及匹配手的15个手指关节；未匹配手的手指固定。每帧1600步 Adam；手部学习率0.002；新增手指轴角增量上限35°，旋转矩阵先验权重0.001。WiLoR 手部损失为均匀 Smooth L1（beta=0.003，像素按图像宽高归一化），每只手等权平均。
+
+原身体约束保持：髋18°、脊柱10/10/12°、膝22°、踝14°、颈/头12°、锁骨15°、肩28°、肘25°、腕15°；全局8°。这些累计上限仍相对原第一阶段，而不是在第二阶段结果上重新放宽一轮。原身体/平移/全局先验权重0.0008/0.0002/0.0004，手腕与深度软惩罚保持。
+
+手腕距离下限为 `max(0.85×原第一阶段距离, 0.85×融合前距离)`；所有网格顶点z≥0.02m，0.03m开始软惩罚；transl.z保持0.05–3m。新增自动身体保护：Sapiens2身体RMSE相对融合前增加不超过5px，身体步长回退，手指仍可继续优化。候选仅按自动总目标及可行性选择。
+
+每幅图独立优化。本实验是 WiLoR 手部到统一 SMPL-X 的接入，**未执行cam3/cam4到同一三维状态的双视角融合**。没有新增时间平滑，四组图片也不是连续帧。
+
+## 验收
+
+- 8/8帧独立进程重新加载参数并重建网格、所有关节投影通过。
+- 最大网格重载差：0 m；最大投影重载差：0 px。
+- 全帧最小顶点z：0.026478 m；腕距离及全部累计角度上限通过。
+- 固定形状、面部参数及脚部姿态一致；未匹配手的手指参数保持不变。
+- OBJ与NPZ顶点一致，面片与原SMPL-X完全一致，10475顶点；未直接拼接或单独平移一个MANO网格。网格与骨架由相同参数生成。
+- 数值验收不代表困难场景达到视觉或真实三维精度要求，详见视觉复核。
+
+## 对比与指标边界
+
+`comparison/index.html` 提供融合前、融合后、历史人工三联图、每手放大图、自动目标残差图，以及已有八帧历史示例图。历史示例图只作视觉参考，不能单凭截图证明其三维拓扑或参数来源与本次相同。
+
+人工标注只由独立的 `compare.py` 在8帧完成并验收后读取，用于肘腕事后评估；未进入匹配、优化或候选选择。历史人工方法曾拟合这些标注，且其优化自由度和上限不同，因此这不是留出集精度或同算法标签源消融。
+
+全量人工可见肘腕 pooled RMSE：融合前 115.69 px，融合后 118.03 px，历史人工 108.57 px。此前已标记的遮挡cam3左右肘命名疑点未修改；排除该帧的敏感性统计保存在JSON，不替代主结果。
+
+## 输出与复现
+
+每帧 `frames/&lt;condition&gt;/&lt;camera&gt;/`：fused_params.npz、fused_mesh.obj、fused_wireframe.jpg、fused_wireframe_skeleton.jpg、automatic_hand_assignment.json、optimization_report.json、acceptance.json。原网络诊断字段保留在NPZ中，最终几何以更新的smplx_mesh_cam、smplx_joint_cam及smplx_joint_img为准；后者为原图像素。
+
+运行解释器：`miniconda3/envs/egosmplx/bin/python`。优化使用CPU、每进程2线程、同时2帧。脚本为 optimize.py、run_remaining.py、compare.py；所有输出在新目录，未修改共享模型或旧结果。复现应复制代码及清单到新目录，并修改清单output路径，避免覆盖。
+
+v1保留未加身体误差保护的结果；v2保留加入保护但仅筛选可行候选的结果；v3增加身体步长回退，防止边界阻塞手指收敛。改动依据自动目标和约束诊断，未以人工指标选择超参数或候选。没有放宽原身体上限。
+</pre></details><details id="visual_review_zh"><summary>视觉复核</summary><pre># 八帧手部融合视觉复核
+
+已查看最终Cam3/Cam4八帧汇总图，并放大检查正常cam3、遮挡cam3与失败cam4的手部三联对比。结论：前四帧明显改善；后四帧仍存在显著局限。8/8数值验收通过不等于8/8视觉拟合成功。
+
+| 场景 | cam3 | cam4 |
+|---|---|---|
+| 正常姿态 | 原先手指整体偏低，融合后手指方向、展开形态及两手轮廓更接近原图；局部轮廓仍有偏差。 | 双手指向和位置明显改善，腕部由统一网格连接；手掌形状仍非精确轮廓拟合。 |
+| 手物交互 | 两手围绕物体的方向明显改善，保留原身体形状与整体结果。 | 手部不再呈历史人工结果中的明显异常放大，指尖仍有局部偏差。 |
+| 手物遮挡 | 近处左手仍显著偏小、位置和指向不准确；右手无WiLoR检测，保留原手指姿态。未达到可接受贴合。 | 远处右手贴合较好；近处左手仍明显偏小且方向错误。左手检测曾被判为右手，自动几何匹配虽改正归属，但不能保证回归姿态正确。 |
+| 失败场景 | 抬起的右手仍有明显方向与投影越界问题，左手也有偏差。 | 仅匹配到一个低置信度右手；右手仍越界、方向不理想，左手未检测到。未达到可接受贴合。 |
+
+## 如何理解剩余问题
+
+1. 单目WiLoR的二维点是模型预测，不是真值；遮挡、大透视及鱼眼畸变下可能错误。检测置信度不是三维精度概率。
+2. 当前保留完整SMPL-X形状，并保持原腕15°、肩28°、肘25°等累计增量上限及手腕距离保护。正常帧的腕部多次触及上限；不能任意扭转手掌、缩短腕距离或缩放手部来追逐二维点。
+3. 新增自动身体误差保护避免手部损失拉偏身体，却也限制了困难帧可获得的进一步二维贴合。这是明确的约束取舍。
+4. 标准SMPL-X中的手部形状并不逐顶点等同WiLoR的MANO手；本次迁移姿态并重新生成统一网格，没有保留原MANO顶点几何。
+5. 每幅图独立优化，没有双视角的公共三维手腕位置、尺度约束。即便两张图分别贴合，也不能据此声称立体一致。
+
+## 与历史结果的比较范围
+
+网页三联图的右侧是用户给定stage3_hands参数，全部用同一个CPU模型和鱼眼渲染器重建。它与截图中的历史展示图可能经过不同后续处理，不能混为同一结果。网页另行提供已有八帧示例图，供直接视觉对照。
+
+历史人工只针对其标注和自由度做过拟合，其手部在遮挡cam3存在严重投影放大。对WiLoR点的历史人工误差因此有很大离群值，不宜用整体手部目标RMSE宣称算法全面优于人工。
+
+人工肘腕事后指标还显示：全量RMSE从融合前115.69px变为融合后118.03px，未随手部目标误差同步下降。此前遮挡cam3人工肘侧命名疑点仍保留；没有修改标注。自动手部拟合改善不等价于全部身体指标改善。
+
+网格与骨架来自同一组SMPL-X参数，手腕没有独立MANO网格拼缝；这能保证模型拓扑连续，但不证明骨骼位置、真实表面接触或三维深度准确。
+</pre></details></html>
