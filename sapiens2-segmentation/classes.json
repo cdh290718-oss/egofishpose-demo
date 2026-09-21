@@ -1,0 +1,234 @@
+{
+  "0": {
+    "name": "Background",
+    "color": [
+      50,
+      50,
+      50
+    ]
+  },
+  "1": {
+    "name": "Apparel",
+    "color": [
+      255,
+      218,
+      0
+    ]
+  },
+  "2": {
+    "name": "Eyeglass",
+    "color": [
+      14,
+      204,
+      182
+    ]
+  },
+  "3": {
+    "name": "Face_Neck",
+    "color": [
+      128,
+      200,
+      255
+    ]
+  },
+  "4": {
+    "name": "Hair",
+    "color": [
+      255,
+      0,
+      109
+    ]
+  },
+  "5": {
+    "name": "Left_Foot",
+    "color": [
+      189,
+      0,
+      204
+    ]
+  },
+  "6": {
+    "name": "Left_Hand",
+    "color": [
+      255,
+      0,
+      218
+    ]
+  },
+  "7": {
+    "name": "Left_Lower_Arm",
+    "color": [
+      0,
+      160,
+      204
+    ]
+  },
+  "8": {
+    "name": "Left_Lower_Leg",
+    "color": [
+      0,
+      255,
+      145
+    ]
+  },
+  "9": {
+    "name": "Left_Shoe",
+    "color": [
+      204,
+      0,
+      131
+    ]
+  },
+  "10": {
+    "name": "Left_Sock",
+    "color": [
+      182,
+      0,
+      255
+    ]
+  },
+  "11": {
+    "name": "Left_Upper_Arm",
+    "color": [
+      255,
+      109,
+      0
+    ]
+  },
+  "12": {
+    "name": "Left_Upper_Leg",
+    "color": [
+      0,
+      255,
+      255
+    ]
+  },
+  "13": {
+    "name": "Lower_Clothing",
+    "color": [
+      72,
+      0,
+      255
+    ]
+  },
+  "14": {
+    "name": "Right_Foot",
+    "color": [
+      204,
+      131,
+      0
+    ]
+  },
+  "15": {
+    "name": "Right_Hand",
+    "color": [
+      255,
+      0,
+      0
+    ]
+  },
+  "16": {
+    "name": "Right_Lower_Arm",
+    "color": [
+      72,
+      255,
+      0
+    ]
+  },
+  "17": {
+    "name": "Right_Lower_Leg",
+    "color": [
+      189,
+      204,
+      0
+    ]
+  },
+  "18": {
+    "name": "Right_Shoe",
+    "color": [
+      182,
+      255,
+      0
+    ]
+  },
+  "19": {
+    "name": "Right_Sock",
+    "color": [
+      102,
+      0,
+      204
+    ]
+  },
+  "20": {
+    "name": "Right_Upper_Arm",
+    "color": [
+      32,
+      72,
+      204
+    ]
+  },
+  "21": {
+    "name": "Right_Upper_Leg",
+    "color": [
+      0,
+      145,
+      255
+    ]
+  },
+  "22": {
+    "name": "Torso",
+    "color": [
+      14,
+      204,
+      0
+    ]
+  },
+  "23": {
+    "name": "Upper_Clothing",
+    "color": [
+      0,
+      128,
+      72
+    ]
+  },
+  "24": {
+    "name": "Lower_Lip",
+    "color": [
+      235,
+      205,
+      119
+    ]
+  },
+  "25": {
+    "name": "Upper_Lip",
+    "color": [
+      115,
+      227,
+      112
+    ]
+  },
+  "26": {
+    "name": "Lower_Teeth",
+    "color": [
+      157,
+      113,
+      143
+    ]
+  },
+  "27": {
+    "name": "Upper_Teeth",
+    "color": [
+      132,
+      93,
+      50
+    ]
+  },
+  "28": {
+    "name": "Tongue",
+    "color": [
+      82,
+      21,
+      114
+    ]
+  }
+}

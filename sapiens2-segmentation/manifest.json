@@ -1,0 +1,677 @@
+{
+  "frames": [
+    {
+      "id": "cam3_left_lower_t15.000s_f000895",
+      "condition": "condition_01_normal_pose",
+      "camera": "cam3",
+      "image": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/input/session_20260809_230428/cam3_cam4_four_conditions/condition_01_normal_pose/cam3_left_lower_t15.000s_f000895.jpg",
+      "image_sha256": "29c45a128822a5e788971496514adbcca081e0a2ac83174cc028c0b269ee44fd",
+      "original_hw": [
+        720,
+        1280
+      ],
+      "network_input_shape": [
+        1,
+        3,
+        1024,
+        768
+      ],
+      "inference_seconds": 6.10421347618103,
+      "parts": {
+        "6": {
+          "name": "Left_Hand",
+          "pixels": 26965,
+          "mean_softmax": 0.8803712129592896,
+          "high_confidence_pixels": 20714,
+          "bbox_xyxy": [
+            503,
+            35,
+            986,
+            444
+          ]
+        },
+        "7": {
+          "name": "Left_Lower_Arm",
+          "pixels": 17,
+          "mean_softmax": 0.2782166302204132,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": [
+            510,
+            290,
+            587,
+            427
+          ]
+        },
+        "11": {
+          "name": "Left_Upper_Arm",
+          "pixels": 0,
+          "mean_softmax": null,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": null
+        },
+        "15": {
+          "name": "Right_Hand",
+          "pixels": 22471,
+          "mean_softmax": 0.8050437569618225,
+          "high_confidence_pixels": 13137,
+          "bbox_xyxy": [
+            738,
+            37,
+            990,
+            425
+          ]
+        },
+        "16": {
+          "name": "Right_Lower_Arm",
+          "pixels": 40,
+          "mean_softmax": 0.2857254147529602,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": [
+            920,
+            398,
+            951,
+            428
+          ]
+        },
+        "20": {
+          "name": "Right_Upper_Arm",
+          "pixels": 0,
+          "mean_softmax": null,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": null
+        }
+      },
+      "softmax_is_not_calibrated_accuracy": true
+    },
+    {
+      "id": "cam4_right_lower_t15.000s_f000895",
+      "condition": "condition_01_normal_pose",
+      "camera": "cam4",
+      "image": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/input/session_20260809_230428/cam3_cam4_four_conditions/condition_01_normal_pose/cam4_right_lower_t15.000s_f000895.jpg",
+      "image_sha256": "680f6e3847563ceec048ca1a5d3dc073c5bee9ef3070c878466865b85ba83192",
+      "original_hw": [
+        720,
+        1280
+      ],
+      "network_input_shape": [
+        1,
+        3,
+        1024,
+        768
+      ],
+      "inference_seconds": 4.964342832565308,
+      "parts": {
+        "6": {
+          "name": "Left_Hand",
+          "pixels": 21766,
+          "mean_softmax": 0.8946296572685242,
+          "high_confidence_pixels": 17263,
+          "bbox_xyxy": [
+            345,
+            0,
+            547,
+            398
+          ]
+        },
+        "7": {
+          "name": "Left_Lower_Arm",
+          "pixels": 0,
+          "mean_softmax": null,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": null
+        },
+        "11": {
+          "name": "Left_Upper_Arm",
+          "pixels": 0,
+          "mean_softmax": null,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": null
+        },
+        "15": {
+          "name": "Right_Hand",
+          "pixels": 26765,
+          "mean_softmax": 0.9014917016029358,
+          "high_confidence_pixels": 23456,
+          "bbox_xyxy": [
+            567,
+            0,
+            838,
+            397
+          ]
+        },
+        "16": {
+          "name": "Right_Lower_Arm",
+          "pixels": 60,
+          "mean_softmax": 0.39462026953697205,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": [
+            776,
+            391,
+            787,
+            402
+          ]
+        },
+        "20": {
+          "name": "Right_Upper_Arm",
+          "pixels": 0,
+          "mean_softmax": null,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": null
+        }
+      },
+      "softmax_is_not_calibrated_accuracy": true
+    },
+    {
+      "id": "cam3_left_lower_t037.000s_f002209",
+      "condition": "condition_02_hand_object_interaction",
+      "camera": "cam3",
+      "image": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/input/session_20260809_230428/cam3_cam4_four_conditions/condition_02_hand_object_interaction/cam3_left_lower_t037.000s_f002209.jpg",
+      "image_sha256": "1fb0c6a453957650bbd04c9793741d4eca241818f58a2f2fa46999996cccb5e3",
+      "original_hw": [
+        720,
+        1280
+      ],
+      "network_input_shape": [
+        1,
+        3,
+        1024,
+        768
+      ],
+      "inference_seconds": 4.898691177368164,
+      "parts": {
+        "6": {
+          "name": "Left_Hand",
+          "pixels": 26808,
+          "mean_softmax": 0.8912230134010315,
+          "high_confidence_pixels": 22390,
+          "bbox_xyxy": [
+            490,
+            92,
+            1013,
+            450
+          ]
+        },
+        "7": {
+          "name": "Left_Lower_Arm",
+          "pixels": 0,
+          "mean_softmax": null,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": null
+        },
+        "11": {
+          "name": "Left_Upper_Arm",
+          "pixels": 0,
+          "mean_softmax": null,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": null
+        },
+        "15": {
+          "name": "Right_Hand",
+          "pixels": 20040,
+          "mean_softmax": 0.8997892141342163,
+          "high_confidence_pixels": 15820,
+          "bbox_xyxy": [
+            793,
+            90,
+            1022,
+            437
+          ]
+        },
+        "16": {
+          "name": "Right_Lower_Arm",
+          "pixels": 44,
+          "mean_softmax": 0.33291932940483093,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": [
+            967,
+            435,
+            974,
+            453
+          ]
+        },
+        "20": {
+          "name": "Right_Upper_Arm",
+          "pixels": 0,
+          "mean_softmax": null,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": null
+        }
+      },
+      "softmax_is_not_calibrated_accuracy": true
+    },
+    {
+      "id": "cam4_right_lower_t037.000s_f002208",
+      "condition": "condition_02_hand_object_interaction",
+      "camera": "cam4",
+      "image": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/input/session_20260809_230428/cam3_cam4_four_conditions/condition_02_hand_object_interaction/cam4_right_lower_t037.000s_f002208.jpg",
+      "image_sha256": "c02d08a85250728dc805269526a50528c564ccbad1d66ed136cd915e3d66ac3f",
+      "original_hw": [
+        720,
+        1280
+      ],
+      "network_input_shape": [
+        1,
+        3,
+        1024,
+        768
+      ],
+      "inference_seconds": 4.880769968032837,
+      "parts": {
+        "6": {
+          "name": "Left_Hand",
+          "pixels": 22851,
+          "mean_softmax": 0.8781536817550659,
+          "high_confidence_pixels": 19067,
+          "bbox_xyxy": [
+            335,
+            43,
+            858,
+            402
+          ]
+        },
+        "7": {
+          "name": "Left_Lower_Arm",
+          "pixels": 0,
+          "mean_softmax": null,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": null
+        },
+        "11": {
+          "name": "Left_Upper_Arm",
+          "pixels": 0,
+          "mean_softmax": null,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": null
+        },
+        "15": {
+          "name": "Right_Hand",
+          "pixels": 27281,
+          "mean_softmax": 0.8958131074905396,
+          "high_confidence_pixels": 21813,
+          "bbox_xyxy": [
+            580,
+            32,
+            879,
+            385
+          ]
+        },
+        "16": {
+          "name": "Right_Lower_Arm",
+          "pixels": 0,
+          "mean_softmax": null,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": null
+        },
+        "20": {
+          "name": "Right_Upper_Arm",
+          "pixels": 0,
+          "mean_softmax": null,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": null
+        }
+      },
+      "softmax_is_not_calibrated_accuracy": true
+    },
+    {
+      "id": "cam3_left_lower_t45.000s_f002686",
+      "condition": "condition_03_hand_object_occlusion",
+      "camera": "cam3",
+      "image": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/input/session_20260809_230428/cam3_cam4_four_conditions/condition_03_hand_object_occlusion/cam3_left_lower_t45.000s_f002686.jpg",
+      "image_sha256": "00bd55b9f1b300379b3fb9dee1218816c728806b20ac16cc777edaeaff72cba2",
+      "original_hw": [
+        720,
+        1280
+      ],
+      "network_input_shape": [
+        1,
+        3,
+        1024,
+        768
+      ],
+      "inference_seconds": 4.6746437549591064,
+      "parts": {
+        "6": {
+          "name": "Left_Hand",
+          "pixels": 189018,
+          "mean_softmax": 0.9732815027236938,
+          "high_confidence_pixels": 179874,
+          "bbox_xyxy": [
+            415,
+            101,
+            1174,
+            535
+          ]
+        },
+        "7": {
+          "name": "Left_Lower_Arm",
+          "pixels": 1497,
+          "mean_softmax": 0.38269367814064026,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": [
+            413,
+            411,
+            500,
+            499
+          ]
+        },
+        "11": {
+          "name": "Left_Upper_Arm",
+          "pixels": 728,
+          "mean_softmax": 0.5485047698020935,
+          "high_confidence_pixels": 151,
+          "bbox_xyxy": [
+            412,
+            466,
+            516,
+            526
+          ]
+        },
+        "15": {
+          "name": "Right_Hand",
+          "pixels": 0,
+          "mean_softmax": null,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": null
+        },
+        "16": {
+          "name": "Right_Lower_Arm",
+          "pixels": 0,
+          "mean_softmax": null,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": null
+        },
+        "20": {
+          "name": "Right_Upper_Arm",
+          "pixels": 0,
+          "mean_softmax": null,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": null
+        }
+      },
+      "softmax_is_not_calibrated_accuracy": true
+    },
+    {
+      "id": "cam4_right_lower_t45.000s_f002686",
+      "condition": "condition_03_hand_object_occlusion",
+      "camera": "cam4",
+      "image": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/input/session_20260809_230428/cam3_cam4_four_conditions/condition_03_hand_object_occlusion/cam4_right_lower_t45.000s_f002686.jpg",
+      "image_sha256": "088be8dae6d66234be1381f69d96be40e963940222406887a82a8428b70946dd",
+      "original_hw": [
+        720,
+        1280
+      ],
+      "network_input_shape": [
+        1,
+        3,
+        1024,
+        768
+      ],
+      "inference_seconds": 4.825152158737183,
+      "parts": {
+        "6": {
+          "name": "Left_Hand",
+          "pixels": 88899,
+          "mean_softmax": 0.9848245978355408,
+          "high_confidence_pixels": 87184,
+          "bbox_xyxy": [
+            115,
+            57,
+            522,
+            472
+          ]
+        },
+        "7": {
+          "name": "Left_Lower_Arm",
+          "pixels": 0,
+          "mean_softmax": null,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": null
+        },
+        "11": {
+          "name": "Left_Upper_Arm",
+          "pixels": 7,
+          "mean_softmax": 0.1321580708026886,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": [
+            797,
+            501,
+            811,
+            505
+          ]
+        },
+        "15": {
+          "name": "Right_Hand",
+          "pixels": 7576,
+          "mean_softmax": 0.678254246711731,
+          "high_confidence_pixels": 3999,
+          "bbox_xyxy": [
+            778,
+            316,
+            842,
+            555
+          ]
+        },
+        "16": {
+          "name": "Right_Lower_Arm",
+          "pixels": 1275,
+          "mean_softmax": 0.29079800844192505,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": [
+            774,
+            495,
+            831,
+            576
+          ]
+        },
+        "20": {
+          "name": "Right_Upper_Arm",
+          "pixels": 25,
+          "mean_softmax": 0.2887841463088989,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": [
+            772,
+            575,
+            780,
+            579
+          ]
+        }
+      },
+      "softmax_is_not_calibrated_accuracy": true
+    },
+    {
+      "id": "cam3_left_lower_t35.000s_f002089",
+      "condition": "condition_04_failure_case",
+      "camera": "cam3",
+      "image": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/input/session_20260809_230428/cam3_cam4_four_conditions/condition_04_failure_case/cam3_left_lower_t35.000s_f002089.jpg",
+      "image_sha256": "77648cb6b684ddfbf9eed2b6ca6dbcd34351389330ff3ddf6e5d42db4b80307d",
+      "original_hw": [
+        720,
+        1280
+      ],
+      "network_input_shape": [
+        1,
+        3,
+        1024,
+        768
+      ],
+      "inference_seconds": 4.78590202331543,
+      "parts": {
+        "6": {
+          "name": "Left_Hand",
+          "pixels": 7769,
+          "mean_softmax": 0.5968336462974548,
+          "high_confidence_pixels": 2187,
+          "bbox_xyxy": [
+            493,
+            140,
+            1118,
+            587
+          ]
+        },
+        "7": {
+          "name": "Left_Lower_Arm",
+          "pixels": 913,
+          "mean_softmax": 0.33633553981781006,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": [
+            496,
+            498,
+            522,
+            586
+          ]
+        },
+        "11": {
+          "name": "Left_Upper_Arm",
+          "pixels": 60,
+          "mean_softmax": 0.24970413744449615,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": [
+            510,
+            516,
+            529,
+            595
+          ]
+        },
+        "15": {
+          "name": "Right_Hand",
+          "pixels": 7068,
+          "mean_softmax": 0.7029231190681458,
+          "high_confidence_pixels": 2738,
+          "bbox_xyxy": [
+            518,
+            47,
+            1126,
+            519
+          ]
+        },
+        "16": {
+          "name": "Right_Lower_Arm",
+          "pixels": 201,
+          "mean_softmax": 0.3121243417263031,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": [
+            1037,
+            240,
+            1063,
+            257
+          ]
+        },
+        "20": {
+          "name": "Right_Upper_Arm",
+          "pixels": 1166,
+          "mean_softmax": 0.5200797319412231,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": [
+            1035,
+            252,
+            1118,
+            295
+          ]
+        }
+      },
+      "softmax_is_not_calibrated_accuracy": true
+    },
+    {
+      "id": "cam4_right_lower_t35.000s_f002089",
+      "condition": "condition_04_failure_case",
+      "camera": "cam4",
+      "image": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/input/session_20260809_230428/cam3_cam4_four_conditions/condition_04_failure_case/cam4_right_lower_t35.000s_f002089.jpg",
+      "image_sha256": "d949294a6f0b03a481d45ce35ae8b443a96becf855d05e5bfa9d0192a238eac5",
+      "original_hw": [
+        720,
+        1280
+      ],
+      "network_input_shape": [
+        1,
+        3,
+        1024,
+        768
+      ],
+      "inference_seconds": 4.770596027374268,
+      "parts": {
+        "6": {
+          "name": "Left_Hand",
+          "pixels": 7646,
+          "mean_softmax": 0.5159403085708618,
+          "high_confidence_pixels": 1280,
+          "bbox_xyxy": [
+            370,
+            74,
+            1012,
+            503
+          ]
+        },
+        "7": {
+          "name": "Left_Lower_Arm",
+          "pixels": 18,
+          "mean_softmax": 0.26944810152053833,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": [
+            370,
+            451,
+            392,
+            508
+          ]
+        },
+        "11": {
+          "name": "Left_Upper_Arm",
+          "pixels": 0,
+          "mean_softmax": null,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": null
+        },
+        "15": {
+          "name": "Right_Hand",
+          "pixels": 9230,
+          "mean_softmax": 0.6397373080253601,
+          "high_confidence_pixels": 3541,
+          "bbox_xyxy": [
+            890,
+            0,
+            1046,
+            230
+          ]
+        },
+        "16": {
+          "name": "Right_Lower_Arm",
+          "pixels": 498,
+          "mean_softmax": 0.22014564275741577,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": [
+            881,
+            113,
+            999,
+            229
+          ]
+        },
+        "20": {
+          "name": "Right_Upper_Arm",
+          "pixels": 2242,
+          "mean_softmax": 0.432009220123291,
+          "high_confidence_pixels": 0,
+          "bbox_xyxy": [
+            875,
+            187,
+            981,
+            251
+          ]
+        }
+      },
+      "softmax_is_not_calibrated_accuracy": true
+    }
+  ],
+  "checkpoint": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/pretrained_models/sapiens2_seg/sapiens2_1b_seg.safetensors",
+  "checkpoint_sha256": "4b73c44963b377e93fcb4c4053f72a189836a22d05e12c30383046b9cd3c5bd4",
+  "official_sha256_verified": true,
+  "strict_load": true,
+  "tensor_count": 696,
+  "config": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/official_baseline/sapiens2/sapiens/dense/configs/seg/shutterstock_goliath/sapiens2_1b_seg_shutterstock_goliath-1024x768.py",
+  "config_sha256": "d33d8802741cb7b0cddc09ac3b2f780a801932bdeb88dc097c22a43996fef61d",
+  "python": "/vepfs-mlp2/mlp-public/huyaoqing/miniconda3/envs/stereo-hand-fusion/bin/python",
+  "torch": "2.7.0+cu128",
+  "precision": "bfloat16 autocast; float32 interpolation/softmax",
+  "preprocessing": "official test_pipeline: 1024x768 direct resize keep_ratio=False; BGR to RGB; official normalization",
+  "postprocessing": "bilinear logits resize to original H,W align_corners=False; softmax; argmax",
+  "manual_annotations_used": false,
+  "mesh_optimization_run": false
+}
