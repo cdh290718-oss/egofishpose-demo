@@ -1,0 +1,35 @@
+{
+  "egosmplx": {
+    "path": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/output/train_5datasets_8gpu_camtrans_w10_12ep_fixed_20260809_20260809_163018/model_dump/snapshot_11.pth.tar",
+    "bytes": 6646574543,
+    "sha256": "c7d30f04d13ed80f1941226458a43dfd50fc0ab0e5902701b6c9895e1f92a3b3"
+  },
+  "wilor": {
+    "path": "/vepfs-mlp2/mlp-public/huyaoqing/WiLoR/pretrained_models/wilor_final.ckpt",
+    "bytes": 2564990443,
+    "sha256": "22fb2660f6ac3f611919c9abd5c412372a212309d04fcf3697b291da25a29456"
+  },
+  "wilor_detector": {
+    "path": "/vepfs-mlp2/mlp-public/huyaoqing/WiLoR/pretrained_models/detector.pt",
+    "bytes": 53582271,
+    "sha256": "5ef3df44e42d2db52d4ffe91f83a22ce9925e2acc9abebf453f2c5d22e380033"
+  },
+  "wilor_config": {
+    "path": "/vepfs-mlp2/mlp-public/huyaoqing/WiLoR/pretrained_models/model_config.yaml",
+    "bytes": 2228,
+    "sha256": "64e75699eb7f1234ee16ba1bbb983db35e03f584fe4bd524559432b1efec3d2c"
+  },
+  "sapiens2_pose": {
+    "checkpoint": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/pretrained_models/external_pose/sapiens2_1b_pose.safetensors",
+    "checkpoint_sha256": "2dab7014a17e99e460c18817325a71dd7a81ce48d87027f01c2ee7d7b3af969f",
+    "strict_load": true,
+    "config": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/official_baseline/sapiens2/sapiens/pose/configs/keypoints308/shutterstock_goliath_3po/sapiens2_1b_keypoints308_shutterstock_goliath_3po-1024x768.py"
+  },
+  "sapiens2_seg": {
+    "checkpoint": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/pretrained_models/sapiens2_seg/sapiens2_1b_seg.safetensors",
+    "checkpoint_sha256": "4b73c44963b377e93fcb4c4053f72a189836a22d05e12c30383046b9cd3c5bd4",
+    "strict_load": true,
+    "config": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/official_baseline/sapiens2/sapiens/dense/configs/seg/shutterstock_goliath/sapiens2_1b_seg_shutterstock_goliath-1024x768.py"
+  },
+  "selection_note": "Same body and original WiLoR weights as existing automatic route. No egocentric fine-tuned checkpoint in this run."
+}
