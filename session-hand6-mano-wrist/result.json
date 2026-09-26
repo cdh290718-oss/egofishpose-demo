@@ -1,0 +1,86 @@
+{
+  "frame": "sample_04_cam3",
+  "video_seconds": 67.94699696444059,
+  "side": "right",
+  "manual_annotations_used": false,
+  "body_reinitialization": false,
+  "body_parameters_fixed": true,
+  "mano_target": "existing lifted MANO; all 778 vertices fixed",
+  "source": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/contour/final_frames/sample_04/cam3",
+  "before": {
+    "right_hand_rmse_px": 4.170963482180807,
+    "wrist_loop_outside_rms_px": 19.072593688964844,
+    "wrist_radius_m": 0.022858585102046178,
+    "mano_target_wrist_radius_m": 0.01236073503969299,
+    "wrist_to_mano_radius_ratio": 1.8492901133017028,
+    "wrist_to_mano_max_abs_m": 0.018979355692863464,
+    "hand": {
+      "edge_log_rms": 0.1047221656761328,
+      "edge_ratio_p01": 0.8258745923983674,
+      "edge_ratio_p99": 1.666724453199811,
+      "normal_reversals_vs_target": 33,
+      "minimum_double_area": 9.09435567060019e-07
+    },
+    "forearm_edge_ratio_min": 1.0,
+    "forearm_edge_ratio_max": 1.0,
+    "forearm_area_ratio_min": 1.0,
+    "forearm_area_ratio_max": 1.0,
+    "forearm_normals_opposite_previous": 0,
+    "forearm_minimum_double_area_m2": 2.7184770598166128e-05,
+    "minimum_z_m": 0.17411364614963531,
+    "maximum_displacement_m": 0.0
+  },
+  "after": {
+    "right_hand_rmse_px": 3.5875280834845156,
+    "wrist_loop_outside_rms_px": 3.354729175567627,
+    "wrist_radius_m": 0.01236073503969299,
+    "mano_target_wrist_radius_m": 0.01236073503969299,
+    "wrist_to_mano_radius_ratio": 1.0,
+    "wrist_to_mano_max_abs_m": 0.0,
+    "hand": {
+      "edge_log_rms": 0.0,
+      "edge_ratio_p01": 1.0,
+      "edge_ratio_p99": 1.0,
+      "normal_reversals_vs_target": 0,
+      "minimum_double_area": 9.09435567060019e-07
+    },
+    "forearm_edge_ratio_min": 0.3322390575144337,
+    "forearm_edge_ratio_max": 1.3291308064382623,
+    "forearm_area_ratio_min": 0.08376694402881102,
+    "forearm_area_ratio_max": 1.3275422171724505,
+    "forearm_normals_opposite_previous": 0,
+    "forearm_minimum_double_area_m2": 3.44891931239919e-06,
+    "minimum_z_m": 0.1739341765642166,
+    "maximum_displacement_m": 0.023976547255874066,
+    "method": "safe_to_contour_blend",
+    "rings": 18,
+    "free_forearm_vertices": 230,
+    "blend_fraction": 0.15000000000000002,
+    "local_forearm_outside_rms_px": 8.928190231323242,
+    "selection_score": 8.928190231323242,
+    "local_triangle_crossings": 0,
+    "accepted": true
+  },
+  "inputs": {
+    "old_mesh": {
+      "path": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/contour/final_frames/sample_04/cam3/hybrid_mesh.npz",
+      "sha256": "b668ac114c083afcbefb4b0f3a5a550456b9e47844a99b64fc286561030ca6c3"
+    },
+    "body": {
+      "path": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/contour/final_frames/sample_04/cam3/body_params.npz",
+      "sha256": "0b88fd0c0ea65b0d61348a0e5f32add21d3e5f509607f7d575938f4f7ae9eafa"
+    },
+    "wilor": {
+      "path": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/wilor/npz/cam3_left_lower_t067.947s_f004035_wilor.npz",
+      "sha256": "fde07da6220e8fa40b8174e410a6df85651ded242dbe980008bfc94b5fa13b27"
+    },
+    "calibration": {
+      "path": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/DownwardStereo6/cam3_left_lower.egosmplx.json",
+      "sha256": "a039ea9d23f497fd5099a54b6e45e315400409addacc907a32b6744f49af468b"
+    },
+    "labels": {
+      "path": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/segmentation/frames/sample_04/cam3/labels.npy",
+      "sha256": "cddc454dfce4166cf1207700af87534883aef85a66dd7387995b062f3be5e88b"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "independent_process_rebuild": true,
+  "mesh_max_abs_m": 0.0,
+  "obj_max_abs_m": 0.0,
+  "body_params_sha256_unchanged": true,
+  "mano_hand_bitwise_equal_to_target": true,
+  "topology_unchanged": true,
+  "seam_edges_two_opposite_faces": true,
+  "unchanged_outside_local_patch": true
+}

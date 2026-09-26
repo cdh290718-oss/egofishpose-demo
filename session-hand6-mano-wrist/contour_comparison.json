@@ -1,0 +1,10 @@
+{
+  "before": {
+    "visible_forearm_outside_rms_px": 9.438592910766602,
+    "visible_forearm_boundary_coverage_rms_px": 5.541324460613387
+  },
+  "after": {
+    "visible_forearm_outside_rms_px": 8.161873817443848,
+    "visible_forearm_boundary_coverage_rms_px": 9.65348017154386
+  }
+}
