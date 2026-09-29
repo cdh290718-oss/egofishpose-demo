@@ -1,0 +1,580 @@
+{
+  "manual_inputs": false,
+  "all_fixed_mano_patches_accepted": true,
+  "hands": {
+    "left": {
+      "accepted": true,
+      "selected": {
+        "edge_min": 0.5723080160231199,
+        "edge_max": 1.3800336953880754,
+        "area_min": 0.47996204299968004,
+        "area_max": 1.6434045507570667,
+        "flipped": 0,
+        "max_body_displacement_m": 0.01681715214393592,
+        "hand_target_max_abs_m": 0.0,
+        "min_z_m": 0.020612120628356934,
+        "silhouette": {
+          "left": {
+            "outside_rms_px": 0.1873706728219986,
+            "boundary_coverage_rms_px": 0.22513090074062347,
+            "score": 6.044972874224186e-06
+          }
+        },
+        "rings": 14,
+        "free_vertices": 208,
+        "intersection_check": {
+          "proper_crossings": 0,
+          "face_pairs": [],
+          "candidate_face_pairs_tested": 103,
+          "local_faces_tested": 482,
+          "coplanar_overlaps_checked": false
+        },
+        "passed": true,
+        "score": 6.044972874224186e-06
+      },
+      "candidates": [
+        {
+          "edge_min": 0.6957239728329258,
+          "edge_max": 1.1842952992556337,
+          "area_min": 0.6032428934701514,
+          "area_max": 1.1877861018593758,
+          "flipped": 0,
+          "max_body_displacement_m": 0.01681715214393592,
+          "hand_target_max_abs_m": 0.0,
+          "min_z_m": 0.020612120628356934,
+          "silhouette": {
+            "left": {
+              "outside_rms_px": 2.4772400856018066,
+              "boundary_coverage_rms_px": 5.457418441772461,
+              "score": 0.002102842712402344
+            }
+          },
+          "rings": 6,
+          "free_vertices": 80,
+          "intersection_check": {
+            "proper_crossings": 0,
+            "face_pairs": [],
+            "candidate_face_pairs_tested": 85,
+            "local_faces_tested": 224,
+            "coplanar_overlaps_checked": false
+          },
+          "passed": true,
+          "score": 0.002102842712402344
+        },
+        {
+          "edge_min": 0.6882030262125727,
+          "edge_max": 1.380005667202385,
+          "area_min": 0.59644700783248,
+          "area_max": 1.564524994833113,
+          "flipped": 0,
+          "max_body_displacement_m": 0.01681715214393592,
+          "hand_target_max_abs_m": 0.0,
+          "min_z_m": 0.020612120628356934,
+          "silhouette": {
+            "left": {
+              "outside_rms_px": 1.7217047214508057,
+              "boundary_coverage_rms_px": 3.753552198410034,
+              "score": 0.0010008843898773193
+            }
+          },
+          "rings": 10,
+          "free_vertices": 144,
+          "intersection_check": {
+            "proper_crossings": 0,
+            "face_pairs": [],
+            "candidate_face_pairs_tested": 100,
+            "local_faces_tested": 352,
+            "coplanar_overlaps_checked": false
+          },
+          "passed": true,
+          "score": 0.0010008843898773193
+        },
+        {
+          "edge_min": 0.5723080160231199,
+          "edge_max": 1.3800336953880754,
+          "area_min": 0.47996204299968004,
+          "area_max": 1.6434045507570667,
+          "flipped": 0,
+          "max_body_displacement_m": 0.01681715214393592,
+          "hand_target_max_abs_m": 0.0,
+          "min_z_m": 0.020612120628356934,
+          "silhouette": {
+            "left": {
+              "outside_rms_px": 0.1873706728219986,
+              "boundary_coverage_rms_px": 0.22513090074062347,
+              "score": 6.044972874224186e-06
+            }
+          },
+          "rings": 14,
+          "free_vertices": 208,
+          "intersection_check": {
+            "proper_crossings": 0,
+            "face_pairs": [],
+            "candidate_face_pairs_tested": 103,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "passed": true,
+          "score": 6.044972874224186e-06
+        }
+      ]
+    },
+    "right": {
+      "accepted": true,
+      "selected": {
+        "edge_min": 0.5007977391025672,
+        "edge_max": 1.3800621240352322,
+        "area_min": 0.308192517596105,
+        "area_max": 1.6868949556258372,
+        "flipped": 0,
+        "max_body_displacement_m": 0.025195028656424978,
+        "hand_target_max_abs_m": 0.0,
+        "min_z_m": 0.020612120628356934,
+        "silhouette": {
+          "right": {
+            "outside_rms_px": 0.4375372529029846,
+            "boundary_coverage_rms_px": 0.7144343256950378,
+            "score": 4.466470777988434e-05
+          }
+        },
+        "rings": 14,
+        "free_vertices": 208,
+        "intersection_check": {
+          "proper_crossings": 0,
+          "face_pairs": [],
+          "candidate_face_pairs_tested": 119,
+          "local_faces_tested": 482,
+          "coplanar_overlaps_checked": false
+        },
+        "passed": true,
+        "score": 4.466470777988434e-05
+      },
+      "candidates": [
+        {
+          "edge_min": 0.524026431722666,
+          "edge_max": 1.3800215004864453,
+          "area_min": 0.2834665778342706,
+          "area_max": 1.2708480242849713,
+          "flipped": 0,
+          "max_body_displacement_m": 0.025195028656424978,
+          "hand_target_max_abs_m": 0.0,
+          "min_z_m": 0.020612120628356934,
+          "silhouette": {
+            "right": {
+              "outside_rms_px": 1.1112122535705566,
+              "boundary_coverage_rms_px": 3.107527017593384,
+              "score": 0.0006063154697418212
+            }
+          },
+          "rings": 6,
+          "free_vertices": 80,
+          "intersection_check": {
+            "proper_crossings": 0,
+            "face_pairs": [],
+            "candidate_face_pairs_tested": 106,
+            "local_faces_tested": 224,
+            "coplanar_overlaps_checked": false
+          },
+          "passed": true,
+          "score": 0.0006063154697418212
+        },
+        {
+          "edge_min": 0.6005721165192044,
+          "edge_max": 1.3801616306306206,
+          "area_min": 0.2877292995486829,
+          "area_max": 1.489207094704716,
+          "flipped": 0,
+          "max_body_displacement_m": 0.025195028656424978,
+          "hand_target_max_abs_m": 0.0,
+          "min_z_m": 0.020612120628356934,
+          "silhouette": {
+            "right": {
+              "outside_rms_px": 0.4546712636947632,
+              "boundary_coverage_rms_px": 2.452684164047241,
+              "score": 0.0003214555636048317
+            }
+          },
+          "rings": 10,
+          "free_vertices": 144,
+          "intersection_check": {
+            "proper_crossings": 0,
+            "face_pairs": [],
+            "candidate_face_pairs_tested": 122,
+            "local_faces_tested": 352,
+            "coplanar_overlaps_checked": false
+          },
+          "passed": true,
+          "score": 0.0003214555636048317
+        },
+        {
+          "edge_min": 0.5007977391025672,
+          "edge_max": 1.3800621240352322,
+          "area_min": 0.308192517596105,
+          "area_max": 1.6868949556258372,
+          "flipped": 0,
+          "max_body_displacement_m": 0.025195028656424978,
+          "hand_target_max_abs_m": 0.0,
+          "min_z_m": 0.020612120628356934,
+          "silhouette": {
+            "right": {
+              "outside_rms_px": 0.4375372529029846,
+              "boundary_coverage_rms_px": 0.7144343256950378,
+              "score": 4.466470777988434e-05
+            }
+          },
+          "rings": 14,
+          "free_vertices": 208,
+          "intersection_check": {
+            "proper_crossings": 0,
+            "face_pairs": [],
+            "candidate_face_pairs_tested": 119,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "passed": true,
+          "score": 4.466470777988434e-05
+        }
+      ]
+    }
+  },
+  "intersection_checks": {
+    "left": {
+      "before": {
+        "proper_crossings": 0,
+        "face_pairs": [],
+        "candidate_face_pairs_tested": 162,
+        "local_faces_tested": 482,
+        "coplanar_overlaps_checked": false
+      },
+      "after": {
+        "proper_crossings": 0,
+        "face_pairs": [],
+        "candidate_face_pairs_tested": 103,
+        "local_faces_tested": 482,
+        "coplanar_overlaps_checked": false
+      }
+    },
+    "right": {
+      "before": {
+        "proper_crossings": 70,
+        "face_pairs": [
+          [
+            5882,
+            20882
+          ],
+          [
+            5882,
+            20886
+          ],
+          [
+            5882,
+            20887
+          ],
+          [
+            5904,
+            19506
+          ],
+          [
+            5904,
+            19507
+          ],
+          [
+            5908,
+            19455
+          ],
+          [
+            5908,
+            19724
+          ],
+          [
+            5908,
+            19725
+          ],
+          [
+            5908,
+            19728
+          ],
+          [
+            5908,
+            19729
+          ],
+          [
+            5908,
+            20868
+          ],
+          [
+            5909,
+            19388
+          ],
+          [
+            5909,
+            19389
+          ],
+          [
+            5909,
+            19396
+          ],
+          [
+            5909,
+            19397
+          ],
+          [
+            5909,
+            19452
+          ],
+          [
+            5909,
+            20868
+          ],
+          [
+            5909,
+            20869
+          ],
+          [
+            5913,
+            19446
+          ],
+          [
+            5924,
+            19559
+          ],
+          [
+            5924,
+            19560
+          ],
+          [
+            5924,
+            20753
+          ],
+          [
+            5931,
+            19560
+          ],
+          [
+            5931,
+            19682
+          ],
+          [
+            5939,
+            19446
+          ],
+          [
+            5940,
+            19445
+          ],
+          [
+            5940,
+            19446
+          ],
+          [
+            6093,
+            19692
+          ],
+          [
+            6093,
+            19693
+          ],
+          [
+            6093,
+            20880
+          ],
+          [
+            6093,
+            20881
+          ],
+          [
+            6093,
+            20886
+          ],
+          [
+            14872,
+            19506
+          ],
+          [
+            14872,
+            19536
+          ],
+          [
+            14872,
+            19537
+          ],
+          [
+            14872,
+            20882
+          ],
+          [
+            14872,
+            20883
+          ],
+          [
+            14894,
+            19507
+          ],
+          [
+            14894,
+            19544
+          ],
+          [
+            14899,
+            19389
+          ],
+          [
+            14899,
+            19454
+          ],
+          [
+            14899,
+            19455
+          ],
+          [
+            14899,
+            20868
+          ],
+          [
+            14914,
+            19544
+          ],
+          [
+            14914,
+            19546
+          ],
+          [
+            14914,
+            20753
+          ],
+          [
+            14914,
+            20754
+          ],
+          [
+            14921,
+            19682
+          ],
+          [
+            14929,
+            19446
+          ],
+          [
+            14930,
+            19444
+          ],
+          [
+            14930,
+            19445
+          ],
+          [
+            14930,
+            19692
+          ],
+          [
+            19416,
+            19559
+          ],
+          [
+            19416,
+            19560
+          ],
+          [
+            19416,
+            19682
+          ],
+          [
+            19417,
+            19682
+          ],
+          [
+            19458,
+            20868
+          ],
+          [
+            19460,
+            20822
+          ],
+          [
+            19460,
+            20823
+          ],
+          [
+            19460,
+            20868
+          ],
+          [
+            19461,
+            19452
+          ],
+          [
+            19461,
+            20822
+          ],
+          [
+            19461,
+            20823
+          ],
+          [
+            19461,
+            20868
+          ],
+          [
+            19461,
+            20869
+          ],
+          [
+            19642,
+            20823
+          ],
+          [
+            19643,
+            20823
+          ],
+          [
+            20890,
+            19559
+          ],
+          [
+            20890,
+            20753
+          ],
+          [
+            20891,
+            19559
+          ]
+        ],
+        "candidate_face_pairs_tested": 802,
+        "local_faces_tested": 482,
+        "coplanar_overlaps_checked": false
+      },
+      "after": {
+        "proper_crossings": 0,
+        "face_pairs": [],
+        "candidate_face_pairs_tested": 119,
+        "local_faces_tested": 482,
+        "coplanar_overlaps_checked": false
+      }
+    }
+  },
+  "silhouette_before": {
+    "left": {
+      "outside_rms_px": 1.143707036972046,
+      "boundary_coverage_rms_px": 7.796957015991211,
+      "score": 0.003170433461666107
+    },
+    "right": {
+      "outside_rms_px": 9.438592910766602,
+      "boundary_coverage_rms_px": 5.541326522827148,
+      "score": 0.010444019317626953
+    }
+  },
+  "silhouette_after": {
+    "left": {
+      "outside_rms_px": 0.1873706728219986,
+      "boundary_coverage_rms_px": 0.22513090074062347,
+      "score": 6.044972874224186e-06
+    },
+    "right": {
+      "outside_rms_px": 0.4375372529029846,
+      "boundary_coverage_rms_px": 0.7144367098808289,
+      "score": 4.466487467288971e-05
+    }
+  },
+  "all_local_crossing_checks_passed": true
+}

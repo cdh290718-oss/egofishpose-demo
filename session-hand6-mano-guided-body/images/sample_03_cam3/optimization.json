@@ -1,0 +1,203 @@
+{
+  "row": {
+    "id": "cam3_left_lower_t048.531s_f002882",
+    "condition": "sample_03",
+    "camera": "cam3",
+    "image": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/input/sample_03/cam3_left_lower_t048.531s_f002882.jpg",
+    "image_sha256": "7cd77ab57c3c7b9a0a72c6f2c232e2b412ed2ac0c2a337b211bf8371cd63bdfc",
+    "video": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/session_hand_6/left_lower/\u5de6\u4e0b_002_hand.mp4",
+    "frame_index_zero_based": 2882,
+    "video_seconds": 48.53116363110726,
+    "fraction": 0.625,
+    "calibration": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/DownwardStereo6/cam3_left_lower.egosmplx.json",
+    "calibration_sha256": "a039ea9d23f497fd5099a54b6e45e315400409addacc907a32b6744f49af468b",
+    "output": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_03/cam3",
+    "raw_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_03/cam3/raw/params.npz",
+    "raw_network_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/egosmplx/cam3/smplx/cam3_left_lower_t048.531s_f002882_00_smplx.npz",
+    "source_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_03/cam3/stage2/automatic/canonical_params.npz",
+    "rigid_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_03/cam3/rigid/canonical_params.npz",
+    "sapiens_json": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_03/cam3/sapiens2/keypoints.json",
+    "wilor_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/wilor/npz/cam3_left_lower_t048.531s_f002882_wilor.npz",
+    "source_npz_legacy_artifact": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_03/cam3/stage2/automatic/refined_params.npz",
+    "rigid_npz_legacy_artifact": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_03/cam3/rigid/optimized_params.npz",
+    "input_sha256": {
+      "source_npz": "9beb021df9c11b8f851a7e812104f2a912ad4023fc829dbb93e09a58aff62a84",
+      "rigid_npz": "ecb30de4d501c78d8e9de3f56e9c20bded83b55f8fc5f2b0b95f659f9f535605",
+      "sapiens_json": "99968065ad691f27a6171b1e3b864aeedadbd5b1b6594110c3aa4b3dfdf342b1",
+      "wilor_npz": "06d5868c4caaf044754ccde16447f8ac45e8f6f43584bf70b5539988e38818cf"
+    }
+  },
+  "baseline": "GitHub session-hand6, body before bounded contour seam",
+  "checkpoint": "b5c966263cae4e4add5d6de0c1e5f7c14d7583f0",
+  "method": "single continuation; Sapiens joints + native MANO MCP and 16 corresponding wrist-loop pixels + frozen contour; no body-shifted hand targets",
+  "manual_inputs": false,
+  "steps": 600,
+  "elapsed_seconds": 34.416085720062256,
+  "initial": {
+    "body_rmse_px": 27.269733119989393,
+    "body_errors_px": {
+      "left_shoulder": 6.016535935417696,
+      "right_shoulder": 80.4536647453572,
+      "left_elbow": 12.225364227876229,
+      "right_elbow": 34.8140775308512,
+      "left_wrist": 8.612749560122037,
+      "right_wrist": 11.939023603541221,
+      "left_hip": 24.36071874096645,
+      "right_hip": 15.588893295248289,
+      "left_knee": 0.04797349028273885,
+      "right_knee": 0.07603630257045932,
+      "left_ankle": 0.05617833895878561,
+      "right_ankle": 0.023290711501749755
+    },
+    "hands": {
+      "left": {
+        "wrist_px": 0.04157688498576812,
+        "palm_mcp_rmse_px": 39.30233387693938,
+        "loop_rmse_px": 29.195601256229775,
+        "loop_centered_rmse_px": 24.015525083814538,
+        "loop_radius_ratio": 1.0871789211531455,
+        "wrist_distance_m": 0.5119063258171082
+      },
+      "right": {
+        "wrist_px": 0.9379575578586344,
+        "palm_mcp_rmse_px": 53.00821506569862,
+        "loop_rmse_px": 32.999010658316585,
+        "loop_centered_rmse_px": 30.333692481551616,
+        "loop_radius_ratio": 0.9666552404988612,
+        "wrist_distance_m": 0.5031153559684753
+      }
+    },
+    "silhouette": {
+      "left": {
+        "outside_rms_px": 4.515438079833984,
+        "boundary_coverage_rms_px": 4.619530200958252,
+        "score": 0.0031059210777282715
+      },
+      "right": {
+        "outside_rms_px": 2.962963104248047,
+        "boundary_coverage_rms_px": 7.478818416595459,
+        "score": 0.0036745513916015627
+      }
+    }
+  },
+  "after": {
+    "body_rmse_px": 26.556046828126824,
+    "body_errors_px": {
+      "left_shoulder": 12.280374188147826,
+      "right_shoulder": 78.23788325756463,
+      "left_elbow": 9.634997130451179,
+      "right_elbow": 33.88393474458395,
+      "left_wrist": 6.2118785549612685,
+      "right_wrist": 9.003131296598275,
+      "left_hip": 21.775256347916066,
+      "right_hip": 18.654642085128707,
+      "left_knee": 1.9076740606330538,
+      "right_knee": 1.9513617252332025,
+      "left_ankle": 0.3467582937518292,
+      "right_ankle": 0.6219039009514324
+    },
+    "hands": {
+      "left": {
+        "wrist_px": 2.535218639169252,
+        "palm_mcp_rmse_px": 35.00597585685705,
+        "loop_rmse_px": 27.260155734937285,
+        "loop_centered_rmse_px": 23.33893388707357,
+        "loop_radius_ratio": 1.059231829157051,
+        "wrist_distance_m": 0.5252595543861389
+      },
+      "right": {
+        "wrist_px": 3.9174532158937008,
+        "palm_mcp_rmse_px": 47.13276967666587,
+        "loop_rmse_px": 30.632193496563374,
+        "loop_centered_rmse_px": 28.967031134163083,
+        "loop_radius_ratio": 0.9148109522615165,
+        "wrist_distance_m": 0.5205870866775513
+      }
+    },
+    "silhouette": {
+      "left": {
+        "outside_rms_px": 4.787581920623779,
+        "boundary_coverage_rms_px": 5.654365062713623,
+        "score": 0.003890686225891113
+      },
+      "right": {
+        "outside_rms_px": 2.226440906524658,
+        "boundary_coverage_rms_px": 7.3493523597717285,
+        "score": 0.003196353006362915
+      }
+    }
+  },
+  "trace": [
+    {
+      "step": 0,
+      "loss": 0.1993972510099411,
+      "body_rmse": 26.890993118286133,
+      "wrist": [
+        2.5354833602905273,
+        3.5732851028442383
+      ],
+      "loop": [
+        27.2744140625,
+        31.188098907470703
+      ],
+      "rejected": 0
+    },
+    {
+      "step": 100,
+      "loss": 0.20097915828227997,
+      "body_rmse": 27.75931167602539,
+      "wrist": [
+        2.4220054149627686,
+        3.748234510421753
+      ],
+      "loop": [
+        27.403587341308594,
+        30.230045318603516
+      ],
+      "rejected": 85
+    }
+  ],
+  "acceptance": {
+    "passed": true,
+    "body_delta_deg": {
+      "L_Hip": 14.470725059509277,
+      "R_Hip": 7.100052356719971,
+      "Spine_1": 7.678419589996338,
+      "Spine_2": 6.38526725769043,
+      "Spine_3": 8.63127326965332,
+      "L_Knee": 6.780270576477051,
+      "R_Knee": 2.9481537342071533,
+      "L_Ankle": 6.299245357513428,
+      "R_Ankle": 4.672609806060791,
+      "Neck": 9.44599723815918,
+      "Head": 11.071879386901855,
+      "L_Collar": 14.999959945678711,
+      "R_Collar": 14.996352195739746,
+      "L_Shoulder": 27.999942779541016,
+      "R_Shoulder": 27.978609085083008,
+      "L_Elbow": 21.327302932739258,
+      "R_Elbow": 24.999998092651367,
+      "L_Wrist": 15.000000953674316,
+      "R_Wrist": 14.999958992004395
+    },
+    "sapiens_body_rmse_px": 26.556046828126824,
+    "sapiens_body_source_rmse_px": 27.394874197008612,
+    "wrist_floor_m": [
+      0.436178594827652,
+      0.4217931628227234
+    ],
+    "body_minimum_z_m": 0.02037835121154785
+  },
+  "fixed_shape": true,
+  "image_wrist_limit_px": [
+    3.041576862335205,
+    3.937957525253296
+  ],
+  "continued_from_new_body": true,
+  "continuation_feasibility_fraction": 0.25,
+  "continuation_feasibility_z_offset": 0.0,
+  "actual_steps": 187,
+  "cpu_feasibility_step_fraction": 1.0,
+  "body_bone_max_change_m": 2.9802322387695312e-08,
+  "body_reload_max_abs_m": 0.0
+}

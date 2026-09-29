@@ -1,0 +1,1953 @@
+[
+  {
+    "frame": "sample_03_cam3",
+    "seconds": 48.53116363110726,
+    "metrics": {
+      "raw": {
+        "body_rmse_px": 692.8083496744723,
+        "hand_rmse_px": 284672.7969038904,
+        "hands_rmse_px": {
+          "left": 397.66427950011933,
+          "right": 402587.93381979055
+        }
+      },
+      "sapiens": {
+        "body_rmse_px": 27.394874197008612,
+        "hand_rmse_px": 46.2839517292557,
+        "hands_rmse_px": {
+          "left": 43.12905569263783,
+          "right": 49.23710928165348
+        }
+      },
+      "previous": {
+        "body_rmse_px": 27.269733119989393,
+        "hand_rmse_px": 5.534113650094775,
+        "hands_rmse_px": {
+          "left": 5.963229252267788,
+          "right": 5.068799134827537
+        }
+      },
+      "guided_body": {
+        "body_rmse_px": 26.556046828126824,
+        "hand_rmse_px": 40.13818695724641,
+        "hands_rmse_px": {
+          "left": 41.421681561992365,
+          "right": 38.81227126833256
+        }
+      },
+      "same_seam": {
+        "body_rmse_px": 26.556046828126824,
+        "hand_rmse_px": 6.634475659111004,
+        "hands_rmse_px": {
+          "left": 6.925773884090378,
+          "right": 6.329785987624263
+        }
+      },
+      "fusion": {
+        "body_rmse_px": 26.556046828126824,
+        "hand_rmse_px": 6.634475659111004,
+        "hands_rmse_px": {
+          "left": 6.925773884090378,
+          "right": 6.329785987624263
+        }
+      }
+    },
+    "optimization": {
+      "row": {
+        "id": "cam3_left_lower_t048.531s_f002882",
+        "condition": "sample_03",
+        "camera": "cam3",
+        "image": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/input/sample_03/cam3_left_lower_t048.531s_f002882.jpg",
+        "image_sha256": "7cd77ab57c3c7b9a0a72c6f2c232e2b412ed2ac0c2a337b211bf8371cd63bdfc",
+        "video": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/session_hand_6/left_lower/\u5de6\u4e0b_002_hand.mp4",
+        "frame_index_zero_based": 2882,
+        "video_seconds": 48.53116363110726,
+        "fraction": 0.625,
+        "calibration": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/DownwardStereo6/cam3_left_lower.egosmplx.json",
+        "calibration_sha256": "a039ea9d23f497fd5099a54b6e45e315400409addacc907a32b6744f49af468b",
+        "output": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_03/cam3",
+        "raw_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_03/cam3/raw/params.npz",
+        "raw_network_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/egosmplx/cam3/smplx/cam3_left_lower_t048.531s_f002882_00_smplx.npz",
+        "source_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_03/cam3/stage2/automatic/canonical_params.npz",
+        "rigid_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_03/cam3/rigid/canonical_params.npz",
+        "sapiens_json": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_03/cam3/sapiens2/keypoints.json",
+        "wilor_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/wilor/npz/cam3_left_lower_t048.531s_f002882_wilor.npz",
+        "source_npz_legacy_artifact": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_03/cam3/stage2/automatic/refined_params.npz",
+        "rigid_npz_legacy_artifact": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_03/cam3/rigid/optimized_params.npz",
+        "input_sha256": {
+          "source_npz": "9beb021df9c11b8f851a7e812104f2a912ad4023fc829dbb93e09a58aff62a84",
+          "rigid_npz": "ecb30de4d501c78d8e9de3f56e9c20bded83b55f8fc5f2b0b95f659f9f535605",
+          "sapiens_json": "99968065ad691f27a6171b1e3b864aeedadbd5b1b6594110c3aa4b3dfdf342b1",
+          "wilor_npz": "06d5868c4caaf044754ccde16447f8ac45e8f6f43584bf70b5539988e38818cf"
+        }
+      },
+      "baseline": "GitHub session-hand6, body before bounded contour seam",
+      "checkpoint": "b5c966263cae4e4add5d6de0c1e5f7c14d7583f0",
+      "method": "single continuation; Sapiens joints + native MANO MCP and 16 corresponding wrist-loop pixels + frozen contour; no body-shifted hand targets",
+      "manual_inputs": false,
+      "steps": 600,
+      "elapsed_seconds": 34.416085720062256,
+      "initial": {
+        "body_rmse_px": 27.269733119989393,
+        "body_errors_px": {
+          "left_shoulder": 6.016535935417696,
+          "right_shoulder": 80.4536647453572,
+          "left_elbow": 12.225364227876229,
+          "right_elbow": 34.8140775308512,
+          "left_wrist": 8.612749560122037,
+          "right_wrist": 11.939023603541221,
+          "left_hip": 24.36071874096645,
+          "right_hip": 15.588893295248289,
+          "left_knee": 0.04797349028273885,
+          "right_knee": 0.07603630257045932,
+          "left_ankle": 0.05617833895878561,
+          "right_ankle": 0.023290711501749755
+        },
+        "hands": {
+          "left": {
+            "wrist_px": 0.04157688498576812,
+            "palm_mcp_rmse_px": 39.30233387693938,
+            "loop_rmse_px": 29.195601256229775,
+            "loop_centered_rmse_px": 24.015525083814538,
+            "loop_radius_ratio": 1.0871789211531455,
+            "wrist_distance_m": 0.5119063258171082
+          },
+          "right": {
+            "wrist_px": 0.9379575578586344,
+            "palm_mcp_rmse_px": 53.00821506569862,
+            "loop_rmse_px": 32.999010658316585,
+            "loop_centered_rmse_px": 30.333692481551616,
+            "loop_radius_ratio": 0.9666552404988612,
+            "wrist_distance_m": 0.5031153559684753
+          }
+        },
+        "silhouette": {
+          "left": {
+            "outside_rms_px": 4.515438079833984,
+            "boundary_coverage_rms_px": 4.619530200958252,
+            "score": 0.0031059210777282715
+          },
+          "right": {
+            "outside_rms_px": 2.962963104248047,
+            "boundary_coverage_rms_px": 7.478818416595459,
+            "score": 0.0036745513916015627
+          }
+        }
+      },
+      "after": {
+        "body_rmse_px": 26.556046828126824,
+        "body_errors_px": {
+          "left_shoulder": 12.280374188147826,
+          "right_shoulder": 78.23788325756463,
+          "left_elbow": 9.634997130451179,
+          "right_elbow": 33.88393474458395,
+          "left_wrist": 6.2118785549612685,
+          "right_wrist": 9.003131296598275,
+          "left_hip": 21.775256347916066,
+          "right_hip": 18.654642085128707,
+          "left_knee": 1.9076740606330538,
+          "right_knee": 1.9513617252332025,
+          "left_ankle": 0.3467582937518292,
+          "right_ankle": 0.6219039009514324
+        },
+        "hands": {
+          "left": {
+            "wrist_px": 2.535218639169252,
+            "palm_mcp_rmse_px": 35.00597585685705,
+            "loop_rmse_px": 27.260155734937285,
+            "loop_centered_rmse_px": 23.33893388707357,
+            "loop_radius_ratio": 1.059231829157051,
+            "wrist_distance_m": 0.5252595543861389
+          },
+          "right": {
+            "wrist_px": 3.9174532158937008,
+            "palm_mcp_rmse_px": 47.13276967666587,
+            "loop_rmse_px": 30.632193496563374,
+            "loop_centered_rmse_px": 28.967031134163083,
+            "loop_radius_ratio": 0.9148109522615165,
+            "wrist_distance_m": 0.5205870866775513
+          }
+        },
+        "silhouette": {
+          "left": {
+            "outside_rms_px": 4.787581920623779,
+            "boundary_coverage_rms_px": 5.654365062713623,
+            "score": 0.003890686225891113
+          },
+          "right": {
+            "outside_rms_px": 2.226440906524658,
+            "boundary_coverage_rms_px": 7.3493523597717285,
+            "score": 0.003196353006362915
+          }
+        }
+      },
+      "trace": [
+        {
+          "step": 0,
+          "loss": 0.1993972510099411,
+          "body_rmse": 26.890993118286133,
+          "wrist": [
+            2.5354833602905273,
+            3.5732851028442383
+          ],
+          "loop": [
+            27.2744140625,
+            31.188098907470703
+          ],
+          "rejected": 0
+        },
+        {
+          "step": 100,
+          "loss": 0.20097915828227997,
+          "body_rmse": 27.75931167602539,
+          "wrist": [
+            2.4220054149627686,
+            3.748234510421753
+          ],
+          "loop": [
+            27.403587341308594,
+            30.230045318603516
+          ],
+          "rejected": 85
+        }
+      ],
+      "acceptance": {
+        "passed": true,
+        "body_delta_deg": {
+          "L_Hip": 14.470725059509277,
+          "R_Hip": 7.100052356719971,
+          "Spine_1": 7.678419589996338,
+          "Spine_2": 6.38526725769043,
+          "Spine_3": 8.63127326965332,
+          "L_Knee": 6.780270576477051,
+          "R_Knee": 2.9481537342071533,
+          "L_Ankle": 6.299245357513428,
+          "R_Ankle": 4.672609806060791,
+          "Neck": 9.44599723815918,
+          "Head": 11.071879386901855,
+          "L_Collar": 14.999959945678711,
+          "R_Collar": 14.996352195739746,
+          "L_Shoulder": 27.999942779541016,
+          "R_Shoulder": 27.978609085083008,
+          "L_Elbow": 21.327302932739258,
+          "R_Elbow": 24.999998092651367,
+          "L_Wrist": 15.000000953674316,
+          "R_Wrist": 14.999958992004395
+        },
+        "sapiens_body_rmse_px": 26.556046828126824,
+        "sapiens_body_source_rmse_px": 27.394874197008612,
+        "wrist_floor_m": [
+          0.436178594827652,
+          0.4217931628227234
+        ],
+        "body_minimum_z_m": 0.02037835121154785
+      },
+      "fixed_shape": true,
+      "image_wrist_limit_px": [
+        3.041576862335205,
+        3.937957525253296
+      ],
+      "continued_from_new_body": true,
+      "continuation_feasibility_fraction": 0.25,
+      "continuation_feasibility_z_offset": 0.0,
+      "actual_steps": 187,
+      "cpu_feasibility_step_fraction": 1.0,
+      "body_bone_max_change_m": 2.9802322387695312e-08,
+      "body_reload_max_abs_m": 0.0
+    },
+    "fusion": {
+      "manual_inputs": false,
+      "all_fixed_mano_patches_accepted": false,
+      "hands": {
+        "left": {
+          "accepted": false,
+          "selected": null,
+          "candidates": [
+            {
+              "edge_min": 0.5010880189538837,
+              "edge_max": 1.3878390290025313,
+              "area_min": 0.2533204703206559,
+              "area_max": 1.702417365978379,
+              "flipped": 2,
+              "max_body_displacement_m": 0.0370865586468173,
+              "hand_target_max_abs_m": 0.0,
+              "min_z_m": 0.02037835121154785,
+              "silhouette": {
+                "left": {
+                  "outside_rms_px": 4.529834270477295,
+                  "boundary_coverage_rms_px": 4.523509502410889,
+                  "score": 0.003075046920776367
+                }
+              },
+              "rings": 6,
+              "free_vertices": 80,
+              "passed": false,
+              "score": 0.003075046920776367
+            },
+            {
+              "edge_min": 0.49977322000719,
+              "edge_max": 1.387859449700104,
+              "area_min": 0.25238593558145106,
+              "area_max": 1.8663601568564405,
+              "flipped": 2,
+              "max_body_displacement_m": 0.0370865586468173,
+              "hand_target_max_abs_m": 0.0,
+              "min_z_m": 0.02037835121154785,
+              "silhouette": {
+                "left": {
+                  "outside_rms_px": 3.7736854553222656,
+                  "boundary_coverage_rms_px": 3.0868422985076904,
+                  "score": 0.0019005000591278075
+                }
+              },
+              "rings": 10,
+              "free_vertices": 144,
+              "passed": false,
+              "score": 0.0019005000591278075
+            },
+            {
+              "edge_min": 0.5007497348684421,
+              "edge_max": 1.3876927999862867,
+              "area_min": 0.298361070356472,
+              "area_max": 1.7213234213287592,
+              "flipped": 2,
+              "max_body_displacement_m": 0.0370865586468173,
+              "hand_target_max_abs_m": 0.0,
+              "min_z_m": 0.02037835121154785,
+              "silhouette": {
+                "left": {
+                  "outside_rms_px": 4.105381011962891,
+                  "boundary_coverage_rms_px": 2.2675621509552,
+                  "score": 0.0019425071716308595
+                }
+              },
+              "rings": 14,
+              "free_vertices": 208,
+              "passed": false,
+              "score": 0.0019425071716308595
+            }
+          ],
+          "fallback": "published bounded seam on improved body; fixed MANO boundary candidate rejected"
+        },
+        "right": {
+          "accepted": false,
+          "selected": null,
+          "candidates": [
+            {
+              "edge_min": 0.4992850177363549,
+              "edge_max": 1.4389088169853916,
+              "area_min": 0.24547472315239283,
+              "area_max": 1.8492018700822317,
+              "flipped": 9,
+              "max_body_displacement_m": 0.04610970408501086,
+              "hand_target_max_abs_m": 0.0,
+              "min_z_m": 0.02037835121154785,
+              "silhouette": {
+                "right": {
+                  "outside_rms_px": 2.3191452026367188,
+                  "boundary_coverage_rms_px": 7.0315656661987305,
+                  "score": 0.003009989309310913
+                }
+              },
+              "rings": 6,
+              "free_vertices": 80,
+              "passed": false,
+              "score": 0.003009989309310913
+            },
+            {
+              "edge_min": 0.49920025289964537,
+              "edge_max": 1.43903455353541,
+              "area_min": 0.2453946775272424,
+              "area_max": 1.629723058691826,
+              "flipped": 9,
+              "max_body_displacement_m": 0.04610970408501086,
+              "hand_target_max_abs_m": 0.0,
+              "min_z_m": 0.02037835121154785,
+              "silhouette": {
+                "right": {
+                  "outside_rms_px": 1.6632329225540161,
+                  "boundary_coverage_rms_px": 5.991304874420166,
+                  "score": 0.002071421217918396
+                }
+              },
+              "rings": 10,
+              "free_vertices": 144,
+              "passed": false,
+              "score": 0.002071421217918396
+            },
+            {
+              "edge_min": 0.49468197265109026,
+              "edge_max": 1.4388431249861053,
+              "area_min": 0.2384997060829794,
+              "area_max": 1.7797496681455869,
+              "flipped": 11,
+              "max_body_displacement_m": 0.04610970408501086,
+              "hand_target_max_abs_m": 0.0,
+              "min_z_m": 0.02037835121154785,
+              "silhouette": {
+                "right": {
+                  "outside_rms_px": 0.41413864493370056,
+                  "boundary_coverage_rms_px": 4.095405101776123,
+                  "score": 0.0008557683110237121
+                }
+              },
+              "rings": 14,
+              "free_vertices": 208,
+              "passed": false,
+              "score": 0.0008557683110237121
+            }
+          ],
+          "fallback": "published bounded seam on improved body; fixed MANO boundary candidate rejected"
+        }
+      },
+      "intersection_checks": {
+        "left": {
+          "before": {
+            "proper_crossings": 50,
+            "face_pairs": [
+              [
+                3309,
+                4879
+              ],
+              [
+                3309,
+                13221
+              ],
+              [
+                3309,
+                13869
+              ],
+              [
+                3345,
+                13205
+              ],
+              [
+                3455,
+                13171
+              ],
+              [
+                3492,
+                3417
+              ],
+              [
+                3492,
+                13223
+              ],
+              [
+                3692,
+                4214
+              ],
+              [
+                3692,
+                13205
+              ],
+              [
+                3712,
+                4598
+              ],
+              [
+                4397,
+                3417
+              ],
+              [
+                4397,
+                13869
+              ],
+              [
+                4541,
+                13869
+              ],
+              [
+                4599,
+                4598
+              ],
+              [
+                4599,
+                12185
+              ],
+              [
+                4671,
+                4232
+              ],
+              [
+                4735,
+                3408
+              ],
+              [
+                4735,
+                12760
+              ],
+              [
+                4873,
+                3769
+              ],
+              [
+                4873,
+                13171
+              ],
+              [
+                4979,
+                4598
+              ],
+              [
+                5060,
+                3193
+              ],
+              [
+                5060,
+                4921
+              ],
+              [
+                5065,
+                12400
+              ],
+              [
+                12301,
+                4232
+              ],
+              [
+                12301,
+                13221
+              ],
+              [
+                12337,
+                3417
+              ],
+              [
+                12337,
+                12409
+              ],
+              [
+                12337,
+                13205
+              ],
+              [
+                12443,
+                4180
+              ],
+              [
+                12443,
+                4598
+              ],
+              [
+                12443,
+                13171
+              ],
+              [
+                12484,
+                4232
+              ],
+              [
+                12484,
+                13223
+              ],
+              [
+                12684,
+                4214
+              ],
+              [
+                12684,
+                4921
+              ],
+              [
+                12684,
+                13911
+              ],
+              [
+                13388,
+                3417
+              ],
+              [
+                13388,
+                12400
+              ],
+              [
+                13388,
+                12409
+              ],
+              [
+                13531,
+                13869
+              ],
+              [
+                13589,
+                3193
+              ],
+              [
+                13589,
+                12185
+              ],
+              [
+                13725,
+                3769
+              ],
+              [
+                13725,
+                12760
+              ],
+              [
+                13863,
+                13171
+              ],
+              [
+                13969,
+                4598
+              ],
+              [
+                14050,
+                3193
+              ],
+              [
+                14055,
+                3408
+              ],
+              [
+                14055,
+                12400
+              ]
+            ],
+            "candidate_face_pairs_tested": 504,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 48,
+            "face_pairs": [
+              [
+                3217,
+                3417
+              ],
+              [
+                3217,
+                13869
+              ],
+              [
+                3345,
+                12409
+              ],
+              [
+                3345,
+                13205
+              ],
+              [
+                3455,
+                4180
+              ],
+              [
+                3455,
+                13171
+              ],
+              [
+                3455,
+                13183
+              ],
+              [
+                3492,
+                3417
+              ],
+              [
+                3692,
+                4214
+              ],
+              [
+                3692,
+                13205
+              ],
+              [
+                3692,
+                13911
+              ],
+              [
+                3707,
+                3771
+              ],
+              [
+                3707,
+                4192
+              ],
+              [
+                3707,
+                13183
+              ],
+              [
+                3712,
+                13588
+              ],
+              [
+                4397,
+                3417
+              ],
+              [
+                4397,
+                12400
+              ],
+              [
+                4397,
+                12409
+              ],
+              [
+                4397,
+                13869
+              ],
+              [
+                4548,
+                12185
+              ],
+              [
+                4735,
+                3408
+              ],
+              [
+                4735,
+                12760
+              ],
+              [
+                4873,
+                3769
+              ],
+              [
+                4979,
+                4598
+              ],
+              [
+                4979,
+                13588
+              ],
+              [
+                5060,
+                3193
+              ],
+              [
+                5060,
+                4921
+              ],
+              [
+                5065,
+                3408
+              ],
+              [
+                5065,
+                12400
+              ],
+              [
+                12209,
+                13869
+              ],
+              [
+                12337,
+                3417
+              ],
+              [
+                12337,
+                12409
+              ],
+              [
+                12447,
+                13183
+              ],
+              [
+                12684,
+                4921
+              ],
+              [
+                12684,
+                13911
+              ],
+              [
+                12704,
+                3771
+              ],
+              [
+                12704,
+                13588
+              ],
+              [
+                13388,
+                12400
+              ],
+              [
+                13538,
+                4598
+              ],
+              [
+                13538,
+                12185
+              ],
+              [
+                13725,
+                3769
+              ],
+              [
+                13725,
+                12760
+              ],
+              [
+                13863,
+                3769
+              ],
+              [
+                13863,
+                13171
+              ],
+              [
+                13969,
+                4598
+              ],
+              [
+                14050,
+                3193
+              ],
+              [
+                14050,
+                12185
+              ],
+              [
+                14055,
+                3408
+              ]
+            ],
+            "candidate_face_pairs_tested": 566,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 12,
+            "face_pairs": [
+              [
+                19416,
+                19420
+              ],
+              [
+                19417,
+                19400
+              ],
+              [
+                19417,
+                19420
+              ],
+              [
+                19417,
+                19421
+              ],
+              [
+                19446,
+                19400
+              ],
+              [
+                19446,
+                19402
+              ],
+              [
+                19446,
+                19403
+              ],
+              [
+                19447,
+                19400
+              ],
+              [
+                19447,
+                19401
+              ],
+              [
+                19447,
+                19402
+              ],
+              [
+                19447,
+                19403
+              ],
+              [
+                19447,
+                19444
+              ]
+            ],
+            "candidate_face_pairs_tested": 257,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 2,
+            "face_pairs": [
+              [
+                19447,
+                19401
+              ],
+              [
+                19447,
+                19444
+              ]
+            ],
+            "candidate_face_pairs_tested": 231,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      },
+      "silhouette_before": {
+        "left": {
+          "outside_rms_px": 5.2737507820129395,
+          "boundary_coverage_rms_px": 7.801051139831543,
+          "score": 0.005824064636230469
+        },
+        "right": {
+          "outside_rms_px": 2.8147430419921875,
+          "boundary_coverage_rms_px": 7.978122234344482,
+          "score": 0.003974799442291259
+        }
+      },
+      "silhouette_after": {
+        "left": {
+          "outside_rms_px": 5.4801106452941895,
+          "boundary_coverage_rms_px": 8.606060981750488,
+          "score": 0.0067063753128051755
+        },
+        "right": {
+          "outside_rms_px": 2.119781494140625,
+          "boundary_coverage_rms_px": 7.686690807342529,
+          "score": 0.0034036081790924074
+        }
+      },
+      "all_local_crossing_checks_passed": false
+    },
+    "validation": {
+      "body_reload_max_abs_m": 0.0,
+      "obj_npz_max_abs_m": 0.0,
+      "topology_unchanged": true,
+      "seam_edges_two_opposite_faces": true,
+      "fixed_shape": true,
+      "independent_fusion_reload": {
+        "passed": true,
+        "mesh_vertex_max_abs_m": 0.0,
+        "reconstructed_in_independent_process": true
+      },
+      "local_crossing_checks_passed": false
+    }
+  },
+  {
+    "frame": "sample_04_cam3",
+    "seconds": 67.94699696444059,
+    "metrics": {
+      "raw": {
+        "body_rmse_px": 3338.1572091164144,
+        "hand_rmse_px": 40484.23879162627,
+        "hands_rmse_px": {
+          "left": 407.35961298607543,
+          "right": 57251.91035433265
+        }
+      },
+      "sapiens": {
+        "body_rmse_px": 81.04154979582532,
+        "hand_rmse_px": 214.7249965256799,
+        "hands_rmse_px": {
+          "left": 82.51369359828591,
+          "right": 292.24157581472673
+        }
+      },
+      "previous": {
+        "body_rmse_px": 60.34846901748737,
+        "hand_rmse_px": 4.424953895756538,
+        "hands_rmse_px": {
+          "left": 4.665136395589745,
+          "right": 4.170963482180808
+        }
+      },
+      "guided_body": {
+        "body_rmse_px": 31.841351681719367,
+        "hand_rmse_px": 26.078775506055685,
+        "hands_rmse_px": {
+          "left": 11.553098018229589,
+          "right": 35.02471969868823
+        }
+      },
+      "same_seam": {
+        "body_rmse_px": 31.841351681719367,
+        "hand_rmse_px": 8.39381056687554,
+        "hands_rmse_px": {
+          "left": 8.82081977950519,
+          "right": 7.943881298375056
+        }
+      },
+      "fusion": {
+        "body_rmse_px": 31.841351681719367,
+        "hand_rmse_px": 3.970910257510345,
+        "hands_rmse_px": {
+          "left": 4.669614635933811,
+          "right": 3.119447979735276
+        }
+      }
+    },
+    "optimization": {
+      "row": {
+        "id": "cam3_left_lower_t067.947s_f004035",
+        "condition": "sample_04",
+        "camera": "cam3",
+        "image": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/input/sample_04/cam3_left_lower_t067.947s_f004035.jpg",
+        "image_sha256": "66040d6b93c05d339bd2b230f2c871cdc8a18a800c8409517d8bc2d647040faf",
+        "video": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/session_hand_6/left_lower/\u5de6\u4e0b_002_hand.mp4",
+        "frame_index_zero_based": 4035,
+        "video_seconds": 67.94699696444059,
+        "fraction": 0.875,
+        "calibration": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/DownwardStereo6/cam3_left_lower.egosmplx.json",
+        "calibration_sha256": "a039ea9d23f497fd5099a54b6e45e315400409addacc907a32b6744f49af468b",
+        "output": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_04/cam3",
+        "raw_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_04/cam3/raw/params.npz",
+        "raw_network_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/egosmplx/cam3/smplx/cam3_left_lower_t067.947s_f004035_00_smplx.npz",
+        "source_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_04/cam3/stage2/automatic/canonical_params.npz",
+        "rigid_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_04/cam3/rigid/canonical_params.npz",
+        "sapiens_json": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_04/cam3/sapiens2/keypoints.json",
+        "wilor_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/wilor/npz/cam3_left_lower_t067.947s_f004035_wilor.npz",
+        "source_npz_legacy_artifact": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_04/cam3/stage2/automatic/refined_params.npz",
+        "rigid_npz_legacy_artifact": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_04/cam3/rigid/optimized_params.npz",
+        "input_sha256": {
+          "source_npz": "2f2692f6186bcead719f8c5729155f4f18d9dae82d9b595c2840b000c15e32e9",
+          "rigid_npz": "4489c3040382f08b1d3148f88d615d967ec215aba5b10b6d9a2a2896c51b9137",
+          "sapiens_json": "1c2a5b7d1d9d876c82e8cf719051c4795c556907c7094b4c6429197be23b5e29",
+          "wilor_npz": "fde07da6220e8fa40b8174e410a6df85651ded242dbe980008bfc94b5fa13b27"
+        }
+      },
+      "baseline": "GitHub session-hand6, body before bounded contour seam",
+      "checkpoint": "b5c966263cae4e4add5d6de0c1e5f7c14d7583f0",
+      "method": "single continuation; Sapiens joints + native MANO MCP and 16 corresponding wrist-loop pixels + frozen contour; no body-shifted hand targets",
+      "manual_inputs": false,
+      "steps": 1400,
+      "elapsed_seconds": 94.69474339485168,
+      "initial": {
+        "body_rmse_px": 60.34846901748737,
+        "body_errors_px": {
+          "left_shoulder": 62.26346243575056,
+          "right_shoulder": 184.6278551946713,
+          "left_elbow": 13.38008241132615,
+          "right_elbow": 11.978470626000462,
+          "left_wrist": 9.246448294456204,
+          "right_wrist": 12.858379428565675,
+          "left_hip": 56.75233933895567,
+          "right_hip": 44.099087594080714,
+          "left_knee": 0.3191998352044403,
+          "right_knee": 0.11546525683508717,
+          "left_ankle": 0.15784800996401155,
+          "right_ankle": 0.16158431594019415
+        },
+        "hands": {
+          "left": {
+            "wrist_px": 0.16919635852694012,
+            "palm_mcp_rmse_px": 27.35035079372521,
+            "loop_rmse_px": 17.979734589556454,
+            "loop_centered_rmse_px": 13.703931282056141,
+            "loop_radius_ratio": 1.182502742795448,
+            "wrist_distance_m": 0.650536060333252
+          },
+          "right": {
+            "wrist_px": 0.9465813232894127,
+            "palm_mcp_rmse_px": 223.1467203761977,
+            "loop_rmse_px": 49.53190894051769,
+            "loop_centered_rmse_px": 48.899035578469906,
+            "loop_radius_ratio": 2.686932961129071,
+            "wrist_distance_m": 0.2615351676940918
+          }
+        },
+        "silhouette": {
+          "left": {
+            "outside_rms_px": 1.9505356550216675,
+            "boundary_coverage_rms_px": 7.006518840789795,
+            "score": 0.0028350241661071777
+          },
+          "right": {
+            "outside_rms_px": 10.219771385192871,
+            "boundary_coverage_rms_px": 6.153534889221191,
+            "score": 0.012337672805786133
+          }
+        }
+      },
+      "after": {
+        "body_rmse_px": 31.841351681719367,
+        "body_errors_px": {
+          "left_shoulder": 53.97657352320246,
+          "right_shoulder": 77.02819188628753,
+          "left_elbow": 13.56732116613844,
+          "right_elbow": 6.353281674621536,
+          "left_wrist": 3.316981588439989,
+          "right_wrist": 7.100782183021503,
+          "left_hip": 49.100710238955934,
+          "right_hip": 24.956662283608047,
+          "left_knee": 0.036427075541753874,
+          "right_knee": 0.09740326103753565,
+          "left_ankle": 0.12079897312331526,
+          "right_ankle": 0.2174334215541488
+        },
+        "hands": {
+          "left": {
+            "wrist_px": 6.385333368690406,
+            "palm_mcp_rmse_px": 5.67860257409199,
+            "loop_rmse_px": 7.185179784487143,
+            "loop_centered_rmse_px": 5.049954663504047,
+            "loop_radius_ratio": 1.1414887994819842,
+            "wrist_distance_m": 0.6728163957595825
+          },
+          "right": {
+            "wrist_px": 8.225714968876044,
+            "palm_mcp_rmse_px": 33.54380220701663,
+            "loop_rmse_px": 7.665762843191993,
+            "loop_centered_rmse_px": 6.755031319877694,
+            "loop_radius_ratio": 0.9280890891358027,
+            "wrist_distance_m": 0.6741963028907776
+          }
+        },
+        "silhouette": {
+          "left": {
+            "outside_rms_px": 2.7423505783081055,
+            "boundary_coverage_rms_px": 5.70881986618042,
+            "score": 0.002381579828262329
+          },
+          "right": {
+            "outside_rms_px": 1.9443690776824951,
+            "boundary_coverage_rms_px": 3.865461826324463,
+            "score": 0.0011251468181610108
+          }
+        }
+      },
+      "trace": [
+        {
+          "step": 0,
+          "loss": 0.4470983147621155,
+          "body_rmse": 60.544437408447266,
+          "wrist": [
+            4.4418230056762695,
+            10.294963836669922
+          ],
+          "loop": [
+            15.404075622558594,
+            50.33127975463867
+          ],
+          "rejected": 0
+        },
+        {
+          "step": 100,
+          "loss": 0.25895795226097107,
+          "body_rmse": 52.981136322021484,
+          "wrist": [
+            7.409145355224609,
+            5.915383338928223
+          ],
+          "loop": [
+            13.029555320739746,
+            23.30531120300293
+          ],
+          "rejected": 0
+        },
+        {
+          "step": 200,
+          "loss": 0.13604258000850677,
+          "body_rmse": 33.834739685058594,
+          "wrist": [
+            6.638004302978516,
+            7.12935209274292
+          ],
+          "loop": [
+            9.960404396057129,
+            13.277986526489258
+          ],
+          "rejected": 0
+        },
+        {
+          "step": 300,
+          "loss": 0.12287577241659164,
+          "body_rmse": 33.045833587646484,
+          "wrist": [
+            6.659154891967773,
+            7.941081523895264
+          ],
+          "loop": [
+            8.009368896484375,
+            11.49842643737793
+          ],
+          "rejected": 0
+        },
+        {
+          "step": 400,
+          "loss": 0.11811122298240662,
+          "body_rmse": 32.962398529052734,
+          "wrist": [
+            6.826280117034912,
+            7.714065074920654
+          ],
+          "loop": [
+            7.340232849121094,
+            10.072157859802246
+          ],
+          "rejected": 0
+        },
+        {
+          "step": 500,
+          "loss": 0.1140981912612915,
+          "body_rmse": 32.567054748535156,
+          "wrist": [
+            6.7325544357299805,
+            8.641361236572266
+          ],
+          "loop": [
+            7.1092329025268555,
+            8.97286605834961
+          ],
+          "rejected": 0
+        },
+        {
+          "step": 600,
+          "loss": 0.10961966961622238,
+          "body_rmse": 31.962451934814453,
+          "wrist": [
+            6.744694709777832,
+            7.664594650268555
+          ],
+          "loop": [
+            7.00567626953125,
+            7.726233959197998
+          ],
+          "rejected": 0
+        },
+        {
+          "step": 700,
+          "loss": 0.10753985494375229,
+          "body_rmse": 31.832717895507812,
+          "wrist": [
+            6.319155216217041,
+            8.226446151733398
+          ],
+          "loop": [
+            7.281791687011719,
+            7.628744125366211
+          ],
+          "rejected": 0
+        },
+        {
+          "step": 800,
+          "loss": 0.10891298949718475,
+          "body_rmse": 32.17979431152344,
+          "wrist": [
+            5.794862270355225,
+            8.135446548461914
+          ],
+          "loop": [
+            7.743847846984863,
+            7.532862663269043
+          ],
+          "rejected": 0
+        },
+        {
+          "step": 900,
+          "loss": 0.10953141003847122,
+          "body_rmse": 32.5018310546875,
+          "wrist": [
+            6.052546501159668,
+            8.117457389831543
+          ],
+          "loop": [
+            7.581165313720703,
+            7.469611644744873
+          ],
+          "rejected": 0
+        },
+        {
+          "step": 1000,
+          "loss": 0.11011411249637604,
+          "body_rmse": 32.63444137573242,
+          "wrist": [
+            7.14815092086792,
+            8.202384948730469
+          ],
+          "loop": [
+            6.812685012817383,
+            7.597480297088623
+          ],
+          "rejected": 0
+        },
+        {
+          "step": 1100,
+          "loss": 0.11077345907688141,
+          "body_rmse": 32.882423400878906,
+          "wrist": [
+            6.979951858520508,
+            8.542421340942383
+          ],
+          "loop": [
+            6.957529544830322,
+            7.6677093505859375
+          ],
+          "rejected": 0
+        },
+        {
+          "step": 1200,
+          "loss": 0.1113983616232872,
+          "body_rmse": 32.86136245727539,
+          "wrist": [
+            6.765024662017822,
+            8.741061210632324
+          ],
+          "loop": [
+            7.099133491516113,
+            7.862973213195801
+          ],
+          "rejected": 0
+        },
+        {
+          "step": 1300,
+          "loss": 0.11243053525686264,
+          "body_rmse": 32.97603225708008,
+          "wrist": [
+            6.785104274749756,
+            8.296602249145508
+          ],
+          "loop": [
+            7.092873573303223,
+            7.8218092918396
+          ],
+          "rejected": 0
+        },
+        {
+          "step": 1399,
+          "loss": 0.11328308284282684,
+          "body_rmse": 33.34647750854492,
+          "wrist": [
+            6.367703437805176,
+            8.40515422821045
+          ],
+          "loop": [
+            7.443621635437012,
+            7.423053741455078
+          ],
+          "rejected": 0
+        }
+      ],
+      "acceptance": {
+        "passed": true,
+        "body_delta_deg": {
+          "L_Hip": 13.107536315917969,
+          "R_Hip": 6.852126598358154,
+          "Spine_1": 9.9640474319458,
+          "Spine_2": 7.257131099700928,
+          "Spine_3": 10.201482772827148,
+          "L_Knee": 4.7118072509765625,
+          "R_Knee": 9.392067909240723,
+          "L_Ankle": 7.265327453613281,
+          "R_Ankle": 13.915877342224121,
+          "Neck": 10.97666072845459,
+          "Head": 10.25953197479248,
+          "L_Collar": 11.467019081115723,
+          "R_Collar": 15.0,
+          "L_Shoulder": 8.918588638305664,
+          "R_Shoulder": 27.316112518310547,
+          "L_Elbow": 24.999834060668945,
+          "R_Elbow": 24.999996185302734,
+          "L_Wrist": 15.0,
+          "R_Wrist": 14.99991226196289
+        },
+        "sapiens_body_rmse_px": 31.841351681719367,
+        "sapiens_body_source_rmse_px": 81.04154979582532,
+        "wrist_floor_m": [
+          0.5803707242012024,
+          0.2251434028148651
+        ],
+        "body_minimum_z_m": 0.020612120628356934
+      },
+      "fixed_shape": true,
+      "cpu_feasibility_step_fraction": 1.0,
+      "body_bone_max_change_m": 5.960464477539063e-08,
+      "body_reload_max_abs_m": 0.0
+    },
+    "fusion": {
+      "manual_inputs": false,
+      "all_fixed_mano_patches_accepted": true,
+      "hands": {
+        "left": {
+          "accepted": true,
+          "selected": {
+            "edge_min": 0.5723080160231199,
+            "edge_max": 1.3800336953880754,
+            "area_min": 0.47996204299968004,
+            "area_max": 1.6434045507570667,
+            "flipped": 0,
+            "max_body_displacement_m": 0.01681715214393592,
+            "hand_target_max_abs_m": 0.0,
+            "min_z_m": 0.020612120628356934,
+            "silhouette": {
+              "left": {
+                "outside_rms_px": 0.1873706728219986,
+                "boundary_coverage_rms_px": 0.22513090074062347,
+                "score": 6.044972874224186e-06
+              }
+            },
+            "rings": 14,
+            "free_vertices": 208,
+            "intersection_check": {
+              "proper_crossings": 0,
+              "face_pairs": [],
+              "candidate_face_pairs_tested": 103,
+              "local_faces_tested": 482,
+              "coplanar_overlaps_checked": false
+            },
+            "passed": true,
+            "score": 6.044972874224186e-06
+          },
+          "candidates": [
+            {
+              "edge_min": 0.6957239728329258,
+              "edge_max": 1.1842952992556337,
+              "area_min": 0.6032428934701514,
+              "area_max": 1.1877861018593758,
+              "flipped": 0,
+              "max_body_displacement_m": 0.01681715214393592,
+              "hand_target_max_abs_m": 0.0,
+              "min_z_m": 0.020612120628356934,
+              "silhouette": {
+                "left": {
+                  "outside_rms_px": 2.4772400856018066,
+                  "boundary_coverage_rms_px": 5.457418441772461,
+                  "score": 0.002102842712402344
+                }
+              },
+              "rings": 6,
+              "free_vertices": 80,
+              "intersection_check": {
+                "proper_crossings": 0,
+                "face_pairs": [],
+                "candidate_face_pairs_tested": 85,
+                "local_faces_tested": 224,
+                "coplanar_overlaps_checked": false
+              },
+              "passed": true,
+              "score": 0.002102842712402344
+            },
+            {
+              "edge_min": 0.6882030262125727,
+              "edge_max": 1.380005667202385,
+              "area_min": 0.59644700783248,
+              "area_max": 1.564524994833113,
+              "flipped": 0,
+              "max_body_displacement_m": 0.01681715214393592,
+              "hand_target_max_abs_m": 0.0,
+              "min_z_m": 0.020612120628356934,
+              "silhouette": {
+                "left": {
+                  "outside_rms_px": 1.7217047214508057,
+                  "boundary_coverage_rms_px": 3.753552198410034,
+                  "score": 0.0010008843898773193
+                }
+              },
+              "rings": 10,
+              "free_vertices": 144,
+              "intersection_check": {
+                "proper_crossings": 0,
+                "face_pairs": [],
+                "candidate_face_pairs_tested": 100,
+                "local_faces_tested": 352,
+                "coplanar_overlaps_checked": false
+              },
+              "passed": true,
+              "score": 0.0010008843898773193
+            },
+            {
+              "edge_min": 0.5723080160231199,
+              "edge_max": 1.3800336953880754,
+              "area_min": 0.47996204299968004,
+              "area_max": 1.6434045507570667,
+              "flipped": 0,
+              "max_body_displacement_m": 0.01681715214393592,
+              "hand_target_max_abs_m": 0.0,
+              "min_z_m": 0.020612120628356934,
+              "silhouette": {
+                "left": {
+                  "outside_rms_px": 0.1873706728219986,
+                  "boundary_coverage_rms_px": 0.22513090074062347,
+                  "score": 6.044972874224186e-06
+                }
+              },
+              "rings": 14,
+              "free_vertices": 208,
+              "intersection_check": {
+                "proper_crossings": 0,
+                "face_pairs": [],
+                "candidate_face_pairs_tested": 103,
+                "local_faces_tested": 482,
+                "coplanar_overlaps_checked": false
+              },
+              "passed": true,
+              "score": 6.044972874224186e-06
+            }
+          ]
+        },
+        "right": {
+          "accepted": true,
+          "selected": {
+            "edge_min": 0.5007977391025672,
+            "edge_max": 1.3800621240352322,
+            "area_min": 0.308192517596105,
+            "area_max": 1.6868949556258372,
+            "flipped": 0,
+            "max_body_displacement_m": 0.025195028656424978,
+            "hand_target_max_abs_m": 0.0,
+            "min_z_m": 0.020612120628356934,
+            "silhouette": {
+              "right": {
+                "outside_rms_px": 0.4375372529029846,
+                "boundary_coverage_rms_px": 0.7144343256950378,
+                "score": 4.466470777988434e-05
+              }
+            },
+            "rings": 14,
+            "free_vertices": 208,
+            "intersection_check": {
+              "proper_crossings": 0,
+              "face_pairs": [],
+              "candidate_face_pairs_tested": 119,
+              "local_faces_tested": 482,
+              "coplanar_overlaps_checked": false
+            },
+            "passed": true,
+            "score": 4.466470777988434e-05
+          },
+          "candidates": [
+            {
+              "edge_min": 0.524026431722666,
+              "edge_max": 1.3800215004864453,
+              "area_min": 0.2834665778342706,
+              "area_max": 1.2708480242849713,
+              "flipped": 0,
+              "max_body_displacement_m": 0.025195028656424978,
+              "hand_target_max_abs_m": 0.0,
+              "min_z_m": 0.020612120628356934,
+              "silhouette": {
+                "right": {
+                  "outside_rms_px": 1.1112122535705566,
+                  "boundary_coverage_rms_px": 3.107527017593384,
+                  "score": 0.0006063154697418212
+                }
+              },
+              "rings": 6,
+              "free_vertices": 80,
+              "intersection_check": {
+                "proper_crossings": 0,
+                "face_pairs": [],
+                "candidate_face_pairs_tested": 106,
+                "local_faces_tested": 224,
+                "coplanar_overlaps_checked": false
+              },
+              "passed": true,
+              "score": 0.0006063154697418212
+            },
+            {
+              "edge_min": 0.6005721165192044,
+              "edge_max": 1.3801616306306206,
+              "area_min": 0.2877292995486829,
+              "area_max": 1.489207094704716,
+              "flipped": 0,
+              "max_body_displacement_m": 0.025195028656424978,
+              "hand_target_max_abs_m": 0.0,
+              "min_z_m": 0.020612120628356934,
+              "silhouette": {
+                "right": {
+                  "outside_rms_px": 0.4546712636947632,
+                  "boundary_coverage_rms_px": 2.452684164047241,
+                  "score": 0.0003214555636048317
+                }
+              },
+              "rings": 10,
+              "free_vertices": 144,
+              "intersection_check": {
+                "proper_crossings": 0,
+                "face_pairs": [],
+                "candidate_face_pairs_tested": 122,
+                "local_faces_tested": 352,
+                "coplanar_overlaps_checked": false
+              },
+              "passed": true,
+              "score": 0.0003214555636048317
+            },
+            {
+              "edge_min": 0.5007977391025672,
+              "edge_max": 1.3800621240352322,
+              "area_min": 0.308192517596105,
+              "area_max": 1.6868949556258372,
+              "flipped": 0,
+              "max_body_displacement_m": 0.025195028656424978,
+              "hand_target_max_abs_m": 0.0,
+              "min_z_m": 0.020612120628356934,
+              "silhouette": {
+                "right": {
+                  "outside_rms_px": 0.4375372529029846,
+                  "boundary_coverage_rms_px": 0.7144343256950378,
+                  "score": 4.466470777988434e-05
+                }
+              },
+              "rings": 14,
+              "free_vertices": 208,
+              "intersection_check": {
+                "proper_crossings": 0,
+                "face_pairs": [],
+                "candidate_face_pairs_tested": 119,
+                "local_faces_tested": 482,
+                "coplanar_overlaps_checked": false
+              },
+              "passed": true,
+              "score": 4.466470777988434e-05
+            }
+          ]
+        }
+      },
+      "intersection_checks": {
+        "left": {
+          "before": {
+            "proper_crossings": 0,
+            "face_pairs": [],
+            "candidate_face_pairs_tested": 162,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "face_pairs": [],
+            "candidate_face_pairs_tested": 103,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 70,
+            "face_pairs": [
+              [
+                5882,
+                20882
+              ],
+              [
+                5882,
+                20886
+              ],
+              [
+                5882,
+                20887
+              ],
+              [
+                5904,
+                19506
+              ],
+              [
+                5904,
+                19507
+              ],
+              [
+                5908,
+                19455
+              ],
+              [
+                5908,
+                19724
+              ],
+              [
+                5908,
+                19725
+              ],
+              [
+                5908,
+                19728
+              ],
+              [
+                5908,
+                19729
+              ],
+              [
+                5908,
+                20868
+              ],
+              [
+                5909,
+                19388
+              ],
+              [
+                5909,
+                19389
+              ],
+              [
+                5909,
+                19396
+              ],
+              [
+                5909,
+                19397
+              ],
+              [
+                5909,
+                19452
+              ],
+              [
+                5909,
+                20868
+              ],
+              [
+                5909,
+                20869
+              ],
+              [
+                5913,
+                19446
+              ],
+              [
+                5924,
+                19559
+              ],
+              [
+                5924,
+                19560
+              ],
+              [
+                5924,
+                20753
+              ],
+              [
+                5931,
+                19560
+              ],
+              [
+                5931,
+                19682
+              ],
+              [
+                5939,
+                19446
+              ],
+              [
+                5940,
+                19445
+              ],
+              [
+                5940,
+                19446
+              ],
+              [
+                6093,
+                19692
+              ],
+              [
+                6093,
+                19693
+              ],
+              [
+                6093,
+                20880
+              ],
+              [
+                6093,
+                20881
+              ],
+              [
+                6093,
+                20886
+              ],
+              [
+                14872,
+                19506
+              ],
+              [
+                14872,
+                19536
+              ],
+              [
+                14872,
+                19537
+              ],
+              [
+                14872,
+                20882
+              ],
+              [
+                14872,
+                20883
+              ],
+              [
+                14894,
+                19507
+              ],
+              [
+                14894,
+                19544
+              ],
+              [
+                14899,
+                19389
+              ],
+              [
+                14899,
+                19454
+              ],
+              [
+                14899,
+                19455
+              ],
+              [
+                14899,
+                20868
+              ],
+              [
+                14914,
+                19544
+              ],
+              [
+                14914,
+                19546
+              ],
+              [
+                14914,
+                20753
+              ],
+              [
+                14914,
+                20754
+              ],
+              [
+                14921,
+                19682
+              ],
+              [
+                14929,
+                19446
+              ],
+              [
+                14930,
+                19444
+              ],
+              [
+                14930,
+                19445
+              ],
+              [
+                14930,
+                19692
+              ],
+              [
+                19416,
+                19559
+              ],
+              [
+                19416,
+                19560
+              ],
+              [
+                19416,
+                19682
+              ],
+              [
+                19417,
+                19682
+              ],
+              [
+                19458,
+                20868
+              ],
+              [
+                19460,
+                20822
+              ],
+              [
+                19460,
+                20823
+              ],
+              [
+                19460,
+                20868
+              ],
+              [
+                19461,
+                19452
+              ],
+              [
+                19461,
+                20822
+              ],
+              [
+                19461,
+                20823
+              ],
+              [
+                19461,
+                20868
+              ],
+              [
+                19461,
+                20869
+              ],
+              [
+                19642,
+                20823
+              ],
+              [
+                19643,
+                20823
+              ],
+              [
+                20890,
+                19559
+              ],
+              [
+                20890,
+                20753
+              ],
+              [
+                20891,
+                19559
+              ]
+            ],
+            "candidate_face_pairs_tested": 802,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "face_pairs": [],
+            "candidate_face_pairs_tested": 119,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      },
+      "silhouette_before": {
+        "left": {
+          "outside_rms_px": 1.143707036972046,
+          "boundary_coverage_rms_px": 7.796957015991211,
+          "score": 0.003170433461666107
+        },
+        "right": {
+          "outside_rms_px": 9.438592910766602,
+          "boundary_coverage_rms_px": 5.541326522827148,
+          "score": 0.010444019317626953
+        }
+      },
+      "silhouette_after": {
+        "left": {
+          "outside_rms_px": 0.1873706728219986,
+          "boundary_coverage_rms_px": 0.22513090074062347,
+          "score": 6.044972874224186e-06
+        },
+        "right": {
+          "outside_rms_px": 0.4375372529029846,
+          "boundary_coverage_rms_px": 0.7144367098808289,
+          "score": 4.466487467288971e-05
+        }
+      },
+      "all_local_crossing_checks_passed": true
+    },
+    "validation": {
+      "body_reload_max_abs_m": 0.0,
+      "obj_npz_max_abs_m": 0.0,
+      "topology_unchanged": true,
+      "seam_edges_two_opposite_faces": true,
+      "fixed_shape": true,
+      "independent_fusion_reload": {
+        "passed": true,
+        "mesh_vertex_max_abs_m": 0.0,
+        "reconstructed_in_independent_process": true
+      },
+      "local_crossing_checks_passed": true
+    }
+  }
+]

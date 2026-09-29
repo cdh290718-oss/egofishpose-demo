@@ -1,0 +1,12 @@
+{
+  "sample_03_cam3": {
+    "accepted_improvement_candidate": false,
+    "original_page_replaced": false,
+    "status": "\u672a\u901a\u8fc7\u6574\u4f53\u9a8c\u6536\uff0c\u4ec5\u4f5c\u8bca\u65ad\uff1b\u4e0d\u5efa\u8bae\u66ff\u6362\u539f\u6d41\u7a0b"
+  },
+  "sample_04_cam3": {
+    "accepted_improvement_candidate": true,
+    "original_page_replaced": false,
+    "status": "\u5c40\u90e8\u51e0\u4f55\u68c0\u67e5\u901a\u8fc7\uff0c\u4fdd\u7559\u4e3a\u6539\u8fdb\u5019\u9009"
+  }
+}

@@ -1,0 +1,377 @@
+{
+  "row": {
+    "id": "cam3_left_lower_t067.947s_f004035",
+    "condition": "sample_04",
+    "camera": "cam3",
+    "image": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/input/sample_04/cam3_left_lower_t067.947s_f004035.jpg",
+    "image_sha256": "66040d6b93c05d339bd2b230f2c871cdc8a18a800c8409517d8bc2d647040faf",
+    "video": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/session_hand_6/left_lower/\u5de6\u4e0b_002_hand.mp4",
+    "frame_index_zero_based": 4035,
+    "video_seconds": 67.94699696444059,
+    "fraction": 0.875,
+    "calibration": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/DownwardStereo6/cam3_left_lower.egosmplx.json",
+    "calibration_sha256": "a039ea9d23f497fd5099a54b6e45e315400409addacc907a32b6744f49af468b",
+    "output": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_04/cam3",
+    "raw_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_04/cam3/raw/params.npz",
+    "raw_network_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/egosmplx/cam3/smplx/cam3_left_lower_t067.947s_f004035_00_smplx.npz",
+    "source_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_04/cam3/stage2/automatic/canonical_params.npz",
+    "rigid_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_04/cam3/rigid/canonical_params.npz",
+    "sapiens_json": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_04/cam3/sapiens2/keypoints.json",
+    "wilor_npz": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/wilor/npz/cam3_left_lower_t067.947s_f004035_wilor.npz",
+    "source_npz_legacy_artifact": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_04/cam3/stage2/automatic/refined_params.npz",
+    "rigid_npz_legacy_artifact": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_full_pipeline_20260926_v1/frames/sample_04/cam3/rigid/optimized_params.npz",
+    "input_sha256": {
+      "source_npz": "2f2692f6186bcead719f8c5729155f4f18d9dae82d9b595c2840b000c15e32e9",
+      "rigid_npz": "4489c3040382f08b1d3148f88d615d967ec215aba5b10b6d9a2a2896c51b9137",
+      "sapiens_json": "1c2a5b7d1d9d876c82e8cf719051c4795c556907c7094b4c6429197be23b5e29",
+      "wilor_npz": "fde07da6220e8fa40b8174e410a6df85651ded242dbe980008bfc94b5fa13b27"
+    }
+  },
+  "baseline": "GitHub session-hand6, body before bounded contour seam",
+  "checkpoint": "b5c966263cae4e4add5d6de0c1e5f7c14d7583f0",
+  "method": "single continuation; Sapiens joints + native MANO MCP and 16 corresponding wrist-loop pixels + frozen contour; no body-shifted hand targets",
+  "manual_inputs": false,
+  "steps": 1400,
+  "elapsed_seconds": 94.69474339485168,
+  "initial": {
+    "body_rmse_px": 60.34846901748737,
+    "body_errors_px": {
+      "left_shoulder": 62.26346243575056,
+      "right_shoulder": 184.6278551946713,
+      "left_elbow": 13.38008241132615,
+      "right_elbow": 11.978470626000462,
+      "left_wrist": 9.246448294456204,
+      "right_wrist": 12.858379428565675,
+      "left_hip": 56.75233933895567,
+      "right_hip": 44.099087594080714,
+      "left_knee": 0.3191998352044403,
+      "right_knee": 0.11546525683508717,
+      "left_ankle": 0.15784800996401155,
+      "right_ankle": 0.16158431594019415
+    },
+    "hands": {
+      "left": {
+        "wrist_px": 0.16919635852694012,
+        "palm_mcp_rmse_px": 27.35035079372521,
+        "loop_rmse_px": 17.979734589556454,
+        "loop_centered_rmse_px": 13.703931282056141,
+        "loop_radius_ratio": 1.182502742795448,
+        "wrist_distance_m": 0.650536060333252
+      },
+      "right": {
+        "wrist_px": 0.9465813232894127,
+        "palm_mcp_rmse_px": 223.1467203761977,
+        "loop_rmse_px": 49.53190894051769,
+        "loop_centered_rmse_px": 48.899035578469906,
+        "loop_radius_ratio": 2.686932961129071,
+        "wrist_distance_m": 0.2615351676940918
+      }
+    },
+    "silhouette": {
+      "left": {
+        "outside_rms_px": 1.9505356550216675,
+        "boundary_coverage_rms_px": 7.006518840789795,
+        "score": 0.0028350241661071777
+      },
+      "right": {
+        "outside_rms_px": 10.219771385192871,
+        "boundary_coverage_rms_px": 6.153534889221191,
+        "score": 0.012337672805786133
+      }
+    }
+  },
+  "after": {
+    "body_rmse_px": 31.841351681719367,
+    "body_errors_px": {
+      "left_shoulder": 53.97657352320246,
+      "right_shoulder": 77.02819188628753,
+      "left_elbow": 13.56732116613844,
+      "right_elbow": 6.353281674621536,
+      "left_wrist": 3.316981588439989,
+      "right_wrist": 7.100782183021503,
+      "left_hip": 49.100710238955934,
+      "right_hip": 24.956662283608047,
+      "left_knee": 0.036427075541753874,
+      "right_knee": 0.09740326103753565,
+      "left_ankle": 0.12079897312331526,
+      "right_ankle": 0.2174334215541488
+    },
+    "hands": {
+      "left": {
+        "wrist_px": 6.385333368690406,
+        "palm_mcp_rmse_px": 5.67860257409199,
+        "loop_rmse_px": 7.185179784487143,
+        "loop_centered_rmse_px": 5.049954663504047,
+        "loop_radius_ratio": 1.1414887994819842,
+        "wrist_distance_m": 0.6728163957595825
+      },
+      "right": {
+        "wrist_px": 8.225714968876044,
+        "palm_mcp_rmse_px": 33.54380220701663,
+        "loop_rmse_px": 7.665762843191993,
+        "loop_centered_rmse_px": 6.755031319877694,
+        "loop_radius_ratio": 0.9280890891358027,
+        "wrist_distance_m": 0.6741963028907776
+      }
+    },
+    "silhouette": {
+      "left": {
+        "outside_rms_px": 2.7423505783081055,
+        "boundary_coverage_rms_px": 5.70881986618042,
+        "score": 0.002381579828262329
+      },
+      "right": {
+        "outside_rms_px": 1.9443690776824951,
+        "boundary_coverage_rms_px": 3.865461826324463,
+        "score": 0.0011251468181610108
+      }
+    }
+  },
+  "trace": [
+    {
+      "step": 0,
+      "loss": 0.4470983147621155,
+      "body_rmse": 60.544437408447266,
+      "wrist": [
+        4.4418230056762695,
+        10.294963836669922
+      ],
+      "loop": [
+        15.404075622558594,
+        50.33127975463867
+      ],
+      "rejected": 0
+    },
+    {
+      "step": 100,
+      "loss": 0.25895795226097107,
+      "body_rmse": 52.981136322021484,
+      "wrist": [
+        7.409145355224609,
+        5.915383338928223
+      ],
+      "loop": [
+        13.029555320739746,
+        23.30531120300293
+      ],
+      "rejected": 0
+    },
+    {
+      "step": 200,
+      "loss": 0.13604258000850677,
+      "body_rmse": 33.834739685058594,
+      "wrist": [
+        6.638004302978516,
+        7.12935209274292
+      ],
+      "loop": [
+        9.960404396057129,
+        13.277986526489258
+      ],
+      "rejected": 0
+    },
+    {
+      "step": 300,
+      "loss": 0.12287577241659164,
+      "body_rmse": 33.045833587646484,
+      "wrist": [
+        6.659154891967773,
+        7.941081523895264
+      ],
+      "loop": [
+        8.009368896484375,
+        11.49842643737793
+      ],
+      "rejected": 0
+    },
+    {
+      "step": 400,
+      "loss": 0.11811122298240662,
+      "body_rmse": 32.962398529052734,
+      "wrist": [
+        6.826280117034912,
+        7.714065074920654
+      ],
+      "loop": [
+        7.340232849121094,
+        10.072157859802246
+      ],
+      "rejected": 0
+    },
+    {
+      "step": 500,
+      "loss": 0.1140981912612915,
+      "body_rmse": 32.567054748535156,
+      "wrist": [
+        6.7325544357299805,
+        8.641361236572266
+      ],
+      "loop": [
+        7.1092329025268555,
+        8.97286605834961
+      ],
+      "rejected": 0
+    },
+    {
+      "step": 600,
+      "loss": 0.10961966961622238,
+      "body_rmse": 31.962451934814453,
+      "wrist": [
+        6.744694709777832,
+        7.664594650268555
+      ],
+      "loop": [
+        7.00567626953125,
+        7.726233959197998
+      ],
+      "rejected": 0
+    },
+    {
+      "step": 700,
+      "loss": 0.10753985494375229,
+      "body_rmse": 31.832717895507812,
+      "wrist": [
+        6.319155216217041,
+        8.226446151733398
+      ],
+      "loop": [
+        7.281791687011719,
+        7.628744125366211
+      ],
+      "rejected": 0
+    },
+    {
+      "step": 800,
+      "loss": 0.10891298949718475,
+      "body_rmse": 32.17979431152344,
+      "wrist": [
+        5.794862270355225,
+        8.135446548461914
+      ],
+      "loop": [
+        7.743847846984863,
+        7.532862663269043
+      ],
+      "rejected": 0
+    },
+    {
+      "step": 900,
+      "loss": 0.10953141003847122,
+      "body_rmse": 32.5018310546875,
+      "wrist": [
+        6.052546501159668,
+        8.117457389831543
+      ],
+      "loop": [
+        7.581165313720703,
+        7.469611644744873
+      ],
+      "rejected": 0
+    },
+    {
+      "step": 1000,
+      "loss": 0.11011411249637604,
+      "body_rmse": 32.63444137573242,
+      "wrist": [
+        7.14815092086792,
+        8.202384948730469
+      ],
+      "loop": [
+        6.812685012817383,
+        7.597480297088623
+      ],
+      "rejected": 0
+    },
+    {
+      "step": 1100,
+      "loss": 0.11077345907688141,
+      "body_rmse": 32.882423400878906,
+      "wrist": [
+        6.979951858520508,
+        8.542421340942383
+      ],
+      "loop": [
+        6.957529544830322,
+        7.6677093505859375
+      ],
+      "rejected": 0
+    },
+    {
+      "step": 1200,
+      "loss": 0.1113983616232872,
+      "body_rmse": 32.86136245727539,
+      "wrist": [
+        6.765024662017822,
+        8.741061210632324
+      ],
+      "loop": [
+        7.099133491516113,
+        7.862973213195801
+      ],
+      "rejected": 0
+    },
+    {
+      "step": 1300,
+      "loss": 0.11243053525686264,
+      "body_rmse": 32.97603225708008,
+      "wrist": [
+        6.785104274749756,
+        8.296602249145508
+      ],
+      "loop": [
+        7.092873573303223,
+        7.8218092918396
+      ],
+      "rejected": 0
+    },
+    {
+      "step": 1399,
+      "loss": 0.11328308284282684,
+      "body_rmse": 33.34647750854492,
+      "wrist": [
+        6.367703437805176,
+        8.40515422821045
+      ],
+      "loop": [
+        7.443621635437012,
+        7.423053741455078
+      ],
+      "rejected": 0
+    }
+  ],
+  "acceptance": {
+    "passed": true,
+    "body_delta_deg": {
+      "L_Hip": 13.107536315917969,
+      "R_Hip": 6.852126598358154,
+      "Spine_1": 9.9640474319458,
+      "Spine_2": 7.257131099700928,
+      "Spine_3": 10.201482772827148,
+      "L_Knee": 4.7118072509765625,
+      "R_Knee": 9.392067909240723,
+      "L_Ankle": 7.265327453613281,
+      "R_Ankle": 13.915877342224121,
+      "Neck": 10.97666072845459,
+      "Head": 10.25953197479248,
+      "L_Collar": 11.467019081115723,
+      "R_Collar": 15.0,
+      "L_Shoulder": 8.918588638305664,
+      "R_Shoulder": 27.316112518310547,
+      "L_Elbow": 24.999834060668945,
+      "R_Elbow": 24.999996185302734,
+      "L_Wrist": 15.0,
+      "R_Wrist": 14.99991226196289
+    },
+    "sapiens_body_rmse_px": 31.841351681719367,
+    "sapiens_body_source_rmse_px": 81.04154979582532,
+    "wrist_floor_m": [
+      0.5803707242012024,
+      0.2251434028148651
+    ],
+    "body_minimum_z_m": 0.020612120628356934
+  },
+  "fixed_shape": true,
+  "cpu_feasibility_step_fraction": 1.0,
+  "body_bone_max_change_m": 5.960464477539063e-08,
+  "body_reload_max_abs_m": 0.0
+}

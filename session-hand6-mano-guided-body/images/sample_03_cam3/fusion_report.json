@@ -1,0 +1,657 @@
+{
+  "manual_inputs": false,
+  "all_fixed_mano_patches_accepted": false,
+  "hands": {
+    "left": {
+      "accepted": false,
+      "selected": null,
+      "candidates": [
+        {
+          "edge_min": 0.5010880189538837,
+          "edge_max": 1.3878390290025313,
+          "area_min": 0.2533204703206559,
+          "area_max": 1.702417365978379,
+          "flipped": 2,
+          "max_body_displacement_m": 0.0370865586468173,
+          "hand_target_max_abs_m": 0.0,
+          "min_z_m": 0.02037835121154785,
+          "silhouette": {
+            "left": {
+              "outside_rms_px": 4.529834270477295,
+              "boundary_coverage_rms_px": 4.523509502410889,
+              "score": 0.003075046920776367
+            }
+          },
+          "rings": 6,
+          "free_vertices": 80,
+          "passed": false,
+          "score": 0.003075046920776367
+        },
+        {
+          "edge_min": 0.49977322000719,
+          "edge_max": 1.387859449700104,
+          "area_min": 0.25238593558145106,
+          "area_max": 1.8663601568564405,
+          "flipped": 2,
+          "max_body_displacement_m": 0.0370865586468173,
+          "hand_target_max_abs_m": 0.0,
+          "min_z_m": 0.02037835121154785,
+          "silhouette": {
+            "left": {
+              "outside_rms_px": 3.7736854553222656,
+              "boundary_coverage_rms_px": 3.0868422985076904,
+              "score": 0.0019005000591278075
+            }
+          },
+          "rings": 10,
+          "free_vertices": 144,
+          "passed": false,
+          "score": 0.0019005000591278075
+        },
+        {
+          "edge_min": 0.5007497348684421,
+          "edge_max": 1.3876927999862867,
+          "area_min": 0.298361070356472,
+          "area_max": 1.7213234213287592,
+          "flipped": 2,
+          "max_body_displacement_m": 0.0370865586468173,
+          "hand_target_max_abs_m": 0.0,
+          "min_z_m": 0.02037835121154785,
+          "silhouette": {
+            "left": {
+              "outside_rms_px": 4.105381011962891,
+              "boundary_coverage_rms_px": 2.2675621509552,
+              "score": 0.0019425071716308595
+            }
+          },
+          "rings": 14,
+          "free_vertices": 208,
+          "passed": false,
+          "score": 0.0019425071716308595
+        }
+      ],
+      "fallback": "published bounded seam on improved body; fixed MANO boundary candidate rejected"
+    },
+    "right": {
+      "accepted": false,
+      "selected": null,
+      "candidates": [
+        {
+          "edge_min": 0.4992850177363549,
+          "edge_max": 1.4389088169853916,
+          "area_min": 0.24547472315239283,
+          "area_max": 1.8492018700822317,
+          "flipped": 9,
+          "max_body_displacement_m": 0.04610970408501086,
+          "hand_target_max_abs_m": 0.0,
+          "min_z_m": 0.02037835121154785,
+          "silhouette": {
+            "right": {
+              "outside_rms_px": 2.3191452026367188,
+              "boundary_coverage_rms_px": 7.0315656661987305,
+              "score": 0.003009989309310913
+            }
+          },
+          "rings": 6,
+          "free_vertices": 80,
+          "passed": false,
+          "score": 0.003009989309310913
+        },
+        {
+          "edge_min": 0.49920025289964537,
+          "edge_max": 1.43903455353541,
+          "area_min": 0.2453946775272424,
+          "area_max": 1.629723058691826,
+          "flipped": 9,
+          "max_body_displacement_m": 0.04610970408501086,
+          "hand_target_max_abs_m": 0.0,
+          "min_z_m": 0.02037835121154785,
+          "silhouette": {
+            "right": {
+              "outside_rms_px": 1.6632329225540161,
+              "boundary_coverage_rms_px": 5.991304874420166,
+              "score": 0.002071421217918396
+            }
+          },
+          "rings": 10,
+          "free_vertices": 144,
+          "passed": false,
+          "score": 0.002071421217918396
+        },
+        {
+          "edge_min": 0.49468197265109026,
+          "edge_max": 1.4388431249861053,
+          "area_min": 0.2384997060829794,
+          "area_max": 1.7797496681455869,
+          "flipped": 11,
+          "max_body_displacement_m": 0.04610970408501086,
+          "hand_target_max_abs_m": 0.0,
+          "min_z_m": 0.02037835121154785,
+          "silhouette": {
+            "right": {
+              "outside_rms_px": 0.41413864493370056,
+              "boundary_coverage_rms_px": 4.095405101776123,
+              "score": 0.0008557683110237121
+            }
+          },
+          "rings": 14,
+          "free_vertices": 208,
+          "passed": false,
+          "score": 0.0008557683110237121
+        }
+      ],
+      "fallback": "published bounded seam on improved body; fixed MANO boundary candidate rejected"
+    }
+  },
+  "intersection_checks": {
+    "left": {
+      "before": {
+        "proper_crossings": 50,
+        "face_pairs": [
+          [
+            3309,
+            4879
+          ],
+          [
+            3309,
+            13221
+          ],
+          [
+            3309,
+            13869
+          ],
+          [
+            3345,
+            13205
+          ],
+          [
+            3455,
+            13171
+          ],
+          [
+            3492,
+            3417
+          ],
+          [
+            3492,
+            13223
+          ],
+          [
+            3692,
+            4214
+          ],
+          [
+            3692,
+            13205
+          ],
+          [
+            3712,
+            4598
+          ],
+          [
+            4397,
+            3417
+          ],
+          [
+            4397,
+            13869
+          ],
+          [
+            4541,
+            13869
+          ],
+          [
+            4599,
+            4598
+          ],
+          [
+            4599,
+            12185
+          ],
+          [
+            4671,
+            4232
+          ],
+          [
+            4735,
+            3408
+          ],
+          [
+            4735,
+            12760
+          ],
+          [
+            4873,
+            3769
+          ],
+          [
+            4873,
+            13171
+          ],
+          [
+            4979,
+            4598
+          ],
+          [
+            5060,
+            3193
+          ],
+          [
+            5060,
+            4921
+          ],
+          [
+            5065,
+            12400
+          ],
+          [
+            12301,
+            4232
+          ],
+          [
+            12301,
+            13221
+          ],
+          [
+            12337,
+            3417
+          ],
+          [
+            12337,
+            12409
+          ],
+          [
+            12337,
+            13205
+          ],
+          [
+            12443,
+            4180
+          ],
+          [
+            12443,
+            4598
+          ],
+          [
+            12443,
+            13171
+          ],
+          [
+            12484,
+            4232
+          ],
+          [
+            12484,
+            13223
+          ],
+          [
+            12684,
+            4214
+          ],
+          [
+            12684,
+            4921
+          ],
+          [
+            12684,
+            13911
+          ],
+          [
+            13388,
+            3417
+          ],
+          [
+            13388,
+            12400
+          ],
+          [
+            13388,
+            12409
+          ],
+          [
+            13531,
+            13869
+          ],
+          [
+            13589,
+            3193
+          ],
+          [
+            13589,
+            12185
+          ],
+          [
+            13725,
+            3769
+          ],
+          [
+            13725,
+            12760
+          ],
+          [
+            13863,
+            13171
+          ],
+          [
+            13969,
+            4598
+          ],
+          [
+            14050,
+            3193
+          ],
+          [
+            14055,
+            3408
+          ],
+          [
+            14055,
+            12400
+          ]
+        ],
+        "candidate_face_pairs_tested": 504,
+        "local_faces_tested": 482,
+        "coplanar_overlaps_checked": false
+      },
+      "after": {
+        "proper_crossings": 48,
+        "face_pairs": [
+          [
+            3217,
+            3417
+          ],
+          [
+            3217,
+            13869
+          ],
+          [
+            3345,
+            12409
+          ],
+          [
+            3345,
+            13205
+          ],
+          [
+            3455,
+            4180
+          ],
+          [
+            3455,
+            13171
+          ],
+          [
+            3455,
+            13183
+          ],
+          [
+            3492,
+            3417
+          ],
+          [
+            3692,
+            4214
+          ],
+          [
+            3692,
+            13205
+          ],
+          [
+            3692,
+            13911
+          ],
+          [
+            3707,
+            3771
+          ],
+          [
+            3707,
+            4192
+          ],
+          [
+            3707,
+            13183
+          ],
+          [
+            3712,
+            13588
+          ],
+          [
+            4397,
+            3417
+          ],
+          [
+            4397,
+            12400
+          ],
+          [
+            4397,
+            12409
+          ],
+          [
+            4397,
+            13869
+          ],
+          [
+            4548,
+            12185
+          ],
+          [
+            4735,
+            3408
+          ],
+          [
+            4735,
+            12760
+          ],
+          [
+            4873,
+            3769
+          ],
+          [
+            4979,
+            4598
+          ],
+          [
+            4979,
+            13588
+          ],
+          [
+            5060,
+            3193
+          ],
+          [
+            5060,
+            4921
+          ],
+          [
+            5065,
+            3408
+          ],
+          [
+            5065,
+            12400
+          ],
+          [
+            12209,
+            13869
+          ],
+          [
+            12337,
+            3417
+          ],
+          [
+            12337,
+            12409
+          ],
+          [
+            12447,
+            13183
+          ],
+          [
+            12684,
+            4921
+          ],
+          [
+            12684,
+            13911
+          ],
+          [
+            12704,
+            3771
+          ],
+          [
+            12704,
+            13588
+          ],
+          [
+            13388,
+            12400
+          ],
+          [
+            13538,
+            4598
+          ],
+          [
+            13538,
+            12185
+          ],
+          [
+            13725,
+            3769
+          ],
+          [
+            13725,
+            12760
+          ],
+          [
+            13863,
+            3769
+          ],
+          [
+            13863,
+            13171
+          ],
+          [
+            13969,
+            4598
+          ],
+          [
+            14050,
+            3193
+          ],
+          [
+            14050,
+            12185
+          ],
+          [
+            14055,
+            3408
+          ]
+        ],
+        "candidate_face_pairs_tested": 566,
+        "local_faces_tested": 482,
+        "coplanar_overlaps_checked": false
+      }
+    },
+    "right": {
+      "before": {
+        "proper_crossings": 12,
+        "face_pairs": [
+          [
+            19416,
+            19420
+          ],
+          [
+            19417,
+            19400
+          ],
+          [
+            19417,
+            19420
+          ],
+          [
+            19417,
+            19421
+          ],
+          [
+            19446,
+            19400
+          ],
+          [
+            19446,
+            19402
+          ],
+          [
+            19446,
+            19403
+          ],
+          [
+            19447,
+            19400
+          ],
+          [
+            19447,
+            19401
+          ],
+          [
+            19447,
+            19402
+          ],
+          [
+            19447,
+            19403
+          ],
+          [
+            19447,
+            19444
+          ]
+        ],
+        "candidate_face_pairs_tested": 257,
+        "local_faces_tested": 482,
+        "coplanar_overlaps_checked": false
+      },
+      "after": {
+        "proper_crossings": 2,
+        "face_pairs": [
+          [
+            19447,
+            19401
+          ],
+          [
+            19447,
+            19444
+          ]
+        ],
+        "candidate_face_pairs_tested": 231,
+        "local_faces_tested": 482,
+        "coplanar_overlaps_checked": false
+      }
+    }
+  },
+  "silhouette_before": {
+    "left": {
+      "outside_rms_px": 5.2737507820129395,
+      "boundary_coverage_rms_px": 7.801051139831543,
+      "score": 0.005824064636230469
+    },
+    "right": {
+      "outside_rms_px": 2.8147430419921875,
+      "boundary_coverage_rms_px": 7.978122234344482,
+      "score": 0.003974799442291259
+    }
+  },
+  "silhouette_after": {
+    "left": {
+      "outside_rms_px": 5.4801106452941895,
+      "boundary_coverage_rms_px": 8.606060981750488,
+      "score": 0.0067063753128051755
+    },
+    "right": {
+      "outside_rms_px": 2.119781494140625,
+      "boundary_coverage_rms_px": 7.686690807342529,
+      "score": 0.0034036081790924074
+    }
+  },
+  "all_local_crossing_checks_passed": false
+}
