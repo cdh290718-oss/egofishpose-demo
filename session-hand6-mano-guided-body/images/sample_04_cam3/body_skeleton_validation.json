@@ -1,0 +1,155 @@
+{
+  "frame": "sample_04_cam3",
+  "seconds": 67.94699696444059,
+  "method": "Enhanced body + original seam; saved SMPL-X kinematic body joints projected with original cam3 calibration",
+  "source_image_sha256": "33fd22e817e9349fb4a502c850c6f221a01bc5a48dbff22d93623cdce5251791",
+  "body_params_sha256": "d56ce1e3b5ddb5667a88f71ce5196957b4506507a4edbfda0b0f87cd08d902d0",
+  "mesh_sha256": "698318cbe8cb5b8e927b73522376470d677100aeda97e0fe47d341e67867b24d",
+  "calibration_sha256": "a039ea9d23f497fd5099a54b6e45e315400409addacc907a32b6744f49af468b",
+  "geometry_unchanged": true,
+  "body_joints_equal_mesh_metadata": true,
+  "original_pixels_outside_overlay_unchanged": true,
+  "joint_names": {
+    "L_Ankle": 5,
+    "L_Elbow": 10,
+    "L_Hip": 1,
+    "L_Knee": 3,
+    "L_Shoulder": 8,
+    "L_Wrist": 12,
+    "Neck": 7,
+    "Pelvis": 0,
+    "R_Ankle": 6,
+    "R_Elbow": 11,
+    "R_Hip": 2,
+    "R_Knee": 4,
+    "R_Shoulder": 9,
+    "R_Wrist": 13
+  },
+  "projected_joints_px": {
+    "L_Ankle": [
+      676.4677630444523,
+      184.82360581741682
+    ],
+    "L_Elbow": [
+      569.0439260642405,
+      488.9918912461585
+    ],
+    "L_Hip": [
+      702.3710476086311,
+      300.49569711645904
+    ],
+    "L_Knee": [
+      663.2333900564927,
+      206.7282186572247
+    ],
+    "L_Shoulder": [
+      588.5678533643975,
+      675.2735756903064
+    ],
+    "L_Wrist": [
+      558.9091525064632,
+      291.7404960765106
+    ],
+    "Neck": [
+      807.7332018602399,
+      704.7526138074882
+    ],
+    "Pelvis": [
+      739.9156907434824,
+      315.50299914846823
+    ],
+    "R_Ankle": [
+      753.8353958978188,
+      181.36422394747322
+    ],
+    "R_Elbow": [
+      1008.7060982467793,
+      411.76976826538566
+    ],
+    "R_Hip": [
+      780.9545505141347,
+      274.2588894771683
+    ],
+    "R_Knee": [
+      774.8796419819392,
+      203.53462217834849
+    ],
+    "R_Shoulder": [
+      978.0118357345,
+      654.4225867863536
+    ],
+    "R_Wrist": [
+      995.0104301425142,
+      209.45739177736516
+    ]
+  },
+  "drawn_edges": [
+    [
+      "Neck",
+      "Pelvis"
+    ],
+    [
+      "Neck",
+      "L_Shoulder"
+    ],
+    [
+      "Neck",
+      "R_Shoulder"
+    ],
+    [
+      "L_Shoulder",
+      "L_Elbow"
+    ],
+    [
+      "L_Elbow",
+      "L_Wrist"
+    ],
+    [
+      "R_Shoulder",
+      "R_Elbow"
+    ],
+    [
+      "R_Elbow",
+      "R_Wrist"
+    ],
+    [
+      "L_Shoulder",
+      "L_Hip"
+    ],
+    [
+      "R_Shoulder",
+      "R_Hip"
+    ],
+    [
+      "Pelvis",
+      "L_Hip"
+    ],
+    [
+      "Pelvis",
+      "R_Hip"
+    ],
+    [
+      "L_Hip",
+      "R_Hip"
+    ],
+    [
+      "L_Hip",
+      "L_Knee"
+    ],
+    [
+      "L_Knee",
+      "L_Ankle"
+    ],
+    [
+      "R_Hip",
+      "R_Knee"
+    ],
+    [
+      "R_Knee",
+      "R_Ankle"
+    ]
+  ],
+  "clipped_edges": [],
+  "skeleton_color": "yellow-orange",
+  "face_and_hand_fingers_not_drawn": true
+}
