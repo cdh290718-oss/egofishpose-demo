@@ -1,0 +1,493 @@
+{
+  "source_pipeline_commit": "7ebf5c451762fab2aab391b1274f56bf1829c548",
+  "total": 20,
+  "local_pass": 8,
+  "local_fail": 12,
+  "render_only_no_optimization": true,
+  "scope": "Local forearm/seam faces versus full surface; exclude shared vertices; proper noncoplanar crossings only",
+  "before_definition": "Automatic wrist/contour-refined fused mesh before MANO-guided body continuation",
+  "after_definition": "MANO-guided body + original bounded contour seam final mesh",
+  "counts_unit": "triangle pairs, not independent physical defects; left and right may overlap",
+  "frames": [
+    {
+      "id": "cam3_f00000230",
+      "sample": 1,
+      "camera": "cam3",
+      "seconds": 3.873,
+      "local_surface_accepted": false,
+      "sides": {
+        "left": {
+          "before": 0,
+          "after": 0
+        },
+        "right": {
+          "before": 0,
+          "after": 9
+        }
+      },
+      "unique_final_crossing_pairs": 9,
+      "body_rmse_px": 27.574258831321536,
+      "hand_rmse_px": 8.5507960766452,
+      "input_sha256": "ea5a4cdba8bfbb862f3235f128d0b43caf57536d8ea50babaab3ce77982ae672",
+      "source_mesh_sha256": "a0c13e8ae6afdac46c228f918f7111e7d2d5af1e75bd90348e68e5d9dc905962",
+      "final_image_sha256": "1c6ed43861b16f5fc3ea281218c4fb7beae00c2499a9a85f04f728bba314cca0",
+      "geometry_report_sha256": "1e969d1f63b8d7f92a0b17e2f49a2c84aaea657bd2c10f4ea1a9ce9f6cd3afc6"
+    },
+    {
+      "id": "cam4_f00000229",
+      "sample": 1,
+      "camera": "cam4",
+      "seconds": 3.875,
+      "local_surface_accepted": true,
+      "sides": {
+        "left": {
+          "before": 15,
+          "after": 0
+        },
+        "right": {
+          "before": 0,
+          "after": 0
+        }
+      },
+      "unique_final_crossing_pairs": 0,
+      "body_rmse_px": 24.491007951885123,
+      "hand_rmse_px": 6.412692175550876,
+      "input_sha256": "8cf9e098eb5954642a4ac4e6cf0a6d3b99bfe294d000e37acd6975412f294fac",
+      "source_mesh_sha256": "e74bf3124ae76953f0c9b25893f7ac59f50ad4ed3669dfb2c1bd4020ce3f7a3c",
+      "final_image_sha256": "35aa9d7f102a13316b36560ac1a7f148b2ac2d039d275fc0e6dd800064e5ec85",
+      "geometry_report_sha256": "8605f68465f75adee04eab30d50b577abed74e79b859a825834c9429d6d30634"
+    },
+    {
+      "id": "cam3_f00000691",
+      "sample": 2,
+      "camera": "cam3",
+      "seconds": 11.636,
+      "local_surface_accepted": true,
+      "sides": {
+        "left": {
+          "before": 0,
+          "after": 0
+        },
+        "right": {
+          "before": 0,
+          "after": 0
+        }
+      },
+      "unique_final_crossing_pairs": 0,
+      "body_rmse_px": 27.929181270414894,
+      "hand_rmse_px": 12.207992887352994,
+      "input_sha256": "2c6dc04fa9b75a630738d39856e55b50582c357482aa80cd194d89d626b4bf3a",
+      "source_mesh_sha256": "2180028d49e4c9003d8a5892d402e36e09edf7872ba045f6de241a809c7e2aff",
+      "final_image_sha256": "65d24242a747d5a037c97ebb9df0d2729744b13cb40278d5bce0e9ad677f26d7",
+      "geometry_report_sha256": "6bf0b3ced938600e4355693e8a7f5dbac2544995ff82875517db8e665fbac38e"
+    },
+    {
+      "id": "cam4_f00000688",
+      "sample": 2,
+      "camera": "cam4",
+      "seconds": 11.641,
+      "local_surface_accepted": false,
+      "sides": {
+        "left": {
+          "before": 112,
+          "after": 93
+        },
+        "right": {
+          "before": 0,
+          "after": 0
+        }
+      },
+      "unique_final_crossing_pairs": 93,
+      "body_rmse_px": 11.950926346437045,
+      "hand_rmse_px": 11.014630034652246,
+      "input_sha256": "40b257da35002b601218860d9e161c1c32d6dc21f33f60df9844b026a85a411d",
+      "source_mesh_sha256": "1b18707962216fea25f67f2e4d36b02b60ddc23a1a10ab17ed70f3b6782d10ea",
+      "final_image_sha256": "15c7ae0afa661581b7827de6accec8b5016367f032488b69ad4be02eef07935d",
+      "geometry_report_sha256": "81482eb8d7d6b9a1b23a20ddac77cafad4f5989afedeef4f4c120029803fe4ca"
+    },
+    {
+      "id": "cam3_f00001153",
+      "sample": 3,
+      "camera": "cam3",
+      "seconds": 19.416,
+      "local_surface_accepted": false,
+      "sides": {
+        "left": {
+          "before": 26,
+          "after": 16
+        },
+        "right": {
+          "before": 28,
+          "after": 19
+        }
+      },
+      "unique_final_crossing_pairs": 35,
+      "body_rmse_px": 9.037734919792863,
+      "hand_rmse_px": 9.389955652539905,
+      "input_sha256": "a33227c67d9266db8e8236b6729328bdccff3f5c30e41038bda1c101f8939bea",
+      "source_mesh_sha256": "8159c036b1e178107ed15c5cfb4d146cfd3500d3facd93717f47377c716fed60",
+      "final_image_sha256": "f06a73eb090e262bab477e0a174cfea30aa6418958fbf6541e6491b974729283",
+      "geometry_report_sha256": "22b401213f29756ef1ebabf6e5bdd6b46b9b021cf8d7d2f431320d7a9901d4b2"
+    },
+    {
+      "id": "cam4_f00001147",
+      "sample": 3,
+      "camera": "cam4",
+      "seconds": 19.407,
+      "local_surface_accepted": true,
+      "sides": {
+        "left": {
+          "before": 102,
+          "after": 0
+        },
+        "right": {
+          "before": 2,
+          "after": 0
+        }
+      },
+      "unique_final_crossing_pairs": 0,
+      "body_rmse_px": 16.623320363398275,
+      "hand_rmse_px": 9.280790967606707,
+      "input_sha256": "09ad9aa147e6a4a2cf188d656c0ad136fb881d8d1c699627fcbb7dce10e4e3ea",
+      "source_mesh_sha256": "5c1affe932e42142887b056b9c4dca3031639a5b41e5ee245e020f53704c5202",
+      "final_image_sha256": "3f35bd74ec79f90c432296960cec319253430d2d657488b3cb63df688e9b9f56",
+      "geometry_report_sha256": "a937f7aff6158db492dc8ffb157af9aa60ae5d86672b4a843a39309b4a087324"
+    },
+    {
+      "id": "cam3_f00001614",
+      "sample": 4,
+      "camera": "cam3",
+      "seconds": 27.179,
+      "local_surface_accepted": false,
+      "sides": {
+        "left": {
+          "before": 0,
+          "after": 0
+        },
+        "right": {
+          "before": 74,
+          "after": 81
+        }
+      },
+      "unique_final_crossing_pairs": 81,
+      "body_rmse_px": 25.339939745395426,
+      "hand_rmse_px": 11.604892468966368,
+      "input_sha256": "80b27b4714d1db393b25493468b6d943f4069340f812ae28b50df891574c4279",
+      "source_mesh_sha256": "9a77fd579852444ddf627e306b209cb1de382829438bb6559c8f0c20c9de6975",
+      "final_image_sha256": "823d543f807415a4ddc360c46a6cb9ebff0da46e480b5bd47bffe78875690d32",
+      "geometry_report_sha256": "2f9101dd61a4ce3222c0571907d3d0997af1fc8eaa9955ebf59df5050054c57c"
+    },
+    {
+      "id": "cam4_f00001606",
+      "sample": 4,
+      "camera": "cam4",
+      "seconds": 27.174,
+      "local_surface_accepted": false,
+      "sides": {
+        "left": {
+          "before": 32,
+          "after": 12
+        },
+        "right": {
+          "before": 87,
+          "after": 88
+        }
+      },
+      "unique_final_crossing_pairs": 100,
+      "body_rmse_px": 21.879842802544825,
+      "hand_rmse_px": 11.468143037327668,
+      "input_sha256": "a0eaa678640df55127c37324a20cb19ab6214a44d02f6b94939c081f820f673c",
+      "source_mesh_sha256": "856410f110bd7f94e2e89a2f056e7d14f058732873f18e056cef578cdef0425e",
+      "final_image_sha256": "3edb0a8dbf20afb5c90a1ed41abafad2ff990f89ccc668409edfb56837210913",
+      "geometry_report_sha256": "48c8fad043f08fa7d8f1f1d9cadf6d1a96305acd6f16167f07f0b45250a17756"
+    },
+    {
+      "id": "cam3_f00002075",
+      "sample": 5,
+      "camera": "cam3",
+      "seconds": 34.942,
+      "local_surface_accepted": true,
+      "sides": {
+        "left": {
+          "before": 0,
+          "after": 0
+        },
+        "right": {
+          "before": 0,
+          "after": 0
+        }
+      },
+      "unique_final_crossing_pairs": 0,
+      "body_rmse_px": 31.251633287714906,
+      "hand_rmse_px": 13.459016245340722,
+      "input_sha256": "f2f5def2e5136371e060987d0d1e936cef6e53d2af5476c2b87b46895024aee8",
+      "source_mesh_sha256": "1ccdd476f7a22d65a73a043fe1d51995a28107e66631d45890a58f019e2bf5d7",
+      "final_image_sha256": "7187dd20e4664f46595a9c34682a31384312c394df347362fa87c296c539524c",
+      "geometry_report_sha256": "6246f01b9a38aa283c053e371db5e1abe41890d13c7697c20ea6fcab182849b3"
+    },
+    {
+      "id": "cam4_f00002065",
+      "sample": 5,
+      "camera": "cam4",
+      "seconds": 34.94,
+      "local_surface_accepted": true,
+      "sides": {
+        "left": {
+          "before": 0,
+          "after": 0
+        },
+        "right": {
+          "before": 0,
+          "after": 0
+        }
+      },
+      "unique_final_crossing_pairs": 0,
+      "body_rmse_px": 28.83126028792169,
+      "hand_rmse_px": 12.184922403039005,
+      "input_sha256": "352798517f193530381cfeba06d1315d6b6734a1b17e60ae91ebd52d6ffa9b38",
+      "source_mesh_sha256": "e7c7ffa96c16dcf43c04f0fabde27fa140afe9abc39a2f76ddd94c041a5354c3",
+      "final_image_sha256": "e473b8c5b1866965fdc09e42fc92c5d800e14c20d7ea38b08006430cb3486265",
+      "geometry_report_sha256": "b9d69c27805e5c9f7e8503ac26fc08511636598ec303c65be1e54a8f68c4baba"
+    },
+    {
+      "id": "cam3_f00002536",
+      "sample": 6,
+      "camera": "cam3",
+      "seconds": 42.705,
+      "local_surface_accepted": true,
+      "sides": {
+        "left": {
+          "before": 0,
+          "after": 0
+        },
+        "right": {
+          "before": 0,
+          "after": 0
+        }
+      },
+      "unique_final_crossing_pairs": 0,
+      "body_rmse_px": 18.650536467605843,
+      "hand_rmse_px": 12.150517119143744,
+      "input_sha256": "4154e0048cbe0897c0fdf0962c7f6905d6043d252b1bd69754c9e9e51dfc709f",
+      "source_mesh_sha256": "4be1255a166f35b85a616d547aba430dd5247182d9670c2f861d24113bca833a",
+      "final_image_sha256": "ff5390fccd92cf00483de88daccffbb227244706e4a8cc142782946c220188ac",
+      "geometry_report_sha256": "ac83a54679f816a12f20dc71a38648d0f5398c67584b0c996589c9b2ddb96313"
+    },
+    {
+      "id": "cam4_f00002524",
+      "sample": 6,
+      "camera": "cam4",
+      "seconds": 42.706,
+      "local_surface_accepted": false,
+      "sides": {
+        "left": {
+          "before": 23,
+          "after": 0
+        },
+        "right": {
+          "before": 0,
+          "after": 42
+        }
+      },
+      "unique_final_crossing_pairs": 42,
+      "body_rmse_px": 20.361708877207025,
+      "hand_rmse_px": 11.674006513456657,
+      "input_sha256": "a354798d241acf4c3b87b7bd8181365bf04835bbb0b88130f6476cf36dde0e08",
+      "source_mesh_sha256": "535985a85db1ea781ce9ca1df19161421f79e9a7fef8dee9526fca0c7cc6683b",
+      "final_image_sha256": "cfb6006e36b96a0e2ae04fd364ef3f3e7996ea839f79bd9ebc9ca13010a58e1c",
+      "geometry_report_sha256": "55fe46f45ceae0f33b1c10dcf93042ba04d1af7cec4b55ae6b39976eaac99ee7"
+    },
+    {
+      "id": "cam3_f00002997",
+      "sample": 7,
+      "camera": "cam3",
+      "seconds": 50.468,
+      "local_surface_accepted": true,
+      "sides": {
+        "left": {
+          "before": 20,
+          "after": 0
+        },
+        "right": {
+          "before": 0,
+          "after": 0
+        }
+      },
+      "unique_final_crossing_pairs": 0,
+      "body_rmse_px": 24.419983667362125,
+      "hand_rmse_px": 13.525650083264903,
+      "input_sha256": "5be352b0f976f3b19c240eed783b809277ff5343319bec30b12d79024a411ea5",
+      "source_mesh_sha256": "f7061d74d8efe06a837515f868e22e8f4e03b1d5b1e58bba80743719a73df9d1",
+      "final_image_sha256": "9cc3627371fecef8b6307545ddd207b061523d37b71d5553095b9e5b476bfff0",
+      "geometry_report_sha256": "367d271b903b2ef9ca056d8d7a77c408138809cd2c2f9ccd6fffe037cdf2af7a"
+    },
+    {
+      "id": "cam4_f00002983",
+      "sample": 7,
+      "camera": "cam4",
+      "seconds": 50.473,
+      "local_surface_accepted": false,
+      "sides": {
+        "left": {
+          "before": 6,
+          "after": 0
+        },
+        "right": {
+          "before": 84,
+          "after": 50
+        }
+      },
+      "unique_final_crossing_pairs": 50,
+      "body_rmse_px": 18.248140642098623,
+      "hand_rmse_px": 13.280691850002002,
+      "input_sha256": "e6a1b0f8ebbb84bca396e793f6d776c033c1da7dd32893b8690665cbf455ab5a",
+      "source_mesh_sha256": "a94c7503d95d82e946d9c411d2ce4a804ce94fc0b2b01994ec0aaafbed4efe37",
+      "final_image_sha256": "2822e2c0805a3dbd8471bb03f1c0c72df461707d595a61cf888b232a1e844f4e",
+      "geometry_report_sha256": "1dc1feef5feb689caf591210897315b3da23c7c3526a7622b8640a54117f00e1"
+    },
+    {
+      "id": "cam3_f00003459",
+      "sample": 8,
+      "camera": "cam3",
+      "seconds": 58.248,
+      "local_surface_accepted": false,
+      "sides": {
+        "left": {
+          "before": 105,
+          "after": 104
+        },
+        "right": {
+          "before": 0,
+          "after": 0
+        }
+      },
+      "unique_final_crossing_pairs": 104,
+      "body_rmse_px": 21.044339609011672,
+      "hand_rmse_px": 12.250589648089424,
+      "input_sha256": "fa60ec5995330f986487c5a42aedc073215967cd0d04e770fcfb0476da994b2c",
+      "source_mesh_sha256": "16ff08043e04d4f2cee69550475d9a9e28bf1cc553461ccd358f0f28734685d1",
+      "final_image_sha256": "56dfeae17d2a8d91836b942fc0adc0a0a2c0680f6afa83319a20adaf12adc12d",
+      "geometry_report_sha256": "cc9edf187375c5673196b8a41005907a3e6bd184533ba2a6360207223445dd85"
+    },
+    {
+      "id": "cam4_f00003442",
+      "sample": 8,
+      "camera": "cam4",
+      "seconds": 58.239,
+      "local_surface_accepted": false,
+      "sides": {
+        "left": {
+          "before": 88,
+          "after": 79
+        },
+        "right": {
+          "before": 102,
+          "after": 78
+        }
+      },
+      "unique_final_crossing_pairs": 157,
+      "body_rmse_px": 16.39358303431077,
+      "hand_rmse_px": 14.044862585691677,
+      "input_sha256": "86300bb50f5dd231f8c6ee11c511e567a6b50def04ec4bc14c73a26cff245f96",
+      "source_mesh_sha256": "85dfb4a82e898e06a9345ba61489b6f42fdbabf648b822f2746cf407d2d4fc68",
+      "final_image_sha256": "cfb755b143b426c843bb4761e4828543dc2ffd81474d94724e79b376693efddd",
+      "geometry_report_sha256": "e9c7c503013bececc6a86717dad5fdc366a812af2f3d240382e849c966da6405"
+    },
+    {
+      "id": "cam3_f00003920",
+      "sample": 9,
+      "camera": "cam3",
+      "seconds": 66.01,
+      "local_surface_accepted": true,
+      "sides": {
+        "left": {
+          "before": 0,
+          "after": 0
+        },
+        "right": {
+          "before": 0,
+          "after": 0
+        }
+      },
+      "unique_final_crossing_pairs": 0,
+      "body_rmse_px": 30.161414983886445,
+      "hand_rmse_px": 14.47379215307174,
+      "input_sha256": "68628879d11ae996a81de45c48008955face4bdc747174683a957e6cd08ff82e",
+      "source_mesh_sha256": "2c373f2a822b00f7e5e6cab00c78ba9d26bf797aeb9f183f23a5c4c5683f5f08",
+      "final_image_sha256": "0594cba9c73d693babf65bc27c14dc7336228a8e5f9abd27b91f3afeb79b176b",
+      "geometry_report_sha256": "021ed70932125471296d939f5af61a9c09396987c0874a3849b5eab8f5528288"
+    },
+    {
+      "id": "cam4_f00003901",
+      "sample": 9,
+      "camera": "cam4",
+      "seconds": 66.005,
+      "local_surface_accepted": false,
+      "sides": {
+        "left": {
+          "before": 94,
+          "after": 90
+        },
+        "right": {
+          "before": 58,
+          "after": 30
+        }
+      },
+      "unique_final_crossing_pairs": 120,
+      "body_rmse_px": 11.664216865172499,
+      "hand_rmse_px": 11.468461987076553,
+      "input_sha256": "fa70698dc311253df1e21bb5c5a467b1cecfe7e9d0d5bb62ab0c0adcda2ce8fb",
+      "source_mesh_sha256": "4ae082f1eca214c8825c88a8c3a982376d9e2e2cf3d5951678860b40cdfb25da",
+      "final_image_sha256": "5a69935bea46c798efd8cd29ae41bb189bd26371e5a589c743cb49a9a125224d",
+      "geometry_report_sha256": "26e4452a12137dddf57c21e62ed7478cad8de816b4c2e4be5108fd0de15d42ae"
+    },
+    {
+      "id": "cam3_f00004381",
+      "sample": 10,
+      "camera": "cam3",
+      "seconds": 73.773,
+      "local_surface_accepted": false,
+      "sides": {
+        "left": {
+          "before": 91,
+          "after": 73
+        },
+        "right": {
+          "before": 74,
+          "after": 42
+        }
+      },
+      "unique_final_crossing_pairs": 115,
+      "body_rmse_px": 12.94612803781343,
+      "hand_rmse_px": 8.937104345508489,
+      "input_sha256": "0a63ca1b39dc816c5ce832fd62ba295160f931eac5a9aa7b2daad74454a216ba",
+      "source_mesh_sha256": "9740e12a100538458d4087220c7106e553586be03db5c62fe7f3cabb390ceb31",
+      "final_image_sha256": "1201c646514c90e8e4bded7d72f9cf5ef42bfe2fa47fcc3df89a5537ca112b12",
+      "geometry_report_sha256": "f6921497a1995a6c14e91f98baa589bf0cccf40824c311f972f2a8dc1f1b51c2"
+    },
+    {
+      "id": "cam4_f00004360",
+      "sample": 10,
+      "camera": "cam4",
+      "seconds": 73.772,
+      "local_surface_accepted": false,
+      "sides": {
+        "left": {
+          "before": 57,
+          "after": 73
+        },
+        "right": {
+          "before": 17,
+          "after": 40
+        }
+      },
+      "unique_final_crossing_pairs": 113,
+      "body_rmse_px": 25.701387299012286,
+      "hand_rmse_px": 7.590311723182627,
+      "input_sha256": "3f97b7f0e42118a8f7202e37216cbb97c6457f45d00fa9ced148c3310539a7ed",
+      "source_mesh_sha256": "9a89e67b2b3f0588f565aee39af296609b822b5375f48089e926ff85ac92ccc6",
+      "final_image_sha256": "bde423114406513eeef0285e70d02521607af7f6bf64fcfe7857aa7de4a7eece",
+      "geometry_report_sha256": "e388b45f635357a150e7e8f33e0004fc7272f33ecbcd372ea38ed5f7f9348c4f"
+    }
+  ]
+}
