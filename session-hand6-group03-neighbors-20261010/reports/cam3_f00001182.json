@@ -1,0 +1,328 @@
+{
+  "id": "cam3_f00001182",
+  "stage2_correction": {
+    "id": "cam3_f00001182",
+    "rigid_to_body_transl_m": [
+      0.004503026604652405,
+      -0.036752164363861084,
+      -0.11681252717971802
+    ],
+    "transl_change_norm_m": 0.12254046648740768,
+    "neck_delta_deg": 12.0,
+    "head_delta_deg": 12.0,
+    "body_rmse": 18.73969078063965
+  },
+  "detector_initialization": {
+    "id": "cam3_f00001182",
+    "box": [
+      463.4951171875,
+      141.5221405029297,
+      1129.882568359375,
+      706.623779296875,
+      0.90885329246521
+    ],
+    "coordinate_space": "global_undistorted",
+    "camera_translation_network": [
+      -0.09078104048967361,
+      0.35567507147789,
+      0.6105486154556274
+    ],
+    "global_orient_network": [
+      0.26792821288108826,
+      2.425581455230713,
+      -1.6476866006851196
+    ]
+  },
+  "camera": "cam3",
+  "seconds": 19.904176062445796,
+  "offset_seconds": 0.4883427291124603,
+  "requested_offset_seconds": 0.5,
+  "center_reused": false,
+  "frame_index": 1182,
+  "input_sha256": "18e20d591a5602f0d2d3bf3084c392f245f085ee07edeb0a88d0a682472b31d6",
+  "final_image_sha256": "cd2a63cc87c1471ac6f54accc0ae9be6e6b1bd92cb22e93ce4f4a789cef871ec",
+  "mesh_sha256": "82a2cc59297b81fe54d03e20f429dc9cb7c77f5c2fe3db0b16e274f1d38885c8",
+  "rigid_body_rmse_px": 60.07646560668945,
+  "stage2_body_rmse_px": 18.73969078063965,
+  "final_body_rmse_px": 18.962903803950347,
+  "final_hand_rmse_px": 11.224652727134206,
+  "body_target_count": 12,
+  "matched_hands": 2,
+  "local_surface_accepted": true,
+  "local_crossings": {
+    "left": {
+      "before": 0,
+      "after": 0
+    },
+    "right": {
+      "before": 0,
+      "after": 0
+    }
+  },
+  "stages": {
+    "raw": {
+      "head_vertices_in_image": 0,
+      "head_min_z_m": -0.04017281532287598,
+      "head_mean_z_m": 0.06767290830612183,
+      "global_orient": [
+        0.26792821288108826,
+        2.425581455230713,
+        -1.6476866006851196
+      ],
+      "transl": [
+        -0.09078104048967361,
+        0.35567507147789,
+        0.6105486154556274
+      ],
+      "betas": [
+        -1.108005166053772,
+        0.06672675907611847,
+        0.13036805391311646,
+        0.30900418758392334,
+        -0.09685849398374557,
+        0.035046566277742386,
+        0.05511513724923134,
+        0.023817656561732292,
+        0.06838525086641312,
+        -0.06965935230255127
+      ]
+    },
+    "rigid": {
+      "head_vertices_in_image": 0,
+      "head_min_z_m": 0.12196207046508789,
+      "head_mean_z_m": 0.23233351136358685,
+      "global_orient": [
+        0.3091200590133667,
+        -2.529965400695801,
+        1.7847257852554321
+      ],
+      "transl": [
+        0.1475551575422287,
+        0.4909813106060028,
+        0.7873436808586121
+      ],
+      "betas": [
+        -1.108005166053772,
+        0.06672675907611847,
+        0.13036805391311646,
+        0.30900418758392334,
+        -0.09685849398374557,
+        0.035046566277742386,
+        0.05511513724923134,
+        0.023817656561732292,
+        0.06838525086641312,
+        -0.06965935230255127
+      ]
+    },
+    "body": {
+      "head_vertices_in_image": 397,
+      "head_min_z_m": 0.029375135898590088,
+      "head_mean_z_m": 0.13920044898986816,
+      "global_orient": [
+        0.17418444156646729,
+        -2.5083751678466797,
+        1.7560595273971558
+      ],
+      "transl": [
+        0.1520581841468811,
+        0.4542291462421417,
+        0.670531153678894
+      ],
+      "betas": [
+        -1.108005166053772,
+        0.06672675907611847,
+        0.13036805391311646,
+        0.30900418758392334,
+        -0.09685849398374557,
+        0.035046566277742386,
+        0.05511513724923134,
+        0.023817656561732292,
+        0.06838525086641312,
+        -0.06965935230255127
+      ]
+    },
+    "guided_body": {
+      "head_vertices_in_image": 491,
+      "head_min_z_m": 0.02037101984024048,
+      "head_mean_z_m": 0.13794155418872833,
+      "global_orient": [
+        0.1705891340970993,
+        -2.5260016918182373,
+        1.7678778171539307
+      ],
+      "transl": [
+        0.1543128341436386,
+        0.4545901119709015,
+        0.6826321482658386
+      ],
+      "betas": [
+        -1.108005166053772,
+        0.06672675907611847,
+        0.13036805391311646,
+        0.30900418758392334,
+        -0.09685849398374557,
+        0.035046566277742386,
+        0.05511513724923134,
+        0.023817656561732292,
+        0.06838525086641312,
+        -0.06965935230255127
+      ]
+    },
+    "fused": {
+      "head_vertices_in_image": 491,
+      "head_min_z_m": 0.02037101984024048,
+      "head_mean_z_m": 0.13794155418872833,
+      "global_orient": [
+        0.1705891340970993,
+        -2.5260016918182373,
+        1.7678778171539307
+      ],
+      "transl": [
+        0.1543128341436386,
+        0.4545901119709015,
+        0.6826321482658386
+      ],
+      "betas": [
+        -1.108005166053772,
+        0.06672675907611847,
+        0.13036805391311646,
+        0.30900418758392334,
+        -0.09685849398374557,
+        0.035046566277742386,
+        0.05511513724923134,
+        0.023817656561732292,
+        0.06838525086641312,
+        -0.06965935230255127
+      ]
+    }
+  },
+  "sapiens_body_points": [
+    {
+      "index": 0,
+      "name": "nose",
+      "x": 818.7866083115182,
+      "y": 681.6394638333688,
+      "score": 0.2890625,
+      "inside_image": true
+    },
+    {
+      "index": 5,
+      "name": "left_shoulder",
+      "x": 559.3420729712043,
+      "y": 699.529960495672,
+      "score": 0.625,
+      "inside_image": true
+    },
+    {
+      "index": 6,
+      "name": "right_shoulder",
+      "x": 1022.1669973003927,
+      "y": 696.4948298924987,
+      "score": 0.75,
+      "inside_image": true
+    },
+    {
+      "index": 7,
+      "name": "left_elbow",
+      "x": 544.7611256544503,
+      "y": 557.6996452361345,
+      "score": 0.8984375,
+      "inside_image": true
+    },
+    {
+      "index": 8,
+      "name": "right_elbow",
+      "x": 979.9660759571334,
+      "y": 559.24835841235,
+      "score": 0.91796875,
+      "inside_image": true
+    },
+    {
+      "index": 9,
+      "name": "left_hip",
+      "x": 687.7161347553993,
+      "y": 444.61205253211006,
+      "score": 0.7265625,
+      "inside_image": true
+    },
+    {
+      "index": 10,
+      "name": "right_hip",
+      "x": 807.2517946253272,
+      "y": 422.3591939038654,
+      "score": 0.796875,
+      "inside_image": true
+    },
+    {
+      "index": 11,
+      "name": "left_knee",
+      "x": 693.3008835078535,
+      "y": 375.2191834472119,
+      "score": 0.69140625,
+      "inside_image": true
+    },
+    {
+      "index": 12,
+      "name": "right_knee",
+      "x": 796.0372397537631,
+      "y": 394.19896213495554,
+      "score": 0.6328125,
+      "inside_image": true
+    },
+    {
+      "index": 13,
+      "name": "left_ankle",
+      "x": 713.5346449607327,
+      "y": 390.12956890783767,
+      "score": 0.5234375,
+      "inside_image": true
+    },
+    {
+      "index": 14,
+      "name": "right_ankle",
+      "x": 770.8446754335732,
+      "y": 387.0422273180941,
+      "score": 0.44921875,
+      "inside_image": true
+    },
+    {
+      "index": 41,
+      "name": "right_wrist",
+      "x": 928.4847431282722,
+      "y": 359.95085273880295,
+      "score": 0.9296875,
+      "inside_image": true
+    },
+    {
+      "index": 62,
+      "name": "left_wrist",
+      "x": 672.1046839209753,
+      "y": 366.611136389962,
+      "score": 0.9765625,
+      "inside_image": true
+    }
+  ],
+  "sapiens_selected_names": [
+    "left_ankle",
+    "left_elbow",
+    "left_hip",
+    "left_knee",
+    "left_shoulder",
+    "left_wrist",
+    "right_ankle",
+    "right_elbow",
+    "right_hip",
+    "right_knee",
+    "right_shoulder",
+    "right_wrist"
+  ],
+  "sapiens_visibility_semantics": "unknown; heatmap scores are not calibrated visibility",
+  "reload": {
+    "passed": true,
+    "independent_reconstruction": true,
+    "vertex_max_abs_m": 0.0,
+    "obj_vertex_max_abs_m": 0.0,
+    "face_topology_exact": true
+  },
+  "original_frame_directory": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_group03_neighbors_20261010_v1/work/shard_0/frames/cam3_f00001182"
+}
