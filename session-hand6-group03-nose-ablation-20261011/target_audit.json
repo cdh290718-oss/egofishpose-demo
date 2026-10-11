@@ -1,0 +1,82 @@
+[
+  {
+    "id": "cam3_f00001094",
+    "nose_prediction": {
+      "index": 0,
+      "name": "nose",
+      "x": 916.0806098658377,
+      "y": 707.2571865080911,
+      "score": 0.4140625,
+      "inside_image": true
+    },
+    "original_selected": [
+      "nose",
+      "left_shoulder",
+      "right_shoulder",
+      "left_elbow",
+      "right_elbow",
+      "left_wrist",
+      "right_wrist",
+      "left_hip",
+      "right_hip",
+      "left_knee",
+      "right_knee",
+      "left_ankle",
+      "right_ankle"
+    ],
+    "ablated_selected": [
+      "left_shoulder",
+      "right_shoulder",
+      "left_elbow",
+      "right_elbow",
+      "left_wrist",
+      "right_wrist",
+      "left_hip",
+      "right_hip",
+      "left_knee",
+      "right_knee",
+      "left_ankle",
+      "right_ankle"
+    ],
+    "all_other_selected_records_identical": true,
+    "original_selected_mean": 0.6155348557692307,
+    "ablated_selected_mean": 0.63232421875
+  },
+  {
+    "id": "cam3_f00001124",
+    "nose_prediction": {
+      "index": 0,
+      "name": "nose",
+      "x": 908.7459096858638,
+      "y": 705.2578503915493,
+      "score": 0.36328125,
+      "inside_image": true
+    },
+    "original_selected": [
+      "nose",
+      "left_shoulder",
+      "right_shoulder",
+      "left_elbow",
+      "right_elbow",
+      "left_wrist",
+      "right_wrist",
+      "left_hip",
+      "right_hip",
+      "left_knee"
+    ],
+    "ablated_selected": [
+      "left_shoulder",
+      "right_shoulder",
+      "left_elbow",
+      "right_elbow",
+      "left_wrist",
+      "right_wrist",
+      "left_hip",
+      "right_hip",
+      "left_knee"
+    ],
+    "all_other_selected_records_identical": true,
+    "original_selected_mean": 0.63984375,
+    "ablated_selected_mean": 0.6705729166666666
+  }
+]

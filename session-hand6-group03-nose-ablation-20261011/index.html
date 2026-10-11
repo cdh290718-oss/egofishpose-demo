@@ -1,0 +1,103 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第三组邻帧：移除鼻点对照</title><style>body{font:16px/1.65 system-ui,sans-serif;background:#14191e;color:#edf1f4;margin:0;padding:24px;max-width:1800px;margin:auto}a{color:#8dd2ff}h1{font-size:28px}table{border-collapse:collapse;width:100%;margin:18px 0}th,td{border:1px solid #51606b;padding:8px;text-align:left}img{max-width:100%;height:auto}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}figure{margin:0}figcaption{padding:8px}.note{background:#26313a;padding:15px;border-radius:8px}section{margin-top:32px}summary{cursor:pointer;font-weight:bold}.scroll{overflow-x:auto}@media(max-width:700px){body{padding:12px}.grid{grid-template-columns:1fr}table{font-size:13px}}</style><body><h1>第三组邻帧：移除鼻点对照实验</h1><p>cam3 18.422 s / 18.927 s · 2026-10-11</p><div class="note">唯一算法改动：在完整流程的身体目标映射中删除 nose。刚体校正、身体姿态、后续腕点/轮廓和 MANO 辅助身体阶段均不使用鼻点。原始预测、自动点文件、手部候选输入、相机标定、先验、迭代次数、约束与优化代码均保持原样。没有叠加置信度加权实验，没有人工标注或单帧调参。<br>这是整条流程的鼻点消融；刚体初值也会随之变化，不能把差异全部归到第二阶段。原流程对照复用相同版本代码和相同输入的已有结果。</div><p><a href="../session-hand6-group03-neighbors-20261010/">原流程及邻帧</a> · <a href="offline.html">离线分享版</a> · <a href="metrics.csv">逐阶段 CSV</a> · <a href="summary.json">完整数据</a> · <a href="pipeline.patch">代码差异</a></p>
+<div class="note"><strong>结果观察</strong><ul><li>两张原本没有同等程度外扩的帧，移除鼻点后均在第二阶段出现大幅头部网格外扩，最终融合仍明显向画面右侧伸出。该对照支持鼻点约束在这两帧中的重要作用。</li><li>18.422 s：第二阶段共同非鼻点 RMSE 14.75 → 13.30 px，但鼻点偏差 0.60 → 213.75 px；最终鼻点偏差仍为 225.32 px。</li><li>18.927 s：第二阶段共同非鼻点 RMSE 18.55 → 8.76 px，但鼻点偏差 0.77 → 272.04 px；最终鼻点偏差仍为 203.11 px。</li><li>删除低分鼻点后，参与点均值反而从 0.616 → 0.632、0.640 → 0.671；平均分提高并未阻止外扩。关键部位约束覆盖不能用均值或点数代替。</li><li>两条路线使用相同的 WiLoR 自动匹配候选，最终手部 RMSE 变化较小；手部放大图没有显示能抵消身体外扩的整体改善。</li><li>两张新结果均通过独立重载，但局部表面交叉均未通过：18.422 s 左/右 33/15 对，18.927 s 22/0 对。原结果也有局部交叉，不能把原结果称为全部验收通过。</li><li>本次从刚体阶段起就在整条流程删除鼻点，因此无法单独归因于第二阶段；也未独立操纵整体置信度，不能据此证明所有低置信度和缺鼻点情形都会失败。默认流程保持原样。</li></ul></div>
+<p>左：原流程；右：移除鼻点。身体 RMSE 均在共同的非鼻点集合计算；鼻点误差另列为留出目标诊断。所有误差相对自动点，不是人工真值。头部入图顶点数不是可见面积或准确度。</p><a href="final_comparison.jpg"><img src="final_comparison.jpg" alt="最终融合对照"></a><details><summary>逐阶段汇总图</summary><a href="comparison.jpg"><img src="comparison.jpg" alt="逐阶段对照"></a></details>
+<section><h2>cam3 · 18.422 s</h2><p>参与身体点：13 → 12；只移除鼻点。手部自动匹配候选是否一致：是。</p>
+<p>参与点平均置信度：0.616 → 0.632；原鼻点分数 0.414。原始自动分数未修改。</p>
+<div class="scroll"><table><tr><th>方法</th><th>第二阶段共同点 RMSE</th><th>最终共同点 RMSE</th><th>最终鼻点误差</th><th>最终手部 RMSE</th><th>局部交叉 左/右</th></tr>
+<tr><td>原流程：保留鼻点</td><td>14.75 px</td><td>19.92 px</td><td>1.07 px</td><td>10.49 px</td><td>41 / 0</td></tr>
+<tr><td>对照：移除鼻点</td><td>13.30 px</td><td>16.30 px</td><td>225.32 px</td><td>9.98 px</td><td>33 / 15</td></tr>
+</table></div>
+<details><summary>EgoSMPLX 原始预测</summary><div class="grid">
+<figure><a href="images/cam3_f00001094/original_raw.jpg"><img loading="lazy" src="images/cam3_f00001094/original_raw.jpg"></a><figcaption>原流程：保留鼻点 · 共同点 210.84 px · 鼻点 44.89 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam3_f00001094/no_nose_raw.jpg"><img loading="lazy" src="images/cam3_f00001094/no_nose_raw.jpg"></a><figcaption>对照：移除鼻点 · 共同点 210.84 px · 鼻点 44.89 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>整体旋转和平移校正</summary><div class="grid">
+<figure><a href="images/cam3_f00001094/original_rigid.jpg"><img loading="lazy" src="images/cam3_f00001094/original_rigid.jpg"></a><figcaption>原流程：保留鼻点 · 共同点 46.21 px · 鼻点 39.61 px · 入图头部顶点 97</figcaption></figure>
+<figure><a href="images/cam3_f00001094/no_nose_rigid.jpg"><img loading="lazy" src="images/cam3_f00001094/no_nose_rigid.jpg"></a><figcaption>对照：移除鼻点 · 共同点 41.87 px · 鼻点 100.99 px · 入图头部顶点 229</figcaption></figure>
+</div></details>
+<details open><summary>第二阶段身体姿态优化</summary><div class="grid">
+<figure><a href="images/cam3_f00001094/original_body.jpg"><img loading="lazy" src="images/cam3_f00001094/original_body.jpg"></a><figcaption>原流程：保留鼻点 · 共同点 14.75 px · 鼻点 0.60 px · 入图头部顶点 164</figcaption></figure>
+<figure><a href="images/cam3_f00001094/no_nose_body.jpg"><img loading="lazy" src="images/cam3_f00001094/no_nose_body.jpg"></a><figcaption>对照：移除鼻点 · 共同点 13.30 px · 鼻点 213.75 px · 入图头部顶点 1872</figcaption></figure>
+</div></details>
+<details><summary>后续腕点校正</summary><div class="grid">
+<figure><a href="images/cam3_f00001094/original_wrist.jpg"><img loading="lazy" src="images/cam3_f00001094/original_wrist.jpg"></a><figcaption>原流程：保留鼻点 · 共同点 18.34 px · 鼻点 1.19 px · 入图头部顶点 178</figcaption></figure>
+<figure><a href="images/cam3_f00001094/no_nose_wrist.jpg"><img loading="lazy" src="images/cam3_f00001094/no_nose_wrist.jpg"></a><figcaption>对照：移除鼻点 · 共同点 14.80 px · 鼻点 232.15 px · 入图头部顶点 2502</figcaption></figure>
+</div></details>
+<details><summary>轮廓候选选定身体</summary><div class="grid">
+<figure><a href="images/cam3_f00001094/original_contour.jpg"><img loading="lazy" src="images/cam3_f00001094/original_contour.jpg"></a><figcaption>原流程：保留鼻点 · 共同点 19.65 px · 鼻点 1.10 px · 入图头部顶点 158</figcaption></figure>
+<figure><a href="images/cam3_f00001094/no_nose_contour.jpg"><img loading="lazy" src="images/cam3_f00001094/no_nose_contour.jpg"></a><figcaption>对照：移除鼻点 · 共同点 15.85 px · 鼻点 243.64 px · 入图头部顶点 2507</figcaption></figure>
+</div></details>
+<details><summary>MANO 辅助身体</summary><div class="grid">
+<figure><a href="images/cam3_f00001094/original_guided_body.jpg"><img loading="lazy" src="images/cam3_f00001094/original_guided_body.jpg"></a><figcaption>原流程：保留鼻点 · 共同点 19.92 px · 鼻点 1.07 px · 入图头部顶点 111</figcaption></figure>
+<figure><a href="images/cam3_f00001094/no_nose_guided_body.jpg"><img loading="lazy" src="images/cam3_f00001094/no_nose_guided_body.jpg"></a><figcaption>对照：移除鼻点 · 共同点 16.30 px · 鼻点 225.32 px · 入图头部顶点 1768</figcaption></figure>
+</div></details>
+<details><summary>最终原接缝融合</summary><div class="grid">
+<figure><a href="images/cam3_f00001094/original_fused.jpg"><img loading="lazy" src="images/cam3_f00001094/original_fused.jpg"></a><figcaption>原流程：保留鼻点 · 共同点 19.92 px · 鼻点 1.07 px · 入图头部顶点 111</figcaption></figure>
+<figure><a href="images/cam3_f00001094/no_nose_fused.jpg"><img loading="lazy" src="images/cam3_f00001094/no_nose_fused.jpg"></a><figcaption>对照：移除鼻点 · 共同点 16.30 px · 鼻点 225.32 px · 入图头部顶点 1768</figcaption></figure>
+</div></details>
+<details><summary>left 手腕相同区域放大</summary><img src="images/cam3_f00001094/left_comparison.jpg"></details>
+<details><summary>right 手腕相同区域放大</summary><img src="images/cam3_f00001094/right_comparison.jpg"></details>
+<details><summary>第二阶段逐点误差（含留出的鼻点）</summary><div class="scroll"><table><tr><th>关节</th><th>原流程误差 px</th><th>去鼻点误差 px</th></tr>
+<tr><td>nose</td><td>0.60</td><td>213.75</td></tr>
+<tr><td>left_shoulder</td><td>33.51</td><td>22.27</td></tr>
+<tr><td>right_shoulder</td><td>2.01</td><td>2.02</td></tr>
+<tr><td>left_elbow</td><td>3.64</td><td>3.15</td></tr>
+<tr><td>right_elbow</td><td>0.12</td><td>1.02</td></tr>
+<tr><td>left_wrist</td><td>12.93</td><td>10.58</td></tr>
+<tr><td>right_wrist</td><td>0.06</td><td>2.12</td></tr>
+<tr><td>left_hip</td><td>35.48</td><td>32.37</td></tr>
+<tr><td>right_hip</td><td>6.61</td><td>21.07</td></tr>
+<tr><td>left_knee</td><td>0.13</td><td>1.96</td></tr>
+<tr><td>right_knee</td><td>0.11</td><td>0.39</td></tr>
+<tr><td>left_ankle</td><td>0.03</td><td>0.66</td></tr>
+<tr><td>right_ankle</td><td>0.04</td><td>0.14</td></tr>
+</table></div></details></section>
+<section><h2>cam3 · 18.927 s</h2><p>参与身体点：10 → 9；只移除鼻点。手部自动匹配候选是否一致：是。</p>
+<p>参与点平均置信度：0.640 → 0.671；原鼻点分数 0.363。原始自动分数未修改。</p>
+<div class="scroll"><table><tr><th>方法</th><th>第二阶段共同点 RMSE</th><th>最终共同点 RMSE</th><th>最终鼻点误差</th><th>最终手部 RMSE</th><th>局部交叉 左/右</th></tr>
+<tr><td>原流程：保留鼻点</td><td>18.55 px</td><td>17.40 px</td><td>0.94 px</td><td>9.36 px</td><td>26 / 0</td></tr>
+<tr><td>对照：移除鼻点</td><td>8.76 px</td><td>12.03 px</td><td>203.11 px</td><td>9.37 px</td><td>22 / 0</td></tr>
+</table></div>
+<details><summary>EgoSMPLX 原始预测</summary><div class="grid">
+<figure><a href="images/cam3_f00001124/original_raw.jpg"><img loading="lazy" src="images/cam3_f00001124/original_raw.jpg"></a><figcaption>原流程：保留鼻点 · 共同点 226.11 px · 鼻点 85.46 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam3_f00001124/no_nose_raw.jpg"><img loading="lazy" src="images/cam3_f00001124/no_nose_raw.jpg"></a><figcaption>对照：移除鼻点 · 共同点 226.11 px · 鼻点 85.46 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>整体旋转和平移校正</summary><div class="grid">
+<figure><a href="images/cam3_f00001124/original_rigid.jpg"><img loading="lazy" src="images/cam3_f00001124/original_rigid.jpg"></a><figcaption>原流程：保留鼻点 · 共同点 52.07 px · 鼻点 45.67 px · 入图头部顶点 201</figcaption></figure>
+<figure><a href="images/cam3_f00001124/no_nose_rigid.jpg"><img loading="lazy" src="images/cam3_f00001124/no_nose_rigid.jpg"></a><figcaption>对照：移除鼻点 · 共同点 52.19 px · 鼻点 64.40 px · 入图头部顶点 370</figcaption></figure>
+</div></details>
+<details open><summary>第二阶段身体姿态优化</summary><div class="grid">
+<figure><a href="images/cam3_f00001124/original_body.jpg"><img loading="lazy" src="images/cam3_f00001124/original_body.jpg"></a><figcaption>原流程：保留鼻点 · 共同点 18.55 px · 鼻点 0.77 px · 入图头部顶点 173</figcaption></figure>
+<figure><a href="images/cam3_f00001124/no_nose_body.jpg"><img loading="lazy" src="images/cam3_f00001124/no_nose_body.jpg"></a><figcaption>对照：移除鼻点 · 共同点 8.76 px · 鼻点 272.04 px · 入图头部顶点 2872</figcaption></figure>
+</div></details>
+<details><summary>后续腕点校正</summary><div class="grid">
+<figure><a href="images/cam3_f00001124/original_wrist.jpg"><img loading="lazy" src="images/cam3_f00001124/original_wrist.jpg"></a><figcaption>原流程：保留鼻点 · 共同点 20.64 px · 鼻点 1.14 px · 入图头部顶点 182</figcaption></figure>
+<figure><a href="images/cam3_f00001124/no_nose_wrist.jpg"><img loading="lazy" src="images/cam3_f00001124/no_nose_wrist.jpg"></a><figcaption>对照：移除鼻点 · 共同点 11.38 px · 鼻点 265.83 px · 入图头部顶点 2819</figcaption></figure>
+</div></details>
+<details><summary>轮廓候选选定身体</summary><div class="grid">
+<figure><a href="images/cam3_f00001124/original_contour.jpg"><img loading="lazy" src="images/cam3_f00001124/original_contour.jpg"></a><figcaption>原流程：保留鼻点 · 共同点 21.54 px · 鼻点 2.04 px · 入图头部顶点 189</figcaption></figure>
+<figure><a href="images/cam3_f00001124/no_nose_contour.jpg"><img loading="lazy" src="images/cam3_f00001124/no_nose_contour.jpg"></a><figcaption>对照：移除鼻点 · 共同点 11.55 px · 鼻点 278.11 px · 入图头部顶点 3068</figcaption></figure>
+</div></details>
+<details><summary>MANO 辅助身体</summary><div class="grid">
+<figure><a href="images/cam3_f00001124/original_guided_body.jpg"><img loading="lazy" src="images/cam3_f00001124/original_guided_body.jpg"></a><figcaption>原流程：保留鼻点 · 共同点 17.40 px · 鼻点 0.94 px · 入图头部顶点 174</figcaption></figure>
+<figure><a href="images/cam3_f00001124/no_nose_guided_body.jpg"><img loading="lazy" src="images/cam3_f00001124/no_nose_guided_body.jpg"></a><figcaption>对照：移除鼻点 · 共同点 12.03 px · 鼻点 203.11 px · 入图头部顶点 1932</figcaption></figure>
+</div></details>
+<details><summary>最终原接缝融合</summary><div class="grid">
+<figure><a href="images/cam3_f00001124/original_fused.jpg"><img loading="lazy" src="images/cam3_f00001124/original_fused.jpg"></a><figcaption>原流程：保留鼻点 · 共同点 17.40 px · 鼻点 0.94 px · 入图头部顶点 174</figcaption></figure>
+<figure><a href="images/cam3_f00001124/no_nose_fused.jpg"><img loading="lazy" src="images/cam3_f00001124/no_nose_fused.jpg"></a><figcaption>对照：移除鼻点 · 共同点 12.03 px · 鼻点 203.11 px · 入图头部顶点 1932</figcaption></figure>
+</div></details>
+<details><summary>left 手腕相同区域放大</summary><img src="images/cam3_f00001124/left_comparison.jpg"></details>
+<details><summary>right 手腕相同区域放大</summary><img src="images/cam3_f00001124/right_comparison.jpg"></details>
+<details><summary>第二阶段逐点误差（含留出的鼻点）</summary><div class="scroll"><table><tr><th>关节</th><th>原流程误差 px</th><th>去鼻点误差 px</th></tr>
+<tr><td>nose</td><td>0.77</td><td>272.04</td></tr>
+<tr><td>left_shoulder</td><td>47.38</td><td>0.18</td></tr>
+<tr><td>right_shoulder</td><td>4.26</td><td>0.23</td></tr>
+<tr><td>left_elbow</td><td>3.42</td><td>0.06</td></tr>
+<tr><td>right_elbow</td><td>1.63</td><td>0.05</td></tr>
+<tr><td>left_wrist</td><td>3.49</td><td>0.05</td></tr>
+<tr><td>right_wrist</td><td>0.93</td><td>0.07</td></tr>
+<tr><td>left_hip</td><td>21.43</td><td>13.97</td></tr>
+<tr><td>right_hip</td><td>18.65</td><td>22.25</td></tr>
+<tr><td>left_knee</td><td>0.11</td><td>0.06</td></tr>
+</table></div></details></section>
+<p>重载检查与局部交叉检查分开报告。三角形交叉数不是独立缺陷个数，重载成功不能证明外形合理。本实验只涉及两帧，不证明所有低分或缺鼻点样本都会失败，也没有独立检验低置信度本身的因果作用。原鼻点分数仅 0.414 和 0.363；结果说明它有约束作用，不能证明自动鼻点坐标就是解剖学真值。</p><p>修改前 checkpoint：<code>ff9f741ed8949e7b9c92c155dbe3c724f3a221ad</code>；实验代码提交：<code>ad5f4fe570552730d4217bb61e057dbc4798bcb4</code>。默认流程与原始结果保留。<a href="target_audit.json">点集与置信度核验</a> · <a href="code_audit.json">代码核验</a> · <a href="delivery_validation.json">交付核验</a> · <a href="visual_review.json">视觉检查记录</a>。</p></body></html>

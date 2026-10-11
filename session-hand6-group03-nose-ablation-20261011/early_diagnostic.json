@@ -1,0 +1,194 @@
+[
+  {
+    "id": "cam3_f00001094",
+    "seconds": 18.42230847065626,
+    "branch": "original",
+    "stage": "raw",
+    "head_vertices_in_image": 0,
+    "common_body_rmse_px": 210.83781333379775,
+    "nose_error_px": 44.88596352369962,
+    "translation": [
+      [
+        -0.08491410315036774,
+        0.6421020030975342,
+        0.5992061495780945
+      ]
+    ]
+  },
+  {
+    "id": "cam3_f00001094",
+    "seconds": 18.42230847065626,
+    "branch": "original",
+    "stage": "rigid",
+    "head_vertices_in_image": 97,
+    "common_body_rmse_px": 46.20851141722495,
+    "nose_error_px": 39.60568123367281,
+    "translation": [
+      [
+        0.11804158240556717,
+        0.7415323257446289,
+        0.8128340840339661
+      ]
+    ]
+  },
+  {
+    "id": "cam3_f00001094",
+    "seconds": 18.42230847065626,
+    "branch": "original",
+    "stage": "body",
+    "head_vertices_in_image": 164,
+    "common_body_rmse_px": 14.74798061504391,
+    "nose_error_px": 0.5982598783373755,
+    "translation": [
+      [
+        0.15597078204154968,
+        0.6492178440093994,
+        0.7548806071281433
+      ]
+    ]
+  },
+  {
+    "id": "cam3_f00001094",
+    "seconds": 18.42230847065626,
+    "branch": "no_nose",
+    "stage": "raw",
+    "head_vertices_in_image": 0,
+    "common_body_rmse_px": 210.83781333379775,
+    "nose_error_px": 44.88596352369962,
+    "translation": [
+      [
+        -0.08491410315036774,
+        0.6421020030975342,
+        0.5992061495780945
+      ]
+    ]
+  },
+  {
+    "id": "cam3_f00001094",
+    "seconds": 18.42230847065626,
+    "branch": "no_nose",
+    "stage": "rigid",
+    "head_vertices_in_image": 229,
+    "common_body_rmse_px": 41.86882969153956,
+    "nose_error_px": 100.99154068320183,
+    "translation": [
+      [
+        0.14253240823745728,
+        0.7465580105781555,
+        0.8409450054168701
+      ]
+    ]
+  },
+  {
+    "id": "cam3_f00001094",
+    "seconds": 18.42230847065626,
+    "branch": "no_nose",
+    "stage": "body",
+    "head_vertices_in_image": 1872,
+    "common_body_rmse_px": 13.30443426656389,
+    "nose_error_px": 213.75383713517513,
+    "translation": [
+      [
+        0.1479121893644333,
+        0.6698483228683472,
+        0.7401382923126221
+      ]
+    ]
+  },
+  {
+    "id": "cam3_f00001124",
+    "seconds": 18.927490604220875,
+    "branch": "original",
+    "stage": "raw",
+    "head_vertices_in_image": 0,
+    "common_body_rmse_px": 226.1128253419161,
+    "nose_error_px": 85.45991082530341,
+    "translation": [
+      [
+        -0.1105755865573883,
+        0.6118375062942505,
+        0.5900673270225525
+      ]
+    ]
+  },
+  {
+    "id": "cam3_f00001124",
+    "seconds": 18.927490604220875,
+    "branch": "original",
+    "stage": "rigid",
+    "head_vertices_in_image": 201,
+    "common_body_rmse_px": 52.06827393906036,
+    "nose_error_px": 45.66971769788567,
+    "translation": [
+      [
+        0.12241455167531967,
+        0.7059359550476074,
+        0.8500749468803406
+      ]
+    ]
+  },
+  {
+    "id": "cam3_f00001124",
+    "seconds": 18.927490604220875,
+    "branch": "original",
+    "stage": "body",
+    "head_vertices_in_image": 173,
+    "common_body_rmse_px": 18.55055271393007,
+    "nose_error_px": 0.7690850803860553,
+    "translation": [
+      [
+        0.13861143589019775,
+        0.6308099031448364,
+        0.7246860265731812
+      ]
+    ]
+  },
+  {
+    "id": "cam3_f00001124",
+    "seconds": 18.927490604220875,
+    "branch": "no_nose",
+    "stage": "raw",
+    "head_vertices_in_image": 0,
+    "common_body_rmse_px": 226.1128253419161,
+    "nose_error_px": 85.45991082530341,
+    "translation": [
+      [
+        -0.1105755865573883,
+        0.6118375062942505,
+        0.5900673270225525
+      ]
+    ]
+  },
+  {
+    "id": "cam3_f00001124",
+    "seconds": 18.927490604220875,
+    "branch": "no_nose",
+    "stage": "rigid",
+    "head_vertices_in_image": 370,
+    "common_body_rmse_px": 52.19455631954438,
+    "nose_error_px": 64.39503364556965,
+    "translation": [
+      [
+        0.12779688835144043,
+        0.7108014225959778,
+        0.8631558418273926
+      ]
+    ]
+  },
+  {
+    "id": "cam3_f00001124",
+    "seconds": 18.927490604220875,
+    "branch": "no_nose",
+    "stage": "body",
+    "head_vertices_in_image": 2872,
+    "common_body_rmse_px": 8.757097290677779,
+    "nose_error_px": 272.0448648701883,
+    "translation": [
+      [
+        0.1236039325594902,
+        0.6243253350257874,
+        0.6736361980438232
+      ]
+    ]
+  }
+]

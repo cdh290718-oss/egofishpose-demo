@@ -1,0 +1,12 @@
+diff --git a/egosmplx_pipeline/body_common.py b/egosmplx_pipeline/body_common.py
+index 463df1e..35c4996 100644
+--- a/egosmplx_pipeline/body_common.py
++++ b/egosmplx_pipeline/body_common.py
+@@ -3,7 +3,6 @@ import numpy as np
+ import torch
+ 
+ JOINT_MAPPING = {
+-    "nose": "Nose",
+     "left_shoulder": "L_Shoulder",
+     "right_shoulder": "R_Shoulder",
+     "left_elbow": "L_Elbow",

@@ -1,0 +1,7 @@
+{
+  "changed_package_files": [
+    "egosmplx_pipeline/body_common.py"
+  ],
+  "exact_change": "delete nose mapping only",
+  "default_checkout_unchanged": true
+}
