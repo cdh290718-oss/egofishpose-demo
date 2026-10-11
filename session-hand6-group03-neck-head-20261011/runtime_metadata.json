@@ -1,0 +1,10 @@
+{
+  "python": "3.8.20",
+  "torch": "1.12.1",
+  "numpy": "1.23.1",
+  "opencv": "4.11.0",
+  "cuda_version": "11.3",
+  "gpu": "NVIDIA A100-SXM4-80GB, 535.129.03",
+  "parallel_jobs": 4,
+  "thread_limit": 2
+}

@@ -1,0 +1,13 @@
+# Neck observation and head trust-region experiment
+
+Base: GitHub main 7ebf5c4; checkpoint 7c5ee9f. Original checkout and defaults are retained. Enable only with a `head_neck` JSON config object containing `enabled: true`.
+
+The cached Sapiens2 neck channel is index 69. SMPL-X output Neck is index 7 (native joint 12). These names do not establish exact anatomical correspondence: the former may represent a surface annotation and is near the image boundary in this sequence. It is therefore an uncertain proxy, never added to the 13-point body RMSE or silently treated as a precise target.
+
+The auxiliary neck loss uses the original automatically predicted coordinates and score. It has a dead zone of 0.02 times the image diagonal (29.37 px at 1280x720), a score-squared weight, a border reliability factor clipped to [0.25,1], and a coefficient of 0.1 (approximately one of thirteen body targets). These fixed experiment settings are not calibrated probabilities or learned anatomical tolerances.
+
+If fewer than three of nose/eyes/ears score at least 0.7 and lie more than 2% inside the image, a head geometry guard is enabled. This is a heuristic absence-of-reliable-face rule, not a visibility oracle. The centroid of vertices whose dominant LBS joint is Head is anchored to the current original rigid-fit result. Its camera-space direction may change at most 8 degrees and its camera distance must remain at least 85% of the rigid distance. These reuse the existing global angle cap and wrist distance fraction as a conservative uniform initial experiment. They are NOT measured head/camera extrinsics and may preserve a wrong rigid initialization.
+
+Rigid optimization is unchanged. From stage two onward the soft neck loss and head guard apply to body, both wrist refinements, both contour candidates and MANO-guided continuation. The guard participates in feasible-step projection, candidate checks and CPU export checks, so later body optimizers cannot silently undo it. Surface stitching code is unchanged. Original body points, nose selection, RMSE, shape priors, angle limits, wrist-distance constraints, near-plane limits, fitting steps, input caches and model weights are retained. Auxiliary loss participates in automatic contour candidate ranking.
+
+Evaluate ten group03 neighbors, including failures and controls. Also run neck-only (guard disabled) on the two center frames to separate the additional guard's effect. No manual annotations, mesh edits, individual thresholds or visual best-candidate selection. Report original-point RMSE, held-out/auxiliary neck residual, head projection diagnostics, reload consistency and local triangle crossings independently. Preserve unsuccessful outcomes.

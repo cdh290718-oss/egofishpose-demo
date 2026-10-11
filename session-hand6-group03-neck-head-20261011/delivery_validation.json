@@ -1,0 +1,119 @@
+{
+  "frame_count": 10,
+  "variant_runs": 12,
+  "saved_reload_passed": true,
+  "all_original_inputs_unchanged": true,
+  "all_raw_and_rigid_outputs_bitwise_equal": true,
+  "all_original_body_target_sets_identical": true,
+  "all_guarded_stages_satisfy_guard": true,
+  "checks": [
+    {
+      "id": "neck_guard_cam3_f00001094",
+      "raw_bitwise_equal": true,
+      "rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "hand_candidates_identical": true,
+      "artifact_hashes_verified": true,
+      "reload_passed": true
+    },
+    {
+      "id": "neck_guard_cam3_f00001124",
+      "raw_bitwise_equal": true,
+      "rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "hand_candidates_identical": true,
+      "artifact_hashes_verified": true,
+      "reload_passed": true
+    },
+    {
+      "id": "neck_guard_cam3_f00001153",
+      "raw_bitwise_equal": true,
+      "rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "hand_candidates_identical": true,
+      "artifact_hashes_verified": true,
+      "reload_passed": true
+    },
+    {
+      "id": "neck_only_cam3_f00001153",
+      "raw_bitwise_equal": true,
+      "rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "hand_candidates_identical": true,
+      "artifact_hashes_verified": true,
+      "reload_passed": true
+    },
+    {
+      "id": "neck_guard_cam3_f00001182",
+      "raw_bitwise_equal": true,
+      "rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "hand_candidates_identical": true,
+      "artifact_hashes_verified": true,
+      "reload_passed": true
+    },
+    {
+      "id": "neck_guard_cam3_f00001212",
+      "raw_bitwise_equal": true,
+      "rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "hand_candidates_identical": true,
+      "artifact_hashes_verified": true,
+      "reload_passed": true
+    },
+    {
+      "id": "neck_guard_cam4_f00001088",
+      "raw_bitwise_equal": true,
+      "rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "hand_candidates_identical": true,
+      "artifact_hashes_verified": true,
+      "reload_passed": true
+    },
+    {
+      "id": "neck_guard_cam4_f00001118",
+      "raw_bitwise_equal": true,
+      "rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "hand_candidates_identical": true,
+      "artifact_hashes_verified": true,
+      "reload_passed": true
+    },
+    {
+      "id": "neck_guard_cam4_f00001147",
+      "raw_bitwise_equal": true,
+      "rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "hand_candidates_identical": true,
+      "artifact_hashes_verified": true,
+      "reload_passed": true
+    },
+    {
+      "id": "neck_only_cam4_f00001147",
+      "raw_bitwise_equal": true,
+      "rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "hand_candidates_identical": true,
+      "artifact_hashes_verified": true,
+      "reload_passed": true
+    },
+    {
+      "id": "neck_guard_cam4_f00001176",
+      "raw_bitwise_equal": true,
+      "rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "hand_candidates_identical": true,
+      "artifact_hashes_verified": true,
+      "reload_passed": true
+    },
+    {
+      "id": "neck_guard_cam4_f00001206",
+      "raw_bitwise_equal": true,
+      "rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "hand_candidates_identical": true,
+      "artifact_hashes_verified": true,
+      "reload_passed": true
+    }
+  ]
+}

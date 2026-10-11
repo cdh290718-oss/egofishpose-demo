@@ -1,0 +1,471 @@
+diff --git a/docs/neck_head_experiment_20261011.md b/docs/neck_head_experiment_20261011.md
+new file mode 100644
+index 0000000..809021f
+--- /dev/null
++++ b/docs/neck_head_experiment_20261011.md
+@@ -0,0 +1,13 @@
++# Neck observation and head trust-region experiment
++
++Base: GitHub main 7ebf5c4; checkpoint 7c5ee9f. Original checkout and defaults are retained. Enable only with a `head_neck` JSON config object containing `enabled: true`.
++
++The cached Sapiens2 neck channel is index 69. SMPL-X output Neck is index 7 (native joint 12). These names do not establish exact anatomical correspondence: the former may represent a surface annotation and is near the image boundary in this sequence. It is therefore an uncertain proxy, never added to the 13-point body RMSE or silently treated as a precise target.
++
++The auxiliary neck loss uses the original automatically predicted coordinates and score. It has a dead zone of 0.02 times the image diagonal (29.37 px at 1280x720), a score-squared weight, a border reliability factor clipped to [0.25,1], and a coefficient of 0.1 (approximately one of thirteen body targets). These fixed experiment settings are not calibrated probabilities or learned anatomical tolerances.
++
++If fewer than three of nose/eyes/ears score at least 0.7 and lie more than 2% inside the image, a head geometry guard is enabled. This is a heuristic absence-of-reliable-face rule, not a visibility oracle. The centroid of vertices whose dominant LBS joint is Head is anchored to the current original rigid-fit result. Its camera-space direction may change at most 8 degrees and its camera distance must remain at least 85% of the rigid distance. These reuse the existing global angle cap and wrist distance fraction as a conservative uniform initial experiment. They are NOT measured head/camera extrinsics and may preserve a wrong rigid initialization.
++
++Rigid optimization is unchanged. From stage two onward the soft neck loss and head guard apply to body, both wrist refinements, both contour candidates and MANO-guided continuation. The guard participates in feasible-step projection, candidate checks and CPU export checks, so later body optimizers cannot silently undo it. Surface stitching code is unchanged. Original body points, nose selection, RMSE, shape priors, angle limits, wrist-distance constraints, near-plane limits, fitting steps, input caches and model weights are retained. Auxiliary loss participates in automatic contour candidate ranking.
++
++Evaluate ten group03 neighbors, including failures and controls. Also run neck-only (guard disabled) on the two center frames to separate the additional guard's effect. No manual annotations, mesh edits, individual thresholds or visual best-candidate selection. Report original-point RMSE, held-out/auxiliary neck residual, head projection diagnostics, reload consistency and local triangle crossings independently. Preserve unsuccessful outcomes.
+diff --git a/egosmplx_pipeline/body_pose.py b/egosmplx_pipeline/body_pose.py
+index 28f517a..0e41bd3 100644
+--- a/egosmplx_pipeline/body_pose.py
++++ b/egosmplx_pipeline/body_pose.py
+@@ -73,6 +73,9 @@ def main():
+         wrist_floor = initial_wrists * .85
+         source_error = float((initial[0] - t(raw['smplx_mesh_cam'])).abs().max())
+         assert source_error < 1e-5
++    from egosmplx_pipeline.head_neck import HeadNeck
++    head_ids = np.where(layer.lbs_weights.detach().numpy().argmax(1)==smpl_x.orig_joints_name.index('Head'))[0]
++    head_neck = HeadNeck(initial[0].detach(),head_ids,smpl_x.joints_name.index('Neck'),lookup,(w,h))
+     def cpu(x):
+         return x.detach().numpy()
+     def error(pred, target):
+@@ -114,10 +117,10 @@ def main():
+             # Start the barrier before the hard near plane. The legacy penalty
+             # in raw meters was too weak relative to normalized pixel residuals.
+             depth = F.relu((.03 - mesh[:, 2].min()) / .02).square()
+-            loss = rep + .0008*pp + .0002*cp + .0004*gp + .002*guard + .02*depth
++            loss = rep + .0008*pp + .0002*cp + .0004*gp + .002*guard + .02*depth + head_neck.loss(mesh,pixels)
+             if not torch.isfinite(loss):
+                 raise RuntimeError('Nonfinite objective')
+-            feasible = bool((wrist_dist >= wrist_floor - 1e-6).all() and mesh[:, 2].min() >= .02 - 1e-6)
++            feasible = head_neck.feasible(mesh) and bool((wrist_dist >= wrist_floor - 1e-6).all() and mesh[:, 2].min() >= .02 - 1e-6)
+             value = float(loss.detach())
+             if feasible and value < best_loss:
+                 best_loss = value
+@@ -137,6 +140,23 @@ def main():
+                 delta.mul_(torch.minimum(torch.ones_like(caps), caps / delta.norm(dim=1).clamp_min(1e-8))[:, None])
+                 gd.mul_(torch.clamp(t(np.deg2rad(8.)) / gd.norm().clamp_min(1e-8), max=1.))
+                 cam[2].clamp_(.05, 3.)
++            if head_neck.guard_active:
++                for _ in range(8):
++                    pb = body0.clone()
++                    pb[active_indices] += delta
++                    pv, _, _, _ = forward(pb,glob0+gd,cam)
++                    violation = head_neck.violations(pv).max()
++                    if float(violation)<=0:
++                        break
++                    gradients = torch.autograd.grad(violation,[delta,gd,cam])
++                    scales = [.0015,.0005,.0008]
++                    denominator = sum(g.square().sum()*s*s for g,s in zip(gradients,scales)).clamp_min(1e-12)
++                    with torch.no_grad():
++                        for x,g,s in zip([delta,gd,cam],gradients,scales):
++                            x.sub_(1.05*violation.detach()*g*s*s/denominator)
++                        delta.mul_(torch.minimum(torch.ones_like(caps),caps/delta.norm(dim=1).clamp_min(1e-8))[:,None])
++                        gd.mul_(torch.clamp(t(np.deg2rad(8.))/gd.norm().clamp_min(1e-8),max=1.))
++                        cam[2].clamp_(.05,3.)
+         if best is None:
+             raise RuntimeError('No feasible refinement candidate')
+         with torch.no_grad():
+@@ -187,7 +207,7 @@ def main():
+                       wrist_camera_distance_m=cpu(joints[wrists].norm(dim=1)).tolist(),
+                       initial_wrist_camera_distance_m=cpu(initial_wrists).tolist(), minimum_vertex_z_m=float(mesh[:, 2].min()),
+                       fixed_fields_bitwise_equal=fixed_keys, reload_mesh_error_m=reload_mesh_error, reload_pixel_error_px=reload_pixel_error,
+-                      history=history)
++                      head_neck=head_neck.report(mesh,pixels), history=history)
+         (dst / 'refinement_report.json').write_text(json.dumps(report, indent=2)+'\n')
+         return report, cpu(pixels[indices]), cpu(mesh), overlay, cpu(final_body)
+ 
+diff --git a/egosmplx_pipeline/head_neck.py b/egosmplx_pipeline/head_neck.py
+new file mode 100644
+index 0000000..3fdba9d
+--- /dev/null
++++ b/egosmplx_pipeline/head_neck.py
+@@ -0,0 +1,93 @@
++"""Opt-in uncertain neck observation and camera-space head trust region.
++
++The Sapiens neck annotation is not claimed to equal the internal SMPL-X joint.
++It is an auxiliary, tolerant observation; the original body target set is intact.
++The head prior is relative to the rigid fit, not a measured camera/head extrinsic.
++"""
++import json
++import os
++import math
++import numpy as np
++import torch
++import torch.nn.functional as F
++
++DEFAULTS = dict(enabled=False, neck_enabled=True, guard_enabled=True,
++                neck_min_score=.3, neck_tolerance_diagonal=.02,
++                neck_weight=.1, head_angle_deg=8., head_distance_fraction=.85,
++                head_barrier_weight=.002, face_min_score=.7,
++                face_min_count=3, face_border_fraction=.02)
++
++
++def settings():
++    supplied = json.loads(os.environ.get('EGOSMPLX_HEAD_NECK', '{}'))
++    if set(supplied) - set(DEFAULTS):
++        raise ValueError('Unknown head/neck settings')
++    result = dict(DEFAULTS, **supplied)
++    for key in ['enabled', 'neck_enabled', 'guard_enabled']:
++        if not isinstance(result[key], bool):
++            raise ValueError('Expected boolean ' + key)
++    if not (0 < result['head_angle_deg'] < 90 and 0 < result['head_distance_fraction'] < 1):
++        raise ValueError('Invalid head trust region')
++    return result
++
++
++class HeadNeck:
++    def __init__(self, rigid_vertices, head_ids, neck_index, lookup, size, device='cpu'):
++        self.cfg = settings()
++        self.enabled = self.cfg['enabled']
++        self.neck_index = neck_index
++        self.ids = torch.as_tensor(head_ids, dtype=torch.long, device=device)
++        self.size = tuple(size)
++        self.diag = float(np.hypot(*size))
++        rigid = torch.as_tensor(rigid_vertices, dtype=torch.float32, device=device)
++        self.center = rigid[self.ids].mean(0).detach()
++        self.radius = self.center.norm().clamp_min(1e-6)
++        self.direction = self.center / self.radius
++        self.cos_angle = math.cos(math.radians(self.cfg['head_angle_deg']))
++        w, h = size
++        self.face_count = sum(self._usable(lookup.get(n), self.cfg['face_min_score'])
++                              and self.cfg['face_border_fraction']*w < lookup[n]['x'] < (1-self.cfg['face_border_fraction'])*w
++                              and self.cfg['face_border_fraction']*h < lookup[n]['y'] < (1-self.cfg['face_border_fraction'])*h
++                              for n in ['nose','left_eye','right_eye','left_ear','right_ear'])
++        self.guard_active = self.enabled and self.cfg['guard_enabled'] and self.face_count < self.cfg['face_min_count']
++        q = lookup.get('neck')
++        self.neck_active = self.enabled and self.cfg['neck_enabled'] and self._usable(q,self.cfg['neck_min_score'])
++        self.neck_target = torch.as_tensor([q['x'],q['y']] if self.neck_active else [0.,0.],dtype=torch.float32,device=device)
++        self.neck_score = float(np.clip(q['score'],0,1)) if self.neck_active else 0.
++        margin = min(q['x']/w, (w-q['x'])/w, q['y']/h, (h-q['y'])/h) if self.neck_active else 0.
++        self.edge_factor = float(np.clip(margin/.03,.25,1.))
++
++    def _usable(self, q, threshold):
++        return q is not None and np.isfinite([q['x'],q['y'],q['score']]).all() and q['score']>=threshold and 0<=q['x']<self.size[0] and 0<=q['y']<self.size[1]
++
++    def violations(self, vertices):
++        if not self.guard_active:
++            return vertices.new_full((2,),-1.)
++        center = vertices[self.ids].mean(0)
++        distance = center.norm().clamp_min(1e-6)
++        radial = (self.cfg['head_distance_fraction']*self.radius-distance)/((1-self.cfg['head_distance_fraction'])*self.radius)
++        angular = (self.cos_angle-(center/distance*self.direction).sum())/(1-self.cos_angle)
++        return torch.stack([radial,angular])
++
++    def feasible(self, vertices, tolerance=1e-5):
++        return bool(self.violations(vertices).max()<=tolerance)
++
++    def loss(self, vertices, pixels):
++        result = vertices.new_zeros(())
++        if self.neck_active:
++            distance = (pixels[self.neck_index]-self.neck_target).norm()/self.diag
++            excess = F.relu(distance-self.cfg['neck_tolerance_diagonal'])
++            result = result + self.cfg['neck_weight']*self.neck_score**2*self.edge_factor*F.smooth_l1_loss(excess,torch.zeros_like(excess),beta=.01)
++        if self.guard_active:
++            result = result + self.cfg['head_barrier_weight']*F.relu(self.violations(vertices)+.1).square().mean()
++        return result
++
++    def report(self, vertices, pixels):
++        with torch.no_grad():
++            center=vertices[self.ids].mean(0);distance=center.norm().clamp_min(1e-6)
++            angle=torch.rad2deg(torch.acos((center/distance*self.direction).sum().clamp(-1,1)))
++            return dict(settings=self.cfg,neck_active=bool(self.neck_active),head_guard_active=bool(self.guard_active),reliable_interior_face_points=int(self.face_count),
++                        neck_proxy='SMPL-X internal Neck; uncertain correspondence with Sapiens neck',neck_score=self.neck_score,neck_edge_factor=self.edge_factor,
++                        neck_error_px=float((pixels[self.neck_index]-self.neck_target).norm()) if self.neck_active else None,
++                        neck_tolerance_px=self.cfg['neck_tolerance_diagonal']*self.diag,head_angle_from_rigid_deg=float(angle),head_distance_ratio=float(distance/self.radius),
++                        head_guard_passed=self.feasible(vertices,tolerance=2e-4),reference_head_center_cam_m=self.center.cpu().tolist())
+diff --git a/egosmplx_pipeline/pipeline.py b/egosmplx_pipeline/pipeline.py
+index ff8e797..7513994 100644
+--- a/egosmplx_pipeline/pipeline.py
++++ b/egosmplx_pipeline/pipeline.py
+@@ -1,5 +1,6 @@
+ """Sequential multi-environment controller with input hashing and verified resume."""
+ import copy
++import json
+ import datetime
+ import fcntl
+ import hashlib
+@@ -28,6 +29,7 @@ def environment(config):
+                   CUDA_VISIBLE_DEVICES=str(config.get('gpu', '0')),
+                   EGOSMPLX_CONFIG=config['paths']['egosmplx_config'],
+                   EGOSMPLX_REPO_ROOT=config['paths']['egosmplx_repo'])
++    result['EGOSMPLX_HEAD_NECK'] = json.dumps(config.get('head_neck', {}))
+     result['PYTHONPATH'] = os.pathsep.join([str(PACKAGE_ROOT), config['paths'].get('wilor_repo', '')])
+     return result
+ 
+diff --git a/egosmplx_pipeline/reference/contour_refine.py b/egosmplx_pipeline/reference/contour_refine.py
+index 5e57699..aa5f89b 100644
+--- a/egosmplx_pipeline/reference/contour_refine.py
++++ b/egosmplx_pipeline/reference/contour_refine.py
+@@ -9,7 +9,7 @@ OUT=Path(os.environ['EGOSMPLX_REFERENCE_ROOT'])/'contour'
+ BASE=OUT.parent/'baseline'
+ 
+ from egosmplx_pipeline.reference.support import (read,write,load,arr,geometry,constraints,PARAMS,FIXED,SIDES,JI,MAX_DELTA_DEG,BODY_POSE_NAMES,JOINT_MAPPING,smpl_x,FishEyeCameraCalibrated)
+-from egosmplx_pipeline.reference.support import native_projection
++from egosmplx_pipeline.reference.support import native_projection, head_neck_context
+ from egosmplx_pipeline.reference.silhouette import targets,prepare,loss as silhouette_loss,metrics as silhouette_metrics,PREV
+ 
+ def main():
+@@ -24,6 +24,7 @@ def main():
+   if (dst/'refinement.json').exists():continue
+   bd=BASE/'frames'/row['condition']/row['camera'];p=load(PREV/'final_frames'/row['condition']/row['camera']/'body_params.npz');source=load(row['source_npz']);rigid=load(row['rigid_npz']);w=load(row['wilor_npz']);oldmesh=load(bd/'hybrid_mesh.npz');matches=read(bd/'recipe.json')['matches'];cam=FishEyeCameraCalibrated(row['calibration'])
+   lookup={q['name']:q for q in read(row['sapiens_json'])['keypoints']}
++  hn=head_neck_context(rigid,cam,lookup,dev)
+   active=list(MAX_DELTA_DEG);ai=torch.tensor([BODY_POSE_NAMES.index(n) for n in active],device=dev);caps=t(np.deg2rad([MAX_DELTA_DEG[n] for n in active]))
+   b0=t(rigid['body_pose']).reshape(21,3);g0=t(rigid['global_orient']).reshape(3);tr0=t(rigid['transl']).reshape(3)
+   init_path=OUT/'frames'/row['condition']/row['camera']/'body_params.npz'
+@@ -47,7 +48,7 @@ def main():
+    o=layer(**params());v=o.vertices[0]+tr;j=o.joints[0,smpl_x.joint_idx]+tr;uv=cam.world2camera_pytorch(j);return v,j,uv
+   def feasible(v,j,uv):
+    err=(uv[ix]-goals).norm(dim=1)
+-   return bool(v[:,2].min()>=.020001 and (j[[12,13]].norm(dim=1)>=floor+1e-6).all() and torch.sqrt((uv[bi]-bt).square().sum(1).mean())<=bodylimit-1e-4 and (err<=t(initial_werr)+3).all())
++   return hn.feasible(v) and bool(v[:,2].min()>=.020001 and (j[[12,13]].norm(dim=1)>=floor+1e-6).all() and torch.sqrt((uv[bi]-bt).square().sum(1).mean())<=bodylimit-1e-4 and (err<=t(initial_werr)+3).all())
+   def objective(v,j,uv):
+    body=(F.smooth_l1_loss((uv[bi]-bt)/t([1280,720]),torch.zeros_like(bt),beta=.003,reduction='none').mean(1)*bw).mean()
+    wrists=F.smooth_l1_loss((uv[ix]-goals)/t([1280,720]),torch.zeros_like(goals),beta=.003)
+@@ -57,7 +58,7 @@ def main():
+    shape=torch.stack(seam).mean()
+    priors=.0008*(delta/caps[:,None]).square().mean()+.0002*((tr-tr0)/t([.10,.10,.18])).square().mean()+.0004*(gd/np.deg2rad(8)).square().mean()
+    depth=.02*F.relu((.03-v[:,2].min())/.02).square();guard=.002*F.relu((floor-j[[12,13]].norm(dim=1))/.05).square().mean()
+-   return body+4*wrists+.0008*shape+priors+depth+guard+.08*silhouette_loss(v,cam,sil_data)
++   return body+4*wrists+.0008*shape+priors+depth+guard+.08*silhouette_loss(v,cam,sil_data)+hn.loss(v,uv)
+   opt=torch.optim.Adam([{'params':[delta],'lr':.0015},{'params':[gd],'lr':.0005},{'params':[tr],'lr':.0008}])
+   with torch.no_grad():v,j,uv=forward();bestloss=float(objective(v,j,uv));best=[x.detach().clone() for x in [delta,gd,tr]]
+   rejected=0;start=time.time()
+@@ -72,6 +73,7 @@ def main():
+      pv,pj,pu=forward()
+      br=(pu[bi]-bt).square().sum(1).mean().sqrt()
+      violations=torch.cat([(br-bodylimit+.02).reshape(1)/5,(.02001-pv[:,2].min()).reshape(1)/.02,(floor+1e-5-pj[[12,13]].norm(dim=1))/.05,((pu[ix]-goals).norm(dim=1)-t(initial_werr)-2.99)/5])
++     violations=torch.cat([violations,hn.violations(pv)])
+      g=violations.max()
+      if float(g)<=0:break
+      grads=torch.autograd.grad(g,[delta,gd,tr]);scales=[.0015,.0005,.0008]
+diff --git a/egosmplx_pipeline/reference/contour_refine_strong.py b/egosmplx_pipeline/reference/contour_refine_strong.py
+index a51652b..30256a4 100644
+--- a/egosmplx_pipeline/reference/contour_refine_strong.py
++++ b/egosmplx_pipeline/reference/contour_refine_strong.py
+@@ -9,7 +9,7 @@ OUT=Path(os.environ['EGOSMPLX_REFERENCE_ROOT'])/'contour'
+ BASE=OUT.parent/'baseline'
+ 
+ from egosmplx_pipeline.reference.support import (read,write,load,arr,geometry,constraints,PARAMS,FIXED,SIDES,JI,MAX_DELTA_DEG,BODY_POSE_NAMES,JOINT_MAPPING,smpl_x,FishEyeCameraCalibrated)
+-from egosmplx_pipeline.reference.support import native_projection
++from egosmplx_pipeline.reference.support import native_projection, head_neck_context
+ from egosmplx_pipeline.reference.silhouette import targets,prepare,loss as silhouette_loss,metrics as silhouette_metrics,PREV
+ 
+ def main():
+@@ -24,6 +24,7 @@ def main():
+   if (dst/'refinement.json').exists():continue
+   bd=BASE/'frames'/row['condition']/row['camera'];p=load(PREV/'final_frames'/row['condition']/row['camera']/'body_params.npz');source=load(row['source_npz']);rigid=load(row['rigid_npz']);w=load(row['wilor_npz']);oldmesh=load(bd/'hybrid_mesh.npz');matches=read(bd/'recipe.json')['matches'];cam=FishEyeCameraCalibrated(row['calibration'])
+   lookup={q['name']:q for q in read(row['sapiens_json'])['keypoints']}
++  hn=head_neck_context(rigid,cam,lookup,dev)
+   active=list(MAX_DELTA_DEG);ai=torch.tensor([BODY_POSE_NAMES.index(n) for n in active],device=dev);caps=t(np.deg2rad([MAX_DELTA_DEG[n] for n in active]))
+   b0=t(rigid['body_pose']).reshape(21,3);g0=t(rigid['global_orient']).reshape(3);tr0=t(rigid['transl']).reshape(3)
+   init_path=OUT/'frames'/row['condition']/row['camera']/'body_params.npz'
+@@ -50,7 +51,7 @@ def main():
+    o=layer(**params());v=o.vertices[0]+tr;j=o.joints[0,smpl_x.joint_idx]+tr;uv=cam.world2camera_pytorch(j);return v,j,uv
+   def feasible(v,j,uv):
+    err=(uv[ix]-goals).norm(dim=1)
+-   return bool(v[:,2].min()>=.020001 and (j[[12,13]].norm(dim=1)>=floor+1e-6).all() and torch.sqrt((uv[bi]-bt).square().sum(1).mean())<=bodylimit-1e-4 and (err<=t(initial_werr)+3).all())
++   return hn.feasible(v) and bool(v[:,2].min()>=.020001 and (j[[12,13]].norm(dim=1)>=floor+1e-6).all() and torch.sqrt((uv[bi]-bt).square().sum(1).mean())<=bodylimit-1e-4 and (err<=t(initial_werr)+3).all())
+   def objective(v,j,uv):
+    body=(F.smooth_l1_loss((uv[bi]-bt)/t([1280,720]),torch.zeros_like(bt),beta=.003,reduction='none').mean(1)*bw).mean()
+    wrists=F.smooth_l1_loss((uv[ix]-goals)/t([1280,720]),torch.zeros_like(goals),beta=.003)
+@@ -60,7 +61,7 @@ def main():
+    shape=torch.stack(seam).mean()
+    priors=.0008*(delta/caps[:,None]).square().mean()+.0002*((tr-tr0)/t([.10,.10,.18])).square().mean()+.0004*(gd/np.deg2rad(8)).square().mean()
+    depth=.02*F.relu((.03-v[:,2].min())/.02).square();guard=.002*F.relu((floor-j[[12,13]].norm(dim=1))/.05).square().mean()
+-   return body+4*wrists+.0008*shape+priors+depth+guard+.4*silhouette_loss(v,cam,sil_data)
++   return body+4*wrists+.0008*shape+priors+depth+guard+.4*silhouette_loss(v,cam,sil_data)+hn.loss(v,uv)
+   opt=torch.optim.Adam([{'params':[delta],'lr':.0015},{'params':[gd],'lr':.0005},{'params':[tr],'lr':.0008}])
+   with torch.no_grad():v,j,uv=forward();bestloss=float(objective(v,j,uv));best=[x.detach().clone() for x in [delta,gd,tr]]
+   rejected=0;start=time.time()
+@@ -75,6 +76,7 @@ def main():
+      pv,pj,pu=forward()
+      br=(pu[bi]-bt).square().sum(1).mean().sqrt()
+      violations=torch.cat([(br-bodylimit+.02).reshape(1)/5,(.02001-pv[:,2].min()).reshape(1)/.02,(floor+1e-5-pj[[12,13]].norm(dim=1))/.05,((pu[ix]-goals).norm(dim=1)-t(initial_werr)-2.99)/5])
++     violations=torch.cat([violations,hn.violations(pv)])
+      g=violations.max()
+      if float(g)<=0:break
+      grads=torch.autograd.grad(g,[delta,gd,tr]);scales=[.0015,.0005,.0008]
+diff --git a/egosmplx_pipeline/reference/guided_body.py b/egosmplx_pipeline/reference/guided_body.py
+index 3eec1b9..705ab38 100644
+--- a/egosmplx_pipeline/reference/guided_body.py
++++ b/egosmplx_pipeline/reference/guided_body.py
+@@ -8,6 +8,7 @@ import os,argparse,copy,time,hashlib
+ import numpy as np,cv2,torch
+ import torch.nn.functional as TF
+ from egosmplx_pipeline.reference.support import (read,write,load,arr,rmse,geometry,constraints,PARAMS,FIXED,SIDES,JI,MAX_DELTA_DEG,BODY_POSE_NAMES,JOINT_MAPPING,smpl_x,FishEyeCameraCalibrated,FACES,write_obj,render,stitch,draw_geometry,native_projection)
++from egosmplx_pipeline.reference.support import head_neck_context
+ from egosmplx_pipeline.reference.silhouette import prepare,loss as sil_loss,metrics as sil_metrics
+ ROOT=Path(os.environ['EGOSMPLX_REFERENCE_ROOT'])
+ OUT=ROOT/'guided'
+@@ -51,6 +52,7 @@ def fit(row,steps):
+  p,source,rigid,w,old,matches,cam,lookup,data=context(row)
+  dev='cuda' if torch.cuda.is_available() else 'cpu';torch.set_num_threads(2);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
+  layer=copy.deepcopy(smpl_x.layer['neutral']).to(dev).eval();layer.requires_grad_(False);t=lambda x:torch.as_tensor(x,dtype=torch.float32,device=dev)
++ hn=head_neck_context(rigid,cam,lookup,dev)
+  data=prepare(data,dev);names=[n for n in JOINT_MAPPING if lookup[n]['score']>=.3 and 0<=lookup[n]['x']<1280 and 0<=lookup[n]['y']<720]
+  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=t([lookup[n]['score']**2 for n in names]);bw/=bw.mean()
+  active=list(MAX_DELTA_DEG);ai=torch.tensor([BODY_POSE_NAMES.index(n) for n in active],device=dev);caps=t(np.deg2rad([MAX_DELTA_DEG[n] for n in active]));b0=t(rigid['body_pose']).reshape(21,3);g0=t(rigid['global_orient']).reshape(3);tr0=t(rigid['transl']).reshape(3)
+@@ -76,10 +78,10 @@ def fit(row,steps):
+   palm=torch.stack([huber(uv[ix],g).mean() for ix,g in zip(pis,pgs)]).mean()
+   loop=torch.stack([huber(cam.world2camera_pytorch(v[ix]),g).mean() for ix,g in zip(ids,goals)]).mean()
+   priors=.003*(delta/caps[:,None]).square().mean()+.001*((tr-tr0)/t([.10,.10,.18])).square().mean()+.001*(gd/np.deg2rad(8)).square().mean()
+-  return 4*body+4*wrist+1*palm+5*loop+1.5*sil_loss(v,cam,data)+priors
++  return 4*body+4*wrist+1*palm+5*loop+1.5*sil_loss(v,cam,data)+priors+hn.loss(v,uv)
+  def clip():
+   delta.mul_(torch.minimum(torch.ones_like(caps),caps/delta.norm(dim=1).clamp_min(1e-8))[:,None]);gd.mul_(torch.clamp(t(np.deg2rad(8))/gd.norm().clamp_min(1e-8),max=1));tr[2].clamp_(.05,3)
+- def violations(v,j,uv):return torch.cat([(torch.sqrt((uv[bi]-bt).square().sum(1).mean())-bodylimit+.01).reshape(1)/10,(.0205-v[:,2].min()).reshape(1)/.02,(floor+1e-5-j[[12,13]].norm(dim=1))/.05])
++ def violations(v,j,uv):return torch.cat([(torch.sqrt((uv[bi]-bt).square().sum(1).mean())-bodylimit+.01).reshape(1)/10,(.0205-v[:,2].min()).reshape(1)/.02,(floor+1e-5-j[[12,13]].norm(dim=1))/.05,hn.violations(v)])
+  def valid(v,j,uv):return bool(violations(v,j,uv).max()<=0)
+  opt=torch.optim.Adam([{'params':[delta],'lr':.002},{'params':[gd],'lr':.0008},{'params':[tr],'lr':.0015}]);start=time.time();trace=[]
+  with torch.no_grad():v,j,uv=forward();bestloss=float(objective(v,j,uv));best=[x.clone() for x in variables]
+diff --git a/egosmplx_pipeline/reference/pipeline.py b/egosmplx_pipeline/reference/pipeline.py
+index 5586f00..97e28cd 100644
+--- a/egosmplx_pipeline/reference/pipeline.py
++++ b/egosmplx_pipeline/reference/pipeline.py
+@@ -99,6 +99,7 @@ def export(config, rows, prepared, output):
+         frame = output / 'frames' / row['id']
+         report = read(frame / 'validation.json')
+         report['pipeline_profile'] = selected(config)
++        report['head_neck_settings'] = config.get('head_neck', {})
+         if row['id'] in mapping:
+             reference_row = mapping[row['id']]
+             relative = Path(reference_row['condition']) / reference_row['camera']
+diff --git a/egosmplx_pipeline/reference/select_candidates.py b/egosmplx_pipeline/reference/select_candidates.py
+index 319b803..d4d7353 100644
+--- a/egosmplx_pipeline/reference/select_candidates.py
++++ b/egosmplx_pipeline/reference/select_candidates.py
+@@ -4,7 +4,8 @@ import sys,shutil
+ import numpy as np
+ from egosmplx_pipeline.reference.silhouette import OUT,PREV,targets,metrics,load,read,write,geometry,FishEyeCameraCalibrated,SIDES
+ from egosmplx_pipeline.reference.support import constraints,JI,JOINT_MAPPING,MAX_DELTA_DEG,BODY_POSE_NAMES
+-from egosmplx_pipeline.reference.support import native_projection
++from egosmplx_pipeline.reference.support import native_projection, head_neck_context
++import torch
+ BASE=OUT.parent/'baseline'
+ def merit(p,row,lookup,w,matches,cam,oldmesh):
+  v,j=geometry(p);uv=cam.world2camera(j.astype(np.float64));rig=load(row['rigid_npz'])
+@@ -21,7 +22,9 @@ def merit(p,row,lookup,w,matches,cam,oldmesh):
+  pp=.0008*np.mean(((p['body_pose'].reshape(21,3)[ai]-rig['body_pose'].reshape(21,3)[ai])/caps[:,None])**2)
+  pp+=.0002*np.mean(((p['transl'].reshape(3)-rig['transl'].reshape(3)) / [.1,.1,.18])**2)+.0004*np.mean(((p['global_orient']-rig['global_orient'])/np.deg2rad(8))**2)
+  depth=.02*max(0,(.03-v[:,2].min())/.02)**2
+- return float(body+4*np.mean(wrist)+.0008*np.mean(shape)+pp+depth)
++ hn=head_neck_context(rig,cam,lookup)
++ extra=float(hn.loss(torch.as_tensor(v),torch.as_tensor(uv)))
++ return float(body+4*np.mean(wrist)+.0008*np.mean(shape)+pp+depth+extra)
+ 
+ for row in read(BASE/'automatic_input_manifest.json')['frames']:
+  dst=OUT/'selected_frames'/row['condition']/row['camera'];dst.mkdir(parents=True,exist_ok=True)
+diff --git a/egosmplx_pipeline/reference/support.py b/egosmplx_pipeline/reference/support.py
+index ac67d1e..7481aa6 100644
+--- a/egosmplx_pipeline/reference/support.py
++++ b/egosmplx_pipeline/reference/support.py
+@@ -30,6 +30,12 @@ def load(path):
+ def native_projection(points, focal=25000.):
+     return _project(points, focal, [640.,360.])
+ 
++def head_neck_context(rigid, cam, lookup, device='cpu'):
++    from egosmplx_pipeline.head_neck import HeadNeck
++    vv,_=geometry(rigid)
++    ids=np.where(smpl_x.layer['neutral'].lbs_weights.detach().cpu().numpy().argmax(1)==smpl_x.orig_joints_name.index('Head'))[0]
++    return HeadNeck(vv,ids,JI['Neck'],lookup,tuple(cam.img_size),device)
++
+ def constraints(p, source, rigid, cam, lookup):
+     v,j=geometry(p); _,j0=geometry(source); _,jr=geometry(rigid)
+     active=list(MAX_DELTA_DEG); ai=[BODY_POSE_NAMES.index(n) for n in active]
+@@ -48,5 +54,9 @@ def constraints(p, source, rigid, cam, lookup):
+     before=rmse(cam.world2camera(j0.astype(np.float64))[idx],target)
+     after=rmse(cam.world2camera(j.astype(np.float64))[idx],target)
+     assert after<=before+5.001
+-    return dict(passed=True,body_delta_deg=dict(zip(active,map(float,delta))),sapiens_body_rmse_px=after,
++    import torch
++    hn=head_neck_context(rigid,cam,lookup)
++    head_report=hn.report(torch.as_tensor(v),torch.as_tensor(cam.world2camera(j.astype(np.float64))))
++    assert head_report['head_guard_passed']
++    return dict(passed=True,head_neck=head_report,body_delta_deg=dict(zip(active,map(float,delta))),sapiens_body_rmse_px=after,
+                 sapiens_body_source_rmse_px=before,wrist_floor_m=floor.tolist(),body_minimum_z_m=float(v[:,2].min()))
+diff --git a/egosmplx_pipeline/reference/wrist_refine.py b/egosmplx_pipeline/reference/wrist_refine.py
+index c2cacf7..d33c5c9 100644
+--- a/egosmplx_pipeline/reference/wrist_refine.py
++++ b/egosmplx_pipeline/reference/wrist_refine.py
+@@ -9,7 +9,7 @@ OUT=Path(os.environ['EGOSMPLX_REFERENCE_ROOT'])/'wrist'
+ BASE=OUT.parent/'baseline'
+ 
+ from egosmplx_pipeline.reference.support import (read,write,load,arr,geometry,constraints,PARAMS,FIXED,SIDES,JI,MAX_DELTA_DEG,BODY_POSE_NAMES,JOINT_MAPPING,smpl_x,FishEyeCameraCalibrated)
+-from egosmplx_pipeline.reference.support import native_projection
++from egosmplx_pipeline.reference.support import native_projection, head_neck_context
+ 
+ def main():
+  ap=argparse.ArgumentParser();ap.add_argument('--steps',type=int,default=500);ap.add_argument('--indices',type=int,nargs='*');ap.add_argument('--active-projection',action='store_true');a=ap.parse_args()
+@@ -23,6 +23,7 @@ def main():
+   if (dst/'refinement.json').exists():continue
+   bd=BASE/'frames'/row['condition']/row['camera'];p=load(bd/'body_params.npz');source=load(row['source_npz']);rigid=load(row['rigid_npz']);w=load(row['wilor_npz']);oldmesh=load(bd/'hybrid_mesh.npz');matches=read(bd/'recipe.json')['matches'];cam=FishEyeCameraCalibrated(row['calibration'])
+   lookup={q['name']:q for q in read(row['sapiens_json'])['keypoints']}
++  hn=head_neck_context(rigid,cam,lookup,dev)
+   active=list(MAX_DELTA_DEG);ai=torch.tensor([BODY_POSE_NAMES.index(n) for n in active],device=dev);caps=t(np.deg2rad([MAX_DELTA_DEG[n] for n in active]))
+   b0=t(rigid['body_pose']).reshape(21,3);g0=t(rigid['global_orient']).reshape(3);tr0=t(rigid['transl']).reshape(3)
+   init_path=OUT/'frames'/row['condition']/row['camera']/'body_params.npz'
+@@ -44,7 +45,7 @@ def main():
+    o=layer(**params());v=o.vertices[0]+tr;j=o.joints[0,smpl_x.joint_idx]+tr;uv=cam.world2camera_pytorch(j);return v,j,uv
+   def feasible(v,j,uv):
+    err=(uv[ix]-goals).norm(dim=1)
+-   return bool(v[:,2].min()>=.020001 and (j[[12,13]].norm(dim=1)>=floor+1e-6).all() and torch.sqrt((uv[bi]-bt).square().sum(1).mean())<=bodylimit-1e-4 and (err<=t(initial_werr)+3).all())
++   return hn.feasible(v) and bool(v[:,2].min()>=.020001 and (j[[12,13]].norm(dim=1)>=floor+1e-6).all() and torch.sqrt((uv[bi]-bt).square().sum(1).mean())<=bodylimit-1e-4 and (err<=t(initial_werr)+3).all())
+   def objective(v,j,uv):
+    body=(F.smooth_l1_loss((uv[bi]-bt)/t([1280,720]),torch.zeros_like(bt),beta=.003,reduction='none').mean(1)*bw).mean()
+    wrists=F.smooth_l1_loss((uv[ix]-goals)/t([1280,720]),torch.zeros_like(goals),beta=.003)
+@@ -54,7 +55,7 @@ def main():
+    shape=torch.stack(seam).mean()
+    priors=.0008*(delta/caps[:,None]).square().mean()+.0002*((tr-tr0)/t([.10,.10,.18])).square().mean()+.0004*(gd/np.deg2rad(8)).square().mean()
+    depth=.02*F.relu((.03-v[:,2].min())/.02).square();guard=.002*F.relu((floor-j[[12,13]].norm(dim=1))/.05).square().mean()
+-   return body+4*wrists+.0008*shape+priors+depth+guard
++   return body+4*wrists+.0008*shape+priors+depth+guard+hn.loss(v,uv)
+   opt=torch.optim.Adam([{'params':[delta],'lr':.0015},{'params':[gd],'lr':.0005},{'params':[tr],'lr':.0008}])
+   with torch.no_grad():v,j,uv=forward();bestloss=float(objective(v,j,uv));best=[x.detach().clone() for x in [delta,gd,tr]]
+   rejected=0;start=time.time()
+@@ -69,6 +70,7 @@ def main():
+      pv,pj,pu=forward()
+      br=(pu[bi]-bt).square().sum(1).mean().sqrt()
+      violations=torch.cat([(br-bodylimit+.02).reshape(1)/5,(.02001-pv[:,2].min()).reshape(1)/.02,(floor+1e-5-pj[[12,13]].norm(dim=1))/.05,((pu[ix]-goals).norm(dim=1)-t(initial_werr)-2.99)/5])
++     violations=torch.cat([violations,hn.violations(pv)])
+      g=violations.max()
+      if float(g)<=0:break
+      grads=torch.autograd.grad(g,[delta,gd,tr]);scales=[.0015,.0005,.0008]
+diff --git a/tests/test_head_neck.py b/tests/test_head_neck.py
+new file mode 100644
+index 0000000..5e7078a
+--- /dev/null
++++ b/tests/test_head_neck.py
+@@ -0,0 +1,29 @@
++import json,os,unittest,math
++from unittest.mock import patch
++import numpy as np
++import torch
++from egosmplx_pipeline.head_neck import HeadNeck
++
++class TestHeadNeck(unittest.TestCase):
++ def context(self,**options):
++  cfg=dict(enabled=True,neck_enabled=True,guard_enabled=True);cfg.update(options)
++  with patch.dict(os.environ,{'EGOSMPLX_HEAD_NECK':json.dumps(cfg)}):
++   return HeadNeck(np.array([[0.,0.,1.],[0.,0.,1.]]),[0,1],0,{'neck':{'x':640.,'y':360.,'score':.8}},(1280,720))
++ def test_guard_radial_and_angular(self):
++  h=self.context();reference=torch.tensor([[0.,0.,1.],[0.,0.,1.]])
++  self.assertTrue(h.feasible(reference));self.assertFalse(h.feasible(reference*.8))
++  a=math.radians(10);shift=torch.tensor([[math.sin(a),0.,math.cos(a)]]).repeat(2,1)
++  self.assertFalse(h.feasible(shift));self.assertTrue(h.feasible(reference*.9))
++ def test_neck_dead_zone_and_gradient(self):
++  h=self.context(guard_enabled=False);v=torch.tensor([[0.,0.,1.],[0.,0.,1.]])
++  inside=torch.tensor([[650.,360.]],requires_grad=True);loss=h.loss(v,inside);loss.backward();self.assertEqual(float(loss),0.);self.assertEqual(float(inside.grad.norm()),0.)
++  outside=torch.tensor([[700.,360.]],requires_grad=True);loss=h.loss(v,outside);loss.backward();self.assertGreater(float(loss),0.);self.assertGreater(float(outside.grad[0,0]),0.)
++ def test_disabled_is_zero_and_unrestricted(self):
++  h=self.context(enabled=False);v=torch.tensor([[3.,0.,.1],[3.,0.,.1]])
++  self.assertTrue(h.feasible(v));self.assertEqual(float(h.loss(v,torch.tensor([[1.,1.]]))),0.)
++ def test_visible_face_disables_head_guard(self):
++  look={n:dict(x=500.,y=300.,score=.9) for n in ['nose','left_eye','right_eye']}
++  with patch.dict(os.environ,{'EGOSMPLX_HEAD_NECK':'{"enabled":true}'}):
++   h=HeadNeck(np.array([[0.,0.,1.]]),[0],0,look,(1280,720))
++  self.assertFalse(h.guard_active);self.assertFalse(h.neck_active)
++if __name__=='__main__':unittest.main()

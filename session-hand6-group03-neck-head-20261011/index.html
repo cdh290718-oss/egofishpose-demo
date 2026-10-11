@@ -1,0 +1,681 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第三组：颈部与头部约束实验</title><style>body{font:16px/1.65 system-ui,sans-serif;background:#14191e;color:#edf1f4;margin:0;padding:24px;max-width:1800px;margin:auto}a{color:#8dd2ff}h1{font-size:28px}table{border-collapse:collapse;width:100%;margin:18px 0}th,td{border:1px solid #51606b;padding:8px;text-align:left}img{max-width:100%;height:auto}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}figure{margin:0}figcaption{padding:8px}.note{background:#26313a;padding:15px;border-radius:8px}section{margin-top:32px}summary{cursor:pointer;font-weight:bold}.scroll{overflow-x:auto}@media(max-width:700px){body{padding:12px}.grid{grid-template-columns:1fr}table{font-size:13px}}</style><body><h1>第三组：颈部软约束与头部几何限制</h1><p>第三组及前后共 10 帧，另含中心两帧的仅颈部约束对照。</p><div class="note">从 GitHub 正式流程 7ebf5c4 出发，保留原有 13 点筛选和鼻点，刚体阶段保持逐项一致。从第二阶段起增加带容差的颈部软约束；在缺少可靠面部点时，对头部相对刚体结果的方向和距离施加限制。腕部、轮廓及 MANO 辅助身体阶段持续遵守相同限制。原接缝算法保留。所有帧统一设置，没有人工标注、单帧调参或人工选择候选。</div><p><a href="../session-hand6-group03-neighbors-20261010/">原流程及邻帧</a> · <a href="../session-hand6-group03-nose-ablation-20261011/">去鼻点实验</a> · <a href="offline.html">离线版</a> · <a href="metrics.csv">逐阶段 CSV</a> · <a href="summary.json">完整数据</a> · <a href="METHOD.md">方法与限制</a> · <a href="RUN_REPORT_zh.md">中文报告</a> · <a href="pipeline.patch">代码差异</a></p>
+<div class="note"><strong>检查结果</strong><ul><li>视觉上，原来大幅外扩的 cam3 19.416 s、cam4 18.409/18.917/19.407 s 都受到明显抑制，效果保留到最终融合阶段。这表明几何限制有效约束了异常解，不等于证明真实三维精度提高。</li><li>中心两帧仅加 neck 软约束未消除外扩：cam3 仍明显外扩，cam4 改变了外扩方向。该结论只针对本轮代理对应、权重及容差设置。</li><li>10 帧合并的身体自动点 RMSE 从 18.00 增至 33.12 px；手部从 10.39 增至 10.78 px。新增 neck 未混入身体 RMSE；原有目标点和左右手候选身份保持一致。</li><li>局部表面交叉检查通过数从 4/10 变为 3/10；cam3 20.409 s 新增右腕 2 对交叉，cam4 20.406 s 左腕交叉从 89 增至 95 对。若干其他帧交叉数下降，但不能把整组记为完整成功。</li><li>已查看 10 帧身体阶段、最终网格和相同区域的左右手放大图；手指与杯子遮挡附近仍存在贴合差异，未声称所有手指或腕口都正确。</li><li>颈部自动点集中在图像下沿，不能确认它与 SMPL-X 内部 Neck 的精确解剖对应。相机虽固定在头部，当前没有安装外参；刚体参考自身也在邻帧间波动。</li><li>cam3 中心帧还发现 GPU/CPU 重建的数值差异触发严格头部距离下限和导出回退。网页数值均来自实际保存并重载后的结果，未用优化中的更低残差替代。</li><li>本次保留为实验分支，暂不替换默认流程。修改前 checkpoint、原输出和关闭新功能的逐项一致性验证均保留。</li></ul></div>
+<p>身体 RMSE 使用原流程相同的 111 个自动点，不包含新增 neck；手部误差相对同一批 420 个 WiLoR 自动点。均不是人工真值误差。像素单位按 1280×720 原图计算，网页缩放不影响数值。汇总 RMSE 对所有点的平方误差合并计算，不是各帧 RMSE 的简单平均。</p><div class="scroll"><table><tr><th>方法</th><th>10 帧身体 RMSE</th><th>10 帧手部 RMSE</th><th>局部交叉检查通过帧数</th></tr>
+<tr><td>原流程</td><td>18.00 px</td><td>10.39 px</td><td>4 / 10</td></tr>
+<tr><td>颈部软约束＋头部几何限制</td><td>33.12 px</td><td>10.78 px</td><td>3 / 10</td></tr>
+</table></div><h2>中心异常帧：区分两项改动</h2><p>左：原流程；中：仅 neck 软约束；右：neck 软约束＋头部几何限制。</p><img src="center_fused_comparison.jpg"><details><summary>中心帧第二阶段对照</summary><img src="center_body_comparison.jpg"></details><details><summary>原始 neck 自动点叠加</summary><p>黄色为 neck，蓝色为 nose，绿色为肩；红十字为原刚体结果的模型 Neck，可能位于图外。neck 多位于图像下沿，不能确认精确解剖对应。</p><img src="neck_contact.jpg"></details>
+<details><summary>cam3 全部最终结果：左原流程，右新增约束</summary><img src="cam3_fused_comparison.jpg"></details>
+<details><summary>cam4 全部最终结果：左原流程，右新增约束</summary><img src="cam4_fused_comparison.jpg"></details>
+<div class="note">neck 对应仅作为不确定的内部 Neck 代理，容差为图像对角线的 2%（约 29.37 px）；分数及边缘位置降低其权重。头部约束参考原刚体结果：方向变化不超过 8°、距离不小于原值的 85%。这些是统一实验参数，未标定为真实相机—头部安装关系，也不代表所有场景通用。头部入图顶点数不代表可见面积或重建准确度。CSV/JSON 中的 head_guard_evaluation 对所有分支统一按新限制诊断；原流程与仅 neck 分支并未启用该硬限制，不能据此判为违反它们原有的规则。</div>
+<section><h2>cam3 · 18.422 s</h2><div class="scroll"><table><tr><th>方法</th><th>第二阶段身体 RMSE</th><th>最终身体 RMSE</th><th>最终手部 RMSE</th><th>最终 neck 偏差</th><th>局部交叉 左/右</th></tr>
+<tr><td>原流程</td><td>14.17 px</td><td>19.14 px</td><td>10.49 px</td><td>31.38 px</td><td>41 / 0</td></tr>
+<tr><td>颈部软约束＋头部几何限制</td><td>18.84 px</td><td>22.61 px</td><td>10.33 px</td><td>34.33 px</td><td>41 / 0</td></tr>
+</table></div>
+<details><summary>第二阶段逐关节点残差：检查误差转移到哪里</summary><div class="scroll"><table><tr><th>原有自动点</th><th>Sapiens 分数</th><th>原流程</th><th>颈部软约束＋头部几何限制</th></tr>
+<tr><td>nose</td><td>0.414</td><td>0.60 px</td><td>0.07 px</td></tr>
+<tr><td>left_shoulder</td><td>0.354</td><td>33.51 px</td><td>51.88 px</td></tr>
+<tr><td>right_shoulder</td><td>0.742</td><td>2.01 px</td><td>2.44 px</td></tr>
+<tr><td>left_elbow</td><td>0.832</td><td>3.64 px</td><td>3.53 px</td></tr>
+<tr><td>right_elbow</td><td>0.883</td><td>0.12 px</td><td>0.04 px</td></tr>
+<tr><td>left_wrist</td><td>0.863</td><td>12.93 px</td><td>20.00 px</td></tr>
+<tr><td>right_wrist</td><td>0.898</td><td>0.06 px</td><td>0.05 px</td></tr>
+<tr><td>left_hip</td><td>0.758</td><td>35.48 px</td><td>34.49 px</td></tr>
+<tr><td>right_hip</td><td>0.719</td><td>6.61 px</td><td>17.68 px</td></tr>
+<tr><td>left_knee</td><td>0.473</td><td>0.13 px</td><td>0.04 px</td></tr>
+<tr><td>right_knee</td><td>0.342</td><td>0.11 px</td><td>0.07 px</td></tr>
+<tr><td>left_ankle</td><td>0.395</td><td>0.03 px</td><td>0.02 px</td></tr>
+<tr><td>right_ankle</td><td>0.330</td><td>0.04 px</td><td>0.02 px</td></tr>
+</table></div></details>
+<details><summary>EgoSMPLX 原始预测</summary><div class="grid">
+<figure><a href="images/cam3_f00001094/original_raw.jpg"><img loading="lazy" src="images/cam3_f00001094/original_raw.jpg"></a><figcaption>原流程 · 身体 202.95 px · neck 287.8 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam3_f00001094/neck_guard_raw.jpg"><img loading="lazy" src="images/cam3_f00001094/neck_guard_raw.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 202.95 px · neck 287.8 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>原有刚体校正（保持一致）</summary><div class="grid">
+<figure><a href="images/cam3_f00001094/original_rigid.jpg"><img loading="lazy" src="images/cam3_f00001094/original_rigid.jpg"></a><figcaption>原流程 · 身体 45.73 px · neck 77.4 px · 入图头部顶点 97</figcaption></figure>
+<figure><a href="images/cam3_f00001094/neck_guard_rigid.jpg"><img loading="lazy" src="images/cam3_f00001094/neck_guard_rigid.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 45.73 px · neck 77.4 px · 入图头部顶点 97</figcaption></figure>
+</div></details>
+<details><summary>第二阶段身体姿态优化</summary><div class="grid">
+<figure><a href="images/cam3_f00001094/original_body.jpg"><img loading="lazy" src="images/cam3_f00001094/original_body.jpg"></a><figcaption>原流程 · 身体 14.17 px · neck 39.2 px · 入图头部顶点 164</figcaption></figure>
+<figure><a href="images/cam3_f00001094/neck_guard_body.jpg"><img loading="lazy" src="images/cam3_f00001094/neck_guard_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 18.84 px · neck 32.4 px · 入图头部顶点 106</figcaption></figure>
+</div></details>
+<details><summary>腕点校正</summary><div class="grid">
+<figure><a href="images/cam3_f00001094/original_wrist.jpg"><img loading="lazy" src="images/cam3_f00001094/original_wrist.jpg"></a><figcaption>原流程 · 身体 17.62 px · neck 35.6 px · 入图头部顶点 178</figcaption></figure>
+<figure><a href="images/cam3_f00001094/neck_guard_wrist.jpg"><img loading="lazy" src="images/cam3_f00001094/neck_guard_wrist.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 22.37 px · neck 32.4 px · 入图头部顶点 117</figcaption></figure>
+</div></details>
+<details><summary>轮廓候选选定身体</summary><div class="grid">
+<figure><a href="images/cam3_f00001094/original_contour.jpg"><img loading="lazy" src="images/cam3_f00001094/original_contour.jpg"></a><figcaption>原流程 · 身体 18.88 px · neck 31.7 px · 入图头部顶点 158</figcaption></figure>
+<figure><a href="images/cam3_f00001094/neck_guard_contour.jpg"><img loading="lazy" src="images/cam3_f00001094/neck_guard_contour.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 23.81 px · neck 32.4 px · 入图头部顶点 132</figcaption></figure>
+</div></details>
+<details><summary>MANO 辅助身体</summary><div class="grid">
+<figure><a href="images/cam3_f00001094/original_guided_body.jpg"><img loading="lazy" src="images/cam3_f00001094/original_guided_body.jpg"></a><figcaption>原流程 · 身体 19.14 px · neck 31.4 px · 入图头部顶点 111</figcaption></figure>
+<figure><a href="images/cam3_f00001094/neck_guard_guided_body.jpg"><img loading="lazy" src="images/cam3_f00001094/neck_guard_guided_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 22.61 px · neck 34.3 px · 入图头部顶点 111</figcaption></figure>
+</div></details>
+<details open><summary>最终原接缝融合</summary><div class="grid">
+<figure><a href="images/cam3_f00001094/original_fused.jpg"><img loading="lazy" src="images/cam3_f00001094/original_fused.jpg"></a><figcaption>原流程 · 身体 19.14 px · neck 31.4 px · 入图头部顶点 111</figcaption></figure>
+<figure><a href="images/cam3_f00001094/neck_guard_fused.jpg"><img loading="lazy" src="images/cam3_f00001094/neck_guard_fused.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 22.61 px · neck 34.3 px · 入图头部顶点 111</figcaption></figure>
+</div></details>
+<details><summary>导出可行性回退记录</summary><p>1 表示完整接受优化候选；0 表示回退到该阶段的参考输入。中间值表示插值缩步，不代表拟合精度。</p><pre>{
+  &quot;原流程&quot;: {
+    &quot;wrist/frames&quot;: 1.0,
+    &quot;wrist/active_frames&quot;: 1.0,
+    &quot;contour/active_frames&quot;: 1.0,
+    &quot;contour/strong_frames&quot;: 1.0,
+    &quot;guided/frames&quot;: 1.0
+  },
+  &quot;颈部软约束＋头部几何限制&quot;: {
+    &quot;wrist/frames&quot;: 0.5904900000000002,
+    &quot;wrist/active_frames&quot;: 1.0,
+    &quot;contour/active_frames&quot;: 1.0,
+    &quot;contour/strong_frames&quot;: 1.0,
+    &quot;guided/frames&quot;: 1.0
+  }
+}</pre></details>
+<details><summary>left 手腕相同区域放大</summary><img src="images/cam3_f00001094/left_comparison.jpg"></details>
+<details><summary>right 手腕相同区域放大</summary><img src="images/cam3_f00001094/right_comparison.jpg"></details>
+</section>
+<section><h2>cam3 · 18.927 s</h2><div class="scroll"><table><tr><th>方法</th><th>第二阶段身体 RMSE</th><th>最终身体 RMSE</th><th>最终手部 RMSE</th><th>最终 neck 偏差</th><th>局部交叉 左/右</th></tr>
+<tr><td>原流程</td><td>17.60 px</td><td>16.51 px</td><td>9.36 px</td><td>39.50 px</td><td>26 / 0</td></tr>
+<tr><td>颈部软约束＋头部几何限制</td><td>34.99 px</td><td>37.97 px</td><td>10.77 px</td><td>58.14 px</td><td>23 / 0</td></tr>
+</table></div>
+<details><summary>第二阶段逐关节点残差：检查误差转移到哪里</summary><div class="scroll"><table><tr><th>原有自动点</th><th>Sapiens 分数</th><th>原流程</th><th>颈部软约束＋头部几何限制</th></tr>
+<tr><td>nose</td><td>0.363</td><td>0.77 px</td><td>0.06 px</td></tr>
+<tr><td>left_shoulder</td><td>0.383</td><td>47.38 px</td><td>97.50 px</td></tr>
+<tr><td>right_shoulder</td><td>0.695</td><td>4.26 px</td><td>17.83 px</td></tr>
+<tr><td>left_elbow</td><td>0.789</td><td>3.42 px</td><td>7.73 px</td></tr>
+<tr><td>right_elbow</td><td>0.824</td><td>1.63 px</td><td>12.09 px</td></tr>
+<tr><td>left_wrist</td><td>0.820</td><td>3.49 px</td><td>16.49 px</td></tr>
+<tr><td>right_wrist</td><td>0.852</td><td>0.93 px</td><td>4.17 px</td></tr>
+<tr><td>left_hip</td><td>0.668</td><td>21.43 px</td><td>37.65 px</td></tr>
+<tr><td>right_hip</td><td>0.648</td><td>18.65 px</td><td>22.54 px</td></tr>
+<tr><td>left_knee</td><td>0.355</td><td>0.11 px</td><td>0.19 px</td></tr>
+</table></div></details>
+<details><summary>EgoSMPLX 原始预测</summary><div class="grid">
+<figure><a href="images/cam3_f00001124/original_raw.jpg"><img loading="lazy" src="images/cam3_f00001124/original_raw.jpg"></a><figcaption>原流程 · 身体 216.21 px · neck 261.8 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam3_f00001124/neck_guard_raw.jpg"><img loading="lazy" src="images/cam3_f00001124/neck_guard_raw.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 216.21 px · neck 261.8 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>原有刚体校正（保持一致）</summary><div class="grid">
+<figure><a href="images/cam3_f00001124/original_rigid.jpg"><img loading="lazy" src="images/cam3_f00001124/original_rigid.jpg"></a><figcaption>原流程 · 身体 51.46 px · neck 52.1 px · 入图头部顶点 201</figcaption></figure>
+<figure><a href="images/cam3_f00001124/neck_guard_rigid.jpg"><img loading="lazy" src="images/cam3_f00001124/neck_guard_rigid.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 51.46 px · neck 52.1 px · 入图头部顶点 201</figcaption></figure>
+</div></details>
+<details><summary>第二阶段身体姿态优化</summary><div class="grid">
+<figure><a href="images/cam3_f00001124/original_body.jpg"><img loading="lazy" src="images/cam3_f00001124/original_body.jpg"></a><figcaption>原流程 · 身体 17.60 px · neck 42.6 px · 入图头部顶点 173</figcaption></figure>
+<figure><a href="images/cam3_f00001124/neck_guard_body.jpg"><img loading="lazy" src="images/cam3_f00001124/neck_guard_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 34.99 px · neck 44.6 px · 入图头部顶点 191</figcaption></figure>
+</div></details>
+<details><summary>腕点校正</summary><div class="grid">
+<figure><a href="images/cam3_f00001124/original_wrist.jpg"><img loading="lazy" src="images/cam3_f00001124/original_wrist.jpg"></a><figcaption>原流程 · 身体 19.58 px · neck 44.4 px · 入图头部顶点 182</figcaption></figure>
+<figure><a href="images/cam3_f00001124/neck_guard_wrist.jpg"><img loading="lazy" src="images/cam3_f00001124/neck_guard_wrist.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 39.30 px · neck 57.0 px · 入图头部顶点 186</figcaption></figure>
+</div></details>
+<details><summary>轮廓候选选定身体</summary><div class="grid">
+<figure><a href="images/cam3_f00001124/original_contour.jpg"><img loading="lazy" src="images/cam3_f00001124/original_contour.jpg"></a><figcaption>原流程 · 身体 20.45 px · neck 43.8 px · 入图头部顶点 189</figcaption></figure>
+<figure><a href="images/cam3_f00001124/neck_guard_contour.jpg"><img loading="lazy" src="images/cam3_f00001124/neck_guard_contour.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 39.95 px · neck 60.2 px · 入图头部顶点 166</figcaption></figure>
+</div></details>
+<details><summary>MANO 辅助身体</summary><div class="grid">
+<figure><a href="images/cam3_f00001124/original_guided_body.jpg"><img loading="lazy" src="images/cam3_f00001124/original_guided_body.jpg"></a><figcaption>原流程 · 身体 16.51 px · neck 39.5 px · 入图头部顶点 174</figcaption></figure>
+<figure><a href="images/cam3_f00001124/neck_guard_guided_body.jpg"><img loading="lazy" src="images/cam3_f00001124/neck_guard_guided_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 37.97 px · neck 58.1 px · 入图头部顶点 184</figcaption></figure>
+</div></details>
+<details open><summary>最终原接缝融合</summary><div class="grid">
+<figure><a href="images/cam3_f00001124/original_fused.jpg"><img loading="lazy" src="images/cam3_f00001124/original_fused.jpg"></a><figcaption>原流程 · 身体 16.51 px · neck 39.5 px · 入图头部顶点 174</figcaption></figure>
+<figure><a href="images/cam3_f00001124/neck_guard_fused.jpg"><img loading="lazy" src="images/cam3_f00001124/neck_guard_fused.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 37.97 px · neck 58.1 px · 入图头部顶点 184</figcaption></figure>
+</div></details>
+<details><summary>导出可行性回退记录</summary><p>1 表示完整接受优化候选；0 表示回退到该阶段的参考输入。中间值表示插值缩步，不代表拟合精度。</p><pre>{
+  &quot;原流程&quot;: {
+    &quot;wrist/frames&quot;: 0.9,
+    &quot;wrist/active_frames&quot;: 1.0,
+    &quot;contour/active_frames&quot;: 1.0,
+    &quot;contour/strong_frames&quot;: 1.0,
+    &quot;guided/frames&quot;: 1.0
+  },
+  &quot;颈部软约束＋头部几何限制&quot;: {
+    &quot;wrist/frames&quot;: 1.0,
+    &quot;wrist/active_frames&quot;: 0.9,
+    &quot;contour/active_frames&quot;: 0.9,
+    &quot;contour/strong_frames&quot;: 1.0,
+    &quot;guided/frames&quot;: 1.0
+  }
+}</pre></details>
+<details><summary>left 手腕相同区域放大</summary><img src="images/cam3_f00001124/left_comparison.jpg"></details>
+<details><summary>right 手腕相同区域放大</summary><img src="images/cam3_f00001124/right_comparison.jpg"></details>
+</section>
+<section><h2>cam3 · 19.416 s</h2><div class="scroll"><table><tr><th>方法</th><th>第二阶段身体 RMSE</th><th>最终身体 RMSE</th><th>最终手部 RMSE</th><th>最终 neck 偏差</th><th>局部交叉 左/右</th></tr>
+<tr><td>原流程</td><td>7.04 px</td><td>9.04 px</td><td>9.39 px</td><td>18.39 px</td><td>16 / 19</td></tr>
+<tr><td>颈部软约束＋头部几何限制</td><td>38.64 px</td><td>38.64 px</td><td>17.77 px</td><td>35.50 px</td><td>21 / 0</td></tr>
+<tr><td>仅颈部软约束</td><td>7.03 px</td><td>8.89 px</td><td>8.32 px</td><td>17.36 px</td><td>18 / 19</td></tr>
+</table></div>
+<details><summary>第二阶段逐关节点残差：检查误差转移到哪里</summary><div class="scroll"><table><tr><th>原有自动点</th><th>Sapiens 分数</th><th>原流程</th><th>颈部软约束＋头部几何限制</th><th>仅颈部软约束</th></tr>
+<tr><td>left_shoulder</td><td>0.484</td><td>3.26 px</td><td>78.44 px</td><td>3.45 px</td></tr>
+<tr><td>right_shoulder</td><td>0.652</td><td>3.03 px</td><td>82.42 px</td><td>2.96 px</td></tr>
+<tr><td>left_elbow</td><td>0.848</td><td>0.41 px</td><td>17.60 px</td><td>0.47 px</td></tr>
+<tr><td>right_elbow</td><td>0.863</td><td>1.46 px</td><td>20.76 px</td><td>1.39 px</td></tr>
+<tr><td>left_wrist</td><td>0.895</td><td>0.54 px</td><td>16.08 px</td><td>0.57 px</td></tr>
+<tr><td>right_wrist</td><td>0.883</td><td>1.44 px</td><td>3.90 px</td><td>1.53 px</td></tr>
+<tr><td>left_hip</td><td>0.703</td><td>20.09 px</td><td>25.95 px</td><td>20.03 px</td></tr>
+<tr><td>right_hip</td><td>0.695</td><td>8.21 px</td><td>17.29 px</td><td>8.17 px</td></tr>
+<tr><td>left_knee</td><td>0.426</td><td>0.26 px</td><td>0.11 px</td><td>0.26 px</td></tr>
+<tr><td>left_ankle</td><td>0.305</td><td>0.15 px</td><td>0.04 px</td><td>0.14 px</td></tr>
+</table></div></details>
+<details><summary>EgoSMPLX 原始预测</summary><div class="grid">
+<figure><a href="images/cam3_f00001153/original_raw.jpg"><img loading="lazy" src="images/cam3_f00001153/original_raw.jpg"></a><figcaption>原流程 · 身体 211.52 px · neck 204.7 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam3_f00001153/neck_guard_raw.jpg"><img loading="lazy" src="images/cam3_f00001153/neck_guard_raw.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 211.52 px · neck 204.7 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam3_f00001153/neck_only_raw.jpg"><img loading="lazy" src="images/cam3_f00001153/neck_only_raw.jpg"></a><figcaption>仅颈部软约束 · 身体 211.52 px · neck 204.7 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>原有刚体校正（保持一致）</summary><div class="grid">
+<figure><a href="images/cam3_f00001153/original_rigid.jpg"><img loading="lazy" src="images/cam3_f00001153/original_rigid.jpg"></a><figcaption>原流程 · 身体 59.40 px · neck 43.6 px · 入图头部顶点 30</figcaption></figure>
+<figure><a href="images/cam3_f00001153/neck_guard_rigid.jpg"><img loading="lazy" src="images/cam3_f00001153/neck_guard_rigid.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 59.40 px · neck 43.6 px · 入图头部顶点 30</figcaption></figure>
+<figure><a href="images/cam3_f00001153/neck_only_rigid.jpg"><img loading="lazy" src="images/cam3_f00001153/neck_only_rigid.jpg"></a><figcaption>仅颈部软约束 · 身体 59.40 px · neck 43.6 px · 入图头部顶点 30</figcaption></figure>
+</div></details>
+<details><summary>第二阶段身体姿态优化</summary><div class="grid">
+<figure><a href="images/cam3_f00001153/original_body.jpg"><img loading="lazy" src="images/cam3_f00001153/original_body.jpg"></a><figcaption>原流程 · 身体 7.04 px · neck 31.5 px · 入图头部顶点 2573</figcaption></figure>
+<figure><a href="images/cam3_f00001153/neck_guard_body.jpg"><img loading="lazy" src="images/cam3_f00001153/neck_guard_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 38.64 px · neck 35.5 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam3_f00001153/neck_only_body.jpg"><img loading="lazy" src="images/cam3_f00001153/neck_only_body.jpg"></a><figcaption>仅颈部软约束 · 身体 7.03 px · neck 31.0 px · 入图头部顶点 2576</figcaption></figure>
+</div></details>
+<details><summary>腕点校正</summary><div class="grid">
+<figure><a href="images/cam3_f00001153/original_wrist.jpg"><img loading="lazy" src="images/cam3_f00001153/original_wrist.jpg"></a><figcaption>原流程 · 身体 8.21 px · neck 25.3 px · 入图头部顶点 2797</figcaption></figure>
+<figure><a href="images/cam3_f00001153/neck_guard_wrist.jpg"><img loading="lazy" src="images/cam3_f00001153/neck_guard_wrist.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 38.64 px · neck 35.5 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam3_f00001153/neck_only_wrist.jpg"><img loading="lazy" src="images/cam3_f00001153/neck_only_wrist.jpg"></a><figcaption>仅颈部软约束 · 身体 8.31 px · neck 24.5 px · 入图头部顶点 2814</figcaption></figure>
+</div></details>
+<details><summary>轮廓候选选定身体</summary><div class="grid">
+<figure><a href="images/cam3_f00001153/original_contour.jpg"><img loading="lazy" src="images/cam3_f00001153/original_contour.jpg"></a><figcaption>原流程 · 身体 8.63 px · neck 24.8 px · 入图头部顶点 2951</figcaption></figure>
+<figure><a href="images/cam3_f00001153/neck_guard_contour.jpg"><img loading="lazy" src="images/cam3_f00001153/neck_guard_contour.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 38.64 px · neck 35.5 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam3_f00001153/neck_only_contour.jpg"><img loading="lazy" src="images/cam3_f00001153/neck_only_contour.jpg"></a><figcaption>仅颈部软约束 · 身体 8.66 px · neck 24.3 px · 入图头部顶点 2989</figcaption></figure>
+</div></details>
+<details><summary>MANO 辅助身体</summary><div class="grid">
+<figure><a href="images/cam3_f00001153/original_guided_body.jpg"><img loading="lazy" src="images/cam3_f00001153/original_guided_body.jpg"></a><figcaption>原流程 · 身体 9.04 px · neck 18.4 px · 入图头部顶点 2577</figcaption></figure>
+<figure><a href="images/cam3_f00001153/neck_guard_guided_body.jpg"><img loading="lazy" src="images/cam3_f00001153/neck_guard_guided_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 38.64 px · neck 35.5 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam3_f00001153/neck_only_guided_body.jpg"><img loading="lazy" src="images/cam3_f00001153/neck_only_guided_body.jpg"></a><figcaption>仅颈部软约束 · 身体 8.89 px · neck 17.4 px · 入图头部顶点 2622</figcaption></figure>
+</div></details>
+<details open><summary>最终原接缝融合</summary><div class="grid">
+<figure><a href="images/cam3_f00001153/original_fused.jpg"><img loading="lazy" src="images/cam3_f00001153/original_fused.jpg"></a><figcaption>原流程 · 身体 9.04 px · neck 18.4 px · 入图头部顶点 2577</figcaption></figure>
+<figure><a href="images/cam3_f00001153/neck_guard_fused.jpg"><img loading="lazy" src="images/cam3_f00001153/neck_guard_fused.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 38.64 px · neck 35.5 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam3_f00001153/neck_only_fused.jpg"><img loading="lazy" src="images/cam3_f00001153/neck_only_fused.jpg"></a><figcaption>仅颈部软约束 · 身体 8.89 px · neck 17.4 px · 入图头部顶点 2622</figcaption></figure>
+</div></details>
+<details><summary>导出可行性回退记录</summary><p>1 表示完整接受优化候选；0 表示回退到该阶段的参考输入。中间值表示插值缩步，不代表拟合精度。</p><pre>{
+  &quot;原流程&quot;: {
+    &quot;wrist/frames&quot;: 1.0,
+    &quot;wrist/active_frames&quot;: 1.0,
+    &quot;contour/active_frames&quot;: 1.0,
+    &quot;contour/strong_frames&quot;: 1.0,
+    &quot;guided/frames&quot;: 1.0
+  },
+  &quot;颈部软约束＋头部几何限制&quot;: {
+    &quot;wrist/frames&quot;: 1.0,
+    &quot;wrist/active_frames&quot;: 0.0,
+    &quot;contour/active_frames&quot;: 0.0,
+    &quot;contour/strong_frames&quot;: 0.0,
+    &quot;guided/frames&quot;: 0.38742048900000015
+  },
+  &quot;仅颈部软约束&quot;: {
+    &quot;wrist/frames&quot;: 0.81,
+    &quot;wrist/active_frames&quot;: 1.0,
+    &quot;contour/active_frames&quot;: 1.0,
+    &quot;contour/strong_frames&quot;: 1.0,
+    &quot;guided/frames&quot;: 0.9
+  }
+}</pre></details>
+<details><summary>left 手腕相同区域放大</summary><img src="images/cam3_f00001153/left_comparison.jpg"></details>
+<details><summary>right 手腕相同区域放大</summary><img src="images/cam3_f00001153/right_comparison.jpg"></details>
+</section>
+<section><h2>cam3 · 19.904 s</h2><div class="scroll"><table><tr><th>方法</th><th>第二阶段身体 RMSE</th><th>最终身体 RMSE</th><th>最终手部 RMSE</th><th>最终 neck 偏差</th><th>局部交叉 左/右</th></tr>
+<tr><td>原流程</td><td>18.74 px</td><td>18.96 px</td><td>11.22 px</td><td>45.51 px</td><td>0 / 0</td></tr>
+<tr><td>颈部软约束＋头部几何限制</td><td>29.00 px</td><td>30.49 px</td><td>4.48 px</td><td>38.96 px</td><td>0 / 0</td></tr>
+</table></div>
+<details><summary>第二阶段逐关节点残差：检查误差转移到哪里</summary><div class="scroll"><table><tr><th>原有自动点</th><th>Sapiens 分数</th><th>原流程</th><th>颈部软约束＋头部几何限制</th></tr>
+<tr><td>left_shoulder</td><td>0.625</td><td>3.65 px</td><td>61.94 px</td></tr>
+<tr><td>right_shoulder</td><td>0.750</td><td>48.23 px</td><td>54.60 px</td></tr>
+<tr><td>left_elbow</td><td>0.898</td><td>15.02 px</td><td>20.28 px</td></tr>
+<tr><td>right_elbow</td><td>0.918</td><td>0.87 px</td><td>16.34 px</td></tr>
+<tr><td>left_wrist</td><td>0.977</td><td>4.18 px</td><td>4.03 px</td></tr>
+<tr><td>right_wrist</td><td>0.930</td><td>0.65 px</td><td>2.66 px</td></tr>
+<tr><td>left_hip</td><td>0.727</td><td>35.51 px</td><td>41.24 px</td></tr>
+<tr><td>right_hip</td><td>0.797</td><td>19.21 px</td><td>29.53 px</td></tr>
+<tr><td>left_knee</td><td>0.691</td><td>0.07 px</td><td>0.04 px</td></tr>
+<tr><td>right_knee</td><td>0.633</td><td>0.09 px</td><td>0.05 px</td></tr>
+<tr><td>left_ankle</td><td>0.523</td><td>0.04 px</td><td>0.02 px</td></tr>
+<tr><td>right_ankle</td><td>0.449</td><td>0.04 px</td><td>0.01 px</td></tr>
+</table></div></details>
+<details><summary>EgoSMPLX 原始预测</summary><div class="grid">
+<figure><a href="images/cam3_f00001182/original_raw.jpg"><img loading="lazy" src="images/cam3_f00001182/original_raw.jpg"></a><figcaption>原流程 · 身体 224.77 px · neck 140.3 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam3_f00001182/neck_guard_raw.jpg"><img loading="lazy" src="images/cam3_f00001182/neck_guard_raw.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 224.77 px · neck 140.3 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>原有刚体校正（保持一致）</summary><div class="grid">
+<figure><a href="images/cam3_f00001182/original_rigid.jpg"><img loading="lazy" src="images/cam3_f00001182/original_rigid.jpg"></a><figcaption>原流程 · 身体 60.08 px · neck 99.7 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam3_f00001182/neck_guard_rigid.jpg"><img loading="lazy" src="images/cam3_f00001182/neck_guard_rigid.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 60.08 px · neck 99.7 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>第二阶段身体姿态优化</summary><div class="grid">
+<figure><a href="images/cam3_f00001182/original_body.jpg"><img loading="lazy" src="images/cam3_f00001182/original_body.jpg"></a><figcaption>原流程 · 身体 18.74 px · neck 71.0 px · 入图头部顶点 397</figcaption></figure>
+<figure><a href="images/cam3_f00001182/neck_guard_body.jpg"><img loading="lazy" src="images/cam3_f00001182/neck_guard_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 29.00 px · neck 37.5 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>腕点校正</summary><div class="grid">
+<figure><a href="images/cam3_f00001182/original_wrist.jpg"><img loading="lazy" src="images/cam3_f00001182/original_wrist.jpg"></a><figcaption>原流程 · 身体 19.51 px · neck 69.9 px · 入图头部顶点 507</figcaption></figure>
+<figure><a href="images/cam3_f00001182/neck_guard_wrist.jpg"><img loading="lazy" src="images/cam3_f00001182/neck_guard_wrist.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 30.49 px · neck 39.1 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>轮廓候选选定身体</summary><div class="grid">
+<figure><a href="images/cam3_f00001182/original_contour.jpg"><img loading="lazy" src="images/cam3_f00001182/original_contour.jpg"></a><figcaption>原流程 · 身体 19.98 px · neck 67.3 px · 入图头部顶点 670</figcaption></figure>
+<figure><a href="images/cam3_f00001182/neck_guard_contour.jpg"><img loading="lazy" src="images/cam3_f00001182/neck_guard_contour.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 30.49 px · neck 39.0 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>MANO 辅助身体</summary><div class="grid">
+<figure><a href="images/cam3_f00001182/original_guided_body.jpg"><img loading="lazy" src="images/cam3_f00001182/original_guided_body.jpg"></a><figcaption>原流程 · 身体 18.96 px · neck 45.5 px · 入图头部顶点 491</figcaption></figure>
+<figure><a href="images/cam3_f00001182/neck_guard_guided_body.jpg"><img loading="lazy" src="images/cam3_f00001182/neck_guard_guided_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 30.49 px · neck 39.0 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details open><summary>最终原接缝融合</summary><div class="grid">
+<figure><a href="images/cam3_f00001182/original_fused.jpg"><img loading="lazy" src="images/cam3_f00001182/original_fused.jpg"></a><figcaption>原流程 · 身体 18.96 px · neck 45.5 px · 入图头部顶点 491</figcaption></figure>
+<figure><a href="images/cam3_f00001182/neck_guard_fused.jpg"><img loading="lazy" src="images/cam3_f00001182/neck_guard_fused.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 30.49 px · neck 39.0 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>导出可行性回退记录</summary><p>1 表示完整接受优化候选；0 表示回退到该阶段的参考输入。中间值表示插值缩步，不代表拟合精度。</p><pre>{
+  &quot;原流程&quot;: {
+    &quot;wrist/frames&quot;: 1.0,
+    &quot;wrist/active_frames&quot;: 1.0,
+    &quot;contour/active_frames&quot;: 1.0,
+    &quot;contour/strong_frames&quot;: 1.0,
+    &quot;guided/frames&quot;: 1.0
+  },
+  &quot;颈部软约束＋头部几何限制&quot;: {
+    &quot;wrist/frames&quot;: 1.0,
+    &quot;wrist/active_frames&quot;: 1.0,
+    &quot;contour/active_frames&quot;: 0.1500946352969992,
+    &quot;contour/strong_frames&quot;: 0.0,
+    &quot;guided/frames&quot;: 0.0
+  }
+}</pre></details>
+<details><summary>left 手腕相同区域放大</summary><img src="images/cam3_f00001182/left_comparison.jpg"></details>
+<details><summary>right 手腕相同区域放大</summary><img src="images/cam3_f00001182/right_comparison.jpg"></details>
+</section>
+<section><h2>cam3 · 20.409 s</h2><div class="scroll"><table><tr><th>方法</th><th>第二阶段身体 RMSE</th><th>最终身体 RMSE</th><th>最终手部 RMSE</th><th>最终 neck 偏差</th><th>局部交叉 左/右</th></tr>
+<tr><td>原流程</td><td>28.44 px</td><td>27.74 px</td><td>12.31 px</td><td>22.94 px</td><td>0 / 0</td></tr>
+<tr><td>颈部软约束＋头部几何限制</td><td>59.42 px</td><td>55.91 px</td><td>7.00 px</td><td>89.82 px</td><td>0 / 2</td></tr>
+</table></div>
+<details><summary>第二阶段逐关节点残差：检查误差转移到哪里</summary><div class="scroll"><table><tr><th>原有自动点</th><th>Sapiens 分数</th><th>原流程</th><th>颈部软约束＋头部几何限制</th></tr>
+<tr><td>nose</td><td>0.367</td><td>0.91 px</td><td>53.69 px</td></tr>
+<tr><td>left_shoulder</td><td>0.688</td><td>59.95 px</td><td>54.47 px</td></tr>
+<tr><td>right_shoulder</td><td>0.781</td><td>74.82 px</td><td>169.14 px</td></tr>
+<tr><td>left_elbow</td><td>0.914</td><td>20.57 px</td><td>72.78 px</td></tr>
+<tr><td>right_elbow</td><td>0.906</td><td>1.29 px</td><td>51.15 px</td></tr>
+<tr><td>left_wrist</td><td>1.008</td><td>3.67 px</td><td>2.26 px</td></tr>
+<tr><td>right_wrist</td><td>0.934</td><td>1.15 px</td><td>0.23 px</td></tr>
+<tr><td>left_hip</td><td>0.797</td><td>26.71 px</td><td>21.57 px</td></tr>
+<tr><td>right_hip</td><td>0.844</td><td>12.94 px</td><td>51.85 px</td></tr>
+<tr><td>left_knee</td><td>0.758</td><td>0.07 px</td><td>16.55 px</td></tr>
+<tr><td>right_knee</td><td>0.859</td><td>0.09 px</td><td>9.44 px</td></tr>
+<tr><td>left_ankle</td><td>0.688</td><td>0.02 px</td><td>1.87 px</td></tr>
+<tr><td>right_ankle</td><td>0.680</td><td>0.04 px</td><td>1.10 px</td></tr>
+</table></div></details>
+<details><summary>EgoSMPLX 原始预测</summary><div class="grid">
+<figure><a href="images/cam3_f00001212/original_raw.jpg"><img loading="lazy" src="images/cam3_f00001212/original_raw.jpg"></a><figcaption>原流程 · 身体 256.40 px · neck 147.5 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam3_f00001212/neck_guard_raw.jpg"><img loading="lazy" src="images/cam3_f00001212/neck_guard_raw.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 256.40 px · neck 147.5 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>原有刚体校正（保持一致）</summary><div class="grid">
+<figure><a href="images/cam3_f00001212/original_rigid.jpg"><img loading="lazy" src="images/cam3_f00001212/original_rigid.jpg"></a><figcaption>原流程 · 身体 82.93 px · neck 94.1 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam3_f00001212/neck_guard_rigid.jpg"><img loading="lazy" src="images/cam3_f00001212/neck_guard_rigid.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 82.93 px · neck 94.1 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>第二阶段身体姿态优化</summary><div class="grid">
+<figure><a href="images/cam3_f00001212/original_body.jpg"><img loading="lazy" src="images/cam3_f00001212/original_body.jpg"></a><figcaption>原流程 · 身体 28.44 px · neck 28.5 px · 入图头部顶点 406</figcaption></figure>
+<figure><a href="images/cam3_f00001212/neck_guard_body.jpg"><img loading="lazy" src="images/cam3_f00001212/neck_guard_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 59.42 px · neck 100.3 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>腕点校正</summary><div class="grid">
+<figure><a href="images/cam3_f00001212/original_wrist.jpg"><img loading="lazy" src="images/cam3_f00001212/original_wrist.jpg"></a><figcaption>原流程 · 身体 30.64 px · neck 32.0 px · 入图头部顶点 273</figcaption></figure>
+<figure><a href="images/cam3_f00001212/neck_guard_wrist.jpg"><img loading="lazy" src="images/cam3_f00001212/neck_guard_wrist.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 55.57 px · neck 86.4 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>轮廓候选选定身体</summary><div class="grid">
+<figure><a href="images/cam3_f00001212/original_contour.jpg"><img loading="lazy" src="images/cam3_f00001212/original_contour.jpg"></a><figcaption>原流程 · 身体 30.25 px · neck 27.6 px · 入图头部顶点 313</figcaption></figure>
+<figure><a href="images/cam3_f00001212/neck_guard_contour.jpg"><img loading="lazy" src="images/cam3_f00001212/neck_guard_contour.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 55.84 px · neck 87.4 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>MANO 辅助身体</summary><div class="grid">
+<figure><a href="images/cam3_f00001212/original_guided_body.jpg"><img loading="lazy" src="images/cam3_f00001212/original_guided_body.jpg"></a><figcaption>原流程 · 身体 27.74 px · neck 22.9 px · 入图头部顶点 400</figcaption></figure>
+<figure><a href="images/cam3_f00001212/neck_guard_guided_body.jpg"><img loading="lazy" src="images/cam3_f00001212/neck_guard_guided_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 55.91 px · neck 89.8 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details open><summary>最终原接缝融合</summary><div class="grid">
+<figure><a href="images/cam3_f00001212/original_fused.jpg"><img loading="lazy" src="images/cam3_f00001212/original_fused.jpg"></a><figcaption>原流程 · 身体 27.74 px · neck 22.9 px · 入图头部顶点 400</figcaption></figure>
+<figure><a href="images/cam3_f00001212/neck_guard_fused.jpg"><img loading="lazy" src="images/cam3_f00001212/neck_guard_fused.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 55.91 px · neck 89.8 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>导出可行性回退记录</summary><p>1 表示完整接受优化候选；0 表示回退到该阶段的参考输入。中间值表示插值缩步，不代表拟合精度。</p><pre>{
+  &quot;原流程&quot;: {
+    &quot;wrist/frames&quot;: 0.9,
+    &quot;wrist/active_frames&quot;: 1.0,
+    &quot;contour/active_frames&quot;: 1.0,
+    &quot;contour/strong_frames&quot;: 1.0,
+    &quot;guided/frames&quot;: 1.0
+  },
+  &quot;颈部软约束＋头部几何限制&quot;: {
+    &quot;wrist/frames&quot;: 1.0,
+    &quot;wrist/active_frames&quot;: 0.9,
+    &quot;contour/active_frames&quot;: 0.9,
+    &quot;contour/strong_frames&quot;: 1.0,
+    &quot;guided/frames&quot;: 0.43046721000000016
+  }
+}</pre></details>
+<details><summary>left 手腕相同区域放大</summary><img src="images/cam3_f00001212/left_comparison.jpg"></details>
+<details><summary>right 手腕相同区域放大</summary><img src="images/cam3_f00001212/right_comparison.jpg"></details>
+</section>
+<section><h2>cam4 · 18.409 s</h2><div class="scroll"><table><tr><th>方法</th><th>第二阶段身体 RMSE</th><th>最终身体 RMSE</th><th>最终手部 RMSE</th><th>最终 neck 偏差</th><th>局部交叉 左/右</th></tr>
+<tr><td>原流程</td><td>8.09 px</td><td>10.99 px</td><td>8.62 px</td><td>11.74 px</td><td>45 / 0</td></tr>
+<tr><td>颈部软约束＋头部几何限制</td><td>27.57 px</td><td>29.09 px</td><td>8.86 px</td><td>54.98 px</td><td>23 / 0</td></tr>
+</table></div>
+<details><summary>第二阶段逐关节点残差：检查误差转移到哪里</summary><div class="scroll"><table><tr><th>原有自动点</th><th>Sapiens 分数</th><th>原流程</th><th>颈部软约束＋头部几何限制</th></tr>
+<tr><td>left_shoulder</td><td>0.617</td><td>3.72 px</td><td>4.47 px</td></tr>
+<tr><td>right_shoulder</td><td>0.324</td><td>9.31 px</td><td>75.99 px</td></tr>
+<tr><td>left_elbow</td><td>0.875</td><td>0.20 px</td><td>0.07 px</td></tr>
+<tr><td>right_elbow</td><td>0.801</td><td>2.86 px</td><td>0.24 px</td></tr>
+<tr><td>left_wrist</td><td>0.844</td><td>0.24 px</td><td>0.05 px</td></tr>
+<tr><td>right_wrist</td><td>0.867</td><td>2.63 px</td><td>0.02 px</td></tr>
+<tr><td>left_hip</td><td>0.625</td><td>15.82 px</td><td>3.81 px</td></tr>
+<tr><td>right_hip</td><td>0.656</td><td>14.92 px</td><td>32.09 px</td></tr>
+<tr><td>right_ankle</td><td>0.316</td><td>0.02 px</td><td>0.02 px</td></tr>
+</table></div></details>
+<details><summary>EgoSMPLX 原始预测</summary><div class="grid">
+<figure><a href="images/cam4_f00001088/original_raw.jpg"><img loading="lazy" src="images/cam4_f00001088/original_raw.jpg"></a><figcaption>原流程 · 身体 150.19 px · neck 327.5 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001088/neck_guard_raw.jpg"><img loading="lazy" src="images/cam4_f00001088/neck_guard_raw.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 150.19 px · neck 327.5 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>原有刚体校正（保持一致）</summary><div class="grid">
+<figure><a href="images/cam4_f00001088/original_rigid.jpg"><img loading="lazy" src="images/cam4_f00001088/original_rigid.jpg"></a><figcaption>原流程 · 身体 60.48 px · neck 136.2 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001088/neck_guard_rigid.jpg"><img loading="lazy" src="images/cam4_f00001088/neck_guard_rigid.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 60.48 px · neck 136.2 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>第二阶段身体姿态优化</summary><div class="grid">
+<figure><a href="images/cam4_f00001088/original_body.jpg"><img loading="lazy" src="images/cam4_f00001088/original_body.jpg"></a><figcaption>原流程 · 身体 8.09 px · neck 14.6 px · 入图头部顶点 3042</figcaption></figure>
+<figure><a href="images/cam4_f00001088/neck_guard_body.jpg"><img loading="lazy" src="images/cam4_f00001088/neck_guard_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 27.57 px · neck 51.5 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>腕点校正</summary><div class="grid">
+<figure><a href="images/cam4_f00001088/original_wrist.jpg"><img loading="lazy" src="images/cam4_f00001088/original_wrist.jpg"></a><figcaption>原流程 · 身体 9.43 px · neck 11.3 px · 入图头部顶点 3003</figcaption></figure>
+<figure><a href="images/cam4_f00001088/neck_guard_wrist.jpg"><img loading="lazy" src="images/cam4_f00001088/neck_guard_wrist.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 29.37 px · neck 52.7 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>轮廓候选选定身体</summary><div class="grid">
+<figure><a href="images/cam4_f00001088/original_contour.jpg"><img loading="lazy" src="images/cam4_f00001088/original_contour.jpg"></a><figcaption>原流程 · 身体 10.56 px · neck 5.7 px · 入图头部顶点 3086</figcaption></figure>
+<figure><a href="images/cam4_f00001088/neck_guard_contour.jpg"><img loading="lazy" src="images/cam4_f00001088/neck_guard_contour.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 29.60 px · neck 51.7 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>MANO 辅助身体</summary><div class="grid">
+<figure><a href="images/cam4_f00001088/original_guided_body.jpg"><img loading="lazy" src="images/cam4_f00001088/original_guided_body.jpg"></a><figcaption>原流程 · 身体 10.99 px · neck 11.7 px · 入图头部顶点 2946</figcaption></figure>
+<figure><a href="images/cam4_f00001088/neck_guard_guided_body.jpg"><img loading="lazy" src="images/cam4_f00001088/neck_guard_guided_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 29.09 px · neck 55.0 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details open><summary>最终原接缝融合</summary><div class="grid">
+<figure><a href="images/cam4_f00001088/original_fused.jpg"><img loading="lazy" src="images/cam4_f00001088/original_fused.jpg"></a><figcaption>原流程 · 身体 10.99 px · neck 11.7 px · 入图头部顶点 2946</figcaption></figure>
+<figure><a href="images/cam4_f00001088/neck_guard_fused.jpg"><img loading="lazy" src="images/cam4_f00001088/neck_guard_fused.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 29.09 px · neck 55.0 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>导出可行性回退记录</summary><p>1 表示完整接受优化候选；0 表示回退到该阶段的参考输入。中间值表示插值缩步，不代表拟合精度。</p><pre>{
+  &quot;原流程&quot;: {
+    &quot;wrist/frames&quot;: 1.0,
+    &quot;wrist/active_frames&quot;: 1.0,
+    &quot;contour/active_frames&quot;: 1.0,
+    &quot;contour/strong_frames&quot;: 1.0,
+    &quot;guided/frames&quot;: 1.0
+  },
+  &quot;颈部软约束＋头部几何限制&quot;: {
+    &quot;wrist/frames&quot;: 1.0,
+    &quot;wrist/active_frames&quot;: 1.0,
+    &quot;contour/active_frames&quot;: 0.28242953648100017,
+    &quot;contour/strong_frames&quot;: 0.16677181699666577,
+    &quot;guided/frames&quot;: 1.0
+  }
+}</pre></details>
+<details><summary>left 手腕相同区域放大</summary><img src="images/cam4_f00001088/left_comparison.jpg"></details>
+<details><summary>right 手腕相同区域放大</summary><img src="images/cam4_f00001088/right_comparison.jpg"></details>
+</section>
+<section><h2>cam4 · 18.917 s</h2><div class="scroll"><table><tr><th>方法</th><th>第二阶段身体 RMSE</th><th>最终身体 RMSE</th><th>最终手部 RMSE</th><th>最终 neck 偏差</th><th>局部交叉 左/右</th></tr>
+<tr><td>原流程</td><td>8.08 px</td><td>9.20 px</td><td>8.87 px</td><td>13.56 px</td><td>0 / 0</td></tr>
+<tr><td>颈部软约束＋头部几何限制</td><td>14.69 px</td><td>16.58 px</td><td>9.80 px</td><td>58.17 px</td><td>0 / 0</td></tr>
+</table></div>
+<details><summary>第二阶段逐关节点残差：检查误差转移到哪里</summary><div class="scroll"><table><tr><th>原有自动点</th><th>Sapiens 分数</th><th>原流程</th><th>颈部软约束＋头部几何限制</th></tr>
+<tr><td>left_shoulder</td><td>0.656</td><td>0.08 px</td><td>1.08 px</td></tr>
+<tr><td>left_elbow</td><td>0.844</td><td>0.03 px</td><td>4.18 px</td></tr>
+<tr><td>right_elbow</td><td>0.805</td><td>0.09 px</td><td>0.21 px</td></tr>
+<tr><td>left_wrist</td><td>0.852</td><td>0.06 px</td><td>19.43 px</td></tr>
+<tr><td>right_wrist</td><td>0.836</td><td>0.12 px</td><td>0.25 px</td></tr>
+<tr><td>left_hip</td><td>0.621</td><td>17.67 px</td><td>3.84 px</td></tr>
+<tr><td>right_hip</td><td>0.648</td><td>14.48 px</td><td>36.28 px</td></tr>
+<tr><td>right_ankle</td><td>0.316</td><td>0.01 px</td><td>0.01 px</td></tr>
+</table></div></details>
+<details><summary>EgoSMPLX 原始预测</summary><div class="grid">
+<figure><a href="images/cam4_f00001118/original_raw.jpg"><img loading="lazy" src="images/cam4_f00001118/original_raw.jpg"></a><figcaption>原流程 · 身体 250.41 px · neck 163.2 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001118/neck_guard_raw.jpg"><img loading="lazy" src="images/cam4_f00001118/neck_guard_raw.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 250.41 px · neck 163.2 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>原有刚体校正（保持一致）</summary><div class="grid">
+<figure><a href="images/cam4_f00001118/original_rigid.jpg"><img loading="lazy" src="images/cam4_f00001118/original_rigid.jpg"></a><figcaption>原流程 · 身体 42.26 px · neck 105.2 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001118/neck_guard_rigid.jpg"><img loading="lazy" src="images/cam4_f00001118/neck_guard_rigid.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 42.26 px · neck 105.2 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>第二阶段身体姿态优化</summary><div class="grid">
+<figure><a href="images/cam4_f00001118/original_body.jpg"><img loading="lazy" src="images/cam4_f00001118/original_body.jpg"></a><figcaption>原流程 · 身体 8.08 px · neck 62.8 px · 入图头部顶点 1939</figcaption></figure>
+<figure><a href="images/cam4_f00001118/neck_guard_body.jpg"><img loading="lazy" src="images/cam4_f00001118/neck_guard_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 14.69 px · neck 50.2 px · 入图头部顶点 9</figcaption></figure>
+</div></details>
+<details><summary>腕点校正</summary><div class="grid">
+<figure><a href="images/cam4_f00001118/original_wrist.jpg"><img loading="lazy" src="images/cam4_f00001118/original_wrist.jpg"></a><figcaption>原流程 · 身体 10.28 px · neck 49.1 px · 入图头部顶点 2472</figcaption></figure>
+<figure><a href="images/cam4_f00001118/neck_guard_wrist.jpg"><img loading="lazy" src="images/cam4_f00001118/neck_guard_wrist.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 14.69 px · neck 50.2 px · 入图头部顶点 9</figcaption></figure>
+</div></details>
+<details><summary>轮廓候选选定身体</summary><div class="grid">
+<figure><a href="images/cam4_f00001118/original_contour.jpg"><img loading="lazy" src="images/cam4_f00001118/original_contour.jpg"></a><figcaption>原流程 · 身体 10.74 px · neck 48.8 px · 入图头部顶点 2333</figcaption></figure>
+<figure><a href="images/cam4_f00001118/neck_guard_contour.jpg"><img loading="lazy" src="images/cam4_f00001118/neck_guard_contour.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 16.94 px · neck 60.6 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>MANO 辅助身体</summary><div class="grid">
+<figure><a href="images/cam4_f00001118/original_guided_body.jpg"><img loading="lazy" src="images/cam4_f00001118/original_guided_body.jpg"></a><figcaption>原流程 · 身体 9.20 px · neck 13.6 px · 入图头部顶点 2074</figcaption></figure>
+<figure><a href="images/cam4_f00001118/neck_guard_guided_body.jpg"><img loading="lazy" src="images/cam4_f00001118/neck_guard_guided_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 16.58 px · neck 58.2 px · 入图头部顶点 118</figcaption></figure>
+</div></details>
+<details open><summary>最终原接缝融合</summary><div class="grid">
+<figure><a href="images/cam4_f00001118/original_fused.jpg"><img loading="lazy" src="images/cam4_f00001118/original_fused.jpg"></a><figcaption>原流程 · 身体 9.20 px · neck 13.6 px · 入图头部顶点 2074</figcaption></figure>
+<figure><a href="images/cam4_f00001118/neck_guard_fused.jpg"><img loading="lazy" src="images/cam4_f00001118/neck_guard_fused.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 16.58 px · neck 58.2 px · 入图头部顶点 118</figcaption></figure>
+</div></details>
+<details><summary>导出可行性回退记录</summary><p>1 表示完整接受优化候选；0 表示回退到该阶段的参考输入。中间值表示插值缩步，不代表拟合精度。</p><pre>{
+  &quot;原流程&quot;: {
+    &quot;wrist/frames&quot;: 1.0,
+    &quot;wrist/active_frames&quot;: 1.0,
+    &quot;contour/active_frames&quot;: 1.0,
+    &quot;contour/strong_frames&quot;: 1.0,
+    &quot;guided/frames&quot;: 1.0
+  },
+  &quot;颈部软约束＋头部几何限制&quot;: {
+    &quot;wrist/frames&quot;: 0.25418658283290013,
+    &quot;wrist/active_frames&quot;: 0.0,
+    &quot;contour/active_frames&quot;: 1.0,
+    &quot;contour/strong_frames&quot;: 1.0,
+    &quot;guided/frames&quot;: 1.0
+  }
+}</pre></details>
+<details><summary>left 手腕相同区域放大</summary><img src="images/cam4_f00001118/left_comparison.jpg"></details>
+<details><summary>right 手腕相同区域放大</summary><img src="images/cam4_f00001118/right_comparison.jpg"></details>
+</section>
+<section><h2>cam4 · 19.407 s</h2><div class="scroll"><table><tr><th>方法</th><th>第二阶段身体 RMSE</th><th>最终身体 RMSE</th><th>最终手部 RMSE</th><th>最终 neck 偏差</th><th>局部交叉 左/右</th></tr>
+<tr><td>原流程</td><td>13.53 px</td><td>16.62 px</td><td>9.28 px</td><td>44.56 px</td><td>0 / 0</td></tr>
+<tr><td>颈部软约束＋头部几何限制</td><td>27.88 px</td><td>29.62 px</td><td>10.36 px</td><td>45.54 px</td><td>0 / 0</td></tr>
+<tr><td>仅颈部软约束</td><td>12.07 px</td><td>13.40 px</td><td>8.88 px</td><td>16.23 px</td><td>3 / 0</td></tr>
+</table></div>
+<details><summary>第二阶段逐关节点残差：检查误差转移到哪里</summary><div class="scroll"><table><tr><th>原有自动点</th><th>Sapiens 分数</th><th>原流程</th><th>颈部软约束＋头部几何限制</th><th>仅颈部软约束</th></tr>
+<tr><td>left_shoulder</td><td>0.688</td><td>3.50 px</td><td>3.32 px</td><td>14.67 px</td></tr>
+<tr><td>right_shoulder</td><td>0.396</td><td>22.08 px</td><td>85.46 px</td><td>3.74 px</td></tr>
+<tr><td>left_elbow</td><td>0.883</td><td>0.59 px</td><td>11.66 px</td><td>0.24 px</td></tr>
+<tr><td>right_elbow</td><td>0.883</td><td>9.00 px</td><td>19.47 px</td><td>0.17 px</td></tr>
+<tr><td>left_wrist</td><td>0.926</td><td>0.63 px</td><td>3.57 px</td><td>0.20 px</td></tr>
+<tr><td>right_wrist</td><td>0.887</td><td>2.77 px</td><td>2.36 px</td><td>0.29 px</td></tr>
+<tr><td>left_hip</td><td>0.711</td><td>2.91 px</td><td>11.78 px</td><td>38.87 px</td></tr>
+<tr><td>right_hip</td><td>0.711</td><td>39.98 px</td><td>36.59 px</td><td>2.76 px</td></tr>
+<tr><td>left_knee</td><td>0.387</td><td>0.23 px</td><td>0.06 px</td><td>0.06 px</td></tr>
+<tr><td>right_knee</td><td>0.408</td><td>0.22 px</td><td>0.04 px</td><td>0.03 px</td></tr>
+<tr><td>left_ankle</td><td>0.422</td><td>0.07 px</td><td>0.03 px</td><td>0.01 px</td></tr>
+<tr><td>right_ankle</td><td>0.357</td><td>0.06 px</td><td>0.01 px</td><td>0.04 px</td></tr>
+</table></div></details>
+<details><summary>EgoSMPLX 原始预测</summary><div class="grid">
+<figure><a href="images/cam4_f00001147/original_raw.jpg"><img loading="lazy" src="images/cam4_f00001147/original_raw.jpg"></a><figcaption>原流程 · 身体 244.72 px · neck 162.3 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001147/neck_guard_raw.jpg"><img loading="lazy" src="images/cam4_f00001147/neck_guard_raw.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 244.72 px · neck 162.3 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001147/neck_only_raw.jpg"><img loading="lazy" src="images/cam4_f00001147/neck_only_raw.jpg"></a><figcaption>仅颈部软约束 · 身体 244.72 px · neck 162.3 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>原有刚体校正（保持一致）</summary><div class="grid">
+<figure><a href="images/cam4_f00001147/original_rigid.jpg"><img loading="lazy" src="images/cam4_f00001147/original_rigid.jpg"></a><figcaption>原流程 · 身体 53.63 px · neck 117.4 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001147/neck_guard_rigid.jpg"><img loading="lazy" src="images/cam4_f00001147/neck_guard_rigid.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 53.63 px · neck 117.4 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001147/neck_only_rigid.jpg"><img loading="lazy" src="images/cam4_f00001147/neck_only_rigid.jpg"></a><figcaption>仅颈部软约束 · 身体 53.63 px · neck 117.4 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>第二阶段身体姿态优化</summary><div class="grid">
+<figure><a href="images/cam4_f00001147/original_body.jpg"><img loading="lazy" src="images/cam4_f00001147/original_body.jpg"></a><figcaption>原流程 · 身体 13.53 px · neck 69.6 px · 入图头部顶点 2416</figcaption></figure>
+<figure><a href="images/cam4_f00001147/neck_guard_body.jpg"><img loading="lazy" src="images/cam4_f00001147/neck_guard_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 27.88 px · neck 40.6 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001147/neck_only_body.jpg"><img loading="lazy" src="images/cam4_f00001147/neck_only_body.jpg"></a><figcaption>仅颈部软约束 · 身体 12.07 px · neck 24.9 px · 入图头部顶点 2364</figcaption></figure>
+</div></details>
+<details><summary>腕点校正</summary><div class="grid">
+<figure><a href="images/cam4_f00001147/original_wrist.jpg"><img loading="lazy" src="images/cam4_f00001147/original_wrist.jpg"></a><figcaption>原流程 · 身体 15.01 px · neck 61.8 px · 入图头部顶点 2592</figcaption></figure>
+<figure><a href="images/cam4_f00001147/neck_guard_wrist.jpg"><img loading="lazy" src="images/cam4_f00001147/neck_guard_wrist.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 29.86 px · neck 40.9 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001147/neck_only_wrist.jpg"><img loading="lazy" src="images/cam4_f00001147/neck_only_wrist.jpg"></a><figcaption>仅颈部软约束 · 身体 13.36 px · neck 17.5 px · 入图头部顶点 2322</figcaption></figure>
+</div></details>
+<details><summary>轮廓候选选定身体</summary><div class="grid">
+<figure><a href="images/cam4_f00001147/original_contour.jpg"><img loading="lazy" src="images/cam4_f00001147/original_contour.jpg"></a><figcaption>原流程 · 身体 16.14 px · neck 52.2 px · 入图头部顶点 2556</figcaption></figure>
+<figure><a href="images/cam4_f00001147/neck_guard_contour.jpg"><img loading="lazy" src="images/cam4_f00001147/neck_guard_contour.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 31.86 px · neck 39.6 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001147/neck_only_contour.jpg"><img loading="lazy" src="images/cam4_f00001147/neck_only_contour.jpg"></a><figcaption>仅颈部软约束 · 身体 12.97 px · neck 17.7 px · 入图头部顶点 2274</figcaption></figure>
+</div></details>
+<details><summary>MANO 辅助身体</summary><div class="grid">
+<figure><a href="images/cam4_f00001147/original_guided_body.jpg"><img loading="lazy" src="images/cam4_f00001147/original_guided_body.jpg"></a><figcaption>原流程 · 身体 16.62 px · neck 44.6 px · 入图头部顶点 1873</figcaption></figure>
+<figure><a href="images/cam4_f00001147/neck_guard_guided_body.jpg"><img loading="lazy" src="images/cam4_f00001147/neck_guard_guided_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 29.62 px · neck 45.5 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001147/neck_only_guided_body.jpg"><img loading="lazy" src="images/cam4_f00001147/neck_only_guided_body.jpg"></a><figcaption>仅颈部软约束 · 身体 13.40 px · neck 16.2 px · 入图头部顶点 1855</figcaption></figure>
+</div></details>
+<details open><summary>最终原接缝融合</summary><div class="grid">
+<figure><a href="images/cam4_f00001147/original_fused.jpg"><img loading="lazy" src="images/cam4_f00001147/original_fused.jpg"></a><figcaption>原流程 · 身体 16.62 px · neck 44.6 px · 入图头部顶点 1873</figcaption></figure>
+<figure><a href="images/cam4_f00001147/neck_guard_fused.jpg"><img loading="lazy" src="images/cam4_f00001147/neck_guard_fused.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 29.62 px · neck 45.5 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001147/neck_only_fused.jpg"><img loading="lazy" src="images/cam4_f00001147/neck_only_fused.jpg"></a><figcaption>仅颈部软约束 · 身体 13.40 px · neck 16.2 px · 入图头部顶点 1855</figcaption></figure>
+</div></details>
+<details><summary>导出可行性回退记录</summary><p>1 表示完整接受优化候选；0 表示回退到该阶段的参考输入。中间值表示插值缩步，不代表拟合精度。</p><pre>{
+  &quot;原流程&quot;: {
+    &quot;wrist/frames&quot;: 1.0,
+    &quot;wrist/active_frames&quot;: 1.0,
+    &quot;contour/active_frames&quot;: 1.0,
+    &quot;contour/strong_frames&quot;: 1.0,
+    &quot;guided/frames&quot;: 1.0
+  },
+  &quot;颈部软约束＋头部几何限制&quot;: {
+    &quot;wrist/frames&quot;: 1.0,
+    &quot;wrist/active_frames&quot;: 1.0,
+    &quot;contour/active_frames&quot;: 1.0,
+    &quot;contour/strong_frames&quot;: 1.0,
+    &quot;guided/frames&quot;: 1.0
+  },
+  &quot;仅颈部软约束&quot;: {
+    &quot;wrist/frames&quot;: 1.0,
+    &quot;wrist/active_frames&quot;: 1.0,
+    &quot;contour/active_frames&quot;: 1.0,
+    &quot;contour/strong_frames&quot;: 1.0,
+    &quot;guided/frames&quot;: 1.0
+  }
+}</pre></details>
+<details><summary>left 手腕相同区域放大</summary><img src="images/cam4_f00001147/left_comparison.jpg"></details>
+<details><summary>right 手腕相同区域放大</summary><img src="images/cam4_f00001147/right_comparison.jpg"></details>
+</section>
+<section><h2>cam4 · 19.898 s</h2><div class="scroll"><table><tr><th>方法</th><th>第二阶段身体 RMSE</th><th>最终身体 RMSE</th><th>最终手部 RMSE</th><th>最终 neck 偏差</th><th>局部交叉 左/右</th></tr>
+<tr><td>原流程</td><td>14.76 px</td><td>18.12 px</td><td>11.97 px</td><td>87.24 px</td><td>88 / 0</td></tr>
+<tr><td>颈部软约束＋头部几何限制</td><td>21.22 px</td><td>22.07 px</td><td>11.33 px</td><td>47.48 px</td><td>28 / 0</td></tr>
+</table></div>
+<details><summary>第二阶段逐关节点残差：检查误差转移到哪里</summary><div class="scroll"><table><tr><th>原有自动点</th><th>Sapiens 分数</th><th>原流程</th><th>颈部软约束＋头部几何限制</th></tr>
+<tr><td>left_shoulder</td><td>0.758</td><td>3.81 px</td><td>1.30 px</td></tr>
+<tr><td>right_shoulder</td><td>0.523</td><td>26.48 px</td><td>65.57 px</td></tr>
+<tr><td>left_elbow</td><td>0.945</td><td>0.30 px</td><td>2.03 px</td></tr>
+<tr><td>right_elbow</td><td>0.910</td><td>32.59 px</td><td>22.57 px</td></tr>
+<tr><td>left_wrist</td><td>0.973</td><td>0.01 px</td><td>2.05 px</td></tr>
+<tr><td>right_wrist</td><td>0.961</td><td>2.15 px</td><td>2.20 px</td></tr>
+<tr><td>left_hip</td><td>0.812</td><td>2.68 px</td><td>12.42 px</td></tr>
+<tr><td>right_hip</td><td>0.828</td><td>28.72 px</td><td>20.64 px</td></tr>
+<tr><td>left_knee</td><td>0.766</td><td>0.04 px</td><td>0.04 px</td></tr>
+<tr><td>right_knee</td><td>0.680</td><td>0.03 px</td><td>0.03 px</td></tr>
+<tr><td>left_ankle</td><td>0.543</td><td>0.02 px</td><td>0.03 px</td></tr>
+<tr><td>right_ankle</td><td>0.461</td><td>0.01 px</td><td>0.01 px</td></tr>
+</table></div></details>
+<details><summary>EgoSMPLX 原始预测</summary><div class="grid">
+<figure><a href="images/cam4_f00001176/original_raw.jpg"><img loading="lazy" src="images/cam4_f00001176/original_raw.jpg"></a><figcaption>原流程 · 身体 132.87 px · neck 162.0 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001176/neck_guard_raw.jpg"><img loading="lazy" src="images/cam4_f00001176/neck_guard_raw.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 132.87 px · neck 162.0 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>原有刚体校正（保持一致）</summary><div class="grid">
+<figure><a href="images/cam4_f00001176/original_rigid.jpg"><img loading="lazy" src="images/cam4_f00001176/original_rigid.jpg"></a><figcaption>原流程 · 身体 43.92 px · neck 93.0 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001176/neck_guard_rigid.jpg"><img loading="lazy" src="images/cam4_f00001176/neck_guard_rigid.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 43.92 px · neck 93.0 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>第二阶段身体姿态优化</summary><div class="grid">
+<figure><a href="images/cam4_f00001176/original_body.jpg"><img loading="lazy" src="images/cam4_f00001176/original_body.jpg"></a><figcaption>原流程 · 身体 14.76 px · neck 104.2 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001176/neck_guard_body.jpg"><img loading="lazy" src="images/cam4_f00001176/neck_guard_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 21.22 px · neck 40.6 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>腕点校正</summary><div class="grid">
+<figure><a href="images/cam4_f00001176/original_wrist.jpg"><img loading="lazy" src="images/cam4_f00001176/original_wrist.jpg"></a><figcaption>原流程 · 身体 17.12 px · neck 104.9 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001176/neck_guard_wrist.jpg"><img loading="lazy" src="images/cam4_f00001176/neck_guard_wrist.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 23.93 px · neck 38.9 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>轮廓候选选定身体</summary><div class="grid">
+<figure><a href="images/cam4_f00001176/original_contour.jpg"><img loading="lazy" src="images/cam4_f00001176/original_contour.jpg"></a><figcaption>原流程 · 身体 17.64 px · neck 99.0 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001176/neck_guard_contour.jpg"><img loading="lazy" src="images/cam4_f00001176/neck_guard_contour.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 25.79 px · neck 37.4 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>MANO 辅助身体</summary><div class="grid">
+<figure><a href="images/cam4_f00001176/original_guided_body.jpg"><img loading="lazy" src="images/cam4_f00001176/original_guided_body.jpg"></a><figcaption>原流程 · 身体 18.12 px · neck 87.2 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001176/neck_guard_guided_body.jpg"><img loading="lazy" src="images/cam4_f00001176/neck_guard_guided_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 22.07 px · neck 47.5 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details open><summary>最终原接缝融合</summary><div class="grid">
+<figure><a href="images/cam4_f00001176/original_fused.jpg"><img loading="lazy" src="images/cam4_f00001176/original_fused.jpg"></a><figcaption>原流程 · 身体 18.12 px · neck 87.2 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001176/neck_guard_fused.jpg"><img loading="lazy" src="images/cam4_f00001176/neck_guard_fused.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 22.07 px · neck 47.5 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>导出可行性回退记录</summary><p>1 表示完整接受优化候选；0 表示回退到该阶段的参考输入。中间值表示插值缩步，不代表拟合精度。</p><pre>{
+  &quot;原流程&quot;: {
+    &quot;wrist/frames&quot;: 1.0,
+    &quot;wrist/active_frames&quot;: 1.0,
+    &quot;contour/active_frames&quot;: 1.0,
+    &quot;contour/strong_frames&quot;: 1.0,
+    &quot;guided/frames&quot;: 1.0
+  },
+  &quot;颈部软约束＋头部几何限制&quot;: {
+    &quot;wrist/frames&quot;: 0.6561000000000001,
+    &quot;wrist/active_frames&quot;: 1.0,
+    &quot;contour/active_frames&quot;: 1.0,
+    &quot;contour/strong_frames&quot;: 1.0,
+    &quot;guided/frames&quot;: 1.0
+  }
+}</pre></details>
+<details><summary>left 手腕相同区域放大</summary><img src="images/cam4_f00001176/left_comparison.jpg"></details>
+<details><summary>right 手腕相同区域放大</summary><img src="images/cam4_f00001176/right_comparison.jpg"></details>
+</section>
+<section><h2>cam4 · 20.406 s</h2><div class="scroll"><table><tr><th>方法</th><th>第二阶段身体 RMSE</th><th>最终身体 RMSE</th><th>最终手部 RMSE</th><th>最终 neck 偏差</th><th>局部交叉 左/右</th></tr>
+<tr><td>原流程</td><td>15.22 px</td><td>18.94 px</td><td>11.55 px</td><td>91.09 px</td><td>89 / 0</td></tr>
+<tr><td>颈部软约束＋头部几何限制</td><td>26.01 px</td><td>25.51 px</td><td>11.97 px</td><td>48.08 px</td><td>95 / 0</td></tr>
+</table></div>
+<details><summary>第二阶段逐关节点残差：检查误差转移到哪里</summary><div class="scroll"><table><tr><th>原有自动点</th><th>Sapiens 分数</th><th>原流程</th><th>颈部软约束＋头部几何限制</th></tr>
+<tr><td>left_shoulder</td><td>0.797</td><td>3.27 px</td><td>1.27 px</td></tr>
+<tr><td>right_shoulder</td><td>0.617</td><td>39.19 px</td><td>84.91 px</td></tr>
+<tr><td>left_elbow</td><td>0.938</td><td>1.01 px</td><td>1.54 px</td></tr>
+<tr><td>right_elbow</td><td>0.938</td><td>18.13 px</td><td>10.14 px</td></tr>
+<tr><td>left_wrist</td><td>1.000</td><td>0.05 px</td><td>2.48 px</td></tr>
+<tr><td>right_wrist</td><td>0.969</td><td>2.37 px</td><td>2.22 px</td></tr>
+<tr><td>left_hip</td><td>0.852</td><td>7.80 px</td><td>16.35 px</td></tr>
+<tr><td>right_hip</td><td>0.805</td><td>28.93 px</td><td>22.81 px</td></tr>
+<tr><td>left_knee</td><td>0.703</td><td>0.03 px</td><td>0.02 px</td></tr>
+<tr><td>right_knee</td><td>0.805</td><td>0.05 px</td><td>0.07 px</td></tr>
+<tr><td>left_ankle</td><td>0.656</td><td>0.01 px</td><td>0.01 px</td></tr>
+<tr><td>right_ankle</td><td>0.664</td><td>0.03 px</td><td>0.02 px</td></tr>
+</table></div></details>
+<details><summary>EgoSMPLX 原始预测</summary><div class="grid">
+<figure><a href="images/cam4_f00001206/original_raw.jpg"><img loading="lazy" src="images/cam4_f00001206/original_raw.jpg"></a><figcaption>原流程 · 身体 142.45 px · neck 162.4 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001206/neck_guard_raw.jpg"><img loading="lazy" src="images/cam4_f00001206/neck_guard_raw.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 142.45 px · neck 162.4 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>原有刚体校正（保持一致）</summary><div class="grid">
+<figure><a href="images/cam4_f00001206/original_rigid.jpg"><img loading="lazy" src="images/cam4_f00001206/original_rigid.jpg"></a><figcaption>原流程 · 身体 46.45 px · neck 72.5 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001206/neck_guard_rigid.jpg"><img loading="lazy" src="images/cam4_f00001206/neck_guard_rigid.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 46.45 px · neck 72.5 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>第二阶段身体姿态优化</summary><div class="grid">
+<figure><a href="images/cam4_f00001206/original_body.jpg"><img loading="lazy" src="images/cam4_f00001206/original_body.jpg"></a><figcaption>原流程 · 身体 15.22 px · neck 103.1 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001206/neck_guard_body.jpg"><img loading="lazy" src="images/cam4_f00001206/neck_guard_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 26.01 px · neck 41.8 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>腕点校正</summary><div class="grid">
+<figure><a href="images/cam4_f00001206/original_wrist.jpg"><img loading="lazy" src="images/cam4_f00001206/original_wrist.jpg"></a><figcaption>原流程 · 身体 17.64 px · neck 103.0 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001206/neck_guard_wrist.jpg"><img loading="lazy" src="images/cam4_f00001206/neck_guard_wrist.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 27.51 px · neck 40.9 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>轮廓候选选定身体</summary><div class="grid">
+<figure><a href="images/cam4_f00001206/original_contour.jpg"><img loading="lazy" src="images/cam4_f00001206/original_contour.jpg"></a><figcaption>原流程 · 身体 18.89 px · neck 97.2 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001206/neck_guard_contour.jpg"><img loading="lazy" src="images/cam4_f00001206/neck_guard_contour.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 28.92 px · neck 42.4 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>MANO 辅助身体</summary><div class="grid">
+<figure><a href="images/cam4_f00001206/original_guided_body.jpg"><img loading="lazy" src="images/cam4_f00001206/original_guided_body.jpg"></a><figcaption>原流程 · 身体 18.94 px · neck 91.1 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001206/neck_guard_guided_body.jpg"><img loading="lazy" src="images/cam4_f00001206/neck_guard_guided_body.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 25.51 px · neck 48.1 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details open><summary>最终原接缝融合</summary><div class="grid">
+<figure><a href="images/cam4_f00001206/original_fused.jpg"><img loading="lazy" src="images/cam4_f00001206/original_fused.jpg"></a><figcaption>原流程 · 身体 18.94 px · neck 91.1 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001206/neck_guard_fused.jpg"><img loading="lazy" src="images/cam4_f00001206/neck_guard_fused.jpg"></a><figcaption>颈部软约束＋头部几何限制 · 身体 25.51 px · neck 48.1 px · 入图头部顶点 0</figcaption></figure>
+</div></details>
+<details><summary>导出可行性回退记录</summary><p>1 表示完整接受优化候选；0 表示回退到该阶段的参考输入。中间值表示插值缩步，不代表拟合精度。</p><pre>{
+  &quot;原流程&quot;: {
+    &quot;wrist/frames&quot;: 1.0,
+    &quot;wrist/active_frames&quot;: 1.0,
+    &quot;contour/active_frames&quot;: 1.0,
+    &quot;contour/strong_frames&quot;: 1.0,
+    &quot;guided/frames&quot;: 1.0
+  },
+  &quot;颈部软约束＋头部几何限制&quot;: {
+    &quot;wrist/frames&quot;: 1.0,
+    &quot;wrist/active_frames&quot;: 1.0,
+    &quot;contour/active_frames&quot;: 1.0,
+    &quot;contour/strong_frames&quot;: 1.0,
+    &quot;guided/frames&quot;: 1.0
+  }
+}</pre></details>
+<details><summary>left 手腕相同区域放大</summary><img src="images/cam4_f00001206/left_comparison.jpg"></details>
+<details><summary>right 手腕相同区域放大</summary><img src="images/cam4_f00001206/right_comparison.jpg"></details>
+</section>
+<p>原始基线、默认开关和旧结果保留。修改前 checkpoint：<code>7c5ee9ff0a2d870db53e41fec80176d1b79ac0ad</code>；实验代码：<code>470ef58045582a0ace4ca00e37628ac9fd8a3229</code>。<a href="delivery_validation.json">重载与输入核验</a> · <a href="disabled_regression.json">关闭开关的逐项一致性检查</a> · <a href="visual_review.json">视觉检查记录</a>。</p></body></html>

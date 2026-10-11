@@ -1,0 +1,29 @@
+{
+  "baseline": "7ebf5c451762fab2aab391b1274f56bf1829c548",
+  "changed_files": [
+    "docs/neck_head_experiment_20261011.md",
+    "egosmplx_pipeline/body_pose.py",
+    "egosmplx_pipeline/head_neck.py",
+    "egosmplx_pipeline/pipeline.py",
+    "egosmplx_pipeline/reference/contour_refine.py",
+    "egosmplx_pipeline/reference/contour_refine_strong.py",
+    "egosmplx_pipeline/reference/guided_body.py",
+    "egosmplx_pipeline/reference/pipeline.py",
+    "egosmplx_pipeline/reference/select_candidates.py",
+    "egosmplx_pipeline/reference/support.py",
+    "egosmplx_pipeline/reference/wrist_refine.py",
+    "tests/test_head_neck.py"
+  ],
+  "tests_passed": [
+    "guard_radial_and_angular",
+    "neck_dead_zone_and_gradient",
+    "disabled_is_zero_and_unrestricted",
+    "visible_face_disables_head_guard"
+  ],
+  "runtime_parameters_identical_across_frames": true,
+  "no_input_predictions_edited": true,
+  "no_manual_targets": true,
+  "original_body_mapping_unchanged": true,
+  "rigid_optimizer_unchanged": true,
+  "surface_stitching_unchanged": true
+}

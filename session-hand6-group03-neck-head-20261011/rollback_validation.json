@@ -1,0 +1,18 @@
+{
+  "bundle_verified": true,
+  "reverse_patch_check_passed": true,
+  "checkpoint_commit": "7c5ee9ff0a2d870db53e41fec80176d1b79ac0ad",
+  "original_checkout_unchanged": true,
+  "disabled_body_regression": {
+    "frame": "cam3_f00001153",
+    "bitwise_equal": {
+      "body_pose": true,
+      "global_orient": true,
+      "transl": true,
+      "smplx_mesh_cam": true,
+      "stage2_target_joint_pixels": true,
+      "stage2_selected_joint_indices": true
+    },
+    "passed": true
+  }
+}

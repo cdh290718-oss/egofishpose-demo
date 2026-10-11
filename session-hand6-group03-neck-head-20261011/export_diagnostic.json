@@ -1,0 +1,15 @@
+{
+  "frame": "cam3_f00001153",
+  "stage": "active wrist refinement",
+  "diagnostic_replay_only": true,
+  "production_outputs_modified": false,
+  "rejected_export_trials": 22,
+  "all_fail_head_guard": true,
+  "cpu_gpu_mesh_max_m": 0.0007106661796569824,
+  "gpu_head_distance_ratio": 0.8499999642372131,
+  "cpu_head_distance_ratio": 0.8498199582099915,
+  "cpu_head_angle_deg": 7.736063480377197,
+  "configured_min_distance_ratio": 0.85,
+  "saved_cpu_step_fraction": 0,
+  "limitation": "GPU/CPU numerical discrepancy at a hard boundary; linear interpolation also leaves the nonconvex feasible region. No production tolerances changed for this run."
+}

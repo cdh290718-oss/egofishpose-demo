@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "counts": {
+    "online_images": 179,
+    "offline_images": 179,
+    "local_links": 342
+  },
+  "offline_bytes": 24610162,
+  "all_files_below_95mb": true
+}
