@@ -1,0 +1,15 @@
+{
+  "reviewed_images": [
+    "stage2_preview.jpg",
+    "site/final_comparison.jpg",
+    "hands_preview.jpg"
+  ],
+  "observations": [
+    "两张图的身体阶段及最终融合都仍有明显外扩。仅改变自动点权重没有解决该几何问题。",
+    "cam3 的最终身体 RMSE 从 9.04 增至 9.75 px，手部 RMSE 从 9.39 降至 8.97 px。上方网格分布发生变化，但仍覆盖手部附近并向右外扩，不能视作整体修复。",
+    "cam4 的最终身体 RMSE 从 16.62 降至 14.18 px，但最终左侧外扩更明显；手部 RMSE 从 9.28 增至 9.69 px，左侧局部交叉由 0 增至 5 对。更低的身体点误差仍不等于更合理的网格。",
+    "保留原流程作为默认。新版本仅作为可回退的对照实验，不据这两张图推广到其余帧。"
+  ],
+  "manual_mesh_or_pose_edits": false,
+  "manual_targets_used": false
+}

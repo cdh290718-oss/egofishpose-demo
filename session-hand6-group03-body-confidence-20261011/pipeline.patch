@@ -1,0 +1,80 @@
+diff --git a/egosmplx_pipeline/body_pose.py b/egosmplx_pipeline/body_pose.py
+index 28f517a..7bb7990 100644
+--- a/egosmplx_pipeline/body_pose.py
++++ b/egosmplx_pipeline/body_pose.py
+@@ -16,6 +16,13 @@ import torch
+ import torch.nn.functional as F
+ 
+ 
++def confidence_weighted_reprojection(pixels, target, image_size, weights):
++    """Keep the original coordinate normalization and robust scale; weight joints."""
++    residual = (pixels - target) / image_size
++    per_joint = F.smooth_l1_loss(residual, torch.zeros_like(target), beta=.003, reduction='none').mean(dim=1)
++    return (per_joint * weights).sum() / weights.sum()
++
++
+ def main():
+     p = argparse.ArgumentParser(description=__doc__)
+     for key in ['repo-root', 'source-npz', 'image', 'calibration', 'automatic-keypoints', 'output-dir']:
+@@ -51,6 +58,7 @@ def main():
+     t = lambda x: torch.as_tensor(x, dtype=torch.float32)
+     indices = torch.tensor([smpl_x.joints_name.index(JOINT_MAPPING[n]) for n in names])
+     auto_xy = np.array([[lookup[n]['x'], lookup[n]['y']] for n in names], dtype=np.float32)
++    target_weights = t([np.clip(lookup[n]['score'], 0., 1.) ** 2 for n in names])
+     layer = smpl_x.layer['neutral'].cpu().eval()
+     layer.requires_grad_(False)
+     fixed_keys = ['betas', 'left_hand_pose', 'right_hand_pose', 'jaw_pose', 'leye_pose', 'reye_pose', 'expression']
+@@ -81,7 +89,9 @@ def main():
+     def angle_between(x, y):
+         rx, ry = cv2.Rodrigues(np.asarray(x, dtype=np.float64))[0], cv2.Rodrigues(np.asarray(y, dtype=np.float64))[0]
+         return float(np.rad2deg(np.arccos(np.clip((np.trace(rx @ ry.T)-1)/2, -1, 1))))
+-    settings = dict(steps=a.steps, device='cpu', target_weighting='uniform automatic targets',
++    settings = dict(steps=a.steps, device='cpu', target_weighting='clip(score,0,1)^2 normalized by weight sum',
++                    target_weight_by_name={n: float(v) for n, v in zip(names, target_weights)},
++                    target_weight_fraction_by_name={n: float(v) for n, v in zip(names, target_weights / target_weights.sum())},
+                     body_lr=.0015, camera_lr=.0008, orient_lr=.0005,
+                     pose_prior_weight=.0008, camera_prior_weight=.0002, orient_prior_weight=.0004,
+                     smooth_l1_beta=.003, max_global_axis_angle_increment_deg=8.,
+@@ -105,7 +115,7 @@ def main():
+             body = body0.clone()
+             body[active_indices] = body[active_indices] + delta
+             mesh, local, joints, pixels = forward(body, glob0 + gd, cam)
+-            rep = F.smooth_l1_loss((pixels[indices] - target) / t([w, h]), torch.zeros_like(target), beta=.003)
++            rep = confidence_weighted_reprojection(pixels[indices], target, t([w, h]), target_weights)
+             pp = (delta / caps[:, None]).square().mean()
+             cp = ((cam - cam0) / t([.10, .10, .18])).square().mean()
+             gp = (gd / np.deg2rad(8.)).square().mean()
+diff --git a/tests/test_confidence_weighting.py b/tests/test_confidence_weighting.py
+new file mode 100644
+index 0000000..39a8b9b
+--- /dev/null
++++ b/tests/test_confidence_weighting.py
+@@ -0,0 +1,28 @@
++import unittest
++import torch
++import torch.nn.functional as F
++from egosmplx_pipeline.body_pose import confidence_weighted_reprojection
++
++class ConfidenceWeightTests(unittest.TestCase):
++    def test_equal_weights_preserve_original_loss_and_gradient(self):
++        x=torch.tensor([[.2,.4],[4.,-8.],[30.,2.]],requires_grad=True)
++        target=torch.zeros_like(x);size=torch.tensor([1280.,720.])
++        old=F.smooth_l1_loss(x/size,target,beta=.003)
++        new=confidence_weighted_reprojection(x,target,size,torch.ones(3))
++        self.assertTrue(torch.allclose(old,new))
++        self.assertTrue(torch.allclose(torch.autograd.grad(old,x)[0],torch.autograd.grad(new,x)[0]))
++
++    def test_low_confidence_joint_has_less_influence(self):
++        x=torch.tensor([[10.,10.],[10.,10.]],requires_grad=True)
++        scores=torch.tensor([.3,.9]);weights=scores.square()
++        loss=confidence_weighted_reprojection(x,torch.zeros_like(x),torch.tensor([1280.,720.]),weights)
++        gradient=torch.autograd.grad(loss,x)[0]
++        self.assertTrue(torch.allclose(gradient[1],9*gradient[0]))
++
++    def test_weight_normalization_preserves_residual_prior_balance(self):
++        x=torch.tensor([[20.,10.],[2.,-1.]])
++        args=(x,torch.zeros_like(x),torch.tensor([1280.,720.]))
++        weights=torch.tensor([.2,.7])
++        self.assertTrue(torch.allclose(confidence_weighted_reprojection(*args,weights),confidence_weighted_reprojection(*args,weights*100)))
++
++if __name__=='__main__':unittest.main()

@@ -1,0 +1,100 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第三组：身体自动点置信度加权</title><style>body{font:16px/1.65 system-ui,sans-serif;background:#14191e;color:#edf1f4;margin:0;padding:24px;max-width:1800px;margin:auto}a{color:#8dd2ff}h1{font-size:28px}table{border-collapse:collapse;width:100%;margin:18px 0}th,td{border:1px solid #51606b;padding:8px;text-align:left}img{max-width:100%;height:auto}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}figure{margin:0}figcaption{padding:8px}.note{background:#26313a;padding:15px;border-radius:8px}section{margin-top:32px}summary{cursor:pointer;font-weight:bold}.scroll{overflow-x:auto}@media(max-width:700px){body{padding:12px}.grid{grid-template-columns:1fr}table{font-size:13px}}</style><body><h1>第三组：身体自动点置信度加权</h1><p>cam3 19.416 s / cam4 19.407 s · 2026-10-11</p><div class="note">保留原始完整流程、0.3 筛选阈值和 1600 次第二阶段优化。唯一算法改动：将该阶段入选点的等权残差改为按置信度平方加权，并除以总权重。后续算法、模型权重、自动点与相机标定不变；没有人工标注和单帧调参。本实验未沿用“跳过第二阶段”。</div><p><a href="../session-hand6-group03-neighbors-20261010/">原流程及邻帧</a> · <a href="../session-hand6-group03-skip-body-pose-20261011/">此前跳过第二阶段对照</a> · <a href="offline.html">离线分享版</a> · <a href="RUN_REPORT_zh.md">完整报告</a> · <a href="metrics.csv">逐阶段 CSV</a> · <a href="summary.json">完整数据</a></p>
+<div class="note"><strong>结论：存在局部指标收益，但没有解决外扩，不替换默认流程。</strong><ul><li>两张图的身体阶段及最终融合都仍有明显外扩。仅改变自动点权重没有解决该几何问题。</li><li>cam3 的最终身体 RMSE 从 9.04 增至 9.75 px，手部 RMSE 从 9.39 降至 8.97 px。上方网格分布发生变化，但仍覆盖手部附近并向右外扩，不能视作整体修复。</li><li>cam4 的最终身体 RMSE 从 16.62 降至 14.18 px，但最终左侧外扩更明显；手部 RMSE 从 9.28 增至 9.69 px，左侧局部交叉由 0 增至 5 对。更低的身体点误差仍不等于更合理的网格。</li><li>保留原流程作为默认。新版本仅作为可回退的对照实验，不据这两张图推广到其余帧。</li></ul></div>
+<p>左：原等权流程；右：仅第二阶段按置信度加权。RMSE 相对自动点，不是人工真值。</p><a href="final_comparison.jpg"><img src="final_comparison.jpg" alt="最终融合对照"></a><details><summary>全部阶段汇总图</summary><a href="comparison.jpg"><img src="comparison.jpg" alt="逐阶段对照"></a></details>
+<section><h2>cam3 · 19.416 s</h2><div class="scroll"><table><tr><th>方法</th><th>第二阶段身体 RMSE</th><th>最终身体 RMSE</th><th>最终手部 RMSE</th><th>局部交叉 左/右</th></tr>
+<tr><td>原流程：等权</td><td>7.04 px</td><td>9.04 px</td><td>9.39 px</td><td>16 / 19</td></tr>
+<tr><td>第二阶段：置信度平方加权</td><td>9.66 px</td><td>9.75 px</td><td>8.97 px</td><td>24 / 0</td></tr>
+</table></div><details><summary>展开全部阶段：左原等权，右置信度加权</summary>
+<h3>EgoSMPLX 初始预测</h3><div class="grid">
+<figure><a href="images/cam3_f00001153/original_raw.jpg"><img loading="lazy" src="images/cam3_f00001153/original_raw.jpg"></a><figcaption>原流程：等权 · 身体 211.52 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam3_f00001153/weighted_raw.jpg"><img loading="lazy" src="images/cam3_f00001153/weighted_raw.jpg"></a><figcaption>第二阶段：置信度平方加权 · 身体 211.52 px · 入图头部顶点 0</figcaption></figure>
+</div>
+<h3>整体旋转和平移校正</h3><div class="grid">
+<figure><a href="images/cam3_f00001153/original_rigid.jpg"><img loading="lazy" src="images/cam3_f00001153/original_rigid.jpg"></a><figcaption>原流程：等权 · 身体 59.40 px · 入图头部顶点 30</figcaption></figure>
+<figure><a href="images/cam3_f00001153/weighted_rigid.jpg"><img loading="lazy" src="images/cam3_f00001153/weighted_rigid.jpg"></a><figcaption>第二阶段：置信度平方加权 · 身体 59.40 px · 入图头部顶点 30</figcaption></figure>
+</div>
+<h3>第二阶段身体姿态优化</h3><div class="grid">
+<figure><a href="images/cam3_f00001153/original_body.jpg"><img loading="lazy" src="images/cam3_f00001153/original_body.jpg"></a><figcaption>原流程：等权 · 身体 7.04 px · 入图头部顶点 2573</figcaption></figure>
+<figure><a href="images/cam3_f00001153/weighted_body.jpg"><img loading="lazy" src="images/cam3_f00001153/weighted_body.jpg"></a><figcaption>第二阶段：置信度平方加权 · 身体 9.66 px · 入图头部顶点 2518</figcaption></figure>
+</div>
+<h3>后续腕点校正</h3><div class="grid">
+<figure><a href="images/cam3_f00001153/original_wrist.jpg"><img loading="lazy" src="images/cam3_f00001153/original_wrist.jpg"></a><figcaption>原流程：等权 · 身体 8.21 px · 入图头部顶点 2797</figcaption></figure>
+<figure><a href="images/cam3_f00001153/weighted_wrist.jpg"><img loading="lazy" src="images/cam3_f00001153/weighted_wrist.jpg"></a><figcaption>第二阶段：置信度平方加权 · 身体 9.06 px · 入图头部顶点 2608</figcaption></figure>
+</div>
+<h3>轮廓候选选定身体</h3><div class="grid">
+<figure><a href="images/cam3_f00001153/original_contour.jpg"><img loading="lazy" src="images/cam3_f00001153/original_contour.jpg"></a><figcaption>原流程：等权 · 身体 8.63 px · 入图头部顶点 2951</figcaption></figure>
+<figure><a href="images/cam3_f00001153/weighted_contour.jpg"><img loading="lazy" src="images/cam3_f00001153/weighted_contour.jpg"></a><figcaption>第二阶段：置信度平方加权 · 身体 9.27 px · 入图头部顶点 2619</figcaption></figure>
+</div>
+<h3>MANO 辅助身体</h3><div class="grid">
+<figure><a href="images/cam3_f00001153/original_guided_body.jpg"><img loading="lazy" src="images/cam3_f00001153/original_guided_body.jpg"></a><figcaption>原流程：等权 · 身体 9.04 px · 入图头部顶点 2577</figcaption></figure>
+<figure><a href="images/cam3_f00001153/weighted_guided_body.jpg"><img loading="lazy" src="images/cam3_f00001153/weighted_guided_body.jpg"></a><figcaption>第二阶段：置信度平方加权 · 身体 9.75 px · 入图头部顶点 2454</figcaption></figure>
+</div>
+<h3>最终原接缝融合</h3><div class="grid">
+<figure><a href="images/cam3_f00001153/original_fused.jpg"><img loading="lazy" src="images/cam3_f00001153/original_fused.jpg"></a><figcaption>原流程：等权 · 身体 9.04 px · 入图头部顶点 2577</figcaption></figure>
+<figure><a href="images/cam3_f00001153/weighted_fused.jpg"><img loading="lazy" src="images/cam3_f00001153/weighted_fused.jpg"></a><figcaption>第二阶段：置信度平方加权 · 身体 9.75 px · 入图头部顶点 2454</figcaption></figure>
+</div>
+</details>
+<details><summary>left 手腕相同区域放大</summary><img src="images/cam3_f00001153/left_comparison.jpg"></details>
+<details><summary>right 手腕相同区域放大</summary><img src="images/cam3_f00001153/right_comparison.jpg"></details>
+<details><summary>每个身体点的权重和第二阶段残差</summary><p>两个版本使用完全相同的自动目标；这里只改变目标在第二阶段优化中的相对影响。</p><div class="scroll"><table><tr><th>关节</th><th>分数</th><th>原权重占比</th><th>新权重占比</th><th>原误差 px</th><th>新误差 px</th></tr>
+<tr><td>left_shoulder</td><td>0.484</td><td>10.00%</td><td>4.73%</td><td>3.26</td><td>20.20</td></tr>
+<tr><td>right_shoulder</td><td>0.652</td><td>10.00%</td><td>8.59%</td><td>3.03</td><td>1.95</td></tr>
+<tr><td>left_elbow</td><td>0.848</td><td>10.00%</td><td>14.50%</td><td>0.41</td><td>0.10</td></tr>
+<tr><td>right_elbow</td><td>0.863</td><td>10.00%</td><td>15.04%</td><td>1.46</td><td>1.24</td></tr>
+<tr><td>left_wrist</td><td>0.895</td><td>10.00%</td><td>16.15%</td><td>0.54</td><td>0.17</td></tr>
+<tr><td>right_wrist</td><td>0.883</td><td>10.00%</td><td>15.73%</td><td>1.44</td><td>1.29</td></tr>
+<tr><td>left_hip</td><td>0.703</td><td>10.00%</td><td>9.98%</td><td>20.09</td><td>21.35</td></tr>
+<tr><td>right_hip</td><td>0.695</td><td>10.00%</td><td>9.76%</td><td>8.21</td><td>7.92</td></tr>
+<tr><td>left_knee</td><td>0.426</td><td>10.00%</td><td>3.66%</td><td>0.26</td><td>0.13</td></tr>
+<tr><td>left_ankle</td><td>0.305</td><td>10.00%</td><td>1.87%</td><td>0.15</td><td>0.10</td></tr>
+</table></div></details></section>
+<section><h2>cam4 · 19.407 s</h2><div class="scroll"><table><tr><th>方法</th><th>第二阶段身体 RMSE</th><th>最终身体 RMSE</th><th>最终手部 RMSE</th><th>局部交叉 左/右</th></tr>
+<tr><td>原流程：等权</td><td>13.53 px</td><td>16.62 px</td><td>9.28 px</td><td>0 / 0</td></tr>
+<tr><td>第二阶段：置信度平方加权</td><td>11.63 px</td><td>14.18 px</td><td>9.69 px</td><td>5 / 0</td></tr>
+</table></div><details><summary>展开全部阶段：左原等权，右置信度加权</summary>
+<h3>EgoSMPLX 初始预测</h3><div class="grid">
+<figure><a href="images/cam4_f00001147/original_raw.jpg"><img loading="lazy" src="images/cam4_f00001147/original_raw.jpg"></a><figcaption>原流程：等权 · 身体 244.72 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001147/weighted_raw.jpg"><img loading="lazy" src="images/cam4_f00001147/weighted_raw.jpg"></a><figcaption>第二阶段：置信度平方加权 · 身体 244.72 px · 入图头部顶点 0</figcaption></figure>
+</div>
+<h3>整体旋转和平移校正</h3><div class="grid">
+<figure><a href="images/cam4_f00001147/original_rigid.jpg"><img loading="lazy" src="images/cam4_f00001147/original_rigid.jpg"></a><figcaption>原流程：等权 · 身体 53.63 px · 入图头部顶点 0</figcaption></figure>
+<figure><a href="images/cam4_f00001147/weighted_rigid.jpg"><img loading="lazy" src="images/cam4_f00001147/weighted_rigid.jpg"></a><figcaption>第二阶段：置信度平方加权 · 身体 53.63 px · 入图头部顶点 0</figcaption></figure>
+</div>
+<h3>第二阶段身体姿态优化</h3><div class="grid">
+<figure><a href="images/cam4_f00001147/original_body.jpg"><img loading="lazy" src="images/cam4_f00001147/original_body.jpg"></a><figcaption>原流程：等权 · 身体 13.53 px · 入图头部顶点 2416</figcaption></figure>
+<figure><a href="images/cam4_f00001147/weighted_body.jpg"><img loading="lazy" src="images/cam4_f00001147/weighted_body.jpg"></a><figcaption>第二阶段：置信度平方加权 · 身体 11.63 px · 入图头部顶点 2373</figcaption></figure>
+</div>
+<h3>后续腕点校正</h3><div class="grid">
+<figure><a href="images/cam4_f00001147/original_wrist.jpg"><img loading="lazy" src="images/cam4_f00001147/original_wrist.jpg"></a><figcaption>原流程：等权 · 身体 15.01 px · 入图头部顶点 2592</figcaption></figure>
+<figure><a href="images/cam4_f00001147/weighted_wrist.jpg"><img loading="lazy" src="images/cam4_f00001147/weighted_wrist.jpg"></a><figcaption>第二阶段：置信度平方加权 · 身体 13.37 px · 入图头部顶点 2346</figcaption></figure>
+</div>
+<h3>轮廓候选选定身体</h3><div class="grid">
+<figure><a href="images/cam4_f00001147/original_contour.jpg"><img loading="lazy" src="images/cam4_f00001147/original_contour.jpg"></a><figcaption>原流程：等权 · 身体 16.14 px · 入图头部顶点 2556</figcaption></figure>
+<figure><a href="images/cam4_f00001147/weighted_contour.jpg"><img loading="lazy" src="images/cam4_f00001147/weighted_contour.jpg"></a><figcaption>第二阶段：置信度平方加权 · 身体 13.68 px · 入图头部顶点 2318</figcaption></figure>
+</div>
+<h3>MANO 辅助身体</h3><div class="grid">
+<figure><a href="images/cam4_f00001147/original_guided_body.jpg"><img loading="lazy" src="images/cam4_f00001147/original_guided_body.jpg"></a><figcaption>原流程：等权 · 身体 16.62 px · 入图头部顶点 1873</figcaption></figure>
+<figure><a href="images/cam4_f00001147/weighted_guided_body.jpg"><img loading="lazy" src="images/cam4_f00001147/weighted_guided_body.jpg"></a><figcaption>第二阶段：置信度平方加权 · 身体 14.18 px · 入图头部顶点 1834</figcaption></figure>
+</div>
+<h3>最终原接缝融合</h3><div class="grid">
+<figure><a href="images/cam4_f00001147/original_fused.jpg"><img loading="lazy" src="images/cam4_f00001147/original_fused.jpg"></a><figcaption>原流程：等权 · 身体 16.62 px · 入图头部顶点 1873</figcaption></figure>
+<figure><a href="images/cam4_f00001147/weighted_fused.jpg"><img loading="lazy" src="images/cam4_f00001147/weighted_fused.jpg"></a><figcaption>第二阶段：置信度平方加权 · 身体 14.18 px · 入图头部顶点 1834</figcaption></figure>
+</div>
+</details>
+<details><summary>left 手腕相同区域放大</summary><img src="images/cam4_f00001147/left_comparison.jpg"></details>
+<details><summary>right 手腕相同区域放大</summary><img src="images/cam4_f00001147/right_comparison.jpg"></details>
+<details><summary>每个身体点的权重和第二阶段残差</summary><p>两个版本使用完全相同的自动目标；这里只改变目标在第二阶段优化中的相对影响。</p><div class="scroll"><table><tr><th>关节</th><th>分数</th><th>原权重占比</th><th>新权重占比</th><th>原误差 px</th><th>新误差 px</th></tr>
+<tr><td>left_shoulder</td><td>0.688</td><td>8.33%</td><td>8.65%</td><td>3.50</td><td>1.28</td></tr>
+<tr><td>right_shoulder</td><td>0.396</td><td>8.33%</td><td>2.88%</td><td>22.08</td><td>14.01</td></tr>
+<tr><td>left_elbow</td><td>0.883</td><td>8.33%</td><td>14.26%</td><td>0.59</td><td>0.05</td></tr>
+<tr><td>right_elbow</td><td>0.883</td><td>8.33%</td><td>14.26%</td><td>9.00</td><td>0.05</td></tr>
+<tr><td>left_wrist</td><td>0.926</td><td>8.33%</td><td>15.68%</td><td>0.63</td><td>0.06</td></tr>
+<tr><td>right_wrist</td><td>0.887</td><td>8.33%</td><td>14.39%</td><td>2.77</td><td>0.05</td></tr>
+<tr><td>left_hip</td><td>0.711</td><td>8.33%</td><td>9.25%</td><td>2.91</td><td>37.58</td></tr>
+<tr><td>right_hip</td><td>0.711</td><td>8.33%</td><td>9.25%</td><td>39.98</td><td>3.54</td></tr>
+<tr><td>left_knee</td><td>0.387</td><td>8.33%</td><td>2.74%</td><td>0.23</td><td>0.03</td></tr>
+<tr><td>right_knee</td><td>0.408</td><td>8.33%</td><td>3.05%</td><td>0.22</td><td>0.11</td></tr>
+<tr><td>left_ankle</td><td>0.422</td><td>8.33%</td><td>3.26%</td><td>0.07</td><td>0.05</td></tr>
+<tr><td>right_ankle</td><td>0.357</td><td>8.33%</td><td>2.34%</td><td>0.06</td><td>0.07</td></tr>
+</table></div></details></section>
+<p>两个新结果重载均通过，但局部交叉均未通过。头部入图数量不代表可见面积或整体准确度，未进行遮挡消隐。</p><p>回退 checkpoint：<code>54a37980a838f605af4b4766871e7b1ae102f624</code>；实验提交：<code>f133a03776992c03db8485d35c43f14c82a5cc59</code>。<a href="pipeline.patch">代码差异</a> · <a href="confidence_validation.json">权重及输入核验</a>。默认流程和旧结果保留。</p></body></html>

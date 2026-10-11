@@ -1,0 +1,9 @@
+{
+  "changed_package_files": [
+    "egosmplx_pipeline/body_pose.py"
+  ],
+  "all_fitting_config_values_equal_baseline": true,
+  "downstream_code_unchanged": true,
+  "confidence_loss_tests_passed": 3,
+  "baseline_worktree_clean": true
+}

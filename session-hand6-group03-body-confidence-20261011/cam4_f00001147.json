@@ -1,0 +1,390 @@
+{
+  "id": "cam4_f00001147",
+  "camera": "cam4",
+  "seconds": 19.407352450980394,
+  "same_body_targets": true,
+  "same_hand_candidates": true,
+  "body_target_count": 12,
+  "joint_names": [
+    "left_shoulder",
+    "right_shoulder",
+    "left_elbow",
+    "right_elbow",
+    "left_wrist",
+    "right_wrist",
+    "left_hip",
+    "right_hip",
+    "left_knee",
+    "right_knee",
+    "left_ankle",
+    "right_ankle"
+  ],
+  "confidence_weights": {
+    "left_shoulder": 0.47265625,
+    "right_shoulder": 0.15719985961914062,
+    "left_elbow": 0.77935791015625,
+    "right_elbow": 0.77935791015625,
+    "left_wrist": 0.8570709228515625,
+    "right_wrist": 0.7862701416015625,
+    "left_hip": 0.50543212890625,
+    "right_hip": 0.50543212890625,
+    "left_knee": 0.1495513916015625,
+    "right_knee": 0.16662979125976562,
+    "left_ankle": 0.177978515625,
+    "right_ankle": 0.12775039672851562
+  },
+  "branches": {
+    "original": {
+      "stages": {
+        "raw": {
+          "body_rmse_px": 244.72450343507714,
+          "body_errors_px": [
+            70.59382892885695,
+            132.884683763511,
+            225.60883359702694,
+            320.741917562556,
+            275.1709951833573,
+            367.21718260171133,
+            216.70426394559018,
+            213.98662806988025,
+            234.90821385302993,
+            226.52405072070115,
+            267.62266230847007,
+            246.63532791024736
+          ],
+          "body_confidence_weighted_rmse_px": 263.73447476879767,
+          "head_vertices_in_image": 0,
+          "rigid_translation_change_m": 0.39609602093696594,
+          "image": "images/cam4_f00001147/original_raw.jpg"
+        },
+        "body": {
+          "body_rmse_px": 13.528790426651394,
+          "body_errors_px": [
+            3.495853770808042,
+            22.081751175283472,
+            0.5921666581581848,
+            8.99723066498532,
+            0.6323338174170559,
+            2.7699364875584256,
+            2.9057595097792164,
+            39.98233652630875,
+            0.2289011297389829,
+            0.2204883149718659,
+            0.0675050147258286,
+            0.06213670719183299
+          ],
+          "body_confidence_weighted_rmse_px": 13.28471216827423,
+          "head_vertices_in_image": 2416,
+          "rigid_translation_change_m": 0.09299837797880173,
+          "image": "images/cam4_f00001147/original_body.jpg"
+        },
+        "guided_body": {
+          "body_rmse_px": 16.623320363398275,
+          "body_errors_px": [
+            16.645761923984605,
+            41.2968731195472,
+            12.240843503825275,
+            11.552449798258275,
+            5.982246765720565,
+            3.44746963331669,
+            21.83741524581223,
+            22.86739729027298,
+            0.8832629331588324,
+            0.7508841430349228,
+            0.5250060621553609,
+            1.0603748786164486
+          ],
+          "body_confidence_weighted_rmse_px": 14.604648274368746,
+          "head_vertices_in_image": 1873,
+          "rigid_translation_change_m": 0.06679145991802216,
+          "image": "images/cam4_f00001147/original_guided_body.jpg"
+        },
+        "fused": {
+          "body_rmse_px": 16.623320363398275,
+          "body_errors_px": [
+            16.645761923984605,
+            41.2968731195472,
+            12.240843503825275,
+            11.552449798258275,
+            5.982246765720565,
+            3.44746963331669,
+            21.83741524581223,
+            22.86739729027298,
+            0.8832629331588324,
+            0.7508841430349228,
+            0.5250060621553609,
+            1.0603748786164486
+          ],
+          "body_confidence_weighted_rmse_px": 14.604648274368746,
+          "head_vertices_in_image": 1873,
+          "rigid_translation_change_m": 0.06679145991802216,
+          "image": "images/cam4_f00001147/original_fused.jpg"
+        },
+        "rigid": {
+          "body_rmse_px": 53.63030831662827,
+          "body_errors_px": [
+            56.15872430191483,
+            145.61308472606922,
+            63.428515795395455,
+            40.9067337608089,
+            4.01559508017827,
+            4.319827609140748,
+            29.805512758913338,
+            33.47215186781948,
+            6.699593573220792,
+            19.395471453718113,
+            42.09295739237482,
+            14.986127421571496
+          ],
+          "body_confidence_weighted_rmse_px": 44.29227595385958,
+          "head_vertices_in_image": 0,
+          "rigid_translation_change_m": 0.0,
+          "image": "images/cam4_f00001147/original_rigid.jpg"
+        },
+        "wrist": {
+          "body_rmse_px": 15.01114373668415,
+          "body_errors_px": [
+            1.1816929417750806,
+            27.46722522075238,
+            0.8168002766214142,
+            13.061126565656094,
+            12.304605303255899,
+            5.0955629434932,
+            2.914410667505555,
+            39.88613546804267,
+            0.3318015964910334,
+            0.0688643882215047,
+            0.1655361124641261,
+            0.01684359474591209
+          ],
+          "body_confidence_weighted_rmse_px": 14.888357244461835,
+          "head_vertices_in_image": 2592,
+          "rigid_translation_change_m": 0.09499843418598175,
+          "image": "images/cam4_f00001147/original_wrist.jpg"
+        },
+        "contour": {
+          "body_rmse_px": 16.143963615381576,
+          "body_errors_px": [
+            0.41823519187888253,
+            35.37926238133842,
+            9.740904572608727,
+            11.671608980009026,
+            12.260824453690754,
+            4.675319422270105,
+            5.127842614413763,
+            38.02560350946461,
+            0.2277250373505023,
+            0.12926941751512613,
+            0.12339332447945851,
+            0.2010320119049625
+          ],
+          "body_confidence_weighted_rmse_px": 15.227488536792531,
+          "head_vertices_in_image": 2556,
+          "rigid_translation_change_m": 0.08952174335718155,
+          "image": "images/cam4_f00001147/original_contour.jpg"
+        }
+      },
+      "final_body_rmse_px": 16.623320363398275,
+      "final_hand_rmse_px": 9.280790967606707,
+      "local_surface_pass": true,
+      "local_crossings": {
+        "left": 0,
+        "right": 0
+      },
+      "reload": {
+        "passed": true,
+        "independent_reconstruction": true,
+        "vertex_max_abs_m": 0.0,
+        "obj_vertex_max_abs_m": 0.0,
+        "face_topology_exact": true
+      },
+      "selected_candidate": "strong"
+    },
+    "weighted": {
+      "stages": {
+        "raw": {
+          "body_rmse_px": 244.72450343507714,
+          "body_errors_px": [
+            70.59382892885695,
+            132.884683763511,
+            225.60883359702694,
+            320.741917562556,
+            275.1709951833573,
+            367.21718260171133,
+            216.70426394559018,
+            213.98662806988025,
+            234.90821385302993,
+            226.52405072070115,
+            267.62266230847007,
+            246.63532791024736
+          ],
+          "body_confidence_weighted_rmse_px": 263.73447476879767,
+          "head_vertices_in_image": 0,
+          "rigid_translation_change_m": 0.39609602093696594,
+          "image": "images/cam4_f00001147/weighted_raw.jpg"
+        },
+        "body": {
+          "body_rmse_px": 11.628581285609858,
+          "body_errors_px": [
+            1.284116813878948,
+            14.011798779256086,
+            0.04754041545480859,
+            0.05131702020328064,
+            0.05625934643490824,
+            0.05041218250691255,
+            37.57846665182343,
+            3.540269557465079,
+            0.033747265011830174,
+            0.11469884572006425,
+            0.04683070724255382,
+            0.07496186059785416
+          ],
+          "body_confidence_weighted_rmse_px": 11.728663602661596,
+          "head_vertices_in_image": 2373,
+          "rigid_translation_change_m": 0.11176075786352158,
+          "image": "images/cam4_f00001147/weighted_body.jpg"
+        },
+        "guided_body": {
+          "body_rmse_px": 14.17574458819429,
+          "body_errors_px": [
+            16.453990583572978,
+            30.792174118072744,
+            11.80986217835114,
+            8.361198225260726,
+            5.018350249981833,
+            2.5154231826600784,
+            21.40468067765502,
+            22.158414661575264,
+            0.6057750495159234,
+            1.3283531404676527,
+            0.14460948503356624,
+            0.5720633315042783
+          ],
+          "body_confidence_weighted_rmse_px": 13.163341170927122,
+          "head_vertices_in_image": 1834,
+          "rigid_translation_change_m": 0.07993926852941513,
+          "image": "images/cam4_f00001147/weighted_guided_body.jpg"
+        },
+        "fused": {
+          "body_rmse_px": 14.17574458819429,
+          "body_errors_px": [
+            16.453990583572978,
+            30.792174118072744,
+            11.80986217835114,
+            8.361198225260726,
+            5.018350249981833,
+            2.5154231826600784,
+            21.40468067765502,
+            22.158414661575264,
+            0.6057750495159234,
+            1.3283531404676527,
+            0.14460948503356624,
+            0.5720633315042783
+          ],
+          "body_confidence_weighted_rmse_px": 13.163341170927122,
+          "head_vertices_in_image": 1834,
+          "rigid_translation_change_m": 0.07993926852941513,
+          "image": "images/cam4_f00001147/weighted_fused.jpg"
+        },
+        "rigid": {
+          "body_rmse_px": 53.63030831662827,
+          "body_errors_px": [
+            56.15872430191483,
+            145.61308472606922,
+            63.428515795395455,
+            40.9067337608089,
+            4.01559508017827,
+            4.319827609140748,
+            29.805512758913338,
+            33.47215186781948,
+            6.699593573220792,
+            19.395471453718113,
+            42.09295739237482,
+            14.986127421571496
+          ],
+          "body_confidence_weighted_rmse_px": 44.29227595385958,
+          "head_vertices_in_image": 0,
+          "rigid_translation_change_m": 0.0,
+          "image": "images/cam4_f00001147/weighted_rigid.jpg"
+        },
+        "wrist": {
+          "body_rmse_px": 13.374893335904842,
+          "body_errors_px": [
+            1.5517842163803348,
+            20.05325524100262,
+            10.558388806488802,
+            0.8335525231155538,
+            12.194435537268301,
+            5.185758724350029,
+            38.016347297988126,
+            3.0032808231702877,
+            0.1525366933140441,
+            0.12220196681665194,
+            0.09218627451456902,
+            0.17996853238608204
+          ],
+          "body_confidence_weighted_rmse_px": 13.764944450821645,
+          "head_vertices_in_image": 2346,
+          "rigid_translation_change_m": 0.1120515763759613,
+          "image": "images/cam4_f00001147/weighted_wrist.jpg"
+        },
+        "contour": {
+          "body_rmse_px": 13.679431220921385,
+          "body_errors_px": [
+            1.763150276533891,
+            20.455253022028625,
+            14.010178426182138,
+            1.8513583889375558,
+            12.485200047499815,
+            4.982972644067997,
+            37.86105674574485,
+            3.173695855080097,
+            0.11818717923948177,
+            0.08403703539296918,
+            0.11950907377103852,
+            0.07646626950446204
+          ],
+          "body_confidence_weighted_rmse_px": 14.22401397228506,
+          "head_vertices_in_image": 2318,
+          "rigid_translation_change_m": 0.11219295859336853,
+          "image": "images/cam4_f00001147/weighted_contour.jpg"
+        }
+      },
+      "final_body_rmse_px": 14.17574458819429,
+      "final_hand_rmse_px": 9.691288565659425,
+      "local_surface_pass": false,
+      "local_crossings": {
+        "left": 5,
+        "right": 0
+      },
+      "reload": {
+        "passed": true,
+        "independent_reconstruction": true,
+        "vertex_max_abs_m": 0.0,
+        "obj_vertex_max_abs_m": 0.0,
+        "face_topology_exact": true
+      },
+      "selected_candidate": "strong"
+    }
+  },
+  "hand_crops": {
+    "left": {
+      "image": "images/cam4_f00001147/left_comparison.jpg",
+      "box_xyxy": [
+        478,
+        314,
+        696,
+        540
+      ]
+    },
+    "right": {
+      "image": "images/cam4_f00001147/right_comparison.jpg",
+      "box_xyxy": [
+        614,
+        292,
+        822,
+        536
+      ]
+    }
+  }
+}
