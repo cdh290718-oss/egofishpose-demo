@@ -1,0 +1,16 @@
+{
+  "images_reviewed": [
+    "comparison.jpg",
+    "final_comparison.jpg",
+    "all four fixed-region hand comparisons"
+  ],
+  "observations": [
+    "cam3：跳过第二阶段后，原先覆盖双手上方的网格明显减少，但右下仍有外扩，不能认定整体人体已恢复正确。",
+    "cam4：最终外扩仍存在，整体改善不明显。两条路线的局部手部外观和自动点误差接近。",
+    "异常并未只属于被跳过的阶段：跳过后的阶段出口与刚体结果完全一致，但随后腕点校正就已重新出现大量头部顶点入图，cam3 为 1709，cam4 为 1968。",
+    "后续腕点、轮廓和 MANO 辅助阶段仍开放 19 个身体关节、整体旋转和平移。本实验是删除一个优化阶段，不是冻结全部身体姿态。",
+    "保留原流程默认设置。本实验只包含第三组两张图，不能据此判断其余帧是否适合删除第二阶段。"
+  ],
+  "manual_mesh_or_pose_edits": false,
+  "no_subjective_frame_selection": true
+}

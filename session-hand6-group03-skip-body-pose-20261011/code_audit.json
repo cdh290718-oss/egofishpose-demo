@@ -1,0 +1,14 @@
+{
+  "changed_package_files": [
+    "egosmplx_pipeline/configuration.py"
+  ],
+  "all_optimization_and_seam_code_identical": true,
+  "only_fit_setting_changed": {
+    "pose_steps": [
+      1600,
+      0
+    ]
+  },
+  "baseline_worktree_clean": true,
+  "existing_profile_tests_passed": 4
+}

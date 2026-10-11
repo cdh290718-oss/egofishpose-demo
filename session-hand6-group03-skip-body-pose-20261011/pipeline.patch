@@ -1,0 +1,15 @@
+diff --git a/egosmplx_pipeline/configuration.py b/egosmplx_pipeline/configuration.py
+index 30c30d5..5ba4b65 100644
+--- a/egosmplx_pipeline/configuration.py
++++ b/egosmplx_pipeline/configuration.py
+@@ -40,7 +40,9 @@ def load_config(path):
+         fit.setdefault(key, default)
+     if 'silhouette_weight' in fit:
+         raise ValueError('The reference profile applies contours after wrist refinement; remove fitting.silhouette_weight')
+-    if any(not isinstance(fit[k], int) or isinstance(fit[k], bool) or fit[k] < 1 for k in ['rigid_steps','pose_steps','mano_guided_steps']):
++    # Zero pose iterations explicitly bypass the stage-two update while retaining
++    # the unchanged observation/export path required by downstream stages.
++    if any(not isinstance(fit[k], int) or isinstance(fit[k], bool) or fit[k] < (0 if k == 'pose_steps' else 1) for k in ['rigid_steps','pose_steps','mano_guided_steps']):
+         raise ValueError('Invalid fitting settings')
+     manifest = read(config['manifest'])
+     frames = expand(manifest['frames'], Path(config['manifest']).parent)

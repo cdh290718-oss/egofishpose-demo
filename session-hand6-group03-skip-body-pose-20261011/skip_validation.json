@@ -1,0 +1,44 @@
+[
+  {
+    "id": "cam3_f00001153",
+    "rigid_equals_previous": {
+      "body_pose": true,
+      "global_orient": true,
+      "transl": true,
+      "betas": true,
+      "left_hand_pose": true,
+      "right_hand_pose": true,
+      "smplx_mesh_cam": true
+    },
+    "body_equals_rigid": {
+      "body_pose": true,
+      "global_orient": true,
+      "transl": true,
+      "betas": true,
+      "left_hand_pose": true,
+      "right_hand_pose": true,
+      "smplx_mesh_cam": true
+    }
+  },
+  {
+    "id": "cam4_f00001147",
+    "rigid_equals_previous": {
+      "body_pose": true,
+      "global_orient": true,
+      "transl": true,
+      "betas": true,
+      "left_hand_pose": true,
+      "right_hand_pose": true,
+      "smplx_mesh_cam": true
+    },
+    "body_equals_rigid": {
+      "body_pose": true,
+      "global_orient": true,
+      "transl": true,
+      "betas": true,
+      "left_hand_pose": true,
+      "right_hand_pose": true,
+      "smplx_mesh_cam": true
+    }
+  }
+]

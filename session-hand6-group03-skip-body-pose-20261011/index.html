@@ -1,0 +1,80 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第三组：跳过第二阶段身体姿态优化</title><style>body{font:16px/1.65 system-ui,sans-serif;background:#14191e;color:#edf1f4;margin:0;padding:24px;max-width:1800px;margin:auto}a{color:#8dd2ff}h1{font-size:28px}table{border-collapse:collapse;width:100%;margin:18px 0}th,td{border:1px solid #51606b;padding:8px;text-align:left}img{max-width:100%;height:auto}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}figure{margin:0}figcaption{padding:8px}.note{background:#26313a;padding:15px;border-radius:8px}section{margin-top:32px}summary{cursor:pointer;font-weight:bold}@media(max-width:700px){body{padding:12px}.grid{grid-template-columns:1fr}table{font-size:13px}}</style><body><h1>第三组：跳过第二阶段身体姿态优化</h1><p>cam3 19.416 s / cam4 19.407 s。实验日期：2026-10-11。</p><p class="note">仅将第二阶段姿态更新从 1600 次改为 0 次，出口参数与刚体结果完全一致。后续腕点、轮廓、MANO 辅助身体及原接缝算法保留，因此不等于完全禁止身体姿态调整。使用原始自动点、原始标定和同一套权重，无人工标注，无单帧调参。</p><p><a href="../session-hand6-group03-neighbors-20261010/">此前第三组与邻帧</a> · <a href="offline.html">可离线分享的完整网页</a> · <a href="metrics.csv">逐阶段指标 CSV</a> · <a href="summary.json">完整结果 JSON</a> · <a href="RUN_REPORT_zh.md">实验报告</a></p><div id="findings"><div class="note"><strong>结论：删除第二阶段不足以消除异常。</strong><ul><li>cam3：跳过第二阶段后，原先覆盖双手上方的网格明显减少，但右下仍有外扩，不能认定整体人体已恢复正确。</li><li>cam4：最终外扩仍存在，整体改善不明显。两条路线的局部手部外观和自动点误差接近。</li><li>异常并未只属于被跳过的阶段：跳过后的阶段出口与刚体结果完全一致，但随后腕点校正就已重新出现大量头部顶点入图，cam3 为 1709，cam4 为 1968。</li><li>后续腕点、轮廓和 MANO 辅助阶段仍开放 19 个身体关节、整体旋转和平移。本实验是删除一个优化阶段，不是冻结全部身体姿态。</li><li>保留原流程默认设置。本实验只包含第三组两张图，不能据此判断其余帧是否适合删除第二阶段。</li></ul></div><p>最终结果：左为原流程，右为跳过第二阶段。</p><a href="final_comparison.jpg"><img src="final_comparison.jpg" alt="最终结果对照"></a></div><p>RMSE 相对自动预测点，并非人工或三维真值。头部入图数统计主蒙皮关节为 Head、正深度且投影在图内的顶点；不表示可见面积或准确度。局部交叉通过也不等于全身合理。</p><a href="comparison.jpg"><img src="comparison.jpg" alt="两相机原流程与跳过第二阶段逐阶段对照"></a>
+<section><h2>cam3 · 19.416 s</h2><table><tr><th>输出</th><th>最终身体 RMSE</th><th>最终手部 RMSE</th><th>最终头部入图数</th><th>局部交叉 左/右</th></tr>
+<tr><td>原流程</td><td>9.04 px</td><td>9.39 px</td><td>2577</td><td>16 / 19</td></tr>
+<tr><td>跳过第二阶段</td><td>15.47 px</td><td>9.37 px</td><td>1799</td><td>23 / 0</td></tr>
+</table><div class="grid">
+<figure><a href="images/cam3_f00001153/original_fused.jpg"><img src="images/cam3_f00001153/original_fused.jpg"></a><figcaption>原流程：最终融合</figcaption></figure>
+<figure><a href="images/cam3_f00001153/skip_fused.jpg"><img src="images/cam3_f00001153/skip_fused.jpg"></a><figcaption>跳过第二阶段：最终融合</figcaption></figure>
+</div><details><summary>展开全部阶段：左原流程，右跳过第二阶段</summary>
+<h3>Initial EgoSMPLX</h3><div class="grid">
+<figure><a href="images/cam3_f00001153/original_raw.jpg"><img loading="lazy" src="images/cam3_f00001153/original_raw.jpg"></a><figcaption>原流程 · 身体 211.52 px · 头部入图 0</figcaption></figure>
+<figure><a href="images/cam3_f00001153/skip_raw.jpg"><img loading="lazy" src="images/cam3_f00001153/skip_raw.jpg"></a><figcaption>跳过第二阶段 · 身体 211.52 px · 头部入图 0</figcaption></figure>
+</div>
+<h3>Rigid fit</h3><div class="grid">
+<figure><a href="images/cam3_f00001153/original_rigid.jpg"><img loading="lazy" src="images/cam3_f00001153/original_rigid.jpg"></a><figcaption>原流程 · 身体 59.40 px · 头部入图 30</figcaption></figure>
+<figure><a href="images/cam3_f00001153/skip_rigid.jpg"><img loading="lazy" src="images/cam3_f00001153/skip_rigid.jpg"></a><figcaption>跳过第二阶段 · 身体 59.40 px · 头部入图 30</figcaption></figure>
+</div>
+<h3>Stage 2 output</h3><div class="grid">
+<figure><a href="images/cam3_f00001153/original_body.jpg"><img loading="lazy" src="images/cam3_f00001153/original_body.jpg"></a><figcaption>原流程 · 身体 7.04 px · 头部入图 2573</figcaption></figure>
+<figure><a href="images/cam3_f00001153/skip_body.jpg"><img loading="lazy" src="images/cam3_f00001153/skip_body.jpg"></a><figcaption>跳过第二阶段 · 身体 59.40 px · 头部入图 30</figcaption></figure>
+</div>
+<h3>Wrist refinement</h3><div class="grid">
+<figure><a href="images/cam3_f00001153/original_wrist.jpg"><img loading="lazy" src="images/cam3_f00001153/original_wrist.jpg"></a><figcaption>原流程 · 身体 8.21 px · 头部入图 2797</figcaption></figure>
+<figure><a href="images/cam3_f00001153/skip_wrist.jpg"><img loading="lazy" src="images/cam3_f00001153/skip_wrist.jpg"></a><figcaption>跳过第二阶段 · 身体 31.17 px · 头部入图 1709</figcaption></figure>
+</div>
+<h3>Contour selected body</h3><div class="grid">
+<figure><a href="images/cam3_f00001153/original_contour.jpg"><img loading="lazy" src="images/cam3_f00001153/original_contour.jpg"></a><figcaption>原流程 · 身体 8.63 px · 头部入图 2951</figcaption></figure>
+<figure><a href="images/cam3_f00001153/skip_contour.jpg"><img loading="lazy" src="images/cam3_f00001153/skip_contour.jpg"></a><figcaption>跳过第二阶段 · 身体 15.01 px · 头部入图 2357</figcaption></figure>
+</div>
+<h3>MANO guided body</h3><div class="grid">
+<figure><a href="images/cam3_f00001153/original_guided_body.jpg"><img loading="lazy" src="images/cam3_f00001153/original_guided_body.jpg"></a><figcaption>原流程 · 身体 9.04 px · 头部入图 2577</figcaption></figure>
+<figure><a href="images/cam3_f00001153/skip_guided_body.jpg"><img loading="lazy" src="images/cam3_f00001153/skip_guided_body.jpg"></a><figcaption>跳过第二阶段 · 身体 15.47 px · 头部入图 1799</figcaption></figure>
+</div>
+<h3>Final original seam</h3><div class="grid">
+<figure><a href="images/cam3_f00001153/original_fused.jpg"><img loading="lazy" src="images/cam3_f00001153/original_fused.jpg"></a><figcaption>原流程 · 身体 9.04 px · 头部入图 2577</figcaption></figure>
+<figure><a href="images/cam3_f00001153/skip_fused.jpg"><img loading="lazy" src="images/cam3_f00001153/skip_fused.jpg"></a><figcaption>跳过第二阶段 · 身体 15.47 px · 头部入图 1799</figcaption></figure>
+</div>
+</details>
+<details><summary>left 手与腕部相同区域对照</summary><img src="images/cam3_f00001153/left_comparison.jpg"></details>
+<details><summary>right 手与腕部相同区域对照</summary><img src="images/cam3_f00001153/right_comparison.jpg"></details>
+</section>
+<section><h2>cam4 · 19.407 s</h2><table><tr><th>输出</th><th>最终身体 RMSE</th><th>最终手部 RMSE</th><th>最终头部入图数</th><th>局部交叉 左/右</th></tr>
+<tr><td>原流程</td><td>16.62 px</td><td>9.28 px</td><td>1873</td><td>0 / 0</td></tr>
+<tr><td>跳过第二阶段</td><td>18.22 px</td><td>9.46 px</td><td>1801</td><td>0 / 0</td></tr>
+</table><div class="grid">
+<figure><a href="images/cam4_f00001147/original_fused.jpg"><img src="images/cam4_f00001147/original_fused.jpg"></a><figcaption>原流程：最终融合</figcaption></figure>
+<figure><a href="images/cam4_f00001147/skip_fused.jpg"><img src="images/cam4_f00001147/skip_fused.jpg"></a><figcaption>跳过第二阶段：最终融合</figcaption></figure>
+</div><details><summary>展开全部阶段：左原流程，右跳过第二阶段</summary>
+<h3>Initial EgoSMPLX</h3><div class="grid">
+<figure><a href="images/cam4_f00001147/original_raw.jpg"><img loading="lazy" src="images/cam4_f00001147/original_raw.jpg"></a><figcaption>原流程 · 身体 244.72 px · 头部入图 0</figcaption></figure>
+<figure><a href="images/cam4_f00001147/skip_raw.jpg"><img loading="lazy" src="images/cam4_f00001147/skip_raw.jpg"></a><figcaption>跳过第二阶段 · 身体 244.72 px · 头部入图 0</figcaption></figure>
+</div>
+<h3>Rigid fit</h3><div class="grid">
+<figure><a href="images/cam4_f00001147/original_rigid.jpg"><img loading="lazy" src="images/cam4_f00001147/original_rigid.jpg"></a><figcaption>原流程 · 身体 53.63 px · 头部入图 0</figcaption></figure>
+<figure><a href="images/cam4_f00001147/skip_rigid.jpg"><img loading="lazy" src="images/cam4_f00001147/skip_rigid.jpg"></a><figcaption>跳过第二阶段 · 身体 53.63 px · 头部入图 0</figcaption></figure>
+</div>
+<h3>Stage 2 output</h3><div class="grid">
+<figure><a href="images/cam4_f00001147/original_body.jpg"><img loading="lazy" src="images/cam4_f00001147/original_body.jpg"></a><figcaption>原流程 · 身体 13.53 px · 头部入图 2416</figcaption></figure>
+<figure><a href="images/cam4_f00001147/skip_body.jpg"><img loading="lazy" src="images/cam4_f00001147/skip_body.jpg"></a><figcaption>跳过第二阶段 · 身体 53.63 px · 头部入图 0</figcaption></figure>
+</div>
+<h3>Wrist refinement</h3><div class="grid">
+<figure><a href="images/cam4_f00001147/original_wrist.jpg"><img loading="lazy" src="images/cam4_f00001147/original_wrist.jpg"></a><figcaption>原流程 · 身体 15.01 px · 头部入图 2592</figcaption></figure>
+<figure><a href="images/cam4_f00001147/skip_wrist.jpg"><img loading="lazy" src="images/cam4_f00001147/skip_wrist.jpg"></a><figcaption>跳过第二阶段 · 身体 17.18 px · 头部入图 1968</figcaption></figure>
+</div>
+<h3>Contour selected body</h3><div class="grid">
+<figure><a href="images/cam4_f00001147/original_contour.jpg"><img loading="lazy" src="images/cam4_f00001147/original_contour.jpg"></a><figcaption>原流程 · 身体 16.14 px · 头部入图 2556</figcaption></figure>
+<figure><a href="images/cam4_f00001147/skip_contour.jpg"><img loading="lazy" src="images/cam4_f00001147/skip_contour.jpg"></a><figcaption>跳过第二阶段 · 身体 18.97 px · 头部入图 2109</figcaption></figure>
+</div>
+<h3>MANO guided body</h3><div class="grid">
+<figure><a href="images/cam4_f00001147/original_guided_body.jpg"><img loading="lazy" src="images/cam4_f00001147/original_guided_body.jpg"></a><figcaption>原流程 · 身体 16.62 px · 头部入图 1873</figcaption></figure>
+<figure><a href="images/cam4_f00001147/skip_guided_body.jpg"><img loading="lazy" src="images/cam4_f00001147/skip_guided_body.jpg"></a><figcaption>跳过第二阶段 · 身体 18.22 px · 头部入图 1801</figcaption></figure>
+</div>
+<h3>Final original seam</h3><div class="grid">
+<figure><a href="images/cam4_f00001147/original_fused.jpg"><img loading="lazy" src="images/cam4_f00001147/original_fused.jpg"></a><figcaption>原流程 · 身体 16.62 px · 头部入图 1873</figcaption></figure>
+<figure><a href="images/cam4_f00001147/skip_fused.jpg"><img loading="lazy" src="images/cam4_f00001147/skip_fused.jpg"></a><figcaption>跳过第二阶段 · 身体 18.22 px · 头部入图 1801</figcaption></figure>
+</div>
+</details>
+<details><summary>left 手与腕部相同区域对照</summary><img src="images/cam4_f00001147/left_comparison.jpg"></details>
+<details><summary>right 手与腕部相同区域对照</summary><img src="images/cam4_f00001147/right_comparison.jpg"></details>
+</section>
+<p>Checkpoint: <code>ee14dc8a62f23eac6a24bbe950d45e493486a163</code>；实验提交：<code>4e2f58c56d176be3714f044b38bddb58c5c7baac</code>。<a href="pipeline.patch">代码差异</a> · <a href="skip_validation.json">跳过与输入一致性验证</a></p></body></html>

@@ -1,0 +1,320 @@
+{
+  "id": "cam3_f00001153",
+  "camera": "cam3",
+  "seconds": 19.415833333333335,
+  "same_body_targets": true,
+  "same_hand_candidates": true,
+  "body_target_count": 10,
+  "branches": {
+    "original": {
+      "stages": {
+        "raw": {
+          "body_rmse_px": 211.52354349606034,
+          "body_errors_px": [
+            268.93999010592296,
+            157.12061858819982,
+            252.19411526955108,
+            134.8042551033288,
+            284.6771458846657,
+            175.0218177707552,
+            173.6255799212101,
+            189.4866114158534,
+            206.2030826399207,
+            219.97269197144925
+          ],
+          "head_vertices_in_image": 0,
+          "rigid_translation_change_m": 0.416768342256546,
+          "image": "images/cam3_f00001153/original_raw.jpg"
+        },
+        "body": {
+          "body_rmse_px": 7.03951959438722,
+          "body_errors_px": [
+            3.258314699156177,
+            3.0326038557076647,
+            0.4140839590384559,
+            1.4564216567134964,
+            0.5373740306262624,
+            1.4387576472170014,
+            20.089730377022537,
+            8.209389803692034,
+            0.2626093603054777,
+            0.15272571226561701
+          ],
+          "head_vertices_in_image": 2573,
+          "rigid_translation_change_m": 0.25915732979774475,
+          "image": "images/cam3_f00001153/original_body.jpg"
+        },
+        "guided_body": {
+          "body_rmse_px": 9.037734919792863,
+          "body_errors_px": [
+            14.227972320080351,
+            9.670318888552915,
+            9.406488368116008,
+            6.20565381217253,
+            4.555025111500273,
+            4.147946134338008,
+            10.878773656579611,
+            15.367802694064903,
+            1.0416215403277778,
+            0.5552802475169271
+          ],
+          "head_vertices_in_image": 2577,
+          "rigid_translation_change_m": 0.2489188015460968,
+          "image": "images/cam3_f00001153/original_guided_body.jpg"
+        },
+        "fused": {
+          "body_rmse_px": 9.037734919792863,
+          "body_errors_px": [
+            14.227972320080351,
+            9.670318888552915,
+            9.406488368116008,
+            6.20565381217253,
+            4.555025111500273,
+            4.147946134338008,
+            10.878773656579611,
+            15.367802694064903,
+            1.0416215403277778,
+            0.5552802475169271
+          ],
+          "head_vertices_in_image": 2577,
+          "rigid_translation_change_m": 0.2489188015460968,
+          "image": "images/cam3_f00001153/original_fused.jpg"
+        },
+        "rigid": {
+          "body_rmse_px": 59.40206472575331,
+          "body_errors_px": [
+            84.00723917992231,
+            118.39320349476306,
+            60.478277531145615,
+            75.69739048762098,
+            3.785154692049415,
+            2.324877503261039,
+            22.94841268314518,
+            29.17663295919209,
+            7.183692917898829,
+            58.094110181439554
+          ],
+          "head_vertices_in_image": 30,
+          "rigid_translation_change_m": 0.0,
+          "image": "images/cam3_f00001153/original_rigid.jpg"
+        },
+        "wrist": {
+          "body_rmse_px": 8.211832550226818,
+          "body_errors_px": [
+            1.1466337387580505,
+            0.9432624215843467,
+            3.8680749736167024,
+            0.5411759971336741,
+            12.11093604513658,
+            9.333833184493974,
+            19.025348890190696,
+            7.8146220598501115,
+            0.21302029298373945,
+            0.09869224424099794
+          ],
+          "head_vertices_in_image": 2797,
+          "rigid_translation_change_m": 0.2655547857284546,
+          "image": "images/cam3_f00001153/original_wrist.jpg"
+        },
+        "contour": {
+          "body_rmse_px": 8.631485436223304,
+          "body_errors_px": [
+            2.3182503680100623,
+            0.46012852381051045,
+            9.154476688719384,
+            0.9922588725111453,
+            12.586603068807625,
+            9.23208027838396,
+            18.564975537717515,
+            8.123941712892716,
+            0.31029882766869554,
+            0.4934268988812756
+          ],
+          "head_vertices_in_image": 2951,
+          "rigid_translation_change_m": 0.26381009817123413,
+          "image": "images/cam3_f00001153/original_contour.jpg"
+        }
+      },
+      "final_body_rmse_px": 9.037734919792863,
+      "final_hand_rmse_px": 9.389955652539905,
+      "local_surface_pass": false,
+      "local_crossings": {
+        "left": 16,
+        "right": 19
+      },
+      "reload": {
+        "passed": true,
+        "independent_reconstruction": true,
+        "vertex_max_abs_m": 0.0,
+        "obj_vertex_max_abs_m": 0.0,
+        "face_topology_exact": true
+      },
+      "selected_candidate": "strong"
+    },
+    "skip": {
+      "stages": {
+        "raw": {
+          "body_rmse_px": 211.52354349606034,
+          "body_errors_px": [
+            268.93999010592296,
+            157.12061858819982,
+            252.19411526955108,
+            134.8042551033288,
+            284.6771458846657,
+            175.0218177707552,
+            173.6255799212101,
+            189.4866114158534,
+            206.2030826399207,
+            219.97269197144925
+          ],
+          "head_vertices_in_image": 0,
+          "rigid_translation_change_m": 0.416768342256546,
+          "image": "images/cam3_f00001153/skip_raw.jpg"
+        },
+        "body": {
+          "body_rmse_px": 59.40206472575331,
+          "body_errors_px": [
+            84.00723917992231,
+            118.39320349476306,
+            60.478277531145615,
+            75.69739048762098,
+            3.785154692049415,
+            2.324877503261039,
+            22.94841268314518,
+            29.17663295919209,
+            7.183692917898829,
+            58.094110181439554
+          ],
+          "head_vertices_in_image": 30,
+          "rigid_translation_change_m": 0.0,
+          "image": "images/cam3_f00001153/skip_body.jpg"
+        },
+        "guided_body": {
+          "body_rmse_px": 15.472693170142595,
+          "body_errors_px": [
+            37.10210953279691,
+            18.948754903776237,
+            10.473022513559641,
+            5.171650970343959,
+            5.332114895835081,
+            3.4308978418510576,
+            12.244078278394078,
+            18.212640331612167,
+            0.3618282905227329,
+            0.19791701950101226
+          ],
+          "head_vertices_in_image": 1799,
+          "rigid_translation_change_m": 0.22046367824077606,
+          "image": "images/cam3_f00001153/skip_guided_body.jpg"
+        },
+        "fused": {
+          "body_rmse_px": 15.472693170142595,
+          "body_errors_px": [
+            37.10210953279691,
+            18.948754903776237,
+            10.473022513559641,
+            5.171650970343959,
+            5.332114895835081,
+            3.4308978418510576,
+            12.244078278394078,
+            18.212640331612167,
+            0.3618282905227329,
+            0.19791701950101226
+          ],
+          "head_vertices_in_image": 1799,
+          "rigid_translation_change_m": 0.22046367824077606,
+          "image": "images/cam3_f00001153/skip_fused.jpg"
+        },
+        "rigid": {
+          "body_rmse_px": 59.40206472575331,
+          "body_errors_px": [
+            84.00723917992231,
+            118.39320349476306,
+            60.478277531145615,
+            75.69739048762098,
+            3.785154692049415,
+            2.324877503261039,
+            22.94841268314518,
+            29.17663295919209,
+            7.183692917898829,
+            58.094110181439554
+          ],
+          "head_vertices_in_image": 30,
+          "rigid_translation_change_m": 0.0,
+          "image": "images/cam3_f00001153/skip_rigid.jpg"
+        },
+        "wrist": {
+          "body_rmse_px": 31.1674600727187,
+          "body_errors_px": [
+            91.30368213640163,
+            1.1694996810445561,
+            1.4270921341647125,
+            17.980153400451492,
+            12.208818837342458,
+            9.554878794874714,
+            24.188518147301714,
+            15.020201822987095,
+            0.10066750814287491,
+            0.0330350170684439
+          ],
+          "head_vertices_in_image": 1709,
+          "rigid_translation_change_m": 0.20339316129684448,
+          "image": "images/cam3_f00001153/skip_wrist.jpg"
+        },
+        "contour": {
+          "body_rmse_px": 15.009178899669962,
+          "body_errors_px": [
+            35.028629223177155,
+            4.230209749937156,
+            8.791444696179207,
+            2.903785757663291,
+            12.548543374405737,
+            9.109155675172097,
+            22.414130572727338,
+            13.387966716867863,
+            0.03295874573985666,
+            0.24259989962007644
+          ],
+          "head_vertices_in_image": 2357,
+          "rigid_translation_change_m": 0.23441912233829498,
+          "image": "images/cam3_f00001153/skip_contour.jpg"
+        }
+      },
+      "final_body_rmse_px": 15.472693170142595,
+      "final_hand_rmse_px": 9.367464188673624,
+      "local_surface_pass": false,
+      "local_crossings": {
+        "left": 23,
+        "right": 0
+      },
+      "reload": {
+        "passed": true,
+        "independent_reconstruction": true,
+        "vertex_max_abs_m": 0.0,
+        "obj_vertex_max_abs_m": 0.0,
+        "face_topology_exact": true
+      },
+      "selected_candidate": "strong"
+    }
+  },
+  "hand_crops": {
+    "left": {
+      "image": "images/cam3_f00001153/left_comparison.jpg",
+      "box_xyxy": [
+        604,
+        328,
+        823,
+        551
+      ]
+    },
+    "right": {
+      "image": "images/cam3_f00001153/right_comparison.jpg",
+      "box_xyxy": [
+        734,
+        300,
+        949,
+        539
+      ]
+    }
+  }
+}

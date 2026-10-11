@@ -1,0 +1,12 @@
+{
+  "saved_reload_passed": true,
+  "identical_body_target_sets": true,
+  "identical_hand_candidates": true,
+  "stage_two_bypass_verified": true,
+  "frame_count": 2,
+  "artifacts_verified_against_pipeline_sha256": true,
+  "visual_review_completed": true,
+  "html_local_links_valid": true,
+  "offline_images_embedded": true,
+  "browser_interaction_tested": false
+}
