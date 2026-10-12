@@ -1,0 +1,23 @@
+{
+  "original": {
+    "body_rmse_px": 13.706043596720544,
+    "body_n": 22,
+    "hand_rmse_px": 9.33553287555339,
+    "hand_n": 84,
+    "surface_pass_frames": 1
+  },
+  "neck_only": {
+    "body_rmse_px": 11.570204113263413,
+    "body_n": 22,
+    "hand_rmse_px": 8.601787760088431,
+    "hand_n": 84,
+    "surface_pass_frames": 0
+  },
+  "shoulder_neck": {
+    "body_rmse_px": 10.882234974007938,
+    "body_n": 22,
+    "hand_rmse_px": 9.409128800912812,
+    "hand_n": 84,
+    "surface_pass_frames": 0
+  }
+}

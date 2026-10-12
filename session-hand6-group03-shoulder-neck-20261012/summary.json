@@ -1,0 +1,4157 @@
+{
+  "baseline_commit": "7ebf5c451762fab2aab391b1274f56bf1829c548",
+  "checkpoint_commit": "ab64d8c",
+  "experiment_commit": "97979cefc6841f92d3412b986b7d52253cf517f7",
+  "manual_annotations_used": false,
+  "head_guard_enabled": false,
+  "original_body_target_count": 22,
+  "new_auxiliary_points_per_frame": 3,
+  "shoulder_min_score": 0,
+  "low_confidence_diagnostic": true,
+  "frames": [
+    {
+      "id": "cam3_f00001153",
+      "camera": "cam3",
+      "seconds": 19.415833333333335,
+      "body_target_count": 10,
+      "joint_names": [
+        "left_shoulder",
+        "right_shoulder",
+        "left_elbow",
+        "right_elbow",
+        "left_wrist",
+        "right_wrist",
+        "left_hip",
+        "right_hip",
+        "left_knee",
+        "left_ankle"
+      ],
+      "original_body_scores": {
+        "left_shoulder": 0.484375,
+        "right_shoulder": 0.65234375,
+        "left_elbow": 0.84765625,
+        "right_elbow": 0.86328125,
+        "left_wrist": 0.89453125,
+        "right_wrist": 0.8828125,
+        "left_hip": 0.703125,
+        "right_hip": 0.6953125,
+        "left_knee": 0.42578125,
+        "left_ankle": 0.3046875
+      },
+      "automatic_neck": {
+        "index": 69,
+        "name": "neck",
+        "x": 804.2684217522906,
+        "y": 707.9018453887279,
+        "score": 0.70703125,
+        "inside_image": true
+      },
+      "branches": {
+        "original": {
+          "stages": {
+            "raw": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 381.318359375,
+                "right_acromion": 162.11500549316406
+              },
+              "body_rmse_px": 211.52354349606034,
+              "body_errors_px": [
+                268.93999010592296,
+                157.12061858819982,
+                252.19411526955108,
+                134.8042551033288,
+                284.6771458846657,
+                175.0218177707552,
+                173.6255799212101,
+                189.4866114158534,
+                206.2030826399207,
+                219.97269197144925
+              ],
+              "neck_error_px": 204.6565931416798,
+              "head_vertices_in_image": 0,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 381.318359375
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 162.11500549316406
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 204.65659384152167,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 24.99955940246582,
+                "head_distance_ratio": 0.3428705632686615,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/original_raw.jpg"
+            },
+            "rigid": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 73.0951919555664,
+                "right_acromion": 109.25668334960938
+              },
+              "body_rmse_px": 59.40206472575331,
+              "body_errors_px": [
+                84.00723917992231,
+                118.39320349476306,
+                60.478277531145615,
+                75.69739048762098,
+                3.785154692049415,
+                2.324877503261039,
+                22.94841268314518,
+                29.17663295919209,
+                7.183692917898829,
+                58.094110181439554
+              ],
+              "neck_error_px": 43.55782084093379,
+              "head_vertices_in_image": 30,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 73.0951919555664
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 109.25668334960938
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 43.55782249597878,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 0.0,
+                "head_distance_ratio": 1.0,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/original_rigid.jpg"
+            },
+            "body": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 29.423429489135742,
+                "right_acromion": 42.739097595214844
+              },
+              "body_rmse_px": 7.03951959438722,
+              "body_errors_px": [
+                3.258314699156177,
+                3.0326038557076647,
+                0.4140839590384559,
+                1.4564216567134964,
+                0.5373740306262624,
+                1.4387576472170014,
+                20.089730377022537,
+                8.209389803692034,
+                0.2626093603054777,
+                0.15272571226561701
+              ],
+              "neck_error_px": 31.53666009512902,
+              "head_vertices_in_image": 2573,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 29.423429489135742
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 42.739097595214844
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 31.536655815197886,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 23.222694396972656,
+                "head_distance_ratio": 0.3820878565311432,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/original_body.jpg"
+            },
+            "wrist": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 31.973098754882812,
+                "right_acromion": 47.12567901611328
+              },
+              "body_rmse_px": 8.211832550226818,
+              "body_errors_px": [
+                1.1466337387580505,
+                0.9432624215843467,
+                3.8680749736167024,
+                0.5411759971336741,
+                12.11093604513658,
+                9.333833184493974,
+                19.025348890190696,
+                7.8146220598501115,
+                0.21302029298373945,
+                0.09869224424099794
+              ],
+              "neck_error_px": 25.25063524558685,
+              "head_vertices_in_image": 2797,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 31.973098754882812
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 47.12567901611328
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 25.250633270323576,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 26.687408447265625,
+                "head_distance_ratio": 0.3735849857330322,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/original_wrist.jpg"
+            },
+            "contour": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 31.83740234375,
+                "right_acromion": 50.036537170410156
+              },
+              "body_rmse_px": 8.631485436223304,
+              "body_errors_px": [
+                2.3182503680100623,
+                0.46012852381051045,
+                9.154476688719384,
+                0.9922588725111453,
+                12.586603068807625,
+                9.23208027838396,
+                18.564975537717515,
+                8.123941712892716,
+                0.31029882766869554,
+                0.4934268988812756
+              ],
+              "neck_error_px": 24.78120037560789,
+              "head_vertices_in_image": 2951,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 31.83740234375
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 50.036537170410156
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 24.781197315576296,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 27.131938934326172,
+                "head_distance_ratio": 0.37846559286117554,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/original_contour.jpg"
+            },
+            "guided_body": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 19.95815086364746,
+                "right_acromion": 38.830078125
+              },
+              "body_rmse_px": 9.037734919792863,
+              "body_errors_px": [
+                14.227972320080351,
+                9.670318888552915,
+                9.406488368116008,
+                6.20565381217253,
+                4.555025111500273,
+                4.147946134338008,
+                10.878773656579611,
+                15.367802694064903,
+                1.0416215403277778,
+                0.5552802475169271
+              ],
+              "neck_error_px": 18.39108474629996,
+              "head_vertices_in_image": 2577,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 19.95815086364746
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 38.830078125
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 18.39107750006623,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 22.284381866455078,
+                "head_distance_ratio": 0.3969618082046509,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/original_guided_body.jpg"
+            },
+            "fused": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 19.95815086364746,
+                "right_acromion": 38.830078125
+              },
+              "body_rmse_px": 9.037734919792863,
+              "body_errors_px": [
+                14.227972320080351,
+                9.670318888552915,
+                9.406488368116008,
+                6.20565381217253,
+                4.555025111500273,
+                4.147946134338008,
+                10.878773656579611,
+                15.367802694064903,
+                1.0416215403277778,
+                0.5552802475169271
+              ],
+              "neck_error_px": 18.39108474629996,
+              "head_vertices_in_image": 2577,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 19.95815086364746
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 38.830078125
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 18.39107750006623,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 22.284381866455078,
+                "head_distance_ratio": 0.3969618082046509,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/original_fused.jpg"
+            }
+          },
+          "body_rmse_px": 9.037734919792863,
+          "hand_rmse_px": 9.389955652539905,
+          "hand_errors_px": [
+            23.85094785885573,
+            8.009609935019757,
+            8.655933194378436,
+            9.675113650154207,
+            9.103801177137397,
+            9.690113462449306,
+            11.397445344060692,
+            10.415970776497417,
+            9.013672116605845,
+            9.675409021769688,
+            11.850489266347475,
+            10.289955506716193,
+            9.02922989806877,
+            8.340762612937707,
+            9.959088522719613,
+            9.951245218941548,
+            9.046790782674384,
+            7.194916476255076,
+            8.825704954579242,
+            9.311573545009628,
+            9.111455012107891,
+            20.074891713608995,
+            12.266446067738439,
+            6.93781624131926,
+            7.783516754904825,
+            6.87480787582204,
+            6.7421072170336735,
+            7.473055612489072,
+            7.175009796831042,
+            5.865430469237256,
+            6.114531179105505,
+            7.246885412623182,
+            6.8495845038006085,
+            5.798533277912819,
+            5.9696449099743365,
+            6.2757700000067524,
+            6.528208857114361,
+            5.759072484469325,
+            5.804052372747922,
+            4.609654632091308,
+            5.3630826262075315,
+            5.759589609184941
+          ],
+          "matches": {
+            "left": {
+              "candidate": 1,
+              "confidence": 0.8079617619514465,
+              "wrist_distance_px": 12.717123664253352,
+              "detector_handedness_agrees": true,
+              "anchor_source": "Sapiens2",
+              "valid_keypoints": 21
+            },
+            "right": {
+              "candidate": 0,
+              "confidence": 0.8333352208137512,
+              "wrist_distance_px": 9.890143754714384,
+              "detector_handedness_agrees": true,
+              "anchor_source": "Sapiens2",
+              "valid_keypoints": 21
+            }
+          },
+          "surface_pass": false,
+          "selected_candidate": "strong",
+          "reload": {
+            "passed": true,
+            "independent_reconstruction": true,
+            "vertex_max_abs_m": 0.0,
+            "obj_vertex_max_abs_m": 0.0,
+            "face_topology_exact": true
+          },
+          "crossings": {
+            "left": 16,
+            "right": 19
+          },
+          "hand_errors_independently_recomputed": true,
+          "export_cpu_step_fractions": {
+            "wrist/frames": 1.0,
+            "wrist/active_frames": 1.0,
+            "contour/active_frames": 1.0,
+            "contour/strong_frames": 1.0,
+            "guided/frames": 1.0
+          }
+        },
+        "neck_only": {
+          "stages": {
+            "raw": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 381.318359375,
+                "right_acromion": 162.11500549316406
+              },
+              "body_rmse_px": 211.52354349606034,
+              "body_errors_px": [
+                268.93999010592296,
+                157.12061858819982,
+                252.19411526955108,
+                134.8042551033288,
+                284.6771458846657,
+                175.0218177707552,
+                173.6255799212101,
+                189.4866114158534,
+                206.2030826399207,
+                219.97269197144925
+              ],
+              "neck_error_px": 204.6565931416798,
+              "head_vertices_in_image": 0,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 381.318359375
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 162.11500549316406
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 204.65659384152167,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 24.99955940246582,
+                "head_distance_ratio": 0.3428705632686615,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/neck_only_raw.jpg"
+            },
+            "rigid": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 73.0951919555664,
+                "right_acromion": 109.25668334960938
+              },
+              "body_rmse_px": 59.40206472575331,
+              "body_errors_px": [
+                84.00723917992231,
+                118.39320349476306,
+                60.478277531145615,
+                75.69739048762098,
+                3.785154692049415,
+                2.324877503261039,
+                22.94841268314518,
+                29.17663295919209,
+                7.183692917898829,
+                58.094110181439554
+              ],
+              "neck_error_px": 43.55782084093379,
+              "head_vertices_in_image": 30,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 73.0951919555664
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 109.25668334960938
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 43.55782249597878,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 0.0,
+                "head_distance_ratio": 1.0,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/neck_only_rigid.jpg"
+            },
+            "body": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 29.28466796875,
+                "right_acromion": 42.98661422729492
+              },
+              "body_rmse_px": 7.025914078083958,
+              "body_errors_px": [
+                3.450580281688736,
+                2.9581314113720527,
+                0.4686536707221287,
+                1.3853780276540182,
+                0.5682612031741008,
+                1.5329377252822403,
+                20.03176009774066,
+                8.173546704742291,
+                0.2590961469722887,
+                0.14319228411435597
+              ],
+              "neck_error_px": 30.999086750855206,
+              "head_vertices_in_image": 2576,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 29.28466796875
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 42.98661422729492
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 30.99908239996623,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 23.27544403076172,
+                "head_distance_ratio": 0.3820010721683502,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/neck_only_body.jpg"
+            },
+            "wrist": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 31.991445541381836,
+                "right_acromion": 47.23193359375
+              },
+              "body_rmse_px": 8.314738399078774,
+              "body_errors_px": [
+                1.3048905818125918,
+                1.1891409888937556,
+                4.114240632462953,
+                0.3319406304231169,
+                12.1415676380294,
+                9.915380260436777,
+                19.108725177806075,
+                7.759457781206496,
+                0.13489082274518155,
+                0.3026569576870774
+              ],
+              "neck_error_px": 24.515233453199492,
+              "head_vertices_in_image": 2814,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 31.991445541381836
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 47.23193359375
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 24.515231514685578,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 26.7998046875,
+                "head_distance_ratio": 0.373422235250473,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/neck_only_wrist.jpg"
+            },
+            "contour": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 32.09993362426758,
+                "right_acromion": 49.463226318359375
+              },
+              "body_rmse_px": 8.65954685677374,
+              "body_errors_px": [
+                2.2481200897444817,
+                0.19135464163120736,
+                9.163121154076547,
+                0.9057838235017597,
+                12.589136550446453,
+                9.743247712841818,
+                18.4473861958741,
+                8.140585844251897,
+                0.03465016662009807,
+                0.09996214092915995
+              ],
+              "neck_error_px": 24.26614100492292,
+              "head_vertices_in_image": 2989,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 32.09993362426758
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 49.463226318359375
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 24.26613820449539,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 27.43056297302246,
+                "head_distance_ratio": 0.37912073731422424,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/neck_only_contour.jpg"
+            },
+            "guided_body": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 20.246986389160156,
+                "right_acromion": 41.520729064941406
+              },
+              "body_rmse_px": 8.885272040498622,
+              "body_errors_px": [
+                14.134764215171035,
+                8.300534477686284,
+                9.49669337993721,
+                5.4355274914192355,
+                5.57026720214917,
+                5.1000605341212255,
+                12.544528986821138,
+                13.642808707474769,
+                0.4867386138439246,
+                0.5396021471584522
+              ],
+              "neck_error_px": 17.364900107725273,
+              "head_vertices_in_image": 2622,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 20.246986389160156
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 41.520729064941406
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 17.364892402714357,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 23.016746520996094,
+                "head_distance_ratio": 0.3942581117153168,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/neck_only_guided_body.jpg"
+            },
+            "fused": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 20.246986389160156,
+                "right_acromion": 41.520729064941406
+              },
+              "body_rmse_px": 8.885272040498622,
+              "body_errors_px": [
+                14.134764215171035,
+                8.300534477686284,
+                9.49669337993721,
+                5.4355274914192355,
+                5.57026720214917,
+                5.1000605341212255,
+                12.544528986821138,
+                13.642808707474769,
+                0.4867386138439246,
+                0.5396021471584522
+              ],
+              "neck_error_px": 17.364900107725273,
+              "head_vertices_in_image": 2622,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 20.246986389160156
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 41.520729064941406
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 17.364892402714357,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 23.016746520996094,
+                "head_distance_ratio": 0.3942581117153168,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/neck_only_fused.jpg"
+            }
+          },
+          "body_rmse_px": 8.885272040498622,
+          "hand_rmse_px": 8.319427639659514,
+          "hand_errors_px": [
+            22.43544344066779,
+            6.567262629325915,
+            7.205952008775118,
+            8.273181636968623,
+            7.670483708786039,
+            8.262115302451615,
+            9.969322413151003,
+            8.958813932181242,
+            7.56495455254485,
+            8.313856407511425,
+            10.442322965678436,
+            8.832591861702875,
+            7.57812848780681,
+            6.964729475405497,
+            8.536404508225765,
+            8.498278450179402,
+            7.5934827821023765,
+            5.828420927180711,
+            7.3713948319113625,
+            7.852302386775914,
+            7.657513924203938,
+            19.324264473086945,
+            11.517265909087042,
+            6.147209670949372,
+            6.939373951968508,
+            6.301552484886914,
+            5.7849372227900355,
+            6.605976724881778,
+            6.336516964919003,
+            5.089402373712976,
+            5.17040056037195,
+            6.33332323744494,
+            6.067226556111308,
+            5.014994720898307,
+            5.059778680999838,
+            5.4185512942274405,
+            5.857050591061969,
+            4.976217025433081,
+            5.014950178612163,
+            3.706388507152943,
+            4.608252803421323,
+            4.980393708341242
+          ],
+          "matches": {
+            "left": {
+              "candidate": 1,
+              "confidence": 0.8079617619514465,
+              "wrist_distance_px": 12.717123664253352,
+              "detector_handedness_agrees": true,
+              "anchor_source": "Sapiens2",
+              "valid_keypoints": 21
+            },
+            "right": {
+              "candidate": 0,
+              "confidence": 0.8333352208137512,
+              "wrist_distance_px": 9.890143754714384,
+              "detector_handedness_agrees": true,
+              "anchor_source": "Sapiens2",
+              "valid_keypoints": 21
+            }
+          },
+          "surface_pass": false,
+          "selected_candidate": "strong",
+          "reload": {
+            "passed": true,
+            "independent_reconstruction": true,
+            "vertex_max_abs_m": 0.0,
+            "obj_vertex_max_abs_m": 0.0,
+            "face_topology_exact": true
+          },
+          "crossings": {
+            "left": 18,
+            "right": 19
+          },
+          "hand_errors_independently_recomputed": true,
+          "export_cpu_step_fractions": {
+            "wrist/frames": 0.81,
+            "wrist/active_frames": 1.0,
+            "contour/active_frames": 1.0,
+            "contour/strong_frames": 1.0,
+            "guided/frames": 0.9
+          }
+        },
+        "shoulder_neck": {
+          "stages": {
+            "raw": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 381.318359375,
+                "right_acromion": 162.11500549316406
+              },
+              "body_rmse_px": 211.52354349606034,
+              "body_errors_px": [
+                268.93999010592296,
+                157.12061858819982,
+                252.19411526955108,
+                134.8042551033288,
+                284.6771458846657,
+                175.0218177707552,
+                173.6255799212101,
+                189.4866114158534,
+                206.2030826399207,
+                219.97269197144925
+              ],
+              "neck_error_px": 204.6565931416798,
+              "head_vertices_in_image": 0,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 381.318359375
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 162.11500549316406
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 204.65659384152167,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 24.99955940246582,
+                "head_distance_ratio": 0.3428705632686615,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/shoulder_neck_raw.jpg"
+            },
+            "rigid": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 73.0951919555664,
+                "right_acromion": 109.25668334960938
+              },
+              "body_rmse_px": 59.40206472575331,
+              "body_errors_px": [
+                84.00723917992231,
+                118.39320349476306,
+                60.478277531145615,
+                75.69739048762098,
+                3.785154692049415,
+                2.324877503261039,
+                22.94841268314518,
+                29.17663295919209,
+                7.183692917898829,
+                58.094110181439554
+              ],
+              "neck_error_px": 43.55782084093379,
+              "head_vertices_in_image": 30,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 73.0951919555664
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 109.25668334960938
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 43.55782249597878,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 0.0,
+                "head_distance_ratio": 1.0,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/shoulder_neck_rigid.jpg"
+            },
+            "body": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 29.2563533782959,
+                "right_acromion": 42.165645599365234
+              },
+              "body_rmse_px": 7.016896824259319,
+              "body_errors_px": [
+                3.217623326045904,
+                3.0104956004501,
+                0.35367644329547326,
+                1.4758797459493365,
+                0.35286083764069964,
+                1.631491793732693,
+                20.007676132053152,
+                8.213240147532838,
+                0.2539790110126097,
+                0.18362798084213688
+              ],
+              "neck_error_px": 31.116150575238017,
+              "head_vertices_in_image": 2576,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 29.2563533782959
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 42.165645599365234
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 31.116146243876855,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 23.329212188720703,
+                "head_distance_ratio": 0.3818371295928955,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/shoulder_neck_body.jpg"
+            },
+            "wrist": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 31.78922462463379,
+                "right_acromion": 45.94920349121094
+              },
+              "body_rmse_px": 8.25428526516654,
+              "body_errors_px": [
+                1.1736417916095354,
+                0.7619178864564696,
+                3.902540102862676,
+                0.3740656354884142,
+                12.110774992395106,
+                9.628990402816767,
+                19.094153634438236,
+                7.745168644359953,
+                0.16043603876513413,
+                0.12707065370527557
+              ],
+              "neck_error_px": 24.790768856840042,
+              "head_vertices_in_image": 2794,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 31.78922462463379
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 45.94920349121094
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 24.790766969055127,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 26.70233154296875,
+                "head_distance_ratio": 0.3732456564903259,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/shoulder_neck_wrist.jpg"
+            },
+            "contour": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 31.723981857299805,
+                "right_acromion": 47.79996871948242
+              },
+              "body_rmse_px": 8.618297066594849,
+              "body_errors_px": [
+                2.5424292611921575,
+                0.9583768274668413,
+                8.661498310512336,
+                1.2346198572125775,
+                12.52320845672631,
+                9.749249693639838,
+                18.451154406606115,
+                8.144514010788884,
+                0.10362056178875992,
+                0.39320115158848334
+              ],
+              "neck_error_px": 24.292005684242906,
+              "head_vertices_in_image": 3003,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 31.723981857299805
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 47.79996871948242
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 24.292002943041243,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 27.498315811157227,
+                "head_distance_ratio": 0.38092899322509766,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/shoulder_neck_contour.jpg"
+            },
+            "guided_body": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 20.674951553344727,
+                "right_acromion": 39.64381408691406
+              },
+              "body_rmse_px": 8.794500975097478,
+              "body_errors_px": [
+                12.900669625430789,
+                9.191596442078222,
+                9.895043563564323,
+                5.348165414199108,
+                4.904499156894967,
+                4.892522482934504,
+                11.630744904598195,
+                14.57574711513484,
+                0.4479096035917723,
+                0.29470223905648885
+              ],
+              "neck_error_px": 18.813390509210073,
+              "head_vertices_in_image": 2620,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 20.674951553344727
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 39.64381408691406
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 18.81338361663402,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 22.822463989257812,
+                "head_distance_ratio": 0.3939743638038635,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/shoulder_neck_guided_body.jpg"
+            },
+            "fused": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 20.674951553344727,
+                "right_acromion": 39.64381408691406
+              },
+              "body_rmse_px": 8.794500975097478,
+              "body_errors_px": [
+                12.900669625430789,
+                9.191596442078222,
+                9.895043563564323,
+                5.348165414199108,
+                4.904499156894967,
+                4.892522482934504,
+                11.630744904598195,
+                14.57574711513484,
+                0.4479096035917723,
+                0.29470223905648885
+              ],
+              "neck_error_px": 18.813390509210073,
+              "head_vertices_in_image": 2620,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.0869140625,
+                    "edge_factor": 0.6497893652316702,
+                    "target_px": [
+                      565.5936279296875,
+                      705.9645385742188
+                    ],
+                    "error_px": 20.674951553344727
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.23046875,
+                    "edge_factor": 0.7439528227416443,
+                    "target_px": [
+                      975.798583984375,
+                      703.9306030273438
+                    ],
+                    "error_px": 39.64381408691406
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.70703125,
+                "neck_edge_factor": 0.5600997505218561,
+                "neck_error_px": 18.81338361663402,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 22.822463989257812,
+                "head_distance_ratio": 0.3939743638038635,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  0.11942827701568604,
+                  0.3609781563282013,
+                  0.32199397683143616
+                ]
+              },
+              "image": "images/cam3_f00001153/shoulder_neck_fused.jpg"
+            }
+          },
+          "body_rmse_px": 8.794500975097478,
+          "hand_rmse_px": 9.13434944333453,
+          "hand_errors_px": [
+            23.936970860070623,
+            7.968971202867206,
+            8.661250183637486,
+            9.584981057347877,
+            9.059435853848441,
+            9.785695920466615,
+            11.496517744448902,
+            10.451341138354154,
+            8.993532755542038,
+            9.838983307473034,
+            11.97382076461904,
+            10.327600690810886,
+            9.010749616009752,
+            8.494051483720817,
+            10.068764442796907,
+            10.005804305528839,
+            9.029939833945209,
+            7.35112416918301,
+            8.885002516357574,
+            9.342209044279459,
+            9.093896638941182,
+            19.246218943302164,
+            12.066801272457338,
+            6.130355780024505,
+            6.9630238810050304,
+            6.036627494551983,
+            6.060899825729802,
+            6.665231554969899,
+            6.353520210944128,
+            5.027288144448458,
+            5.398458289872612,
+            6.478687951925128,
+            6.011038883775107,
+            4.963864454303152,
+            5.1997328034035375,
+            5.463860957531927,
+            5.6809021511696125,
+            4.925085591093582,
+            4.963547952015456,
+            3.838986250815647,
+            4.518950356650281,
+            4.922071946300272
+          ],
+          "matches": {
+            "left": {
+              "candidate": 1,
+              "confidence": 0.8079617619514465,
+              "wrist_distance_px": 12.717123664253352,
+              "detector_handedness_agrees": true,
+              "anchor_source": "Sapiens2",
+              "valid_keypoints": 21
+            },
+            "right": {
+              "candidate": 0,
+              "confidence": 0.8333352208137512,
+              "wrist_distance_px": 9.890143754714384,
+              "detector_handedness_agrees": true,
+              "anchor_source": "Sapiens2",
+              "valid_keypoints": 21
+            }
+          },
+          "surface_pass": false,
+          "selected_candidate": "strong",
+          "reload": {
+            "passed": true,
+            "independent_reconstruction": true,
+            "vertex_max_abs_m": 0.0,
+            "obj_vertex_max_abs_m": 0.0,
+            "face_topology_exact": true
+          },
+          "crossings": {
+            "left": 18,
+            "right": 19
+          },
+          "hand_errors_independently_recomputed": true,
+          "export_cpu_step_fractions": {
+            "wrist/frames": 0.81,
+            "wrist/active_frames": 1.0,
+            "contour/active_frames": 1.0,
+            "contour/strong_frames": 1.0,
+            "guided/frames": 0.9
+          }
+        }
+      },
+      "hand_crops": {
+        "left": {
+          "image": "images/cam3_f00001153/left_comparison.jpg",
+          "box": [
+            604,
+            328,
+            823,
+            551
+          ]
+        },
+        "right": {
+          "image": "images/cam3_f00001153/right_comparison.jpg",
+          "box": [
+            734,
+            300,
+            949,
+            539
+          ]
+        }
+      }
+    },
+    {
+      "id": "cam4_f00001147",
+      "camera": "cam4",
+      "seconds": 19.407352450980394,
+      "body_target_count": 12,
+      "joint_names": [
+        "left_shoulder",
+        "right_shoulder",
+        "left_elbow",
+        "right_elbow",
+        "left_wrist",
+        "right_wrist",
+        "left_hip",
+        "right_hip",
+        "left_knee",
+        "right_knee",
+        "left_ankle",
+        "right_ankle"
+      ],
+      "original_body_scores": {
+        "left_shoulder": 0.6875,
+        "right_shoulder": 0.396484375,
+        "left_elbow": 0.8828125,
+        "right_elbow": 0.8828125,
+        "left_wrist": 0.92578125,
+        "right_wrist": 0.88671875,
+        "left_hip": 0.7109375,
+        "right_hip": 0.7109375,
+        "left_knee": 0.38671875,
+        "right_knee": 0.408203125,
+        "left_ankle": 0.421875,
+        "right_ankle": 0.357421875
+      },
+      "automatic_neck": {
+        "index": 69,
+        "name": "neck",
+        "x": 540.3281198871075,
+        "y": 705.3863992020051,
+        "score": 0.66015625,
+        "inside_image": true
+      },
+      "branches": {
+        "original": {
+          "stages": {
+            "raw": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 50.1400260925293,
+                "right_acromion": 277.1409912109375
+              },
+              "body_rmse_px": 244.72450343507714,
+              "body_errors_px": [
+                70.59382892885695,
+                132.884683763511,
+                225.60883359702694,
+                320.741917562556,
+                275.1709951833573,
+                367.21718260171133,
+                216.70426394559018,
+                213.98662806988025,
+                234.90821385302993,
+                226.52405072070115,
+                267.62266230847007,
+                246.63532791024736
+              ],
+              "neck_error_px": 162.31858547445682,
+              "head_vertices_in_image": 0,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 50.1400260925293
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 277.1409912109375
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 162.3185757370297,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 18.63524055480957,
+                "head_distance_ratio": 0.6426066756248474,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/original_raw.jpg"
+            },
+            "rigid": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 74.01254272460938,
+                "right_acromion": 201.7201385498047
+              },
+              "body_rmse_px": 53.63030831662827,
+              "body_errors_px": [
+                56.15872430191483,
+                145.61308472606922,
+                63.428515795395455,
+                40.9067337608089,
+                4.01559508017827,
+                4.319827609140748,
+                29.805512758913338,
+                33.47215186781948,
+                6.699593573220792,
+                19.395471453718113,
+                42.09295739237482,
+                14.986127421571496
+              ],
+              "neck_error_px": 117.44754254787574,
+              "head_vertices_in_image": 0,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 74.01254272460938
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 201.7201385498047
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 117.44752765836787,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 0.01978234015405178,
+                "head_distance_ratio": 1.0,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/original_rigid.jpg"
+            },
+            "body": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 27.130741119384766,
+                "right_acromion": 12.64501667022705
+              },
+              "body_rmse_px": 13.528790426651394,
+              "body_errors_px": [
+                3.495853770808042,
+                22.081751175283472,
+                0.5921666581581848,
+                8.99723066498532,
+                0.6323338174170559,
+                2.7699364875584256,
+                2.9057595097792164,
+                39.98233652630875,
+                0.2289011297389829,
+                0.2204883149718659,
+                0.0675050147258286,
+                0.06213670719183299
+              ],
+              "neck_error_px": 69.55262023333711,
+              "head_vertices_in_image": 2416,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 27.130741119384766
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 12.64501667022705
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 69.55261241856653,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 40.36147689819336,
+                "head_distance_ratio": 0.49259528517723083,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/original_body.jpg"
+            },
+            "wrist": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 31.233835220336914,
+                "right_acromion": 5.148433208465576
+              },
+              "body_rmse_px": 15.01114373668415,
+              "body_errors_px": [
+                1.1816929417750806,
+                27.46722522075238,
+                0.8168002766214142,
+                13.061126565656094,
+                12.304605303255899,
+                5.0955629434932,
+                2.914410667505555,
+                39.88613546804267,
+                0.3318015964910334,
+                0.0688643882215047,
+                0.1655361124641261,
+                0.01684359474591209
+              ],
+              "neck_error_px": 61.75878552064122,
+              "head_vertices_in_image": 2592,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 31.233835220336914
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 5.148433208465576
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 61.758778863925414,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 42.04660415649414,
+                "head_distance_ratio": 0.4818725883960724,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/original_wrist.jpg"
+            },
+            "contour": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 34.618927001953125,
+                "right_acromion": 6.162243843078613
+              },
+              "body_rmse_px": 16.143963615381576,
+              "body_errors_px": [
+                0.41823519187888253,
+                35.37926238133842,
+                9.740904572608727,
+                11.671608980009026,
+                12.260824453690754,
+                4.675319422270105,
+                5.127842614413763,
+                38.02560350946461,
+                0.2277250373505023,
+                0.12926941751512613,
+                0.12339332447945851,
+                0.2010320119049625
+              ],
+              "neck_error_px": 52.18846202037761,
+              "head_vertices_in_image": 2556,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 34.618927001953125
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 6.162243843078613
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 52.18845525386779,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 38.755462646484375,
+                "head_distance_ratio": 0.48094794154167175,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/original_contour.jpg"
+            },
+            "guided_body": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 20.065696716308594,
+                "right_acromion": 17.974323272705078
+              },
+              "body_rmse_px": 16.623320363398275,
+              "body_errors_px": [
+                16.645761923984605,
+                41.2968731195472,
+                12.240843503825275,
+                11.552449798258275,
+                5.982246765720565,
+                3.44746963331669,
+                21.83741524581223,
+                22.86739729027298,
+                0.8832629331588324,
+                0.7508841430349228,
+                0.5250060621553609,
+                1.0603748786164486
+              ],
+              "neck_error_px": 44.562342730122324,
+              "head_vertices_in_image": 1873,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 20.065696716308594
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 17.974323272705078
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 44.56233606547911,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 30.208885192871094,
+                "head_distance_ratio": 0.5184717178344727,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/original_guided_body.jpg"
+            },
+            "fused": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 20.065696716308594,
+                "right_acromion": 17.974323272705078
+              },
+              "body_rmse_px": 16.623320363398275,
+              "body_errors_px": [
+                16.645761923984605,
+                41.2968731195472,
+                12.240843503825275,
+                11.552449798258275,
+                5.982246765720565,
+                3.44746963331669,
+                21.83741524581223,
+                22.86739729027298,
+                0.8832629331588324,
+                0.7508841430349228,
+                0.5250060621553609,
+                1.0603748786164486
+              ],
+              "neck_error_px": 44.562342730122324,
+              "head_vertices_in_image": 1873,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 20.065696716308594
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 17.974323272705078
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 44.56233606547911,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 30.208885192871094,
+                "head_distance_ratio": 0.5184717178344727,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/original_fused.jpg"
+            }
+          },
+          "body_rmse_px": 16.623320363398275,
+          "hand_rmse_px": 9.280790967606707,
+          "hand_errors_px": [
+            22.076262197563008,
+            6.225537597973465,
+            7.474426813776199,
+            7.545602835317474,
+            8.032082901599729,
+            8.6478889659582,
+            10.306437881559594,
+            8.937821997149868,
+            7.624702945584904,
+            9.137974888432964,
+            10.495723804890813,
+            8.783375603071404,
+            7.706929487111597,
+            7.922574630156728,
+            8.56653214939967,
+            8.942874007962015,
+            7.850605631691752,
+            7.1893308744514695,
+            6.8715240793254635,
+            7.170404838670156,
+            8.027280081599542,
+            21.745125875601733,
+            9.56565803590042,
+            7.2927227262744685,
+            9.71015553357457,
+            9.109440371181565,
+            7.473639310468023,
+            9.489644905167214,
+            8.932204045500747,
+            7.821678901197457,
+            6.879584447219396,
+            8.437717013828768,
+            8.902358385678674,
+            7.761746918543875,
+            6.388731451787227,
+            7.93693019207622,
+            9.06583916870026,
+            7.734896166539453,
+            5.503352176068939,
+            6.403765100723353,
+            7.233501691355044,
+            7.953364487654167
+          ],
+          "matches": {
+            "left": {
+              "candidate": 1,
+              "confidence": 0.7991724014282227,
+              "wrist_distance_px": 12.522607341769422,
+              "detector_handedness_agrees": true,
+              "anchor_source": "Sapiens2",
+              "valid_keypoints": 21
+            },
+            "right": {
+              "candidate": 0,
+              "confidence": 0.8347943425178528,
+              "wrist_distance_px": 5.260382656029196,
+              "detector_handedness_agrees": true,
+              "anchor_source": "Sapiens2",
+              "valid_keypoints": 21
+            }
+          },
+          "surface_pass": true,
+          "selected_candidate": "strong",
+          "reload": {
+            "passed": true,
+            "independent_reconstruction": true,
+            "vertex_max_abs_m": 0.0,
+            "obj_vertex_max_abs_m": 0.0,
+            "face_topology_exact": true
+          },
+          "crossings": {
+            "left": 0,
+            "right": 0
+          },
+          "hand_errors_independently_recomputed": true,
+          "export_cpu_step_fractions": {
+            "wrist/frames": 1.0,
+            "wrist/active_frames": 1.0,
+            "contour/active_frames": 1.0,
+            "contour/strong_frames": 1.0,
+            "guided/frames": 1.0
+          }
+        },
+        "neck_only": {
+          "stages": {
+            "raw": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 50.1400260925293,
+                "right_acromion": 277.1409912109375
+              },
+              "body_rmse_px": 244.72450343507714,
+              "body_errors_px": [
+                70.59382892885695,
+                132.884683763511,
+                225.60883359702694,
+                320.741917562556,
+                275.1709951833573,
+                367.21718260171133,
+                216.70426394559018,
+                213.98662806988025,
+                234.90821385302993,
+                226.52405072070115,
+                267.62266230847007,
+                246.63532791024736
+              ],
+              "neck_error_px": 162.31858547445682,
+              "head_vertices_in_image": 0,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 50.1400260925293
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 277.1409912109375
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 162.3185757370297,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 18.63524055480957,
+                "head_distance_ratio": 0.6426066756248474,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/neck_only_raw.jpg"
+            },
+            "rigid": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 74.01254272460938,
+                "right_acromion": 201.7201385498047
+              },
+              "body_rmse_px": 53.63030831662827,
+              "body_errors_px": [
+                56.15872430191483,
+                145.61308472606922,
+                63.428515795395455,
+                40.9067337608089,
+                4.01559508017827,
+                4.319827609140748,
+                29.805512758913338,
+                33.47215186781948,
+                6.699593573220792,
+                19.395471453718113,
+                42.09295739237482,
+                14.986127421571496
+              ],
+              "neck_error_px": 117.44754254787574,
+              "head_vertices_in_image": 0,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 74.01254272460938
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 201.7201385498047
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 117.44752765836787,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 0.01978234015405178,
+                "head_distance_ratio": 1.0,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/neck_only_rigid.jpg"
+            },
+            "body": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 20.694110870361328,
+                "right_acromion": 19.55866813659668
+              },
+              "body_rmse_px": 12.069891151494257,
+              "body_errors_px": [
+                14.665877060756728,
+                3.7433935157801224,
+                0.23911922699265317,
+                0.16735976551175935,
+                0.2028737582625136,
+                0.2902867031425338,
+                38.87499565813103,
+                2.7577081247374005,
+                0.05667054604422037,
+                0.029867744994323233,
+                0.006827878120563678,
+                0.03634185364061407
+              ],
+              "neck_error_px": 24.89117679940476,
+              "head_vertices_in_image": 2364,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 20.694110870361328
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 19.55866813659668
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 24.891162283128608,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 36.89274597167969,
+                "head_distance_ratio": 0.5713545083999634,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/neck_only_body.jpg"
+            },
+            "wrist": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 34.110496520996094,
+                "right_acromion": 3.369931936264038
+              },
+              "body_rmse_px": 13.35753789678143,
+              "body_errors_px": [
+                1.9517749361342371,
+                19.41214149120419,
+                10.949828416584891,
+                0.6387522164687408,
+                12.124696263928044,
+                5.147088222905736,
+                38.183110684080816,
+                2.9372123328197355,
+                0.1032317730182207,
+                0.1574386813194155,
+                0.15439579015820087,
+                0.034616178337194166
+              ],
+              "neck_error_px": 17.517553488535604,
+              "head_vertices_in_image": 2322,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 34.110496520996094
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 3.369931936264038
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 17.517540076766025,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 38.393882751464844,
+                "head_distance_ratio": 0.5853147506713867,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/neck_only_wrist.jpg"
+            },
+            "contour": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 35.72739028930664,
+                "right_acromion": 6.195729732513428
+              },
+              "body_rmse_px": 12.966422612557164,
+              "body_errors_px": [
+                1.362884553158393,
+                15.73774323782951,
+                12.104078825689063,
+                1.9949561625825523,
+                12.339206545116651,
+                4.799662527582015,
+                37.849814785701525,
+                3.096430085426027,
+                0.07212709750194558,
+                0.042925326566511754,
+                0.11299477218566496,
+                0.07644427405820868
+              ],
+              "neck_error_px": 17.69683637913419,
+              "head_vertices_in_image": 2274,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 35.72739028930664
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 6.195729732513428
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 17.69682219457598,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 39.31939697265625,
+                "head_distance_ratio": 0.592597246170044,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/neck_only_contour.jpg"
+            },
+            "guided_body": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 21.29621124267578,
+                "right_acromion": 14.83070182800293
+              },
+              "body_rmse_px": 13.402894956438955,
+              "body_errors_px": [
+                14.755284849742486,
+                27.965205205292808,
+                11.240257820210516,
+                7.900524055025304,
+                4.750833026488206,
+                2.0828917500037982,
+                21.852326195003922,
+                21.44921696844434,
+                0.48785793805428485,
+                1.419637239753379,
+                0.22286901905542555,
+                0.5597697205955012
+              ],
+              "neck_error_px": 16.2340823258242,
+              "head_vertices_in_image": 1855,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 21.29621124267578
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 14.83070182800293
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 16.23406977375174,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 32.63568115234375,
+                "head_distance_ratio": 0.5746577978134155,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/neck_only_guided_body.jpg"
+            },
+            "fused": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 21.29621124267578,
+                "right_acromion": 14.83070182800293
+              },
+              "body_rmse_px": 13.402894956438955,
+              "body_errors_px": [
+                14.755284849742486,
+                27.965205205292808,
+                11.240257820210516,
+                7.900524055025304,
+                4.750833026488206,
+                2.0828917500037982,
+                21.852326195003922,
+                21.44921696844434,
+                0.48785793805428485,
+                1.419637239753379,
+                0.22286901905542555,
+                0.5597697205955012
+              ],
+              "neck_error_px": 16.2340823258242,
+              "head_vertices_in_image": 1855,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 21.29621124267578
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 14.83070182800293
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 16.23406977375174,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 32.63568115234375,
+                "head_distance_ratio": 0.5746577978134155,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/neck_only_fused.jpg"
+            }
+          },
+          "body_rmse_px": 13.402894956438955,
+          "hand_rmse_px": 8.875169242762848,
+          "hand_errors_px": [
+            11.43574585192806,
+            5.321670310248255,
+            7.260731047378774,
+            8.74880245133467,
+            9.31168507730804,
+            9.6868716368607,
+            11.402400000123762,
+            10.177204130615147,
+            8.93630494140994,
+            9.996767128842057,
+            11.56742667627708,
+            10.025555257191277,
+            9.019687881692388,
+            8.730999905704085,
+            9.659189198532678,
+            10.151182697204524,
+            9.160942202936189,
+            7.81745317436228,
+            7.9778590168908075,
+            8.363507069493748,
+            9.323945872439152,
+            10.315096341462473,
+            15.746006445183578,
+            6.531545123653989,
+            9.685998798106931,
+            8.306022566818477,
+            7.747571773448416,
+            9.445878274781116,
+            8.464270994552688,
+            7.218034193916138,
+            6.831470590069902,
+            8.61870668715054,
+            8.476977819085977,
+            7.171122863076822,
+            6.306459871191101,
+            7.919242290570404,
+            8.415270712984658,
+            7.151023680999977,
+            5.514039403074595,
+            6.388331747667337,
+            6.7113351241327175,
+            7.379168753576731
+          ],
+          "matches": {
+            "left": {
+              "candidate": 1,
+              "confidence": 0.7991724014282227,
+              "wrist_distance_px": 12.522607341769422,
+              "detector_handedness_agrees": true,
+              "anchor_source": "Sapiens2",
+              "valid_keypoints": 21
+            },
+            "right": {
+              "candidate": 0,
+              "confidence": 0.8347943425178528,
+              "wrist_distance_px": 5.260382656029196,
+              "detector_handedness_agrees": true,
+              "anchor_source": "Sapiens2",
+              "valid_keypoints": 21
+            }
+          },
+          "surface_pass": false,
+          "selected_candidate": "strong",
+          "reload": {
+            "passed": true,
+            "independent_reconstruction": true,
+            "vertex_max_abs_m": 0.0,
+            "obj_vertex_max_abs_m": 0.0,
+            "face_topology_exact": true
+          },
+          "crossings": {
+            "left": 3,
+            "right": 0
+          },
+          "hand_errors_independently_recomputed": true,
+          "export_cpu_step_fractions": {
+            "wrist/frames": 1.0,
+            "wrist/active_frames": 1.0,
+            "contour/active_frames": 1.0,
+            "contour/strong_frames": 1.0,
+            "guided/frames": 1.0
+          }
+        },
+        "shoulder_neck": {
+          "stages": {
+            "raw": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 50.1400260925293,
+                "right_acromion": 277.1409912109375
+              },
+              "body_rmse_px": 244.72450343507714,
+              "body_errors_px": [
+                70.59382892885695,
+                132.884683763511,
+                225.60883359702694,
+                320.741917562556,
+                275.1709951833573,
+                367.21718260171133,
+                216.70426394559018,
+                213.98662806988025,
+                234.90821385302993,
+                226.52405072070115,
+                267.62266230847007,
+                246.63532791024736
+              ],
+              "neck_error_px": 162.31858547445682,
+              "head_vertices_in_image": 0,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 50.1400260925293
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 277.1409912109375
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 162.3185757370297,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 18.63524055480957,
+                "head_distance_ratio": 0.6426066756248474,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/shoulder_neck_raw.jpg"
+            },
+            "rigid": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 74.01254272460938,
+                "right_acromion": 201.7201385498047
+              },
+              "body_rmse_px": 53.63030831662827,
+              "body_errors_px": [
+                56.15872430191483,
+                145.61308472606922,
+                63.428515795395455,
+                40.9067337608089,
+                4.01559508017827,
+                4.319827609140748,
+                29.805512758913338,
+                33.47215186781948,
+                6.699593573220792,
+                19.395471453718113,
+                42.09295739237482,
+                14.986127421571496
+              ],
+              "neck_error_px": 117.44754254787574,
+              "head_vertices_in_image": 0,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 74.01254272460938
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 201.7201385498047
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 117.44752765836787,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 0.01978234015405178,
+                "head_distance_ratio": 1.0,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/shoulder_neck_rigid.jpg"
+            },
+            "body": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 20.925003051757812,
+                "right_acromion": 19.655887603759766
+              },
+              "body_rmse_px": 12.04221481766432,
+              "body_errors_px": [
+                14.438143833915392,
+                3.7427598383794183,
+                0.23259698252603164,
+                0.14151463970692024,
+                0.19075418917282103,
+                0.26157743921821824,
+                38.85839994529081,
+                2.748041926761288,
+                0.053142890271199034,
+                0.02605654296707591,
+                0.008625422785965139,
+                0.03883408550129117
+              ],
+              "neck_error_px": 24.68700064479543,
+              "head_vertices_in_image": 2378,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 20.925003051757812
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 19.655887603759766
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 24.686986145899628,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 36.99182891845703,
+                "head_distance_ratio": 0.5697128772735596,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/shoulder_neck_body.jpg"
+            },
+            "wrist": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 33.32844924926758,
+                "right_acromion": 3.4752070903778076
+              },
+              "body_rmse_px": 13.095838291804077,
+              "body_errors_px": [
+                2.207064106497445,
+                18.049754588316063,
+                10.409299466473874,
+                0.3519354529420053,
+                12.01494415288556,
+                4.7992930576561275,
+                37.97379294557808,
+                3.0703638367418655,
+                0.04516027537468811,
+                0.13566214540627713,
+                0.09531696307137554,
+                0.10913093573910206
+              ],
+              "neck_error_px": 19.094361019148625,
+              "head_vertices_in_image": 2283,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 33.32844924926758
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 3.4752070903778076
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 19.09434726319228,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 38.14646530151367,
+                "head_distance_ratio": 0.5886617302894592,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/shoulder_neck_wrist.jpg"
+            },
+            "contour": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 34.85066223144531,
+                "right_acromion": 4.066204071044922
+              },
+              "body_rmse_px": 13.308314528919393,
+              "body_errors_px": [
+                1.8143970371862597,
+                18.289419598303944,
+                13.347114805168474,
+                2.2486541968773697,
+                12.419274884649122,
+                4.976329119508196,
+                37.59858389899253,
+                3.416835147506544,
+                0.03322263911230543,
+                0.03319860447389277,
+                0.05253653449580863,
+                0.050222080842504145
+              ],
+              "neck_error_px": 19.214770847049675,
+              "head_vertices_in_image": 2270,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 34.85066223144531
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 4.066204071044922
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 19.21475735222707,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 38.33308029174805,
+                "head_distance_ratio": 0.5926263332366943,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/shoulder_neck_contour.jpg"
+            },
+            "guided_body": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 26.61433219909668,
+                "right_acromion": 20.19198989868164
+              },
+              "body_rmse_px": 12.355411643754763,
+              "body_errors_px": [
+                12.658990076365493,
+                21.72742672329851,
+                12.283834832733007,
+                5.140811629403865,
+                4.557321509869043,
+                1.8209339981452217,
+                28.22364699141966,
+                14.066644062156012,
+                0.33393438214449683,
+                1.668431578952864,
+                0.5193337063853974,
+                0.7267256851616706
+              ],
+              "neck_error_px": 15.881182125243756,
+              "head_vertices_in_image": 2011,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 26.61433219909668
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 20.19198989868164
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 15.881169684151768,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 35.724159240722656,
+                "head_distance_ratio": 0.5674747824668884,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/shoulder_neck_guided_body.jpg"
+            },
+            "fused": {
+              "auxiliary_point_errors_px": {
+                "left_acromion": 26.61433219909668,
+                "right_acromion": 20.19198989868164
+              },
+              "body_rmse_px": 12.355411643754763,
+              "body_errors_px": [
+                12.658990076365493,
+                21.72742672329851,
+                12.283834832733007,
+                5.140811629403865,
+                4.557321509869043,
+                1.8209339981452217,
+                28.22364699141966,
+                14.066644062156012,
+                0.33393438214449683,
+                1.668431578952864,
+                0.5193337063853974,
+                0.7267256851616706
+              ],
+              "neck_error_px": 15.881182125243756,
+              "head_vertices_in_image": 2011,
+              "head_guard_evaluation": {
+                "settings": {
+                  "enabled": true,
+                  "neck_enabled": true,
+                  "guard_enabled": false,
+                  "neck_min_score": 0.3,
+                  "neck_tolerance_diagonal": 0.02,
+                  "neck_weight": 0.1,
+                  "head_angle_deg": 8.0,
+                  "head_distance_fraction": 0.85,
+                  "head_barrier_weight": 0.002,
+                  "face_min_score": 0.7,
+                  "face_min_count": 3,
+                  "face_border_fraction": 0.02,
+                  "shoulders_enabled": true,
+                  "shoulder_min_score": 0.0,
+                  "shoulder_weight": 0.1,
+                  "shoulder_tolerance_diagonal": 0.02
+                },
+                "shoulder_observations": [
+                  {
+                    "name": "left_acromion",
+                    "vertex_id": 4481,
+                    "score": 0.2578125,
+                    "edge_factor": 1.0,
+                    "target_px": [
+                      367.3992614746094,
+                      696.0479125976562
+                    ],
+                    "error_px": 26.61433219909668
+                  },
+                  {
+                    "name": "right_acromion",
+                    "vertex_id": 6627,
+                    "score": 0.05419921875,
+                    "edge_factor": 0.49555703292525183,
+                    "target_px": [
+                      771.4033813476562,
+                      709.2959594726562
+                    ],
+                    "error_px": 20.19198989868164
+                  }
+                ],
+                "neck_active": true,
+                "head_guard_active": false,
+                "reliable_interior_face_points": 0,
+                "neck_proxy": "SMPL-X internal Neck; uncertain correspondence with Sapiens neck",
+                "neck_score": 0.66015625,
+                "neck_edge_factor": 0.6765555924997629,
+                "neck_error_px": 15.881169684151768,
+                "neck_tolerance_px": 29.372095601097314,
+                "head_angle_from_rigid_deg": 35.724159240722656,
+                "head_distance_ratio": 0.5674747824668884,
+                "head_guard_passed": true,
+                "reference_head_center_cam_m": [
+                  -0.10637164115905762,
+                  0.35525789856910706,
+                  0.1759561151266098
+                ]
+              },
+              "image": "images/cam4_f00001147/shoulder_neck_fused.jpg"
+            }
+          },
+          "body_rmse_px": 12.355411643754763,
+          "hand_rmse_px": 9.676108196552377,
+          "hand_errors_px": [
+            23.28925571757106,
+            7.4221629585738045,
+            8.646070160736327,
+            8.809363877803477,
+            9.218866233921048,
+            9.509329837224865,
+            11.22666698773376,
+            10.053816528522157,
+            8.846590337979954,
+            9.766866011550535,
+            11.384376123013991,
+            9.905332134012268,
+            8.93032664112544,
+            8.514287815809887,
+            9.488480914508624,
+            10.019360564068235,
+            9.072703477042465,
+            7.613416422299656,
+            7.818315011065359,
+            8.234184199483513,
+            9.237458083848948,
+            21.565973842729257,
+            11.443280685827723,
+            6.58373512811722,
+            9.61033961025508,
+            8.084071308876217,
+            7.722277296333611,
+            9.348462689222778,
+            8.297617255657002,
+            7.034696935383763,
+            6.769700222441323,
+            8.564483616799395,
+            8.317790870867892,
+            6.990500149322609,
+            6.258482586401693,
+            7.83391282700279,
+            8.218175446526889,
+            6.970242782404477,
+            5.5220139578280305,
+            6.315159534545969,
+            6.54543021853467,
+            7.198872001939984
+          ],
+          "matches": {
+            "left": {
+              "candidate": 1,
+              "confidence": 0.7991724014282227,
+              "wrist_distance_px": 12.522607341769422,
+              "detector_handedness_agrees": true,
+              "anchor_source": "Sapiens2",
+              "valid_keypoints": 21
+            },
+            "right": {
+              "candidate": 0,
+              "confidence": 0.8347943425178528,
+              "wrist_distance_px": 5.260382656029196,
+              "detector_handedness_agrees": true,
+              "anchor_source": "Sapiens2",
+              "valid_keypoints": 21
+            }
+          },
+          "surface_pass": false,
+          "selected_candidate": "strong",
+          "reload": {
+            "passed": true,
+            "independent_reconstruction": true,
+            "vertex_max_abs_m": 0.0,
+            "obj_vertex_max_abs_m": 0.0,
+            "face_topology_exact": true
+          },
+          "crossings": {
+            "left": 16,
+            "right": 0
+          },
+          "hand_errors_independently_recomputed": true,
+          "export_cpu_step_fractions": {
+            "wrist/frames": 1.0,
+            "wrist/active_frames": 1.0,
+            "contour/active_frames": 1.0,
+            "contour/strong_frames": 1.0,
+            "guided/frames": 1.0
+          }
+        }
+      },
+      "hand_crops": {
+        "left": {
+          "image": "images/cam4_f00001147/left_comparison.jpg",
+          "box": [
+            478,
+            314,
+            696,
+            540
+          ]
+        },
+        "right": {
+          "image": "images/cam4_f00001147/right_comparison.jpg",
+          "box": [
+            614,
+            292,
+            822,
+            536
+          ]
+        }
+      }
+    }
+  ]
+}

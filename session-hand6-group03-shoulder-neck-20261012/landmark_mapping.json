@@ -1,0 +1,14 @@
+{
+  "vertex_ids": {
+    "left_acromion": 4481,
+    "right_acromion": 6627
+  },
+  "smplh_ids": {
+    "LSHO": 1861,
+    "RSHO": 5322
+  },
+  "marker_source": "https://github.com/nghorbani/moshpp/blob/master/src/moshpp/marker_layout/marker_vids.py",
+  "transfer_source": "https://github.com/nghorbani/moshpp/blob/master/support_data/smplx_fit2_smplh.npz",
+  "transfer_sha256": "6d7b399cf357238522d3f795e70e4e3c49b3bad189baf179dd2f7e3a5618ef2c",
+  "interpretation": "Anatomical surface proxy, not proven exact Sapiens acromion definition. Neck internal joint proxy unchanged."
+}
