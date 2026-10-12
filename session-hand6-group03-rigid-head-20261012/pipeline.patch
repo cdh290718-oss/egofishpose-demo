@@ -1,0 +1,88 @@
+diff --git a/egosmplx_pipeline/head_neck.py b/egosmplx_pipeline/head_neck.py
+index 2f877bc..7b4ecb9 100644
+--- a/egosmplx_pipeline/head_neck.py
++++ b/egosmplx_pipeline/head_neck.py
+@@ -17,7 +17,8 @@ DEFAULTS = dict(enabled=False, neck_enabled=True, guard_enabled=True,
+                 head_barrier_weight=.002, face_min_score=.7,
+                 face_min_count=3, face_border_fraction=.02,
+                 shoulders_enabled=False, shoulder_min_score=.3,
+-                shoulder_weight=.1, shoulder_tolerance_diagonal=.02)
++                shoulder_weight=.1, shoulder_tolerance_diagonal=.02,
++                rigid_head_enabled=False, rigid_head_weight=1.)
+ 
+ # MoSh++ LSHO/RSHO transferred with its SMPL-H -> SMPL-X correspondence.
+ # Surface proxies: exact Sapiens annotation convention remains unverified.
+@@ -29,7 +30,7 @@ def settings():
+     if set(supplied) - set(DEFAULTS):
+         raise ValueError('Unknown head/neck settings')
+     result = dict(DEFAULTS, **supplied)
+-    for key in ['enabled', 'neck_enabled', 'guard_enabled', 'shoulders_enabled']:
++    for key in ['enabled', 'neck_enabled', 'guard_enabled', 'shoulders_enabled', 'rigid_head_enabled']:
+         if not isinstance(result[key], bool):
+             raise ValueError('Expected boolean ' + key)
+     if not (0 < result['head_angle_deg'] < 90 and 0 < result['head_distance_fraction'] < 1):
+@@ -46,7 +47,10 @@ class HeadNeck:
+         self.size = tuple(size)
+         self.diag = float(np.hypot(*size))
+         rigid = torch.as_tensor(rigid_vertices, dtype=torch.float32, device=device)
+-        self.center = rigid[self.ids].mean(0).detach()
++        self.reference_vertices = rigid[self.ids].detach().clone()
++        self.center = self.reference_vertices.mean(0).detach()
++        self.reference_radius_sq = (self.reference_vertices-self.center).square().sum(1).mean().clamp_min(1e-8)
++        self.rigid_head_active = self.enabled and self.cfg['rigid_head_enabled']
+         self.radius = self.center.norm().clamp_min(1e-6)
+         self.direction = self.center / self.radius
+         self.cos_angle = math.cos(math.radians(self.cfg['head_angle_deg']))
+@@ -94,6 +98,9 @@ class HeadNeck:
+ 
+     def loss(self, vertices, pixels):
+         result = vertices.new_zeros(())
++        if self.rigid_head_active:
++            displacement_sq = (vertices[self.ids]-self.reference_vertices).square().sum(1).mean()
++            result = result + self.cfg['rigid_head_weight']*displacement_sq/self.reference_radius_sq
+         if self.neck_active:
+             distance = (pixels[self.neck_index]-self.neck_target).norm()/self.diag
+             excess = F.relu(distance-self.cfg['neck_tolerance_diagonal'])
+@@ -112,7 +119,14 @@ class HeadNeck:
+             angle=torch.rad2deg(torch.acos((center/distance*self.direction).sum().clamp(-1,1)))
+             shoulders = [dict(name=q['name'],vertex_id=q['vertex_id'],score=q['score'],edge_factor=q['edge_factor'],
+                          target_px=q['target'].cpu().tolist(),error_px=float((self.project(vertices[q['vertex_id']:q['vertex_id']+1])[0]-q['target']).norm())) for q in self.shoulders]
+-            return dict(settings=self.cfg,shoulder_observations=shoulders,neck_active=bool(self.neck_active),head_guard_active=bool(self.guard_active),reliable_interior_face_points=int(self.face_count),
++            displacement = (vertices[self.ids]-self.reference_vertices).norm(dim=1)
++            return dict(rigid_head_active=bool(self.rigid_head_active),
++                        rigid_head_reference_vertices=int(len(self.ids)),
++                        rigid_head_reference_radius_m=float(self.reference_radius_sq.sqrt()),
++                        rigid_head_vertex_rmse_m=float(displacement.square().mean().sqrt()),
++                        rigid_head_vertex_max_displacement_m=float(displacement.max()),
++                        rigid_head_center_displacement_m=float((center-self.center).norm()),
++                        settings=self.cfg,shoulder_observations=shoulders,neck_active=bool(self.neck_active),head_guard_active=bool(self.guard_active),reliable_interior_face_points=int(self.face_count),
+                         neck_proxy='SMPL-X internal Neck; uncertain correspondence with Sapiens neck',neck_score=self.neck_score,neck_edge_factor=self.edge_factor,
+                         neck_error_px=float((pixels[self.neck_index]-self.neck_target).norm()) if self.neck_active else None,
+                         neck_tolerance_px=self.cfg['neck_tolerance_diagonal']*self.diag,head_angle_from_rigid_deg=float(angle),head_distance_ratio=float(distance/self.radius),
+diff --git a/tests/test_rigid_head_reference.py b/tests/test_rigid_head_reference.py
+new file mode 100644
+index 0000000..682ae4f
+--- /dev/null
++++ b/tests/test_rigid_head_reference.py
+@@ -0,0 +1,21 @@
++import json,os,unittest
++from unittest.mock import patch
++import numpy as np
++import torch
++from egosmplx_pipeline.head_neck import HeadNeck
++class TestRigidReference(unittest.TestCase):
++ def setup_context(self,enabled=True):
++  ref=np.array([[-.1,0,1],[.1,0,1],[0,.1,1],[0,-.1,1],[1,1,1]],np.float32)
++  cfg=dict(enabled=enabled,neck_enabled=False,guard_enabled=False,shoulders_enabled=False,rigid_head_enabled=True,rigid_head_weight=1.)
++  with patch.dict(os.environ,{'EGOSMPLX_HEAD_NECK':json.dumps(cfg)}):h=HeadNeck(ref,[0,1,2,3],0,{},(1280,720))
++  return h,torch.tensor(ref)
++ def test_reference_is_stationary(self):
++  h,v=self.setup_context();v.requires_grad_();loss=h.loss(v,torch.zeros(1,2));loss.backward();self.assertEqual(float(loss),0.);self.assertEqual(float(v.grad.abs().sum()),0.)
++ def test_camera_translation_and_full_geometry(self):
++  h,v=self.setup_context();v[:,0]+=.01;v.requires_grad_();loss=h.loss(v,torch.zeros(1,2));loss.backward();self.assertAlmostEqual(float(loss),.01,places=5);self.assertGreater(float(v.grad[0,0]),0.);self.assertEqual(float(v.grad[4].abs().sum()),0.)
++  h,v=self.setup_context();v[:,[0,1]]=v[:,[1,0]];self.assertGreater(float(h.loss(v,torch.zeros(1,2))),0.)
++ def test_no_additional_observations_or_hard_bounds(self):
++  h,v=self.setup_context();self.assertFalse(h.neck_active);self.assertFalse(h.guard_active);self.assertEqual(h.shoulders,[]);self.assertTrue(h.feasible(v*10));self.assertEqual(h.report(v,torch.zeros(1,2))['rigid_head_vertex_rmse_m'],0.)
++ def test_disabled_zero(self):
++  h,v=self.setup_context(False);self.assertEqual(float(h.loss(v*10,torch.zeros(1,2))),0.)
++if __name__=='__main__':unittest.main()

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "cam3_f00001153",
+    "points": [
+      {
+        "name": "left_shoulder",
+        "original_px": 14.227972320080351,
+        "rigid_head_px": 123.20636322790682
+      },
+      {
+        "name": "right_shoulder",
+        "original_px": 9.670318888552915,
+        "rigid_head_px": 76.8219849699192
+      },
+      {
+        "name": "left_elbow",
+        "original_px": 9.406488368116008,
+        "rigid_head_px": 33.91378785830203
+      },
+      {
+        "name": "right_elbow",
+        "original_px": 6.20565381217253,
+        "rigid_head_px": 38.21777341525959
+      },
+      {
+        "name": "left_wrist",
+        "original_px": 4.555025111500273,
+        "rigid_head_px": 3.104004822583179
+      },
+      {
+        "name": "right_wrist",
+        "original_px": 4.147946134338008,
+        "rigid_head_px": 2.0459252895638738
+      },
+      {
+        "name": "left_hip",
+        "original_px": 10.878773656579611,
+        "rigid_head_px": 24.217738331851404
+      },
+      {
+        "name": "right_hip",
+        "original_px": 15.367802694064903,
+        "rigid_head_px": 20.21250561325746
+      },
+      {
+        "name": "left_knee",
+        "original_px": 1.0416215403277778,
+        "rigid_head_px": 0.6517593592239244
+      },
+      {
+        "name": "left_ankle",
+        "original_px": 0.5552802475169271,
+        "rigid_head_px": 0.8187527783825033
+      }
+    ]
+  },
+  {
+    "id": "cam4_f00001147",
+    "points": [
+      {
+        "name": "left_shoulder",
+        "original_px": 16.645761923984605,
+        "rigid_head_px": 16.392096595466754
+      },
+      {
+        "name": "right_shoulder",
+        "original_px": 41.2968731195472,
+        "rigid_head_px": 85.83580729443767
+      },
+      {
+        "name": "left_elbow",
+        "original_px": 12.240843503825275,
+        "rigid_head_px": 19.46851740981051
+      },
+      {
+        "name": "right_elbow",
+        "original_px": 11.552449798258275,
+        "rigid_head_px": 24.469317776950064
+      },
+      {
+        "name": "left_wrist",
+        "original_px": 5.982246765720565,
+        "rigid_head_px": 4.073016819569519
+      },
+      {
+        "name": "right_wrist",
+        "original_px": 3.44746963331669,
+        "rigid_head_px": 3.0259543994437026
+      },
+      {
+        "name": "left_hip",
+        "original_px": 21.83741524581223,
+        "rigid_head_px": 24.050437502934756
+      },
+      {
+        "name": "right_hip",
+        "original_px": 22.86739729027298,
+        "rigid_head_px": 23.750318665318567
+      },
+      {
+        "name": "left_knee",
+        "original_px": 0.8832629331588324,
+        "rigid_head_px": 0.25943854626920054
+      },
+      {
+        "name": "right_knee",
+        "original_px": 0.7508841430349228,
+        "rigid_head_px": 0.971561389305898
+      },
+      {
+        "name": "left_ankle",
+        "original_px": 0.5250060621553609,
+        "rigid_head_px": 0.1539621526609929
+      },
+      {
+        "name": "right_ankle",
+        "original_px": 1.0603748786164486,
+        "rigid_head_px": 0.7292812921902394
+      }
+    ]
+  }
+]

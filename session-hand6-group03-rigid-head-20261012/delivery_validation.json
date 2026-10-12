@@ -1,0 +1,42 @@
+{
+  "frame_count": 2,
+  "new_automatic_points_per_frame": 0,
+  "original_body_targets": 22,
+  "all_input_hashes_unchanged": true,
+  "checks": [
+    {
+      "id": "cam3_f00001153",
+      "raw_and_rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "no_additional_automatic_points": true,
+      "head_direction_distance_guard_disabled": true,
+      "rigid_head_soft_reference_enabled": true,
+      "hand_candidate_identities_unchanged": true,
+      "artifact_sha256_verified": true,
+      "independent_reload_passed": true
+    },
+    {
+      "id": "cam4_f00001147",
+      "raw_and_rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "no_additional_automatic_points": true,
+      "head_direction_distance_guard_disabled": true,
+      "rigid_head_soft_reference_enabled": true,
+      "hand_candidate_identities_unchanged": true,
+      "artifact_sha256_verified": true,
+      "independent_reload_passed": true
+    }
+  ],
+  "disabled_regression": {
+    "frame": "cam3_f00001153",
+    "bitwise_equal": {
+      "body_pose": true,
+      "global_orient": true,
+      "transl": true,
+      "smplx_mesh_cam": true,
+      "stage2_target_joint_pixels": true,
+      "stage2_selected_joint_indices": true
+    },
+    "passed": true
+  }
+}
