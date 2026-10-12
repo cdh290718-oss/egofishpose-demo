@@ -1,0 +1,6 @@
+{
+  "source_experiment": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_group03_rigid_head_20261012_v1",
+  "disabled_regression": "Reused exact same fitting code; no optimizer code changed",
+  "original_head_audit": "Original inference code and center parameter audit reused",
+  "source_code_sha256_identical": true
+}
