@@ -1,0 +1,29 @@
+{
+  "A": {
+    "body_rmse_px": 39.59235447975818,
+    "hand_rmse_px": 10.588192737862554,
+    "shoulder_rmse_px": 84.73180034563227,
+    "body_n": 22,
+    "hand_n": 84,
+    "shoulder_n": 4,
+    "surface_pass_frames": 1
+  },
+  "B": {
+    "body_rmse_px": 39.828604720736294,
+    "hand_rmse_px": 10.816884116170005,
+    "shoulder_rmse_px": 85.45792768547801,
+    "body_n": 22,
+    "hand_n": 84,
+    "shoulder_n": 4,
+    "surface_pass_frames": 1
+  },
+  "C": {
+    "body_rmse_px": 39.923086909918574,
+    "hand_rmse_px": 10.666223740040842,
+    "shoulder_rmse_px": 85.63369539245524,
+    "body_n": 22,
+    "hand_n": 84,
+    "shoulder_n": 4,
+    "surface_pass_frames": 1
+  }
+}

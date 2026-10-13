@@ -1,0 +1,112 @@
+{
+  "frame_count": 2,
+  "fresh_pipeline_runs": 6,
+  "all_input_hashes_unchanged": true,
+  "all_source_hashes_unchanged_during_run": true,
+  "checks": [
+    {
+      "id": "cam3_f00001153",
+      "variants": {
+        "A": {
+          "raw_rigid_identical": true,
+          "original_body_targets_identical": true,
+          "hand_identities_identical": true,
+          "artifact_hashes_verified": true,
+          "reload_passed": true,
+          "fixed_shape_and_hand_parameters_verified": true
+        },
+        "B": {
+          "raw_rigid_identical": true,
+          "original_body_targets_identical": true,
+          "hand_identities_identical": true,
+          "artifact_hashes_verified": true,
+          "reload_passed": true,
+          "fixed_shape_and_hand_parameters_verified": true
+        },
+        "C": {
+          "raw_rigid_identical": true,
+          "original_body_targets_identical": true,
+          "hand_identities_identical": true,
+          "artifact_hashes_verified": true,
+          "reload_passed": true,
+          "fixed_shape_and_hand_parameters_verified": true
+        }
+      },
+      "baseline_reproduction": {
+        "raw": {
+          "parameter_max_abs": 0.0,
+          "bitwise_equal": true
+        },
+        "rigid": {
+          "parameter_max_abs": 0.0,
+          "bitwise_equal": true
+        },
+        "body": {
+          "parameter_max_abs": 0.0,
+          "bitwise_equal": true
+        },
+        "guided_body": {
+          "parameter_max_abs": 0.0,
+          "bitwise_equal": true
+        },
+        "fused": {
+          "parameter_max_abs": 0.0,
+          "bitwise_equal": true
+        },
+        "fused_mesh_max_abs_m": 0.0
+      }
+    },
+    {
+      "id": "cam4_f00001147",
+      "variants": {
+        "A": {
+          "raw_rigid_identical": true,
+          "original_body_targets_identical": true,
+          "hand_identities_identical": true,
+          "artifact_hashes_verified": true,
+          "reload_passed": true,
+          "fixed_shape_and_hand_parameters_verified": true
+        },
+        "B": {
+          "raw_rigid_identical": true,
+          "original_body_targets_identical": true,
+          "hand_identities_identical": true,
+          "artifact_hashes_verified": true,
+          "reload_passed": true,
+          "fixed_shape_and_hand_parameters_verified": true
+        },
+        "C": {
+          "raw_rigid_identical": true,
+          "original_body_targets_identical": true,
+          "hand_identities_identical": true,
+          "artifact_hashes_verified": true,
+          "reload_passed": true,
+          "fixed_shape_and_hand_parameters_verified": true
+        }
+      },
+      "baseline_reproduction": {
+        "raw": {
+          "parameter_max_abs": 0.0,
+          "bitwise_equal": true
+        },
+        "rigid": {
+          "parameter_max_abs": 0.0,
+          "bitwise_equal": true
+        },
+        "body": {
+          "parameter_max_abs": 0.0,
+          "bitwise_equal": true
+        },
+        "guided_body": {
+          "parameter_max_abs": 0.0,
+          "bitwise_equal": true
+        },
+        "fused": {
+          "parameter_max_abs": 0.0,
+          "bitwise_equal": true
+        },
+        "fused_mesh_max_abs_m": 0.0
+      }
+    }
+  ]
+}
