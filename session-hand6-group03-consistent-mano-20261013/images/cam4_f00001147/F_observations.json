@@ -1,0 +1,2217 @@
+{
+  "settings": {
+    "enabled": true,
+    "contour_enabled": true,
+    "wrist_weight": 1.0,
+    "palm_weight": 0.15,
+    "loop_weight": 0.5,
+    "contour_weight": 0.5
+  },
+  "matches": {
+    "left": {
+      "candidate": 1,
+      "confidence": 0.7991724014282227,
+      "wrist_distance_px": 12.522607341769422,
+      "detector_handedness_agrees": true,
+      "anchor_source": "Sapiens2",
+      "valid_keypoints": 21
+    },
+    "right": {
+      "candidate": 0,
+      "confidence": 0.8347943425178528,
+      "wrist_distance_px": 5.260382656029196,
+      "detector_handedness_agrees": true,
+      "anchor_source": "Sapiens2",
+      "valid_keypoints": 21
+    }
+  },
+  "hand_observations": {
+    "left": {
+      "enabled": true,
+      "candidate": 1,
+      "detector_score": 0.7991724014282227,
+      "wrist_loop_vertices": 16,
+      "reason": "native_image_projection_valid_and_detection_gate",
+      "metric_mano_depth_used": false
+    },
+    "right": {
+      "enabled": true,
+      "candidate": 0,
+      "detector_score": 0.8347943425178528,
+      "wrist_loop_vertices": 16,
+      "reason": "native_image_projection_valid_and_detection_gate",
+      "metric_mano_depth_used": false
+    }
+  },
+  "contour_regions": {
+    "left_shoulder": {
+      "enabled": true,
+      "anchor_score": 0.6875,
+      "candidate_boundary_pixels": 116,
+      "skin_target_count": 0,
+      "clothing_target_count": 64,
+      "reason": "visible_boundary_available",
+      "skin_targets": [],
+      "clothing_targets": [
+        [
+          324.0,
+          620.0
+        ],
+        [
+          324.0,
+          621.0
+        ],
+        [
+          322.0,
+          623.0
+        ],
+        [
+          321.0,
+          624.0
+        ],
+        [
+          321.0,
+          625.0
+        ],
+        [
+          321.0,
+          626.0
+        ],
+        [
+          319.0,
+          628.0
+        ],
+        [
+          319.0,
+          629.0
+        ],
+        [
+          318.0,
+          631.0
+        ],
+        [
+          317.0,
+          632.0
+        ],
+        [
+          317.0,
+          633.0
+        ],
+        [
+          315.0,
+          635.0
+        ],
+        [
+          314.0,
+          636.0
+        ],
+        [
+          314.0,
+          637.0
+        ],
+        [
+          314.0,
+          638.0
+        ],
+        [
+          312.0,
+          639.0
+        ],
+        [
+          312.0,
+          640.0
+        ],
+        [
+          312.0,
+          641.0
+        ],
+        [
+          310.0,
+          643.0
+        ],
+        [
+          310.0,
+          644.0
+        ],
+        [
+          308.0,
+          646.0
+        ],
+        [
+          309.0,
+          646.0
+        ],
+        [
+          307.0,
+          648.0
+        ],
+        [
+          307.0,
+          649.0
+        ],
+        [
+          305.0,
+          651.0
+        ],
+        [
+          305.0,
+          652.0
+        ],
+        [
+          304.0,
+          653.0
+        ],
+        [
+          304.0,
+          654.0
+        ],
+        [
+          304.0,
+          655.0
+        ],
+        [
+          302.0,
+          657.0
+        ],
+        [
+          302.0,
+          658.0
+        ],
+        [
+          301.0,
+          660.0
+        ],
+        [
+          301.0,
+          661.0
+        ],
+        [
+          301.0,
+          662.0
+        ],
+        [
+          299.0,
+          664.0
+        ],
+        [
+          298.0,
+          666.0
+        ],
+        [
+          298.0,
+          667.0
+        ],
+        [
+          298.0,
+          668.0
+        ],
+        [
+          297.0,
+          669.0
+        ],
+        [
+          297.0,
+          670.0
+        ],
+        [
+          296.0,
+          672.0
+        ],
+        [
+          295.0,
+          674.0
+        ],
+        [
+          295.0,
+          675.0
+        ],
+        [
+          294.0,
+          676.0
+        ],
+        [
+          294.0,
+          677.0
+        ],
+        [
+          292.0,
+          679.0
+        ],
+        [
+          292.0,
+          680.0
+        ],
+        [
+          292.0,
+          681.0
+        ],
+        [
+          290.0,
+          683.0
+        ],
+        [
+          291.0,
+          683.0
+        ],
+        [
+          289.0,
+          685.0
+        ],
+        [
+          289.0,
+          686.0
+        ],
+        [
+          288.0,
+          688.0
+        ],
+        [
+          288.0,
+          690.0
+        ],
+        [
+          287.0,
+          692.0
+        ],
+        [
+          287.0,
+          693.0
+        ],
+        [
+          286.0,
+          695.0
+        ],
+        [
+          286.0,
+          697.0
+        ],
+        [
+          286.0,
+          699.0
+        ],
+        [
+          286.0,
+          701.0
+        ],
+        [
+          286.0,
+          703.0
+        ],
+        [
+          286.0,
+          704.0
+        ],
+        [
+          286.0,
+          709.0
+        ],
+        [
+          286.0,
+          711.0
+        ]
+      ],
+      "model_region_edge_count": 1060,
+      "model_vertex_count": 373,
+      "clothing_mode": "weak_containment_only_no_boundary_equality"
+    },
+    "left_upper_arm": {
+      "enabled": true,
+      "anchor_score": 0.6875,
+      "candidate_boundary_pixels": 87,
+      "skin_target_count": 0,
+      "clothing_target_count": 64,
+      "reason": "visible_boundary_available",
+      "skin_targets": [],
+      "clothing_targets": [
+        [
+          341.0,
+          591.0
+        ],
+        [
+          340.0,
+          592.0
+        ],
+        [
+          340.0,
+          593.0
+        ],
+        [
+          339.0,
+          594.0
+        ],
+        [
+          340.0,
+          594.0
+        ],
+        [
+          338.0,
+          596.0
+        ],
+        [
+          339.0,
+          596.0
+        ],
+        [
+          337.0,
+          598.0
+        ],
+        [
+          338.0,
+          598.0
+        ],
+        [
+          337.0,
+          599.0
+        ],
+        [
+          337.0,
+          600.0
+        ],
+        [
+          335.0,
+          601.0
+        ],
+        [
+          336.0,
+          601.0
+        ],
+        [
+          334.0,
+          603.0
+        ],
+        [
+          335.0,
+          603.0
+        ],
+        [
+          334.0,
+          604.0
+        ],
+        [
+          334.0,
+          605.0
+        ],
+        [
+          333.0,
+          606.0
+        ],
+        [
+          331.0,
+          608.0
+        ],
+        [
+          332.0,
+          608.0
+        ],
+        [
+          331.0,
+          609.0
+        ],
+        [
+          331.0,
+          610.0
+        ],
+        [
+          329.0,
+          611.0
+        ],
+        [
+          330.0,
+          611.0
+        ],
+        [
+          328.0,
+          613.0
+        ],
+        [
+          329.0,
+          613.0
+        ],
+        [
+          328.0,
+          614.0
+        ],
+        [
+          328.0,
+          615.0
+        ],
+        [
+          326.0,
+          616.0
+        ],
+        [
+          326.0,
+          617.0
+        ],
+        [
+          325.0,
+          618.0
+        ],
+        [
+          326.0,
+          618.0
+        ],
+        [
+          325.0,
+          619.0
+        ],
+        [
+          324.0,
+          620.0
+        ],
+        [
+          323.0,
+          621.0
+        ],
+        [
+          323.0,
+          622.0
+        ],
+        [
+          322.0,
+          623.0
+        ],
+        [
+          322.0,
+          624.0
+        ],
+        [
+          321.0,
+          625.0
+        ],
+        [
+          320.0,
+          626.0
+        ],
+        [
+          320.0,
+          627.0
+        ],
+        [
+          319.0,
+          628.0
+        ],
+        [
+          318.0,
+          629.0
+        ],
+        [
+          318.0,
+          630.0
+        ],
+        [
+          318.0,
+          631.0
+        ],
+        [
+          317.0,
+          632.0
+        ],
+        [
+          317.0,
+          633.0
+        ],
+        [
+          316.0,
+          634.0
+        ],
+        [
+          316.0,
+          635.0
+        ],
+        [
+          314.0,
+          636.0
+        ],
+        [
+          315.0,
+          636.0
+        ],
+        [
+          313.0,
+          638.0
+        ],
+        [
+          314.0,
+          638.0
+        ],
+        [
+          312.0,
+          639.0
+        ],
+        [
+          312.0,
+          640.0
+        ],
+        [
+          311.0,
+          641.0
+        ],
+        [
+          312.0,
+          641.0
+        ],
+        [
+          310.0,
+          643.0
+        ],
+        [
+          311.0,
+          643.0
+        ],
+        [
+          309.0,
+          645.0
+        ],
+        [
+          308.0,
+          646.0
+        ],
+        [
+          309.0,
+          646.0
+        ],
+        [
+          307.0,
+          648.0
+        ],
+        [
+          308.0,
+          648.0
+        ]
+      ],
+      "model_region_edge_count": 1190,
+      "model_vertex_count": 424,
+      "clothing_mode": "weak_containment_only_no_boundary_equality"
+    },
+    "left_forearm": {
+      "enabled": true,
+      "anchor_score": 0.8828125,
+      "candidate_boundary_pixels": 374,
+      "skin_target_count": 64,
+      "clothing_target_count": 64,
+      "reason": "visible_boundary_available",
+      "skin_targets": [
+        [
+          495.0,
+          505.0
+        ],
+        [
+          493.0,
+          507.0
+        ],
+        [
+          490.0,
+          509.0
+        ],
+        [
+          489.0,
+          510.0
+        ],
+        [
+          487.0,
+          512.0
+        ],
+        [
+          481.0,
+          516.0
+        ],
+        [
+          481.0,
+          517.0
+        ],
+        [
+          478.0,
+          519.0
+        ],
+        [
+          474.0,
+          521.0
+        ],
+        [
+          473.0,
+          522.0
+        ],
+        [
+          472.0,
+          523.0
+        ],
+        [
+          471.0,
+          524.0
+        ],
+        [
+          470.0,
+          525.0
+        ],
+        [
+          468.0,
+          526.0
+        ],
+        [
+          468.0,
+          527.0
+        ],
+        [
+          467.0,
+          528.0
+        ],
+        [
+          510.0,
+          529.0
+        ],
+        [
+          510.0,
+          530.0
+        ],
+        [
+          509.0,
+          531.0
+        ],
+        [
+          461.0,
+          533.0
+        ],
+        [
+          460.0,
+          534.0
+        ],
+        [
+          459.0,
+          535.0
+        ],
+        [
+          459.0,
+          536.0
+        ],
+        [
+          457.0,
+          538.0
+        ],
+        [
+          504.0,
+          539.0
+        ],
+        [
+          454.0,
+          541.0
+        ],
+        [
+          503.0,
+          541.0
+        ],
+        [
+          452.0,
+          543.0
+        ],
+        [
+          452.0,
+          544.0
+        ],
+        [
+          448.0,
+          546.0
+        ],
+        [
+          448.0,
+          547.0
+        ],
+        [
+          499.0,
+          548.0
+        ],
+        [
+          498.0,
+          549.0
+        ],
+        [
+          498.0,
+          550.0
+        ],
+        [
+          497.0,
+          551.0
+        ],
+        [
+          496.0,
+          552.0
+        ],
+        [
+          496.0,
+          553.0
+        ],
+        [
+          439.0,
+          555.0
+        ],
+        [
+          495.0,
+          555.0
+        ],
+        [
+          436.0,
+          557.0
+        ],
+        [
+          435.0,
+          558.0
+        ],
+        [
+          434.0,
+          559.0
+        ],
+        [
+          434.0,
+          560.0
+        ],
+        [
+          433.0,
+          561.0
+        ],
+        [
+          432.0,
+          562.0
+        ],
+        [
+          490.0,
+          563.0
+        ],
+        [
+          488.0,
+          565.0
+        ],
+        [
+          488.0,
+          566.0
+        ],
+        [
+          488.0,
+          567.0
+        ],
+        [
+          487.0,
+          568.0
+        ],
+        [
+          487.0,
+          569.0
+        ],
+        [
+          422.0,
+          571.0
+        ],
+        [
+          421.0,
+          572.0
+        ],
+        [
+          420.0,
+          573.0
+        ],
+        [
+          420.0,
+          574.0
+        ],
+        [
+          418.0,
+          575.0
+        ],
+        [
+          417.0,
+          576.0
+        ],
+        [
+          416.0,
+          577.0
+        ],
+        [
+          480.0,
+          578.0
+        ],
+        [
+          480.0,
+          580.0
+        ],
+        [
+          478.0,
+          583.0
+        ],
+        [
+          476.0,
+          585.0
+        ],
+        [
+          475.0,
+          587.0
+        ],
+        [
+          474.0,
+          590.0
+        ]
+      ],
+      "clothing_targets": [
+        [
+          548.0,
+          520.0
+        ],
+        [
+          547.0,
+          521.0
+        ],
+        [
+          545.0,
+          522.0
+        ],
+        [
+          547.0,
+          522.0
+        ],
+        [
+          545.0,
+          523.0
+        ],
+        [
+          543.0,
+          524.0
+        ],
+        [
+          540.0,
+          525.0
+        ],
+        [
+          539.0,
+          526.0
+        ],
+        [
+          537.0,
+          527.0
+        ],
+        [
+          536.0,
+          528.0
+        ],
+        [
+          534.0,
+          529.0
+        ],
+        [
+          532.0,
+          530.0
+        ],
+        [
+          534.0,
+          530.0
+        ],
+        [
+          531.0,
+          531.0
+        ],
+        [
+          529.0,
+          532.0
+        ],
+        [
+          527.0,
+          533.0
+        ],
+        [
+          524.0,
+          534.0
+        ],
+        [
+          526.0,
+          534.0
+        ],
+        [
+          524.0,
+          535.0
+        ],
+        [
+          520.0,
+          537.0
+        ],
+        [
+          519.0,
+          538.0
+        ],
+        [
+          517.0,
+          539.0
+        ],
+        [
+          516.0,
+          540.0
+        ],
+        [
+          515.0,
+          541.0
+        ],
+        [
+          515.0,
+          542.0
+        ],
+        [
+          514.0,
+          544.0
+        ],
+        [
+          514.0,
+          545.0
+        ],
+        [
+          512.0,
+          547.0
+        ],
+        [
+          512.0,
+          548.0
+        ],
+        [
+          510.0,
+          550.0
+        ],
+        [
+          510.0,
+          551.0
+        ],
+        [
+          510.0,
+          552.0
+        ],
+        [
+          508.0,
+          554.0
+        ],
+        [
+          507.0,
+          556.0
+        ],
+        [
+          507.0,
+          557.0
+        ],
+        [
+          507.0,
+          558.0
+        ],
+        [
+          506.0,
+          560.0
+        ],
+        [
+          505.0,
+          562.0
+        ],
+        [
+          504.0,
+          564.0
+        ],
+        [
+          503.0,
+          566.0
+        ],
+        [
+          503.0,
+          567.0
+        ],
+        [
+          503.0,
+          569.0
+        ],
+        [
+          502.0,
+          571.0
+        ],
+        [
+          502.0,
+          572.0
+        ],
+        [
+          502.0,
+          573.0
+        ],
+        [
+          501.0,
+          575.0
+        ],
+        [
+          500.0,
+          576.0
+        ],
+        [
+          498.0,
+          578.0
+        ],
+        [
+          498.0,
+          579.0
+        ],
+        [
+          495.0,
+          581.0
+        ],
+        [
+          494.0,
+          582.0
+        ],
+        [
+          493.0,
+          583.0
+        ],
+        [
+          491.0,
+          584.0
+        ],
+        [
+          493.0,
+          584.0
+        ],
+        [
+          491.0,
+          585.0
+        ],
+        [
+          490.0,
+          586.0
+        ],
+        [
+          489.0,
+          587.0
+        ],
+        [
+          488.0,
+          588.0
+        ],
+        [
+          486.0,
+          589.0
+        ],
+        [
+          483.0,
+          590.0
+        ],
+        [
+          474.0,
+          591.0
+        ],
+        [
+          478.0,
+          591.0
+        ],
+        [
+          480.0,
+          591.0
+        ],
+        [
+          482.0,
+          591.0
+        ]
+      ],
+      "model_region_edge_count": 514,
+      "model_vertex_count": 184,
+      "clothing_mode": "weak_containment_only_no_boundary_equality"
+    },
+    "right_shoulder": {
+      "enabled": false,
+      "anchor_score": 0.396484375,
+      "candidate_boundary_pixels": 0,
+      "skin_target_count": 0,
+      "clothing_target_count": 0,
+      "reason": "insufficient_reliable_visible_boundary"
+    },
+    "right_upper_arm": {
+      "enabled": true,
+      "anchor_score": 0.396484375,
+      "candidate_boundary_pixels": 18,
+      "skin_target_count": 0,
+      "clothing_target_count": 18,
+      "reason": "visible_boundary_available",
+      "skin_targets": [],
+      "clothing_targets": [
+        [
+          761.0,
+          633.0
+        ],
+        [
+          761.0,
+          634.0
+        ],
+        [
+          762.0,
+          634.0
+        ],
+        [
+          762.0,
+          635.0
+        ],
+        [
+          763.0,
+          635.0
+        ],
+        [
+          763.0,
+          636.0
+        ],
+        [
+          764.0,
+          637.0
+        ],
+        [
+          765.0,
+          637.0
+        ],
+        [
+          765.0,
+          638.0
+        ],
+        [
+          766.0,
+          638.0
+        ],
+        [
+          767.0,
+          639.0
+        ],
+        [
+          768.0,
+          639.0
+        ],
+        [
+          768.0,
+          640.0
+        ],
+        [
+          769.0,
+          640.0
+        ],
+        [
+          770.0,
+          640.0
+        ],
+        [
+          771.0,
+          641.0
+        ],
+        [
+          772.0,
+          642.0
+        ],
+        [
+          773.0,
+          642.0
+        ]
+      ],
+      "model_region_edge_count": 927,
+      "model_vertex_count": 337,
+      "clothing_mode": "weak_containment_only_no_boundary_equality"
+    },
+    "right_forearm": {
+      "enabled": true,
+      "anchor_score": 0.8828125,
+      "candidate_boundary_pixels": 463,
+      "skin_target_count": 64,
+      "clothing_target_count": 64,
+      "reason": "visible_boundary_available",
+      "skin_targets": [
+        [
+          790.0,
+          493.0
+        ],
+        [
+          791.0,
+          497.0
+        ],
+        [
+          792.0,
+          501.0
+        ],
+        [
+          753.0,
+          505.0
+        ],
+        [
+          753.0,
+          507.0
+        ],
+        [
+          754.0,
+          509.0
+        ],
+        [
+          755.0,
+          511.0
+        ],
+        [
+          795.0,
+          513.0
+        ],
+        [
+          755.0,
+          515.0
+        ],
+        [
+          797.0,
+          517.0
+        ],
+        [
+          797.0,
+          519.0
+        ],
+        [
+          756.0,
+          522.0
+        ],
+        [
+          799.0,
+          524.0
+        ],
+        [
+          757.0,
+          527.0
+        ],
+        [
+          800.0,
+          529.0
+        ],
+        [
+          758.0,
+          532.0
+        ],
+        [
+          802.0,
+          534.0
+        ],
+        [
+          803.0,
+          536.0
+        ],
+        [
+          804.0,
+          538.0
+        ],
+        [
+          760.0,
+          541.0
+        ],
+        [
+          761.0,
+          543.0
+        ],
+        [
+          761.0,
+          545.0
+        ],
+        [
+          762.0,
+          547.0
+        ],
+        [
+          807.0,
+          549.0
+        ],
+        [
+          762.0,
+          551.0
+        ],
+        [
+          809.0,
+          553.0
+        ],
+        [
+          809.0,
+          555.0
+        ],
+        [
+          763.0,
+          558.0
+        ],
+        [
+          764.0,
+          560.0
+        ],
+        [
+          812.0,
+          562.0
+        ],
+        [
+          813.0,
+          564.0
+        ],
+        [
+          764.0,
+          567.0
+        ],
+        [
+          764.0,
+          569.0
+        ],
+        [
+          764.0,
+          571.0
+        ],
+        [
+          764.0,
+          573.0
+        ],
+        [
+          818.0,
+          575.0
+        ],
+        [
+          818.0,
+          577.0
+        ],
+        [
+          820.0,
+          579.0
+        ],
+        [
+          765.0,
+          582.0
+        ],
+        [
+          765.0,
+          584.0
+        ],
+        [
+          822.0,
+          585.0
+        ],
+        [
+          823.0,
+          587.0
+        ],
+        [
+          824.0,
+          589.0
+        ],
+        [
+          767.0,
+          592.0
+        ],
+        [
+          767.0,
+          594.0
+        ],
+        [
+          768.0,
+          596.0
+        ],
+        [
+          768.0,
+          598.0
+        ],
+        [
+          827.0,
+          600.0
+        ],
+        [
+          768.0,
+          603.0
+        ],
+        [
+          829.0,
+          604.0
+        ],
+        [
+          830.0,
+          606.0
+        ],
+        [
+          830.0,
+          608.0
+        ],
+        [
+          831.0,
+          610.0
+        ],
+        [
+          832.0,
+          612.0
+        ],
+        [
+          832.0,
+          614.0
+        ],
+        [
+          771.0,
+          617.0
+        ],
+        [
+          834.0,
+          618.0
+        ],
+        [
+          772.0,
+          621.0
+        ],
+        [
+          772.0,
+          623.0
+        ],
+        [
+          772.0,
+          625.0
+        ],
+        [
+          773.0,
+          627.0
+        ],
+        [
+          774.0,
+          630.0
+        ],
+        [
+          775.0,
+          634.0
+        ],
+        [
+          776.0,
+          638.0
+        ]
+      ],
+      "clothing_targets": [
+        [
+          712.0,
+          517.0
+        ],
+        [
+          713.0,
+          518.0
+        ],
+        [
+          715.0,
+          520.0
+        ],
+        [
+          717.0,
+          522.0
+        ],
+        [
+          720.0,
+          525.0
+        ],
+        [
+          721.0,
+          526.0
+        ],
+        [
+          723.0,
+          528.0
+        ],
+        [
+          725.0,
+          530.0
+        ],
+        [
+          726.0,
+          531.0
+        ],
+        [
+          727.0,
+          532.0
+        ],
+        [
+          728.0,
+          534.0
+        ],
+        [
+          729.0,
+          535.0
+        ],
+        [
+          731.0,
+          536.0
+        ],
+        [
+          732.0,
+          537.0
+        ],
+        [
+          733.0,
+          539.0
+        ],
+        [
+          734.0,
+          541.0
+        ],
+        [
+          735.0,
+          543.0
+        ],
+        [
+          736.0,
+          545.0
+        ],
+        [
+          738.0,
+          549.0
+        ],
+        [
+          739.0,
+          551.0
+        ],
+        [
+          740.0,
+          553.0
+        ],
+        [
+          741.0,
+          555.0
+        ],
+        [
+          742.0,
+          557.0
+        ],
+        [
+          743.0,
+          560.0
+        ],
+        [
+          744.0,
+          561.0
+        ],
+        [
+          745.0,
+          564.0
+        ],
+        [
+          746.0,
+          565.0
+        ],
+        [
+          746.0,
+          567.0
+        ],
+        [
+          747.0,
+          569.0
+        ],
+        [
+          748.0,
+          571.0
+        ],
+        [
+          749.0,
+          572.0
+        ],
+        [
+          749.0,
+          575.0
+        ],
+        [
+          750.0,
+          578.0
+        ],
+        [
+          750.0,
+          581.0
+        ],
+        [
+          750.0,
+          583.0
+        ],
+        [
+          750.0,
+          585.0
+        ],
+        [
+          751.0,
+          590.0
+        ],
+        [
+          751.0,
+          592.0
+        ],
+        [
+          752.0,
+          594.0
+        ],
+        [
+          753.0,
+          598.0
+        ],
+        [
+          753.0,
+          600.0
+        ],
+        [
+          754.0,
+          603.0
+        ],
+        [
+          754.0,
+          605.0
+        ],
+        [
+          755.0,
+          607.0
+        ],
+        [
+          755.0,
+          610.0
+        ],
+        [
+          756.0,
+          612.0
+        ],
+        [
+          756.0,
+          615.0
+        ],
+        [
+          757.0,
+          617.0
+        ],
+        [
+          757.0,
+          619.0
+        ],
+        [
+          757.0,
+          622.0
+        ],
+        [
+          758.0,
+          623.0
+        ],
+        [
+          758.0,
+          625.0
+        ],
+        [
+          759.0,
+          627.0
+        ],
+        [
+          760.0,
+          629.0
+        ],
+        [
+          760.0,
+          632.0
+        ],
+        [
+          761.0,
+          633.0
+        ],
+        [
+          762.0,
+          634.0
+        ],
+        [
+          763.0,
+          636.0
+        ],
+        [
+          765.0,
+          637.0
+        ],
+        [
+          766.0,
+          638.0
+        ],
+        [
+          768.0,
+          640.0
+        ],
+        [
+          770.0,
+          640.0
+        ],
+        [
+          772.0,
+          642.0
+        ],
+        [
+          774.0,
+          642.0
+        ]
+      ],
+      "model_region_edge_count": 500,
+      "model_vertex_count": 179,
+      "clothing_mode": "weak_containment_only_no_boundary_equality"
+    }
+  },
+  "manual_annotations_used": false,
+  "contour_visibility": "central-camera facing-change edges filtered by quarter-resolution whole-body exterior mask; approximate visibility, not exact z-buffer",
+  "target_visibility": "person/background external boundaries; exclude image cuts and near-hand endpoints; occlusion by unlabelled objects cannot be fully certified",
+  "active_hands": 2,
+  "active_contour_regions": 5,
+  "refresh_count": 67,
+  "model_visible_edge_counts": [
+    {
+      "left_shoulder": 15,
+      "left_upper_arm": 43,
+      "left_forearm": 21,
+      "right_upper_arm": 20,
+      "right_forearm": 25
+    },
+    {
+      "left_shoulder": 15,
+      "left_upper_arm": 43,
+      "left_forearm": 21,
+      "right_upper_arm": 20,
+      "right_forearm": 25
+    },
+    {
+      "left_shoulder": 15,
+      "left_upper_arm": 42,
+      "left_forearm": 24,
+      "right_upper_arm": 22,
+      "right_forearm": 24
+    },
+    {
+      "left_shoulder": 16,
+      "left_upper_arm": 44,
+      "left_forearm": 26,
+      "right_upper_arm": 21,
+      "right_forearm": 24
+    },
+    {
+      "left_shoulder": 15,
+      "left_upper_arm": 55,
+      "left_forearm": 30,
+      "right_upper_arm": 19,
+      "right_forearm": 24
+    },
+    {
+      "left_shoulder": 12,
+      "left_upper_arm": 45,
+      "left_forearm": 28,
+      "right_upper_arm": 25,
+      "right_forearm": 22
+    },
+    {
+      "left_shoulder": 9,
+      "left_upper_arm": 35,
+      "left_forearm": 21,
+      "right_upper_arm": 27,
+      "right_forearm": 25
+    },
+    {
+      "left_shoulder": 15,
+      "left_upper_arm": 39,
+      "left_forearm": 16,
+      "right_upper_arm": 27,
+      "right_forearm": 22
+    },
+    {
+      "left_shoulder": 12,
+      "left_upper_arm": 33,
+      "left_forearm": 14,
+      "right_upper_arm": 26,
+      "right_forearm": 23
+    },
+    {
+      "left_shoulder": 11,
+      "left_upper_arm": 37,
+      "left_forearm": 16,
+      "right_upper_arm": 30,
+      "right_forearm": 20
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 35,
+      "left_forearm": 14,
+      "right_upper_arm": 20,
+      "right_forearm": 20
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 35,
+      "left_forearm": 14,
+      "right_upper_arm": 24,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 33,
+      "left_forearm": 11,
+      "right_upper_arm": 27,
+      "right_forearm": 20
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 32,
+      "left_forearm": 11,
+      "right_upper_arm": 31,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 33,
+      "left_forearm": 12,
+      "right_upper_arm": 32,
+      "right_forearm": 20
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 31,
+      "left_forearm": 9,
+      "right_upper_arm": 34,
+      "right_forearm": 20
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 31,
+      "left_forearm": 10,
+      "right_upper_arm": 38,
+      "right_forearm": 22
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 32,
+      "left_forearm": 11,
+      "right_upper_arm": 39,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 32,
+      "left_forearm": 11,
+      "right_upper_arm": 38,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 31,
+      "left_forearm": 10,
+      "right_upper_arm": 38,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 30,
+      "left_forearm": 10,
+      "right_upper_arm": 36,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 30,
+      "left_forearm": 10,
+      "right_upper_arm": 36,
+      "right_forearm": 22
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 30,
+      "left_forearm": 10,
+      "right_upper_arm": 36,
+      "right_forearm": 22
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 30,
+      "left_forearm": 10,
+      "right_upper_arm": 37,
+      "right_forearm": 22
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 31,
+      "left_forearm": 10,
+      "right_upper_arm": 37,
+      "right_forearm": 22
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 32,
+      "left_forearm": 10,
+      "right_upper_arm": 37,
+      "right_forearm": 22
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 32,
+      "left_forearm": 10,
+      "right_upper_arm": 38,
+      "right_forearm": 22
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 33,
+      "left_forearm": 10,
+      "right_upper_arm": 38,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 31,
+      "left_forearm": 10,
+      "right_upper_arm": 38,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 31,
+      "left_forearm": 10,
+      "right_upper_arm": 38,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 32,
+      "left_forearm": 10,
+      "right_upper_arm": 38,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 32,
+      "left_forearm": 10,
+      "right_upper_arm": 38,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 29,
+      "left_forearm": 10,
+      "right_upper_arm": 38,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 29,
+      "left_forearm": 10,
+      "right_upper_arm": 38,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 30,
+      "left_forearm": 11,
+      "right_upper_arm": 38,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 38,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 38,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 38,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 38,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 38,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 38,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 35,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 35,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 35,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 35,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 35,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 33,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 33,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 33,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 33,
+      "right_forearm": 22
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 33,
+      "right_forearm": 22
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 33,
+      "right_forearm": 22
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 33,
+      "right_forearm": 22
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 32,
+      "right_forearm": 22
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 27,
+      "left_forearm": 10,
+      "right_upper_arm": 32,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 32,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 32,
+      "right_forearm": 21
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 32,
+      "right_forearm": 20
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 32,
+      "right_forearm": 20
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 32,
+      "right_forearm": 20
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 32,
+      "right_forearm": 20
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 32,
+      "right_forearm": 20
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 32,
+      "right_forearm": 20
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 32,
+      "right_forearm": 20
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 32,
+      "right_forearm": 20
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 28,
+      "left_forearm": 10,
+      "right_upper_arm": 32,
+      "right_forearm": 20
+    },
+    {
+      "left_shoulder": 10,
+      "left_upper_arm": 29,
+      "left_forearm": 11,
+      "right_upper_arm": 38,
+      "right_forearm": 21
+    }
+  ],
+  "last_loss_components": {
+    "mano": 0.0058707911521196365,
+    "contour": 0.0021426549647003412
+  }
+}

@@ -1,0 +1,449 @@
+diff --git a/docs/consistent_mano_continuation_20261013_zh.md b/docs/consistent_mano_continuation_20261013_zh.md
+new file mode 100644
+index 0000000..9d2f20a
+--- /dev/null
++++ b/docs/consistent_mano_continuation_20261013_zh.md
+@@ -0,0 +1,29 @@
++# 中心两帧：前后统一MANO约束与受限上肢延续
++
++此为可选实验，默认流程不变。回退提交为 `9da9246`，标签 `checkpoint/pre-consistent-mano-20261013`。
++
++## 固定对照
++
++复用20261013早期观测实验A/B/C，不覆盖。新运行D/E/F各两帧：
++
++- D：沿用B的身体阶段；在后续腕部、轮廓、候选筛选、MANO辅助身体阶段使用同一套身体+MANO目标，后续只开放双侧锁骨、肩、肘、腕8个关节。头部参考权重1。
++- E：仅将D的刚体头部参考权重统一改为0.1，身体阶段及后续均使用此权重。
++- F：在E基础上加入前次C的可靠肩部—上臂—前臂可见轮廓项，并贯穿后续身体优化及候选选择。
++
++只使用中心cam3 19.415833s、cam4 19.407352s。固定缓存、原13类身体候选点、手部身份和原接缝算法。不使用人工标注。所有权重在完整运行前固定，无逐帧调整。
++
++## 统一目标
++
++各阶段复用EarlyObservations提供的原始图像空间MANO腕点、4个掌根点、16个腕口顶点。身体点使用与第二阶段一致的均匀归一化smooth-L1损失；19关节姿态先验的分母和角度上限不变。平移、全局方向先验、腕距离软惩罚、深度软惩罚、头部参考也与第二阶段公式一致。后续原有深度、腕距离、身体RMSE等可行性检查保留。
++
++后续根方向和平移在前向几何中直接取输入常量；13个非上肢局部关节保持身体阶段值。参数导出检查非活动关节逐位一致、根参数固定。固定shape、手部姿态、面部参数不变。
++
++F的自动目标和模型区域固定于刚体阶段，模型可见边每25步更新，延续前次近似可见性方案。衣服只作弱范围约束，不把裸人体撑满衣服。无可靠边界则不启用。
++
++每阶段输出前，在CPU重建身体、更新可见边并重新计算相同目标；如果候选总目标高于阶段输入超过1e-8，则回退本阶段输入，记录common_objective_fallback。这保证统一总损失不增，不保证每个子项单独不增，更不保证视觉或真实三维精度提高。
++
++## 设置与恢复
++
++配置中 `consistent_continuation.enabled=true` 启用，且需要 `early_observations.enabled=true`。关闭前者可恢复原后续流程；关闭两者并恢复头部权重1即回到A设置。原接缝及独立重建代码未修改。
++
++本实验D与旧B的差异包含统一后续目标、限制后续自由度和统一目标导出验收三项；不将观察到的差异归因于其中单独一项。D/E仅头部权重不同；E/F仅启用共同轮廓目标不同。
+diff --git a/egosmplx_pipeline/continuation.py b/egosmplx_pipeline/continuation.py
+new file mode 100644
+index 0000000..bd554f8
+--- /dev/null
++++ b/egosmplx_pipeline/continuation.py
+@@ -0,0 +1,77 @@
++"""Opt-in common body/MANO objective across post-body refinement stages.
++
++Targets and scales match stage two. Late optimization moves only the eight
++collar/shoulder/elbow/wrist joints; root and other local poses stay at stage two.
++Original stage feasibility guards and original surface seam remain in force.
++"""
++import json
++import os
++from pathlib import Path
++import cv2
++import numpy as np
++import torch
++import torch.nn.functional as F
++from egosmplx_pipeline.early_observations import EarlyObservations, robust_pixels
++from egosmplx_pipeline.body_common import BODY_POSE_NAMES, MAX_DELTA_DEG
++
++UPPER = [n for n in MAX_DELTA_DEG if n.split('_',1)[-1] in ('Collar','Shoulder','Elbow','Wrist')]
++
++def make_continuation(row, initial, rigid, camera, lookup, device, output, head):
++    settings=json.loads(os.environ.get('EGOSMPLX_CONTINUATION','{}'))
++    if not settings.get('enabled',False):return None
++    return ConsistentContinuation(row,initial,rigid,camera,lookup,device,output,head)
++
++class ConsistentContinuation:
++    def __init__(self,row,initial,rigid,camera,lookup,device,output,head):
++        from egosmplx_pipeline.reference.support import geometry, smpl_x
++        self.active=UPPER;self.cam=camera;self.device=device;self.head=head;self.initial=initial
++        self.context_path=Path(row['source_npz']).parent.parent/'early_context.json'
++        self.output=Path(output)/'consistent_observations';self.rigid=rigid
++        self.t=lambda x:torch.as_tensor(x,dtype=torch.float32,device=device)
++        source=Path(row['source_npz']);context=json.loads((source.parent.parent/'early_context.json').read_text())
++        if not context['settings'].get('enabled'):raise ValueError('Consistent continuation requires early observations')
++        v,j=geometry(rigid);self.obs=EarlyObservations(context,smpl_x,camera,v,j,lookup,cv2.imread(row['image']),self.output).to(device)
++        self.indices=torch.as_tensor(initial['stage2_selected_joint_indices'].astype(int),device=device)
++        self.targets=self.t(initial['stage2_target_joint_pixels']);self.size=self.obs.size
++        self.ai=torch.tensor([BODY_POSE_NAMES.index(n) for n in MAX_DELTA_DEG],device=device)
++        self.caps=self.t(np.deg2rad(list(MAX_DELTA_DEG.values())))
++        self.b0=self.t(rigid['body_pose']).reshape(21,3);self.g0=self.t(rigid['global_orient']).reshape(3);self.tr0=self.t(rigid['transl']).reshape(3)
++        self.floor=self.t(np.linalg.norm(j[[12,13]],axis=1)*.85)
++        self.history=[]
++        self.initial_score=self.score(initial)
++    def freeze_globals(self,gd,tr):
++        gd.register_hook(lambda g:torch.zeros_like(g));tr.register_hook(lambda g:torch.zeros_like(g))
++    def refresh(self,v):self.obs.refresh(v.detach().cpu().numpy())
++    def loss(self,v,j,uv,body,global_orient,tr):
++        rep=robust_pixels(uv[self.indices],self.targets,self.size)
++        delta=body.reshape(21,3)-self.b0
++        pp=(delta[self.ai]/self.caps[:,None]).square().mean()
++        cp=((tr.reshape(3)-self.tr0)/self.t([.10,.10,.18])).square().mean()
++        gp=((global_orient.reshape(3)-self.g0)/np.deg2rad(8)).square().mean()
++        guard=F.relu((self.floor-j[[12,13]].norm(dim=1))/.05).square().mean()
++        depth=F.relu((.03-v[:,2].min())/.02).square()
++        return rep+.0008*pp+.0002*cp+.0004*gp+.002*guard+.02*depth+self.head.loss(v,uv)+self.obs.loss(v,uv)
++    def score(self,p):
++        from egosmplx_pipeline.reference.support import geometry
++        v,j=geometry(p);v=self.t(v);j=self.t(j);self.refresh(v)
++        with torch.no_grad():return float(self.loss(v,j,self.cam.world2camera_pytorch(j),self.t(p['body_pose']),self.t(p['global_orient']),self.t(p['transl'])))
++    def finish(self,p):
++        from egosmplx_pipeline.reference.support import geometry
++        inactive=[i for i,n in enumerate(BODY_POSE_NAMES) if n not in self.active]
++        assert np.array_equal(p['body_pose'].reshape(21,3)[inactive],self.initial['body_pose'].reshape(21,3)[inactive]),'Inactive body joints moved'
++        for key in ['global_orient','transl']:
++            # Axis-angle subtract/add can round by one float32 ulp; serialize the fixed input exactly.
++            assert np.max(np.abs(p[key]-self.initial[key]))<1e-6,(key,'fixed root changed')
++            p[key]=self.initial[key].copy()
++        candidate_score=self.score(p);fallback=candidate_score>self.initial_score+1e-8
++        if fallback:
++            p.clear();p.update({k:v.copy() for k,v in self.initial.items()})
++        final=self.score(p);v,j=geometry(p);self.obs.finish(self.t(v),self.cam.world2camera_pytorch(self.t(j)))
++        report=dict(active_body_joints=self.active,root_fixed=True,inactive_pose_bitwise_fixed=True,
++                    initial_common_objective=self.initial_score,final_common_objective=final,
++                    body_target_count=len(self.indices),body_target_weighting='uniform, identical to stage two',
++                    target_context_sha256=__import__('hashlib').sha256(self.context_path.read_bytes()).hexdigest(),
++                    candidate_common_objective=candidate_score,common_objective_fallback=fallback,
++                    loss='stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained',
++                    manual_annotations_used=False)
++        (self.output/'continuation.json').write_text(json.dumps(report,indent=2)+'\n')
+diff --git a/egosmplx_pipeline/early_observations.py b/egosmplx_pipeline/early_observations.py
+index c216b1d..a1a7add 100644
+--- a/egosmplx_pipeline/early_observations.py
++++ b/egosmplx_pipeline/early_observations.py
+@@ -67,6 +67,13 @@ class EarlyObservations:
+         (self.output/'observations.json').write_text(json.dumps(self.report,indent=2)+'\n')
+         self.refresh(initial_vertices)
+ 
++    def to(self, device):
++        """Move frozen observation tensors; image-space targets remain unchanged."""
++        for d in self.hands + self.regions:
++            for key, value in list(d.items()):
++                if torch.is_tensor(value):d[key]=value.to(device)
++        return self
++
+     def prepare_contours(self,context,model,v,j,lookup,w,overlay):
+         seg=Path(context['segmentation']);lab=np.load(seg/'labels.npy');prob=np.load(seg/'probabilities.npz')['probabilities'].astype(np.float32)
+         classes=[6,7,11,15,16,20,22,23];person=np.isin(lab,classes);confidence=prob[classes].sum(0)
+@@ -134,7 +141,7 @@ class EarlyObservations:
+             ids=torch.tensor(self.edges[ix]);uv=self.cam.world2camera_pytorch(v[ids].mean(1));outside=outside_loss(uv,d['map'],self.size)*d['containment_weight']
+             skin=d['skin'];coverage=zero
+             if len(skin)>=8:
+-                dist=torch.cdist(skin[None],uv[None])[0];nearest=uv[dist.detach().argmin(1)]
++                dist=torch.cdist(skin[None],uv[None],compute_mode='donot_use_mm_for_euclid_dist' if skin.is_cuda else 'use_mm_for_euclid_dist_if_necessary')[0];nearest=uv[dist.detach().argmin(1)]
+                 coverage=robust_pixels(nearest,skin,self.size)
+             terms.append(outside+.5*coverage)
+         contour=torch.stack(terms).mean() if terms else zero
+diff --git a/egosmplx_pipeline/pipeline.py b/egosmplx_pipeline/pipeline.py
+index 7513994..2828fd6 100644
+--- a/egosmplx_pipeline/pipeline.py
++++ b/egosmplx_pipeline/pipeline.py
+@@ -29,6 +29,7 @@ def environment(config):
+                   CUDA_VISIBLE_DEVICES=str(config.get('gpu', '0')),
+                   EGOSMPLX_CONFIG=config['paths']['egosmplx_config'],
+                   EGOSMPLX_REPO_ROOT=config['paths']['egosmplx_repo'])
++    result['EGOSMPLX_CONTINUATION'] = json.dumps(config.get('consistent_continuation', {}))
+     result['EGOSMPLX_HEAD_NECK'] = json.dumps(config.get('head_neck', {}))
+     result['PYTHONPATH'] = os.pathsep.join([str(PACKAGE_ROOT), config['paths'].get('wilor_repo', '')])
+     return result
+diff --git a/egosmplx_pipeline/reference/contour_refine.py b/egosmplx_pipeline/reference/contour_refine.py
+index aa5f89b..2e17a74 100644
+--- a/egosmplx_pipeline/reference/contour_refine.py
++++ b/egosmplx_pipeline/reference/contour_refine.py
+@@ -2,6 +2,7 @@
+ from pathlib import Path
+ import os
+ import sys,copy,argparse,time
++from egosmplx_pipeline.continuation import make_continuation
+ import numpy as np
+ import torch
+ import torch.nn.functional as F
+@@ -25,7 +26,8 @@ def main():
+   bd=BASE/'frames'/row['condition']/row['camera'];p=load(PREV/'final_frames'/row['condition']/row['camera']/'body_params.npz');source=load(row['source_npz']);rigid=load(row['rigid_npz']);w=load(row['wilor_npz']);oldmesh=load(bd/'hybrid_mesh.npz');matches=read(bd/'recipe.json')['matches'];cam=FishEyeCameraCalibrated(row['calibration'])
+   lookup={q['name']:q for q in read(row['sapiens_json'])['keypoints']}
+   hn=head_neck_context(rigid,cam,lookup,dev)
+-  active=list(MAX_DELTA_DEG);ai=torch.tensor([BODY_POSE_NAMES.index(n) for n in active],device=dev);caps=t(np.deg2rad([MAX_DELTA_DEG[n] for n in active]))
++  consistent=make_continuation(row,p,rigid,cam,lookup,dev,dst,hn)
++  active=consistent.active if consistent else list(MAX_DELTA_DEG);ai=torch.tensor([BODY_POSE_NAMES.index(n) for n in active],device=dev);caps=t(np.deg2rad([MAX_DELTA_DEG[n] for n in active]))
+   b0=t(rigid['body_pose']).reshape(21,3);g0=t(rigid['global_orient']).reshape(3);tr0=t(rigid['transl']).reshape(3)
+   init_path=OUT/'frames'/row['condition']/row['camera']/'body_params.npz'
+   initp=p
+@@ -43,13 +45,14 @@ def main():
+   sil_data=prepare(targets(row,p,matches,w,cam,dst),dev)
+   sil_before=silhouette_metrics(sv,cam,sil_data)
+   def params():
+-   pp={k:t(p[k]).reshape(1,-1) for k in PARAMS};body=b0.clone();body[ai]+=delta;pp.update(body_pose=body.reshape(1,-1),global_orient=(g0+gd).reshape(1,3));return pp
++   pp={k:t(p[k]).reshape(1,-1) for k in PARAMS};body=t(p['body_pose']).reshape(21,3).clone() if consistent else b0.clone();body[ai]=b0[ai]+delta;pp.update(body_pose=body.reshape(1,-1),global_orient=(t(p['global_orient']).reshape(3)+gd*0 if consistent else g0+gd).reshape(1,3));return pp
+   def forward():
+-   o=layer(**params());v=o.vertices[0]+tr;j=o.joints[0,smpl_x.joint_idx]+tr;uv=cam.world2camera_pytorch(j);return v,j,uv
++   o=layer(**params());effective_tr=t(p['transl']).reshape(3)+tr*0 if consistent else tr;v=o.vertices[0]+effective_tr;j=o.joints[0,smpl_x.joint_idx]+effective_tr;uv=cam.world2camera_pytorch(j);return v,j,uv
+   def feasible(v,j,uv):
+    err=(uv[ix]-goals).norm(dim=1)
+    return hn.feasible(v) and bool(v[:,2].min()>=.020001 and (j[[12,13]].norm(dim=1)>=floor+1e-6).all() and torch.sqrt((uv[bi]-bt).square().sum(1).mean())<=bodylimit-1e-4 and (err<=t(initial_werr)+3).all())
+   def objective(v,j,uv):
++   if consistent:return consistent.loss(v,j,uv,params()['body_pose'],params()['global_orient'],t(p['transl']).reshape(3)+tr*0)
+    body=(F.smooth_l1_loss((uv[bi]-bt)/t([1280,720]),torch.zeros_like(bt),beta=.003,reduction='none').mean(1)*bw).mean()
+    wrists=F.smooth_l1_loss((uv[ix]-goals)/t([1280,720]),torch.zeros_like(goals),beta=.003)
+    seam=[]
+@@ -59,11 +62,14 @@ def main():
+    priors=.0008*(delta/caps[:,None]).square().mean()+.0002*((tr-tr0)/t([.10,.10,.18])).square().mean()+.0004*(gd/np.deg2rad(8)).square().mean()
+    depth=.02*F.relu((.03-v[:,2].min())/.02).square();guard=.002*F.relu((floor-j[[12,13]].norm(dim=1))/.05).square().mean()
+    return body+4*wrists+.0008*shape+priors+depth+guard+.08*silhouette_loss(v,cam,sil_data)+hn.loss(v,uv)
++  if consistent:consistent.freeze_globals(gd,tr)
+   opt=torch.optim.Adam([{'params':[delta],'lr':.0015},{'params':[gd],'lr':.0005},{'params':[tr],'lr':.0008}])
+   with torch.no_grad():v,j,uv=forward();bestloss=float(objective(v,j,uv));best=[x.detach().clone() for x in [delta,gd,tr]]
+   rejected=0;start=time.time()
+   for step in range(a.steps):
+-   opt.zero_grad();v,j,uv=forward();loss=objective(v,j,uv);loss.backward()
++   opt.zero_grad();v,j,uv=forward()
++   if consistent and step%25==0:consistent.refresh(v)
++   loss=objective(v,j,uv);loss.backward()
+    previous=[x.detach().clone() for x in [delta,gd,tr]];opt.step()
+    if a.active_projection:
+     # Project infeasible Adam proposals back onto nonlinear constraint surfaces.
+@@ -106,6 +112,8 @@ def main():
+    except AssertionError:cpu_alpha*=.9
+   else:
+    saved={k:x.copy() for k,x in p.items()};cpu_alpha=0.;acceptance=constraints(saved,source,rigid,cam,lookup)
++  if consistent:
++   consistent.finish(saved);acceptance=constraints(saved,source,rigid,cam,lookup)
+   vv,jj=geometry(saved);local=jj-saved['transl'].reshape(3);pixels=cam.world2camera(jj.astype(np.float64)).astype(np.float32)
+   saved.update(smplx_mesh_cam=vv,smplx_joint_cam=jj,smplx_joint_img=pixels,smplx_body_joints_3d_local=local[:25],smplx_body_joints_3d_render_cam=jj[:25],smplx_body_joints_2d_render_cam=pixels[:25],smplx_joint_cam_root_relative=jj-jj[:1])
+   if 'smplx_body_joints_3d_cam' in saved:saved['smplx_body_joints_3d_cam']=jj[:25]
+diff --git a/egosmplx_pipeline/reference/contour_refine_strong.py b/egosmplx_pipeline/reference/contour_refine_strong.py
+index 30256a4..ce0449c 100644
+--- a/egosmplx_pipeline/reference/contour_refine_strong.py
++++ b/egosmplx_pipeline/reference/contour_refine_strong.py
+@@ -2,6 +2,7 @@
+ from pathlib import Path
+ import os
+ import sys,copy,argparse,time
++from egosmplx_pipeline.continuation import make_continuation
+ import numpy as np
+ import torch
+ import torch.nn.functional as F
+@@ -25,7 +26,8 @@ def main():
+   bd=BASE/'frames'/row['condition']/row['camera'];p=load(PREV/'final_frames'/row['condition']/row['camera']/'body_params.npz');source=load(row['source_npz']);rigid=load(row['rigid_npz']);w=load(row['wilor_npz']);oldmesh=load(bd/'hybrid_mesh.npz');matches=read(bd/'recipe.json')['matches'];cam=FishEyeCameraCalibrated(row['calibration'])
+   lookup={q['name']:q for q in read(row['sapiens_json'])['keypoints']}
+   hn=head_neck_context(rigid,cam,lookup,dev)
+-  active=list(MAX_DELTA_DEG);ai=torch.tensor([BODY_POSE_NAMES.index(n) for n in active],device=dev);caps=t(np.deg2rad([MAX_DELTA_DEG[n] for n in active]))
++  consistent=make_continuation(row,p,rigid,cam,lookup,dev,dst,hn)
++  active=consistent.active if consistent else list(MAX_DELTA_DEG);ai=torch.tensor([BODY_POSE_NAMES.index(n) for n in active],device=dev);caps=t(np.deg2rad([MAX_DELTA_DEG[n] for n in active]))
+   b0=t(rigid['body_pose']).reshape(21,3);g0=t(rigid['global_orient']).reshape(3);tr0=t(rigid['transl']).reshape(3)
+   init_path=OUT/'frames'/row['condition']/row['camera']/'body_params.npz'
+   initp=p
+@@ -46,13 +48,14 @@ def main():
+   sil_data=prepare(sil_data,dev)
+   sil_before=silhouette_metrics(sv,cam,sil_data)
+   def params():
+-   pp={k:t(p[k]).reshape(1,-1) for k in PARAMS};body=b0.clone();body[ai]+=delta;pp.update(body_pose=body.reshape(1,-1),global_orient=(g0+gd).reshape(1,3));return pp
++   pp={k:t(p[k]).reshape(1,-1) for k in PARAMS};body=t(p['body_pose']).reshape(21,3).clone() if consistent else b0.clone();body[ai]=b0[ai]+delta;pp.update(body_pose=body.reshape(1,-1),global_orient=(t(p['global_orient']).reshape(3)+gd*0 if consistent else g0+gd).reshape(1,3));return pp
+   def forward():
+-   o=layer(**params());v=o.vertices[0]+tr;j=o.joints[0,smpl_x.joint_idx]+tr;uv=cam.world2camera_pytorch(j);return v,j,uv
++   o=layer(**params());effective_tr=t(p['transl']).reshape(3)+tr*0 if consistent else tr;v=o.vertices[0]+effective_tr;j=o.joints[0,smpl_x.joint_idx]+effective_tr;uv=cam.world2camera_pytorch(j);return v,j,uv
+   def feasible(v,j,uv):
+    err=(uv[ix]-goals).norm(dim=1)
+    return hn.feasible(v) and bool(v[:,2].min()>=.020001 and (j[[12,13]].norm(dim=1)>=floor+1e-6).all() and torch.sqrt((uv[bi]-bt).square().sum(1).mean())<=bodylimit-1e-4 and (err<=t(initial_werr)+3).all())
+   def objective(v,j,uv):
++   if consistent:return consistent.loss(v,j,uv,params()['body_pose'],params()['global_orient'],t(p['transl']).reshape(3)+tr*0)
+    body=(F.smooth_l1_loss((uv[bi]-bt)/t([1280,720]),torch.zeros_like(bt),beta=.003,reduction='none').mean(1)*bw).mean()
+    wrists=F.smooth_l1_loss((uv[ix]-goals)/t([1280,720]),torch.zeros_like(goals),beta=.003)
+    seam=[]
+@@ -62,11 +65,14 @@ def main():
+    priors=.0008*(delta/caps[:,None]).square().mean()+.0002*((tr-tr0)/t([.10,.10,.18])).square().mean()+.0004*(gd/np.deg2rad(8)).square().mean()
+    depth=.02*F.relu((.03-v[:,2].min())/.02).square();guard=.002*F.relu((floor-j[[12,13]].norm(dim=1))/.05).square().mean()
+    return body+4*wrists+.0008*shape+priors+depth+guard+.4*silhouette_loss(v,cam,sil_data)+hn.loss(v,uv)
++  if consistent:consistent.freeze_globals(gd,tr)
+   opt=torch.optim.Adam([{'params':[delta],'lr':.0015},{'params':[gd],'lr':.0005},{'params':[tr],'lr':.0008}])
+   with torch.no_grad():v,j,uv=forward();bestloss=float(objective(v,j,uv));best=[x.detach().clone() for x in [delta,gd,tr]]
+   rejected=0;start=time.time()
+   for step in range(a.steps):
+-   opt.zero_grad();v,j,uv=forward();loss=objective(v,j,uv);loss.backward()
++   opt.zero_grad();v,j,uv=forward()
++   if consistent and step%25==0:consistent.refresh(v)
++   loss=objective(v,j,uv);loss.backward()
+    previous=[x.detach().clone() for x in [delta,gd,tr]];opt.step()
+    if a.active_projection:
+     # Project infeasible Adam proposals back onto nonlinear constraint surfaces.
+@@ -109,6 +115,8 @@ def main():
+    except AssertionError:cpu_alpha*=.9
+   else:
+    saved={k:x.copy() for k,x in p.items()};cpu_alpha=0.;acceptance=constraints(saved,source,rigid,cam,lookup)
++  if consistent:
++   consistent.finish(saved);acceptance=constraints(saved,source,rigid,cam,lookup)
+   vv,jj=geometry(saved);local=jj-saved['transl'].reshape(3);pixels=cam.world2camera(jj.astype(np.float64)).astype(np.float32)
+   saved.update(smplx_mesh_cam=vv,smplx_joint_cam=jj,smplx_joint_img=pixels,smplx_body_joints_3d_local=local[:25],smplx_body_joints_3d_render_cam=jj[:25],smplx_body_joints_2d_render_cam=pixels[:25],smplx_joint_cam_root_relative=jj-jj[:1])
+   if 'smplx_body_joints_3d_cam' in saved:saved['smplx_body_joints_3d_cam']=jj[:25]
+diff --git a/egosmplx_pipeline/reference/guided_body.py b/egosmplx_pipeline/reference/guided_body.py
+index 705ab38..387d598 100644
+--- a/egosmplx_pipeline/reference/guided_body.py
++++ b/egosmplx_pipeline/reference/guided_body.py
+@@ -5,6 +5,7 @@ The manifest is built from this run's automatic observations, never manual data.
+ """
+ from pathlib import Path
+ import os,argparse,copy,time,hashlib
++from egosmplx_pipeline.continuation import make_continuation
+ import numpy as np,cv2,torch
+ import torch.nn.functional as TF
+ from egosmplx_pipeline.reference.support import (read,write,load,arr,rmse,geometry,constraints,PARAMS,FIXED,SIDES,JI,MAX_DELTA_DEG,BODY_POSE_NAMES,JOINT_MAPPING,smpl_x,FishEyeCameraCalibrated,FACES,write_obj,render,stitch,draw_geometry,native_projection)
+@@ -53,9 +54,10 @@ def fit(row,steps):
+  dev='cuda' if torch.cuda.is_available() else 'cpu';torch.set_num_threads(2);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
+  layer=copy.deepcopy(smpl_x.layer['neutral']).to(dev).eval();layer.requires_grad_(False);t=lambda x:torch.as_tensor(x,dtype=torch.float32,device=dev)
+  hn=head_neck_context(rigid,cam,lookup,dev)
++ consistent=make_continuation(row,p,rigid,cam,lookup,dev,dst,hn)
+  data=prepare(data,dev);names=[n for n in JOINT_MAPPING if lookup[n]['score']>=.3 and 0<=lookup[n]['x']<1280 and 0<=lookup[n]['y']<720]
+  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=t([lookup[n]['score']**2 for n in names]);bw/=bw.mean()
+- active=list(MAX_DELTA_DEG);ai=torch.tensor([BODY_POSE_NAMES.index(n) for n in active],device=dev);caps=t(np.deg2rad([MAX_DELTA_DEG[n] for n in active]));b0=t(rigid['body_pose']).reshape(21,3);g0=t(rigid['global_orient']).reshape(3);tr0=t(rigid['transl']).reshape(3)
++ active=consistent.active if consistent else list(MAX_DELTA_DEG);ai=torch.tensor([BODY_POSE_NAMES.index(n) for n in active],device=dev);caps=t(np.deg2rad([MAX_DELTA_DEG[n] for n in active]));b0=t(rigid['body_pose']).reshape(21,3);g0=t(rigid['global_orient']).reshape(3);tr0=t(rigid['transl']).reshape(3)
+  delta=(t(p['body_pose']).reshape(21,3)-b0)[ai].clone().requires_grad_();gd=(t(p['global_orient']).reshape(3)-g0).clone().requires_grad_();tr=t(p['transl']).reshape(3).clone().requires_grad_();variables=[delta,gd,tr]
+  _,sj=geometry(source);_,rj=geometry(rigid);floor=t(np.maximum(np.linalg.norm(sj[[12,13]],axis=1),np.linalg.norm(rj[[12,13]],axis=1))*.85)
+  _,initial_j=geometry(p)
+@@ -67,11 +69,12 @@ def fit(row,steps):
+   pis.append(torch.tensor([JI[HAND_NAMES[s][k]] for k in [5,9,13,17]],device=dev));pgs.append(t(w['joints_2d'][m['candidate'],[5,9,13,17]]))
+  pp0={k:t(p[k]).reshape(1,-1) for k in PARAMS}
+  def params():
+-  pp=pp0.copy();body=b0.clone();body[ai]+=delta;pp.update(body_pose=body.reshape(1,-1),global_orient=(g0+gd).reshape(1,3));return pp
++  pp=pp0.copy();body=t(p['body_pose']).reshape(21,3).clone() if consistent else b0.clone();body[ai]=b0[ai]+delta;pp.update(body_pose=body.reshape(1,-1),global_orient=(t(p['global_orient']).reshape(3)+gd*0 if consistent else g0+gd).reshape(1,3));return pp
+  def forward():
+-  o=layer(**params());v=o.vertices[0]+tr;j=o.joints[0,smpl_x.joint_idx]+tr;return v,j,cam.world2camera_pytorch(j)
++  o=layer(**params());effective_tr=t(p['transl']).reshape(3)+tr*0 if consistent else tr;v=o.vertices[0]+effective_tr;j=o.joints[0,smpl_x.joint_idx]+effective_tr;return v,j,cam.world2camera_pytorch(j)
+  def huber(a,b,beta=20):return TF.smooth_l1_loss(a,b,beta=beta,reduction='none')*beta/10000
+  def objective(v,j,uv):
++  if consistent:return consistent.loss(v,j,uv,params()['body_pose'],params()['global_orient'],t(p['transl']).reshape(3)+tr*0)
+   residual=uv[bi]-bt
+   body=(huber(uv[bi],bt).mean(1)*bw).mean()+.15*(residual.square().mean(1)*bw).mean()/10000
+   wrist=huber(uv[wi],wg).mean()
+@@ -83,11 +86,14 @@ def fit(row,steps):
+   delta.mul_(torch.minimum(torch.ones_like(caps),caps/delta.norm(dim=1).clamp_min(1e-8))[:,None]);gd.mul_(torch.clamp(t(np.deg2rad(8))/gd.norm().clamp_min(1e-8),max=1));tr[2].clamp_(.05,3)
+  def violations(v,j,uv):return torch.cat([(torch.sqrt((uv[bi]-bt).square().sum(1).mean())-bodylimit+.01).reshape(1)/10,(.0205-v[:,2].min()).reshape(1)/.02,(floor+1e-5-j[[12,13]].norm(dim=1))/.05,hn.violations(v)])
+  def valid(v,j,uv):return bool(violations(v,j,uv).max()<=0)
++ if consistent:consistent.freeze_globals(gd,tr)
+  opt=torch.optim.Adam([{'params':[delta],'lr':.002},{'params':[gd],'lr':.0008},{'params':[tr],'lr':.0015}]);start=time.time();trace=[]
+  with torch.no_grad():v,j,uv=forward();bestloss=float(objective(v,j,uv));best=[x.clone() for x in variables]
+  initial=metrics(p,w,old,matches,cam,lookup,data);rejected=0;last_improvement=0
+  for step in range(steps):
+-  opt.zero_grad();v,j,uv=forward();loss=objective(v,j,uv);loss.backward();previous=[x.detach().clone() for x in variables];opt.step()
++  opt.zero_grad();v,j,uv=forward()
++  if consistent and step%25==0:consistent.refresh(v)
++  loss=objective(v,j,uv);loss.backward();previous=[x.detach().clone() for x in variables];opt.step()
+   for _ in range(8):
+    with torch.no_grad():clip()
+    v,j,uv=forward();g=violations(v,j,uv).max()
+@@ -125,6 +131,8 @@ def fit(row,steps):
+    break
+   except AssertionError:alpha*=.9
+  else:q={k:x.copy() for k,x in p.items()};alpha=0.;check=constraints(q,source,rigid,cam,lookup)
++ if consistent:
++  consistent.finish(q);check=constraints(q,source,rigid,cam,lookup)
+  v,j=geometry(q);pix=cam.world2camera(j.astype(np.float64)).astype(np.float32)
+  q.update(smplx_mesh_cam=v,smplx_joint_cam=j,smplx_joint_img=pix,smplx_body_joints_3d_local=(j-q['transl'].reshape(3))[:25],smplx_body_joints_3d_render_cam=j[:25],smplx_body_joints_2d_render_cam=pix[:25],smplx_joint_cam_root_relative=j-j[:1])
+  for k in FIXED+['left_hand_pose','right_hand_pose']:assert np.array_equal(p[k],q[k])
+diff --git a/egosmplx_pipeline/reference/select_candidates.py b/egosmplx_pipeline/reference/select_candidates.py
+index d4d7353..95a012d 100644
+--- a/egosmplx_pipeline/reference/select_candidates.py
++++ b/egosmplx_pipeline/reference/select_candidates.py
+@@ -6,6 +6,7 @@ from egosmplx_pipeline.reference.silhouette import OUT,PREV,targets,metrics,load
+ from egosmplx_pipeline.reference.support import constraints,JI,JOINT_MAPPING,MAX_DELTA_DEG,BODY_POSE_NAMES
+ from egosmplx_pipeline.reference.support import native_projection, head_neck_context
+ import torch
++from egosmplx_pipeline.continuation import make_continuation
+ BASE=OUT.parent/'baseline'
+ def merit(p,row,lookup,w,matches,cam,oldmesh):
+  v,j=geometry(p);uv=cam.world2camera(j.astype(np.float64));rig=load(row['rigid_npz'])
+@@ -33,13 +34,16 @@ for row in read(BASE/'automatic_input_manifest.json')['frames']:
+   s=d['side'];d['ids']=np.unique(np.r_[d['ids'],om[s+'_local_to_mesh'][om[s+'_wrist_loop_local']]])
+  paths={'previous':prev,'standard':OUT/'active_frames'/row['condition']/row['camera'],'strong':OUT/'strong_frames'/row['condition']/row['camera']};scores={};diag={}
+  _,j0=geometry(p0);inituv=cam.world2camera(j0.astype(np.float64))
++ consistent=make_continuation(row,p0,load(row['rigid_npz']),cam,lookup,'cpu',dst,head_neck_context(load(row['rigid_npz']),cam,lookup))
+  for name,path in paths.items():
+   if not (path/'body_params.npz').exists():continue
+   p=load(path/'body_params.npz');constraints(p,load(row['source_npz']),load(row['rigid_npz']),cam,lookup);v,j=geometry(p);uv=cam.world2camera(j.astype(np.float64))
+   safe=all(np.linalg.norm(uv[12+SIDES.index(s)]-w['joints_2d'][a['candidate'],0])<=np.linalg.norm(inituv[12+SIDES.index(s)]-w['joints_2d'][a['candidate'],0])+3.001 for s,a in matches.items())
+   mm=metrics(v,cam,data);sil=float(np.mean([x['score'] for x in mm.values()])) if mm else 0.;base=merit(p,row,lookup,w,matches,cam,om)
+   diag[name]=dict(merit_without_silhouette=base,silhouette=sil,wrist_guard_passed=safe)
+-  if safe:scores[name]=base+.4*sil
++  if safe:
++   scores[name]=consistent.score(p) if consistent else base+.4*sil
++   if consistent:diag[name]['consistent_objective']=scores[name]
+  choice=min(scores,key=scores.get);shutil.copyfile(paths[choice]/'body_params.npz',dst/'body_params.npz')
+  report=read(paths[choice]/'refinement.json');report.update(selected_candidate=choice,selection_scores=scores,selection_diagnostics=diag,matches=matches,original_identity_preserved=True)
+  write(dst/'refinement.json',report);print(row['id'],choice,scores,flush=True)
+diff --git a/egosmplx_pipeline/reference/wrist_refine.py b/egosmplx_pipeline/reference/wrist_refine.py
+index d33c5c9..1e4c212 100644
+--- a/egosmplx_pipeline/reference/wrist_refine.py
++++ b/egosmplx_pipeline/reference/wrist_refine.py
+@@ -2,6 +2,7 @@
+ from pathlib import Path
+ import os
+ import sys,copy,argparse,time
++from egosmplx_pipeline.continuation import make_continuation
+ import numpy as np
+ import torch
+ import torch.nn.functional as F
+@@ -24,10 +25,14 @@ def main():
+   bd=BASE/'frames'/row['condition']/row['camera'];p=load(bd/'body_params.npz');source=load(row['source_npz']);rigid=load(row['rigid_npz']);w=load(row['wilor_npz']);oldmesh=load(bd/'hybrid_mesh.npz');matches=read(bd/'recipe.json')['matches'];cam=FishEyeCameraCalibrated(row['calibration'])
+   lookup={q['name']:q for q in read(row['sapiens_json'])['keypoints']}
+   hn=head_neck_context(rigid,cam,lookup,dev)
+-  active=list(MAX_DELTA_DEG);ai=torch.tensor([BODY_POSE_NAMES.index(n) for n in active],device=dev);caps=t(np.deg2rad([MAX_DELTA_DEG[n] for n in active]))
++  consistent=make_continuation(row,p,rigid,cam,lookup,dev,dst,hn)
++  active=consistent.active if consistent else list(MAX_DELTA_DEG);ai=torch.tensor([BODY_POSE_NAMES.index(n) for n in active],device=dev);caps=t(np.deg2rad([MAX_DELTA_DEG[n] for n in active]))
+   b0=t(rigid['body_pose']).reshape(21,3);g0=t(rigid['global_orient']).reshape(3);tr0=t(rigid['transl']).reshape(3)
+   init_path=OUT/'frames'/row['condition']/row['camera']/'body_params.npz'
+   initp=load(init_path) if a.active_projection and init_path.exists() else p
++  if consistent:
++   consistent.initial=initp
++   consistent.initial_score=consistent.score(initp)
+   delta=(t(initp['body_pose']).reshape(21,3)-b0)[ai].clone().requires_grad_();gd=(t(initp['global_orient']).reshape(3)-g0).clone().requires_grad_();tr=t(initp['transl']).reshape(3).clone().requires_grad_()
+   names=[n for n in JOINT_MAPPING if lookup[n]['score']>=.3 and np.isfinite([lookup[n]['x'],lookup[n]['y']]).all() and 0<=lookup[n]['x']<1280 and 0<=lookup[n]['y']<720]
+   bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=t([min(1,lookup[n]['score'])**2 for n in names]);bw/=bw.mean()
+@@ -40,13 +45,14 @@ def main():
+    ids=oldmesh[s+'_local_to_mesh'];bv=oldmesh[s+'_wrist_loop_local'];loopids.append(torch.tensor(ids[bv],device=dev))
+    uv=native_projection(w['vertices_3d_local'][m['candidate']]+w['cam_t'][m['candidate']]);uv=uv[bv];loopgoals.append(t(uv-uv.mean(0)))
+   def params():
+-   pp={k:t(p[k]).reshape(1,-1) for k in PARAMS};body=b0.clone();body[ai]+=delta;pp.update(body_pose=body.reshape(1,-1),global_orient=(g0+gd).reshape(1,3));return pp
++   pp={k:t(p[k]).reshape(1,-1) for k in PARAMS};body=t(p['body_pose']).reshape(21,3).clone() if consistent else b0.clone();body[ai]=b0[ai]+delta;pp.update(body_pose=body.reshape(1,-1),global_orient=(t(p['global_orient']).reshape(3)+gd*0 if consistent else g0+gd).reshape(1,3));return pp
+   def forward():
+-   o=layer(**params());v=o.vertices[0]+tr;j=o.joints[0,smpl_x.joint_idx]+tr;uv=cam.world2camera_pytorch(j);return v,j,uv
++   o=layer(**params());effective_tr=t(p['transl']).reshape(3)+tr*0 if consistent else tr;v=o.vertices[0]+effective_tr;j=o.joints[0,smpl_x.joint_idx]+effective_tr;uv=cam.world2camera_pytorch(j);return v,j,uv
+   def feasible(v,j,uv):
+    err=(uv[ix]-goals).norm(dim=1)
+    return hn.feasible(v) and bool(v[:,2].min()>=.020001 and (j[[12,13]].norm(dim=1)>=floor+1e-6).all() and torch.sqrt((uv[bi]-bt).square().sum(1).mean())<=bodylimit-1e-4 and (err<=t(initial_werr)+3).all())
+   def objective(v,j,uv):
++   if consistent:return consistent.loss(v,j,uv,params()['body_pose'],params()['global_orient'],t(p['transl']).reshape(3)+tr*0)
+    body=(F.smooth_l1_loss((uv[bi]-bt)/t([1280,720]),torch.zeros_like(bt),beta=.003,reduction='none').mean(1)*bw).mean()
+    wrists=F.smooth_l1_loss((uv[ix]-goals)/t([1280,720]),torch.zeros_like(goals),beta=.003)
+    seam=[]
+@@ -56,11 +62,14 @@ def main():
+    priors=.0008*(delta/caps[:,None]).square().mean()+.0002*((tr-tr0)/t([.10,.10,.18])).square().mean()+.0004*(gd/np.deg2rad(8)).square().mean()
+    depth=.02*F.relu((.03-v[:,2].min())/.02).square();guard=.002*F.relu((floor-j[[12,13]].norm(dim=1))/.05).square().mean()
+    return body+4*wrists+.0008*shape+priors+depth+guard+hn.loss(v,uv)
++  if consistent:consistent.freeze_globals(gd,tr)
+   opt=torch.optim.Adam([{'params':[delta],'lr':.0015},{'params':[gd],'lr':.0005},{'params':[tr],'lr':.0008}])
+   with torch.no_grad():v,j,uv=forward();bestloss=float(objective(v,j,uv));best=[x.detach().clone() for x in [delta,gd,tr]]
+   rejected=0;start=time.time()
+   for step in range(a.steps):
+-   opt.zero_grad();v,j,uv=forward();loss=objective(v,j,uv);loss.backward()
++   opt.zero_grad();v,j,uv=forward()
++   if consistent and step%25==0:consistent.refresh(v)
++   loss=objective(v,j,uv);loss.backward()
+    previous=[x.detach().clone() for x in [delta,gd,tr]];opt.step()
+    if a.active_projection:
+     # Project infeasible Adam proposals back onto nonlinear constraint surfaces.
+@@ -103,6 +112,8 @@ def main():
+    except AssertionError:cpu_alpha*=.9
+   else:
+    saved={k:x.copy() for k,x in p.items()};cpu_alpha=0.;acceptance=constraints(saved,source,rigid,cam,lookup)
++  if consistent:
++   consistent.finish(saved);acceptance=constraints(saved,source,rigid,cam,lookup)
+   vv,jj=geometry(saved);local=jj-saved['transl'].reshape(3);pixels=cam.world2camera(jj.astype(np.float64)).astype(np.float32)
+   saved.update(smplx_mesh_cam=vv,smplx_joint_cam=jj,smplx_joint_img=pixels,smplx_body_joints_3d_local=local[:25],smplx_body_joints_3d_render_cam=jj[:25],smplx_body_joints_2d_render_cam=pixels[:25],smplx_joint_cam_root_relative=jj-jj[:1])
+   if 'smplx_body_joints_3d_cam' in saved:saved['smplx_body_joints_3d_cam']=jj[:25]

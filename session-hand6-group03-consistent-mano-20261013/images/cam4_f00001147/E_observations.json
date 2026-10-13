@@ -1,0 +1,58 @@
+{
+  "settings": {
+    "enabled": true,
+    "contour_enabled": false,
+    "wrist_weight": 1.0,
+    "palm_weight": 0.15,
+    "loop_weight": 0.5,
+    "contour_weight": 0.5
+  },
+  "matches": {
+    "left": {
+      "candidate": 1,
+      "confidence": 0.7991724014282227,
+      "wrist_distance_px": 12.522607341769422,
+      "detector_handedness_agrees": true,
+      "anchor_source": "Sapiens2",
+      "valid_keypoints": 21
+    },
+    "right": {
+      "candidate": 0,
+      "confidence": 0.8347943425178528,
+      "wrist_distance_px": 5.260382656029196,
+      "detector_handedness_agrees": true,
+      "anchor_source": "Sapiens2",
+      "valid_keypoints": 21
+    }
+  },
+  "hand_observations": {
+    "left": {
+      "enabled": true,
+      "candidate": 1,
+      "detector_score": 0.7991724014282227,
+      "wrist_loop_vertices": 16,
+      "reason": "native_image_projection_valid_and_detection_gate",
+      "metric_mano_depth_used": false
+    },
+    "right": {
+      "enabled": true,
+      "candidate": 0,
+      "detector_score": 0.8347943425178528,
+      "wrist_loop_vertices": 16,
+      "reason": "native_image_projection_valid_and_detection_gate",
+      "metric_mano_depth_used": false
+    }
+  },
+  "contour_regions": {},
+  "manual_annotations_used": false,
+  "contour_visibility": "central-camera facing-change edges filtered by quarter-resolution whole-body exterior mask; approximate visibility, not exact z-buffer",
+  "target_visibility": "person/background external boundaries; exclude image cuts and near-hand endpoints; occlusion by unlabelled objects cannot be fully certified",
+  "active_hands": 2,
+  "active_contour_regions": 0,
+  "refresh_count": 0,
+  "model_visible_edge_counts": [],
+  "last_loss_components": {
+    "mano": 0.005991948302835226,
+    "contour": 0.0
+  }
+}

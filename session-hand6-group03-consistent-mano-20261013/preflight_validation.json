@@ -1,0 +1,98 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "job": "B_cam3_f00001153",
+      "device": "cpu",
+      "loss": 0.024991460144519806,
+      "active_gradient": 0.0044052391313016415,
+      "frozen_root_gradient_zero": true,
+      "stage2_objective_equal": true
+    },
+    {
+      "job": "B_cam3_f00001153",
+      "device": "cuda",
+      "loss": 0.02497706189751625,
+      "active_gradient": 0.006237018387764692,
+      "frozen_root_gradient_zero": true,
+      "stage2_objective_equal": true
+    },
+    {
+      "job": "B_cam3_f00001153",
+      "same_geometry_cpu_gpu_loss_abs": 3.725290298461914e-09,
+      "cpu_gpu_forward_vertex_max_abs_m": 0.0003815889358520508,
+      "tf32_environment_override": "1",
+      "note": "Forward precision follows existing environment. Final candidate is independently reconstructed and scored on CPU."
+    },
+    {
+      "job": "C_cam3_f00001153",
+      "device": "cpu",
+      "loss": 0.025639891624450684,
+      "active_gradient": 0.0050181616097688675,
+      "frozen_root_gradient_zero": true,
+      "stage2_objective_equal": true
+    },
+    {
+      "job": "C_cam3_f00001153",
+      "device": "cuda",
+      "loss": 0.025646179914474487,
+      "active_gradient": 0.0075019351206719875,
+      "frozen_root_gradient_zero": true,
+      "stage2_objective_equal": true
+    },
+    {
+      "job": "C_cam3_f00001153",
+      "same_geometry_cpu_gpu_loss_abs": 0.0,
+      "cpu_gpu_forward_vertex_max_abs_m": 0.0006738901138305664,
+      "tf32_environment_override": "1",
+      "note": "Forward precision follows existing environment. Final candidate is independently reconstructed and scored on CPU."
+    },
+    {
+      "job": "B_cam4_f00001147",
+      "device": "cpu",
+      "loss": 0.016583461314439774,
+      "active_gradient": 0.008895746432244778,
+      "frozen_root_gradient_zero": true,
+      "stage2_objective_equal": true
+    },
+    {
+      "job": "B_cam4_f00001147",
+      "device": "cuda",
+      "loss": 0.01661059819161892,
+      "active_gradient": 0.011136716231703758,
+      "frozen_root_gradient_zero": true,
+      "stage2_objective_equal": true
+    },
+    {
+      "job": "B_cam4_f00001147",
+      "same_geometry_cpu_gpu_loss_abs": 0.0,
+      "cpu_gpu_forward_vertex_max_abs_m": 0.0005246400833129883,
+      "tf32_environment_override": "1",
+      "note": "Forward precision follows existing environment. Final candidate is independently reconstructed and scored on CPU."
+    },
+    {
+      "job": "C_cam4_f00001147",
+      "device": "cpu",
+      "loss": 0.017834246158599854,
+      "active_gradient": 0.008911965414881706,
+      "frozen_root_gradient_zero": true,
+      "stage2_objective_equal": true
+    },
+    {
+      "job": "C_cam4_f00001147",
+      "device": "cuda",
+      "loss": 0.01785917393863201,
+      "active_gradient": 0.010918664745986462,
+      "frozen_root_gradient_zero": true,
+      "stage2_objective_equal": true
+    },
+    {
+      "job": "C_cam4_f00001147",
+      "same_geometry_cpu_gpu_loss_abs": 0.0,
+      "cpu_gpu_forward_vertex_max_abs_m": 0.0004903078079223633,
+      "tf32_environment_override": "1",
+      "note": "Forward precision follows existing environment. Final candidate is independently reconstructed and scored on CPU."
+    }
+  ],
+  "disabled_path_noop": true
+}

@@ -1,0 +1,56 @@
+{
+  "A": {
+    "body_rmse_px": 39.59235447975818,
+    "hand_rmse_px": 10.588192737862554,
+    "shoulder_rmse_px": 84.73180034563227,
+    "body_n": 22,
+    "hand_n": 84,
+    "shoulder_n": 4,
+    "surface_pass_frames": 1
+  },
+  "B": {
+    "body_rmse_px": 39.828604720736294,
+    "hand_rmse_px": 10.816884116170005,
+    "shoulder_rmse_px": 85.45792768547801,
+    "body_n": 22,
+    "hand_n": 84,
+    "shoulder_n": 4,
+    "surface_pass_frames": 1
+  },
+  "C": {
+    "body_rmse_px": 39.923086909918574,
+    "hand_rmse_px": 10.666223740040842,
+    "shoulder_rmse_px": 85.63369539245524,
+    "body_n": 22,
+    "hand_n": 84,
+    "shoulder_n": 4,
+    "surface_pass_frames": 1
+  },
+  "D": {
+    "body_rmse_px": 41.741968651015256,
+    "hand_rmse_px": 4.237132407824112,
+    "shoulder_rmse_px": 83.23611902808764,
+    "body_n": 22,
+    "hand_n": 84,
+    "shoulder_n": 4,
+    "surface_pass_frames": 1
+  },
+  "E": {
+    "body_rmse_px": 40.60488319319622,
+    "hand_rmse_px": 4.152200951226318,
+    "shoulder_rmse_px": 80.8006261392383,
+    "body_n": 22,
+    "hand_n": 84,
+    "shoulder_n": 4,
+    "surface_pass_frames": 2
+  },
+  "F": {
+    "body_rmse_px": 41.167368578652734,
+    "hand_rmse_px": 4.156837400969931,
+    "shoulder_rmse_px": 81.14532447783178,
+    "body_n": 22,
+    "hand_n": 84,
+    "shoulder_n": 4,
+    "surface_pass_frames": 1
+  }
+}

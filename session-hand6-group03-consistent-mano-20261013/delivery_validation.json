@@ -1,0 +1,865 @@
+{
+  "frame_count": 2,
+  "fresh_pipeline_runs": 6,
+  "all_input_hashes_unchanged": true,
+  "current_source_hashes_verified": true,
+  "first_pass_source_hashes_verified_before_guard_correction": true,
+  "guard_correction": {
+    "affected_jobs": [
+      "D_cam4_f00001147",
+      "E_cam4_f00001147"
+    ],
+    "unaffected_jobs_bitwise_equal": true,
+    "reason": "active wrist guard now compares immediate preceding wrist input, not earlier body baseline"
+  },
+  "checks": [
+    {
+      "id": "cam3_f00001153",
+      "variants": {
+        "A": {
+          "raw_rigid_identical": true,
+          "original_body_targets_identical": true,
+          "hand_identities_identical": true,
+          "artifact_hashes_verified": true,
+          "reload_passed": true,
+          "fixed_shape_and_hand_parameters_verified": true
+        },
+        "B": {
+          "raw_rigid_identical": true,
+          "original_body_targets_identical": true,
+          "hand_identities_identical": true,
+          "artifact_hashes_verified": true,
+          "reload_passed": true,
+          "fixed_shape_and_hand_parameters_verified": true
+        },
+        "C": {
+          "raw_rigid_identical": true,
+          "original_body_targets_identical": true,
+          "hand_identities_identical": true,
+          "artifact_hashes_verified": true,
+          "reload_passed": true,
+          "fixed_shape_and_hand_parameters_verified": true
+        },
+        "D": {
+          "raw_rigid_identical": true,
+          "original_body_targets_identical": true,
+          "hand_identities_identical": true,
+          "artifact_hashes_verified": true,
+          "reload_passed": true,
+          "fixed_shape_and_hand_parameters_verified": true,
+          "late_inactive_joints_fixed": true,
+          "late_root_fixed": true,
+          "continuation": [
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.024991463869810104,
+              "final_common_objective": 0.02492329478263855,
+              "body_target_count": 10,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "39105cb6df2c16c71a5d5c98ccc764dc758795e7f0aa5f1445e4123ba03720b9",
+              "candidate_common_objective": 0.02492329478263855,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.024991463869810104,
+              "final_common_objective": 0.02492835558950901,
+              "body_target_count": 10,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "39105cb6df2c16c71a5d5c98ccc764dc758795e7f0aa5f1445e4123ba03720b9",
+              "candidate_common_objective": 0.02492835558950901,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.02492329478263855,
+              "final_common_objective": 0.02492329478263855,
+              "body_target_count": 10,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "39105cb6df2c16c71a5d5c98ccc764dc758795e7f0aa5f1445e4123ba03720b9",
+              "candidate_common_objective": 0.02492329478263855,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.02492329478263855,
+              "final_common_objective": 0.02492329478263855,
+              "body_target_count": 10,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "39105cb6df2c16c71a5d5c98ccc764dc758795e7f0aa5f1445e4123ba03720b9",
+              "candidate_common_objective": 0.02492329478263855,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.02492329478263855,
+              "final_common_objective": 0.024922236800193787,
+              "body_target_count": 10,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "39105cb6df2c16c71a5d5c98ccc764dc758795e7f0aa5f1445e4123ba03720b9",
+              "candidate_common_objective": 0.024922236800193787,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            }
+          ]
+        },
+        "E": {
+          "raw_rigid_identical": true,
+          "original_body_targets_identical": true,
+          "hand_identities_identical": true,
+          "artifact_hashes_verified": true,
+          "reload_passed": true,
+          "fixed_shape_and_hand_parameters_verified": true,
+          "late_inactive_joints_fixed": true,
+          "late_root_fixed": true,
+          "continuation": [
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.02477390319108963,
+              "final_common_objective": 0.024737775325775146,
+              "body_target_count": 10,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "39105cb6df2c16c71a5d5c98ccc764dc758795e7f0aa5f1445e4123ba03720b9",
+              "candidate_common_objective": 0.024737775325775146,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.02477390319108963,
+              "final_common_objective": 0.024738863110542297,
+              "body_target_count": 10,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "39105cb6df2c16c71a5d5c98ccc764dc758795e7f0aa5f1445e4123ba03720b9",
+              "candidate_common_objective": 0.024738863110542297,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.024737775325775146,
+              "final_common_objective": 0.024737775325775146,
+              "body_target_count": 10,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "39105cb6df2c16c71a5d5c98ccc764dc758795e7f0aa5f1445e4123ba03720b9",
+              "candidate_common_objective": 0.024737775325775146,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.024737775325775146,
+              "final_common_objective": 0.024737775325775146,
+              "body_target_count": 10,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "39105cb6df2c16c71a5d5c98ccc764dc758795e7f0aa5f1445e4123ba03720b9",
+              "candidate_common_objective": 0.024737775325775146,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.024737775325775146,
+              "final_common_objective": 0.024737775325775146,
+              "body_target_count": 10,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "39105cb6df2c16c71a5d5c98ccc764dc758795e7f0aa5f1445e4123ba03720b9",
+              "candidate_common_objective": 0.024737775325775146,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            }
+          ]
+        },
+        "F": {
+          "raw_rigid_identical": true,
+          "original_body_targets_identical": true,
+          "hand_identities_identical": true,
+          "artifact_hashes_verified": true,
+          "reload_passed": true,
+          "fixed_shape_and_hand_parameters_verified": true,
+          "late_inactive_joints_fixed": true,
+          "late_root_fixed": true,
+          "continuation": [
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.02548588067293167,
+              "final_common_objective": 0.025436989963054657,
+              "body_target_count": 10,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "46c254e01397b3ae7b3b67ee60a018f1454f9687892a5d1905cdb87bed72275c",
+              "candidate_common_objective": 0.025436989963054657,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.02548588067293167,
+              "final_common_objective": 0.025447936728596687,
+              "body_target_count": 10,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "46c254e01397b3ae7b3b67ee60a018f1454f9687892a5d1905cdb87bed72275c",
+              "candidate_common_objective": 0.025447936728596687,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.025436989963054657,
+              "final_common_objective": 0.025436989963054657,
+              "body_target_count": 10,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "46c254e01397b3ae7b3b67ee60a018f1454f9687892a5d1905cdb87bed72275c",
+              "candidate_common_objective": 0.025436989963054657,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.025436989963054657,
+              "final_common_objective": 0.025436989963054657,
+              "body_target_count": 10,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "46c254e01397b3ae7b3b67ee60a018f1454f9687892a5d1905cdb87bed72275c",
+              "candidate_common_objective": 0.025436989963054657,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.025436989963054657,
+              "final_common_objective": 0.025432061403989792,
+              "body_target_count": 10,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "46c254e01397b3ae7b3b67ee60a018f1454f9687892a5d1905cdb87bed72275c",
+              "candidate_common_objective": 0.025432061403989792,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            }
+          ]
+        }
+      },
+      "baseline_reproduction": {
+        "raw": {
+          "D_vs_old_B_parameter_max_abs": 0.0,
+          "bitwise_equal": true
+        },
+        "rigid": {
+          "D_vs_old_B_parameter_max_abs": 0.0,
+          "bitwise_equal": true
+        },
+        "body": {
+          "D_vs_old_B_parameter_max_abs": 0.0,
+          "bitwise_equal": true
+        }
+      }
+    },
+    {
+      "id": "cam4_f00001147",
+      "variants": {
+        "A": {
+          "raw_rigid_identical": true,
+          "original_body_targets_identical": true,
+          "hand_identities_identical": true,
+          "artifact_hashes_verified": true,
+          "reload_passed": true,
+          "fixed_shape_and_hand_parameters_verified": true
+        },
+        "B": {
+          "raw_rigid_identical": true,
+          "original_body_targets_identical": true,
+          "hand_identities_identical": true,
+          "artifact_hashes_verified": true,
+          "reload_passed": true,
+          "fixed_shape_and_hand_parameters_verified": true
+        },
+        "C": {
+          "raw_rigid_identical": true,
+          "original_body_targets_identical": true,
+          "hand_identities_identical": true,
+          "artifact_hashes_verified": true,
+          "reload_passed": true,
+          "fixed_shape_and_hand_parameters_verified": true
+        },
+        "D": {
+          "raw_rigid_identical": true,
+          "original_body_targets_identical": true,
+          "hand_identities_identical": true,
+          "artifact_hashes_verified": true,
+          "reload_passed": true,
+          "fixed_shape_and_hand_parameters_verified": true,
+          "late_inactive_joints_fixed": true,
+          "late_root_fixed": true,
+          "continuation": [
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.016575444489717484,
+              "final_common_objective": 0.016575444489717484,
+              "body_target_count": 12,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "75cec1c33f5d585937ee37feb21aa83b6ccfeea6681eb3d0f22862dd95782eba",
+              "candidate_common_objective": 0.01657862588763237,
+              "common_objective_fallback": true,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.016583461314439774,
+              "final_common_objective": 0.016575444489717484,
+              "body_target_count": 12,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "75cec1c33f5d585937ee37feb21aa83b6ccfeea6681eb3d0f22862dd95782eba",
+              "candidate_common_objective": 0.016575444489717484,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.016575444489717484,
+              "final_common_objective": 0.016575444489717484,
+              "body_target_count": 12,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "75cec1c33f5d585937ee37feb21aa83b6ccfeea6681eb3d0f22862dd95782eba",
+              "candidate_common_objective": 0.01657862588763237,
+              "common_objective_fallback": true,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.016575444489717484,
+              "final_common_objective": 0.016575444489717484,
+              "body_target_count": 12,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "75cec1c33f5d585937ee37feb21aa83b6ccfeea6681eb3d0f22862dd95782eba",
+              "candidate_common_objective": 0.01657862588763237,
+              "common_objective_fallback": true,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.016575444489717484,
+              "final_common_objective": 0.016575444489717484,
+              "body_target_count": 12,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "75cec1c33f5d585937ee37feb21aa83b6ccfeea6681eb3d0f22862dd95782eba",
+              "candidate_common_objective": 0.01657572202384472,
+              "common_objective_fallback": true,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            }
+          ]
+        },
+        "E": {
+          "raw_rigid_identical": true,
+          "original_body_targets_identical": true,
+          "hand_identities_identical": true,
+          "artifact_hashes_verified": true,
+          "reload_passed": true,
+          "fixed_shape_and_hand_parameters_verified": true,
+          "late_inactive_joints_fixed": true,
+          "late_root_fixed": true,
+          "continuation": [
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.016261370852589607,
+              "final_common_objective": 0.016261370852589607,
+              "body_target_count": 12,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "75cec1c33f5d585937ee37feb21aa83b6ccfeea6681eb3d0f22862dd95782eba",
+              "candidate_common_objective": 0.01626610942184925,
+              "common_objective_fallback": true,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.016281813383102417,
+              "final_common_objective": 0.016261370852589607,
+              "body_target_count": 12,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "75cec1c33f5d585937ee37feb21aa83b6ccfeea6681eb3d0f22862dd95782eba",
+              "candidate_common_objective": 0.016261370852589607,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.016261370852589607,
+              "final_common_objective": 0.016261370852589607,
+              "body_target_count": 12,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "75cec1c33f5d585937ee37feb21aa83b6ccfeea6681eb3d0f22862dd95782eba",
+              "candidate_common_objective": 0.01626610942184925,
+              "common_objective_fallback": true,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.016261370852589607,
+              "final_common_objective": 0.016261370852589607,
+              "body_target_count": 12,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "75cec1c33f5d585937ee37feb21aa83b6ccfeea6681eb3d0f22862dd95782eba",
+              "candidate_common_objective": 0.01626610942184925,
+              "common_objective_fallback": true,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.016261370852589607,
+              "final_common_objective": 0.016261370852589607,
+              "body_target_count": 12,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "75cec1c33f5d585937ee37feb21aa83b6ccfeea6681eb3d0f22862dd95782eba",
+              "candidate_common_objective": 0.016261370852589607,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            }
+          ]
+        },
+        "F": {
+          "raw_rigid_identical": true,
+          "original_body_targets_identical": true,
+          "hand_identities_identical": true,
+          "artifact_hashes_verified": true,
+          "reload_passed": true,
+          "fixed_shape_and_hand_parameters_verified": true,
+          "late_inactive_joints_fixed": true,
+          "late_root_fixed": true,
+          "continuation": [
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.017443571239709854,
+              "final_common_objective": 0.017442431300878525,
+              "body_target_count": 12,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "9653c0f0b6d2bfff0e33902473704c6870cc61c2f62b15cd917bde8e723bf479",
+              "candidate_common_objective": 0.017442431300878525,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.017443571239709854,
+              "final_common_objective": 0.017442431300878525,
+              "body_target_count": 12,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "9653c0f0b6d2bfff0e33902473704c6870cc61c2f62b15cd917bde8e723bf479",
+              "candidate_common_objective": 0.017442431300878525,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.017442431300878525,
+              "final_common_objective": 0.017442431300878525,
+              "body_target_count": 12,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "9653c0f0b6d2bfff0e33902473704c6870cc61c2f62b15cd917bde8e723bf479",
+              "candidate_common_objective": 0.017442431300878525,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.017442431300878525,
+              "final_common_objective": 0.017442431300878525,
+              "body_target_count": 12,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "9653c0f0b6d2bfff0e33902473704c6870cc61c2f62b15cd917bde8e723bf479",
+              "candidate_common_objective": 0.017442431300878525,
+              "common_objective_fallback": false,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            },
+            {
+              "active_body_joints": [
+                "L_Collar",
+                "R_Collar",
+                "L_Shoulder",
+                "R_Shoulder",
+                "L_Elbow",
+                "R_Elbow",
+                "L_Wrist",
+                "R_Wrist"
+              ],
+              "root_fixed": true,
+              "inactive_pose_bitwise_fixed": true,
+              "initial_common_objective": 0.017442431300878525,
+              "final_common_objective": 0.017442431300878525,
+              "body_target_count": 12,
+              "body_target_weighting": "uniform, identical to stage two",
+              "target_context_sha256": "9653c0f0b6d2bfff0e33902473704c6870cc61c2f62b15cd917bde8e723bf479",
+              "candidate_common_objective": 0.017450524494051933,
+              "common_objective_fallback": true,
+              "loss": "stage-two body and 19-joint priors + same early MANO/optional contour + configured head reference; original feasibility guards retained",
+              "manual_annotations_used": false
+            }
+          ]
+        }
+      },
+      "baseline_reproduction": {
+        "raw": {
+          "D_vs_old_B_parameter_max_abs": 0.0,
+          "bitwise_equal": true
+        },
+        "rigid": {
+          "D_vs_old_B_parameter_max_abs": 0.0,
+          "bitwise_equal": true
+        },
+        "body": {
+          "D_vs_old_B_parameter_max_abs": 0.0,
+          "bitwise_equal": true
+        }
+      }
+    }
+  ]
+}
