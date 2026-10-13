@@ -1,0 +1,183 @@
+diff --git a/experiments/original_head01_20261013/rigid_head_cam3_f00001153_config.json b/experiments/original_head01_20261013/rigid_head_cam3_f00001153_config.json
+new file mode 100644
+index 0000000..273502c
+--- /dev/null
++++ b/experiments/original_head01_20261013/rigid_head_cam3_f00001153_config.json
+@@ -0,0 +1,38 @@
++{
++  "manifest": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_group03_original_head01_20261013_v1/rigid_head_cam3_f00001153_frames.json",
++  "output": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_group03_original_head01_20261013_v1/work/rigid_head_cam3_f00001153",
++  "paths": {
++    "body_python": "/vepfs-mlp2/mlp-public/huyaoqing/miniconda3/envs/egosmplx/bin/python3.8",
++    "pose_python": "/vepfs-mlp2/mlp-public/huyaoqing/miniconda3/envs/stereo-hand-fusion/bin/python3.10",
++    "wilor_python": "/vepfs-mlp2/mlp-public/huyaoqing/miniconda3/envs/wilor/bin/python3.10",
++    "egosmplx_repo": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX",
++    "egosmplx_config": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/main/config/config_ft_egopw_sceneego_egowholebody_unrealego_egofishbody.py",
++    "egosmplx_checkpoint": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/output/train_5datasets_8gpu_camtrans_w10_12ep_fixed_20260809_20260809_163018/model_dump/snapshot_11.pth.tar",
++    "sapiens_repo": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/official_baseline/sapiens2",
++    "sapiens_dependencies": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/.runtime/sapiens_deps",
++    "pose_checkpoint": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/pretrained_models/external_pose/sapiens2_1b_pose.safetensors",
++    "seg_checkpoint": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/pretrained_models/sapiens2_seg/sapiens2_1b_seg.safetensors",
++    "wilor_repo": "/vepfs-mlp2/mlp-public/huyaoqing/WiLoR",
++    "wilor_checkpoint": "/vepfs-mlp2/mlp-public/huyaoqing/WiLoR/pretrained_models/wilor_final.ckpt",
++    "wilor_config": "/vepfs-mlp2/mlp-public/huyaoqing/WiLoR/pretrained_models/model_config.yaml",
++    "wilor_detector": "/vepfs-mlp2/mlp-public/huyaoqing/WiLoR/pretrained_models/detector.pt"
++  },
++  "fitting": {
++    "rigid_steps": 1800,
++    "pose_steps": 1600,
++    "mano_guided_steps": 1400
++  },
++  "checkpoint_sha256": {
++    "pose": "2dab7014a17e99e460c18817325a71dd7a81ce48d87027f01c2ee7d7b3af969f",
++    "seg": "4b73c44963b377e93fcb4c4053f72a189836a22d05e12c30383046b9cd3c5bd4"
++  },
++  "pipeline_profile": "mano_guided_original_seam_20260929_v1",
++  "head_neck": {
++    "enabled": true,
++    "neck_enabled": false,
++    "guard_enabled": false,
++    "shoulders_enabled": false,
++    "rigid_head_enabled": true,
++    "rigid_head_weight": 0.1
++  }
++}
+diff --git a/experiments/original_head01_20261013/rigid_head_cam3_f00001153_frames.json b/experiments/original_head01_20261013/rigid_head_cam3_f00001153_frames.json
+new file mode 100644
+index 0000000..0c9ca5c
+--- /dev/null
++++ b/experiments/original_head01_20261013/rigid_head_cam3_f00001153_frames.json
+@@ -0,0 +1,21 @@
++{
++  "frames": [
++    {
++      "id": "cam3_f00001153",
++      "camera": "cam3",
++      "image": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_20frames_latest_20261009_v1/input/cam3/cam3_f00001153.png",
++      "calibration": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/DownwardStereo6/cam3_left_lower.egosmplx.json",
++      "image_sha256": "a33227c67d9266db8e8236b6729328bdccff3f5c30e41038bda1c101f8939bea",
++      "frame_index_zero_based": 1153,
++      "approximate_video_seconds": 19.415833333333335,
++      "sample_number": 3,
++      "source_video": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/session_hand_6/left_lower/左下_002_hand.mp4",
++      "predictions": {
++        "egosmplx": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_20frames_latest_20261009_v1/observed/cam3/observations/cam3_f00001153/network/smplx/cam3_f00001153_00_smplx.npz",
++        "sapiens": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_20frames_latest_20261009_v1/observed/cam3/observations/cam3_f00001153/sapiens/keypoints.json",
++        "wilor": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_20frames_latest_20261009_v1/batched/wilor/npz/cam3_f00001153_wilor.npz",
++        "segmentation": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_20frames_latest_20261009_v1/batched/segmentation/frames/cam3_f00001153"
++      }
++    }
++  ]
++}
+diff --git a/experiments/original_head01_20261013/rigid_head_cam4_f00001147_config.json b/experiments/original_head01_20261013/rigid_head_cam4_f00001147_config.json
+new file mode 100644
+index 0000000..6a0f723
+--- /dev/null
++++ b/experiments/original_head01_20261013/rigid_head_cam4_f00001147_config.json
+@@ -0,0 +1,38 @@
++{
++  "manifest": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_group03_original_head01_20261013_v1/rigid_head_cam4_f00001147_frames.json",
++  "output": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_group03_original_head01_20261013_v1/work/rigid_head_cam4_f00001147",
++  "paths": {
++    "body_python": "/vepfs-mlp2/mlp-public/huyaoqing/miniconda3/envs/egosmplx/bin/python3.8",
++    "pose_python": "/vepfs-mlp2/mlp-public/huyaoqing/miniconda3/envs/stereo-hand-fusion/bin/python3.10",
++    "wilor_python": "/vepfs-mlp2/mlp-public/huyaoqing/miniconda3/envs/wilor/bin/python3.10",
++    "egosmplx_repo": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX",
++    "egosmplx_config": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/main/config/config_ft_egopw_sceneego_egowholebody_unrealego_egofishbody.py",
++    "egosmplx_checkpoint": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/output/train_5datasets_8gpu_camtrans_w10_12ep_fixed_20260809_20260809_163018/model_dump/snapshot_11.pth.tar",
++    "sapiens_repo": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/official_baseline/sapiens2",
++    "sapiens_dependencies": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/.runtime/sapiens_deps",
++    "pose_checkpoint": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/pretrained_models/external_pose/sapiens2_1b_pose.safetensors",
++    "seg_checkpoint": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/pretrained_models/sapiens2_seg/sapiens2_1b_seg.safetensors",
++    "wilor_repo": "/vepfs-mlp2/mlp-public/huyaoqing/WiLoR",
++    "wilor_checkpoint": "/vepfs-mlp2/mlp-public/huyaoqing/WiLoR/pretrained_models/wilor_final.ckpt",
++    "wilor_config": "/vepfs-mlp2/mlp-public/huyaoqing/WiLoR/pretrained_models/model_config.yaml",
++    "wilor_detector": "/vepfs-mlp2/mlp-public/huyaoqing/WiLoR/pretrained_models/detector.pt"
++  },
++  "fitting": {
++    "rigid_steps": 1800,
++    "pose_steps": 1600,
++    "mano_guided_steps": 1400
++  },
++  "checkpoint_sha256": {
++    "pose": "2dab7014a17e99e460c18817325a71dd7a81ce48d87027f01c2ee7d7b3af969f",
++    "seg": "4b73c44963b377e93fcb4c4053f72a189836a22d05e12c30383046b9cd3c5bd4"
++  },
++  "pipeline_profile": "mano_guided_original_seam_20260929_v1",
++  "head_neck": {
++    "enabled": true,
++    "neck_enabled": false,
++    "guard_enabled": false,
++    "shoulders_enabled": false,
++    "rigid_head_enabled": true,
++    "rigid_head_weight": 0.1
++  }
++}
+diff --git a/experiments/original_head01_20261013/rigid_head_cam4_f00001147_frames.json b/experiments/original_head01_20261013/rigid_head_cam4_f00001147_frames.json
+new file mode 100644
+index 0000000..cc82ec4
+--- /dev/null
++++ b/experiments/original_head01_20261013/rigid_head_cam4_f00001147_frames.json
+@@ -0,0 +1,21 @@
++{
++  "frames": [
++    {
++      "id": "cam4_f00001147",
++      "camera": "cam4",
++      "image": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_20frames_latest_20261009_v1/input/cam4/cam4_f00001147.png",
++      "calibration": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/DownwardStereo6/cam4_right_lower.egosmplx.json",
++      "image_sha256": "09ad9aa147e6a4a2cf188d656c0ad136fb881d8d1c699627fcbb7dce10e4e3ea",
++      "frame_index_zero_based": 1147,
++      "approximate_video_seconds": 19.407352450980394,
++      "sample_number": 3,
++      "source_video": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/session_hand_6/right_lower/右下_002_hand.mp4",
++      "predictions": {
++        "egosmplx": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_20frames_latest_20261009_v1/observed/cam4/observations/cam4_f00001147/network/smplx/cam4_f00001147_00_smplx.npz",
++        "sapiens": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_20frames_latest_20261009_v1/observed/cam4/observations/cam4_f00001147/sapiens/keypoints.json",
++        "wilor": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_20frames_latest_20261009_v1/batched/wilor/npz/cam4_f00001147_wilor.npz",
++        "segmentation": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_20frames_latest_20261009_v1/batched/segmentation/frames/cam4_f00001147"
++      }
++    }
++  ]
++}
+diff --git a/experiments/original_head01_20261013/scope.json b/experiments/original_head01_20261013/scope.json
+new file mode 100644
+index 0000000..4aac0a4
+--- /dev/null
++++ b/experiments/original_head01_20261013/scope.json
+@@ -0,0 +1,35 @@
++{
++  "scope": "Original published 20261009 pipeline plus only rigid head surface soft reference weight 0.1; original 13 candidates, no added points, no early MANO/contour, no continuation or late joint freeze.",
++  "baseline_commit": "7ebf5c451762fab2aab391b1274f56bf1829c548",
++  "checkpoint_commit": "57c0d66440813300b70987d668702e6cb4dbc45b",
++  "changes": [
++    {
++      "frame": "cam3_f00001153",
++      "changed_algorithm_config_keys": [
++        "head_neck"
++      ],
++      "head_neck": {
++        "enabled": true,
++        "neck_enabled": false,
++        "guard_enabled": false,
++        "shoulders_enabled": false,
++        "rigid_head_enabled": true,
++        "rigid_head_weight": 0.1
++      }
++    },
++    {
++      "frame": "cam4_f00001147",
++      "changed_algorithm_config_keys": [
++        "head_neck"
++      ],
++      "head_neck": {
++        "enabled": true,
++        "neck_enabled": false,
++        "guard_enabled": false,
++        "shoulders_enabled": false,
++        "rigid_head_enabled": true,
++        "rigid_head_weight": 0.1
++      }
++    }
++  ]
++}

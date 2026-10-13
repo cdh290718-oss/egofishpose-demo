@@ -1,0 +1,16 @@
+{
+  "conclusion_zh": "只增加头部参考权重0.1，中心两帧的身体优化和最终融合均未再出现原流程的大面积头部外扩。原始及刚体结果、自动目标及算法其余设置一致，支持该参考项是本例抑制外扩的有效因素。但自动点误差升高，cam3左腕仍有4处局部投影交叉；这不是整体精度全面提升，也不能保证任意帧不外扩。",
+  "frames": {
+    "cam3_f00001153": "身体阶段原流程的大面积头部网格覆盖消失；头部相对刚体顶点RMS由335.75降至1.66毫米。最终仍无同等外扩，头部RMS为23.94毫米。左右手可辨，但手部与轮廓仍有偏差；左腕局部交叉4处，右腕0处，局部检查未全通过。",
+    "cam4_f00001147": "身体阶段向图像右侧伸出的大面积头部网格消失；头部相对刚体顶点RMS由293.82降至3.44毫米。最终无同等外扩，头部RMS为15.52毫米。双腕局部交叉均为0；手指、腕臂轮廓仍非完美贴合。"
+  },
+  "reviewed_images": [
+    "body_preview_small.jpg",
+    "fused_preview_final.jpg",
+    "cam3_hands_preview.jpg",
+    "cam4_hands_preview.jpg"
+  ],
+  "review_method": "Visual inspection of rigid/original/new same-scale projections and identical hand crops, alongside independent CPU parameter reload and local projected surface crossing counts.",
+  "no_per_frame_tuning": true,
+  "head_geometry_is_reference_not_ground_truth": true
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "frame": "cam3_f00001153",
+    "changed_algorithm_config_keys": [
+      "head_neck"
+    ],
+    "head_neck": {
+      "enabled": true,
+      "neck_enabled": false,
+      "guard_enabled": false,
+      "shoulders_enabled": false,
+      "rigid_head_enabled": true,
+      "rigid_head_weight": 0.1
+    }
+  },
+  {
+    "frame": "cam4_f00001147",
+    "changed_algorithm_config_keys": [
+      "head_neck"
+    ],
+    "head_neck": {
+      "enabled": true,
+      "neck_enabled": false,
+      "guard_enabled": false,
+      "shoulders_enabled": false,
+      "rigid_head_enabled": true,
+      "rigid_head_weight": 0.1
+    }
+  }
+]

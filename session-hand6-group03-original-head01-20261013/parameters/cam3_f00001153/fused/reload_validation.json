@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "independent_reconstruction": true,
+  "vertex_max_abs_m": 0.0,
+  "obj_vertex_max_abs_m": 0.0,
+  "face_topology_exact": true
+}
