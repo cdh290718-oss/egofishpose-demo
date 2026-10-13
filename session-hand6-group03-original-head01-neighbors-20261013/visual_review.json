@@ -1,0 +1,42 @@
+{
+  "conclusion_zh": "新增八帧均未观察到同类大面积头部外扩：其中cam4 18.409s、18.917s原有外扩在身体和最终阶段均被抑制，其余六帧没有新增同类外扩。连同中心两帧，这十帧支持原流程只加头部参考0.1对防外扩有效；但新增八帧身体自动点RMSE 18.91→33.47px、手部10.64→11.04px，局部三维相交检查仍只有3/8帧通过。该结果不等于整体精度提升，也不是所有图像均不外扩的保证。",
+  "frames": {
+    "cam3_f00001094": "身体阶段和最终融合均未见同类大幅头部外扩；手部主体投影与原流程接近，肩臂位置仍有变化，左腕局部几何未通过。 最终身体RMSE 19.14→28.27 px，手部RMSE 10.49→10.76 px；头部相对刚体RMS 15.22 mm；局部三维相交面配对左/右 41/0→35/0。",
+    "cam3_f00001124": "身体及最终投影未见同类大幅头部外扩，肩带/躯干位置有变化。左手旁突出的白色网格经部位核对来自左脚；原透明线框没有做真实场景遮挡剔除，并非新增手部结构。这项核查不证明脚部三维位置准确。左腕局部几何仍未通过。 最终身体RMSE 16.51→44.56 px，手部RMSE 9.36→11.52 px；头部相对刚体RMS 23.72 mm；局部三维相交面配对左/右 26/0→24/0。",
+    "cam3_f00001153": "身体阶段原流程的大面积头部网格覆盖消失；头部相对刚体顶点RMS由335.75降至1.66毫米。最终仍无同等外扩，头部RMS为23.94毫米。左右手可辨，但手部与轮廓仍有偏差；左腕局部三维相交4处，右腕0处，局部检查未全通过。 最终身体RMSE 9.04→48.52 px，手部RMSE 9.39→11.32 px；头部相对刚体RMS 23.94 mm；局部三维相交面配对左/右 16/19→4/0。",
+    "cam3_f00001182": "身体和最终阶段均未出现同类大幅头部外扩，左右手整体接近原结果，但手指与真实物体的贴合仍非完全准确，双腕局部相交检查通过。 最终身体RMSE 18.96→31.19 px，手部RMSE 11.22→11.33 px；头部相对刚体RMS 30.98 mm；局部三维相交面配对左/右 0/0→0/0。",
+    "cam3_f00001212": "身体和最终阶段未见同类大幅头部外扩；肩带和躯干拟合发生变化，自动身体点误差明显增加。手部主体仍接近原结果，双腕局部相交检查通过。 最终身体RMSE 27.74→54.70 px，手部RMSE 12.31→12.17 px；头部相对刚体RMS 25.88 mm；局部三维相交面配对左/右 0/0→0/0。",
+    "cam4_f00001088": "原流程向画面左侧大面积伸出的头部网格，在身体阶段和最终融合中均被抑制。手部原有轮廓偏差仍在，左腕局部三维相交未通过，不能认定整体几何已正确。 最终身体RMSE 10.99→27.11 px，手部RMSE 8.62→8.94 px；头部相对刚体RMS 17.77 mm；局部三维相交面配对左/右 45/0→30/0。",
+    "cam4_f00001118": "原流程向画面左下方伸出的大面积头部网格，在身体阶段和最终融合中均被抑制。双腕局部三维相交检查通过；身体轮廓、手指与真实图像仍有偏差。 最终身体RMSE 9.20→13.57 px，手部RMSE 8.87→10.56 px；头部相对刚体RMS 12.85 mm；局部三维相交面配对左/右 0/0→0/0。",
+    "cam4_f00001147": "身体阶段向图像右侧伸出的大面积头部网格消失；头部相对刚体顶点RMS由293.82降至3.44毫米。最终无同等外扩，头部RMS为15.52毫米。双腕局部三维相交均为0；手指、腕臂轮廓仍非完美贴合。 最终身体RMSE 16.62→26.53 px，手部RMSE 9.28→9.97 px；头部相对刚体RMS 15.52 mm；局部三维相交面配对左/右 0/0→0/0。",
+    "cam4_f00001176": "原、新流程均未见中心帧那种大面积头部外扩；最终双手主体投影相近，左腕仍有较多三维相交面配对。防外扩项没有解决这类接缝问题。 最终身体RMSE 18.12→21.70 px，手部RMSE 11.97→11.13 px；头部相对刚体RMS 29.17 mm；局部三维相交面配对左/右 88/0→80/0。",
+    "cam4_f00001206": "身体和最终融合没有新增同类大幅头部外扩，原、新手部投影整体接近；手指轮廓偏差及左腕三维相交仍存在。 最终身体RMSE 18.94→20.71 px，手部RMSE 11.55→11.64 px；头部相对刚体RMS 26.05 mm；局部三维相交面配对左/右 89/0→87/0。"
+  },
+  "reviewed_images": [
+    "cam3_f00001094_preview.jpg",
+    "cam3_f00001094_pipeline_final.jpg",
+    "cam3_f00001094_pipeline_hands.jpg",
+    "cam3_f00001124_preview.jpg",
+    "cam3_f00001124_pipeline_final.jpg",
+    "cam3_f00001124_pipeline_hands.jpg",
+    "cam3_f00001182_preview.jpg",
+    "cam3_f00001182_pipeline_final.jpg",
+    "cam3_f00001182_pipeline_hands.jpg",
+    "cam3_f00001212_preview.jpg",
+    "cam3_f00001212_pipeline_final.jpg",
+    "cam3_f00001212_pipeline_hands.jpg",
+    "cam4_f00001088_preview.jpg",
+    "cam4_f00001088_hands.jpg",
+    "cam4_f00001118_preview.jpg",
+    "cam4_f00001118_hands.jpg",
+    "cam4_f00001176_preview.jpg",
+    "cam4_f00001176_hands.jpg",
+    "cam4_f00001206_preview.jpg",
+    "cam4_f00001206_hands.jpg"
+  ],
+  "center_visual_review_reused_from": "experiments/session_hand6_group03_original_head01_20261013_v1/visual_review.json",
+  "no_per_frame_tuning": true,
+  "head_expansion_review": "Same-scale rigid/original/new body and final mesh projections; head RMS and in-image counts are supplemental diagnostics, not physical ground truth.",
+  "intersection_definition": "3D proper noncoplanar triangle-face pair crossings, local forearm/seam support versus full mesh; no whole-body or coplanar-overlap certificate.",
+  "hand_neighbor_part_diagnostic": "hand_neighbor_part_diagnostic.json"
+}

@@ -1,0 +1,150 @@
+{
+  "conclusion": "Neutral jaw/expression fixed at inference; Neck and Head local rotations are predicted and differ between frames. Rigid retains local rotations; body optimization changes them.",
+  "source_sha256": {
+    "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/main/SMPLer_X.py": "e5409ade2f34bce1ce452b5c00bc2fd9e9b54c56ce436def03f970c40671ca97",
+    "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/main/config/config_ft_egopw_sceneego_egowholebody_unrealego_egofishbody.py": "90e1da854ca3f8869181206bd585ac0a2682bd38ee368bcda9c22129858a40ad"
+  },
+  "source_lines": {
+    "SMPLer_X.py": [
+      790,
+      840,
+      847
+    ],
+    "config_ft_egopw_sceneego_egowholebody_unrealego_egofishbody.py": [
+      185,
+      187
+    ]
+  },
+  "frames": [
+    {
+      "id": "cam3_f00001153",
+      "stages": {
+        "network": {
+          "neck_axis_angle": [
+            0.10388334840536118,
+            -0.028182463720440865,
+            -0.011185642331838608
+          ],
+          "head_axis_angle": [
+            0.050180584192276,
+            0.022202927619218826,
+            0.04539360851049423
+          ],
+          "jaw_pose": [
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "expression_is_zero": true
+        },
+        "rigid": {
+          "neck_axis_angle": [
+            0.10388334840536118,
+            -0.028182463720440865,
+            -0.011185642331838608
+          ],
+          "head_axis_angle": [
+            0.050180584192276,
+            0.022202927619218826,
+            0.04539360851049423
+          ],
+          "jaw_pose": [
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "expression_is_zero": true
+        },
+        "body": {
+          "neck_axis_angle": [
+            0.2221783548593521,
+            -0.1455298662185669,
+            -0.13807454705238342
+          ],
+          "head_axis_angle": [
+            0.15567782521247864,
+            -0.09950591623783112,
+            -0.08848021179437637
+          ],
+          "jaw_pose": [
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "expression_is_zero": true
+        }
+      }
+    },
+    {
+      "id": "cam4_f00001147",
+      "stages": {
+        "network": {
+          "neck_axis_angle": [
+            0.10597200691699982,
+            0.003039150033146143,
+            -0.029353655874729156
+          ],
+          "head_axis_angle": [
+            0.106939397752285,
+            0.013353419490158558,
+            0.034193385392427444
+          ],
+          "jaw_pose": [
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "expression_is_zero": true
+        },
+        "rigid": {
+          "neck_axis_angle": [
+            0.10597200691699982,
+            0.003039150033146143,
+            -0.029353655874729156
+          ],
+          "head_axis_angle": [
+            0.106939397752285,
+            0.013353419490158558,
+            0.034193385392427444
+          ],
+          "jaw_pose": [
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "expression_is_zero": true
+        },
+        "body": {
+          "neck_axis_angle": [
+            0.25327086448669434,
+            -0.005587741266936064,
+            0.11928529292345047
+          ],
+          "head_axis_angle": [
+            0.26155948638916016,
+            0.11114588379859924,
+            0.13614521920681
+          ],
+          "jaw_pose": [
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "expression_is_zero": true
+        }
+      }
+    }
+  ]
+}

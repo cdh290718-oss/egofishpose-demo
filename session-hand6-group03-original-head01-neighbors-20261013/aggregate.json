@@ -1,0 +1,16 @@
+{
+  "original": {
+    "body_rmse_px": 17.99616953753676,
+    "body_n": 111,
+    "hand_rmse_px": 10.388892524775521,
+    "hand_n": 420,
+    "surface_pass_frames": 4
+  },
+  "rigid_head": {
+    "body_rmse_px": 34.4441895596009,
+    "body_n": 111,
+    "hand_rmse_px": 10.970104809438277,
+    "hand_n": 420,
+    "surface_pass_frames": 4
+  }
+}

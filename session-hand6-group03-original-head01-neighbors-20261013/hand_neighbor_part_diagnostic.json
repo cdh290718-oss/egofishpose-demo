@@ -1,0 +1,64 @@
+{
+  "frame_id": "cam3_f00001124",
+  "parts": {
+    "original": {
+      "left foot": {
+        "in_image_vertex_count": 129,
+        "bbox_px": [
+          643.3807581085897,
+          436.4934492822352,
+          673.6201161162893,
+          466.4742077974262
+        ]
+      },
+      "right foot": {
+        "in_image_vertex_count": 129,
+        "bbox_px": [
+          727.4903321085651,
+          466.8181586206205,
+          757.0266273193203,
+          496.8504423075048
+        ]
+      },
+      "head": {
+        "in_image_vertex_count": 174,
+        "bbox_px": [
+          802.005556927742,
+          697.5914500281632,
+          929.7205350653193,
+          719.9983731486279
+        ]
+      }
+    },
+    "head01": {
+      "left foot": {
+        "in_image_vertex_count": 129,
+        "bbox_px": [
+          649.2939595162229,
+          385.2268517672811,
+          678.7865543480455,
+          415.31908236928336
+        ]
+      },
+      "right foot": {
+        "in_image_vertex_count": 129,
+        "bbox_px": [
+          694.2497734352237,
+          479.76360506462197,
+          722.254458533988,
+          506.87081042049044
+        ]
+      },
+      "head": {
+        "in_image_vertex_count": 107,
+        "bbox_px": [
+          848.2392320534473,
+          711.1021063012689,
+          902.4370497853174,
+          719.942580440947
+        ]
+      }
+    }
+  },
+  "scope": "Head and foot dominant skinning labels on standard body vertices; projected diagnostics, not visibility-tested"
+}

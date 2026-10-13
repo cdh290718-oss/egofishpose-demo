@@ -1,0 +1,6 @@
+{
+  "source_experiment": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_group03_original_head01_20261013_v1",
+  "source_code_sha256_identical": true,
+  "disabled_regression": "Existing cam3 head-disabled 1600-step regression inherited; not rerun here",
+  "center_outputs": "Reused head reference weight 0.1 center outputs and revalidated in ten-frame delivery"
+}

@@ -1,0 +1,29 @@
+{
+  "matches": {
+    "left": {
+      "candidate": 1,
+      "confidence": 0.808107316493988,
+      "wrist_distance_px": 15.320212852037223,
+      "detector_handedness_agrees": true,
+      "anchor_source": "Sapiens2",
+      "valid_keypoints": 21
+    },
+    "right": {
+      "candidate": 0,
+      "confidence": 0.8112801909446716,
+      "wrist_distance_px": 7.849068744159448,
+      "detector_handedness_agrees": true,
+      "anchor_source": "Sapiens2",
+      "valid_keypoints": 21
+    }
+  },
+  "pipeline_profile": "mano_guided_original_seam_20260929_v1",
+  "method": "MANO_guided_body_plus_original_bounded_contour_seam",
+  "body_parameter_path": "body_params.npz",
+  "frozen_targets": "silhouette_targets.json",
+  "segmentation_labels": "segmentation_labels.npy",
+  "local_surface_optimizer": true,
+  "baseline_smoothstep_rings": 7,
+  "manual_annotations_used": false,
+  "standard_smplx_parameter_only_reconstruction": false
+}

@@ -1,0 +1,152 @@
+[
+  {
+    "frame": "cam3_f00001094",
+    "reused": false,
+    "only_algorithm_setting_change": [
+      "head_neck"
+    ],
+    "head_neck": {
+      "enabled": true,
+      "neck_enabled": false,
+      "guard_enabled": false,
+      "shoulders_enabled": false,
+      "rigid_head_enabled": true,
+      "rigid_head_weight": 0.1
+    }
+  },
+  {
+    "frame": "cam3_f00001124",
+    "reused": false,
+    "only_algorithm_setting_change": [
+      "head_neck"
+    ],
+    "head_neck": {
+      "enabled": true,
+      "neck_enabled": false,
+      "guard_enabled": false,
+      "shoulders_enabled": false,
+      "rigid_head_enabled": true,
+      "rigid_head_weight": 0.1
+    }
+  },
+  {
+    "frame": "cam3_f00001153",
+    "reused": true,
+    "only_algorithm_setting_change": [
+      "head_neck"
+    ],
+    "head_neck": {
+      "enabled": true,
+      "neck_enabled": false,
+      "guard_enabled": false,
+      "shoulders_enabled": false,
+      "rigid_head_enabled": true,
+      "rigid_head_weight": 0.1
+    }
+  },
+  {
+    "frame": "cam3_f00001182",
+    "reused": false,
+    "only_algorithm_setting_change": [
+      "head_neck"
+    ],
+    "head_neck": {
+      "enabled": true,
+      "neck_enabled": false,
+      "guard_enabled": false,
+      "shoulders_enabled": false,
+      "rigid_head_enabled": true,
+      "rigid_head_weight": 0.1
+    }
+  },
+  {
+    "frame": "cam3_f00001212",
+    "reused": false,
+    "only_algorithm_setting_change": [
+      "head_neck"
+    ],
+    "head_neck": {
+      "enabled": true,
+      "neck_enabled": false,
+      "guard_enabled": false,
+      "shoulders_enabled": false,
+      "rigid_head_enabled": true,
+      "rigid_head_weight": 0.1
+    }
+  },
+  {
+    "frame": "cam4_f00001088",
+    "reused": false,
+    "only_algorithm_setting_change": [
+      "head_neck"
+    ],
+    "head_neck": {
+      "enabled": true,
+      "neck_enabled": false,
+      "guard_enabled": false,
+      "shoulders_enabled": false,
+      "rigid_head_enabled": true,
+      "rigid_head_weight": 0.1
+    }
+  },
+  {
+    "frame": "cam4_f00001118",
+    "reused": false,
+    "only_algorithm_setting_change": [
+      "head_neck"
+    ],
+    "head_neck": {
+      "enabled": true,
+      "neck_enabled": false,
+      "guard_enabled": false,
+      "shoulders_enabled": false,
+      "rigid_head_enabled": true,
+      "rigid_head_weight": 0.1
+    }
+  },
+  {
+    "frame": "cam4_f00001147",
+    "reused": true,
+    "only_algorithm_setting_change": [
+      "head_neck"
+    ],
+    "head_neck": {
+      "enabled": true,
+      "neck_enabled": false,
+      "guard_enabled": false,
+      "shoulders_enabled": false,
+      "rigid_head_enabled": true,
+      "rigid_head_weight": 0.1
+    }
+  },
+  {
+    "frame": "cam4_f00001176",
+    "reused": false,
+    "only_algorithm_setting_change": [
+      "head_neck"
+    ],
+    "head_neck": {
+      "enabled": true,
+      "neck_enabled": false,
+      "guard_enabled": false,
+      "shoulders_enabled": false,
+      "rigid_head_enabled": true,
+      "rigid_head_weight": 0.1
+    }
+  },
+  {
+    "frame": "cam4_f00001206",
+    "reused": false,
+    "only_algorithm_setting_change": [
+      "head_neck"
+    ],
+    "head_neck": {
+      "enabled": true,
+      "neck_enabled": false,
+      "guard_enabled": false,
+      "shoulders_enabled": false,
+      "rigid_head_enabled": true,
+      "rigid_head_weight": 0.1
+    }
+  }
+]

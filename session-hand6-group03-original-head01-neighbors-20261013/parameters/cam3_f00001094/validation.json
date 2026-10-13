@@ -1,0 +1,1651 @@
+{
+  "id": "cam3_f00001094",
+  "passed": true,
+  "matched_hands": 2,
+  "matches": {
+    "left": {
+      "candidate": 0,
+      "confidence": 0.8087276220321655,
+      "wrist_distance_px": 19.686303510044446,
+      "detector_handedness_agrees": true,
+      "anchor_source": "Sapiens2",
+      "valid_keypoints": 21
+    },
+    "right": {
+      "candidate": 1,
+      "confidence": 0.7713004350662231,
+      "wrist_distance_px": 18.84422876250274,
+      "detector_handedness_agrees": true,
+      "anchor_source": "Sapiens2",
+      "valid_keypoints": 21
+    }
+  },
+  "body_target_count": 13,
+  "body_error_px": [
+    10.680007017007325,
+    93.60029671218687,
+    4.7457472417071,
+    17.008863359955665,
+    5.18625796917175,
+    9.288231135908305,
+    11.317339214304093,
+    20.477178009712368,
+    23.204170562898916,
+    0.34251293760227847,
+    0.7482976716102128,
+    0.3167992563202494,
+    0.35371638257655513
+  ],
+  "hand_error_px": [
+    20.694397930775345,
+    6.874634814376603,
+    11.389006275552262,
+    12.073201869060869,
+    11.901719045361796,
+    10.77138673942233,
+    14.135131256169842,
+    14.39589386514185,
+    12.04408485109121,
+    11.503531306105087,
+    13.663527145686281,
+    14.473338540336707,
+    11.99379578513157,
+    10.381455094977179,
+    11.214672480170094,
+    13.841873105314592,
+    11.871551145597127,
+    10.445134397796002,
+    10.386910167086377,
+    11.508051598881536,
+    11.654810098226667,
+    18.385227707644514,
+    9.326433454428198,
+    8.360229750587003,
+    9.356582363530938,
+    8.266731879014792,
+    7.133266649608802,
+    8.299402643823102,
+    8.93460895902605,
+    7.62318656214996,
+    6.915899678358536,
+    7.7484458698797445,
+    8.26239353475755,
+    7.512884030576884,
+    6.5901360888537575,
+    7.602212646955922,
+    8.534331696903772,
+    7.491523039101507,
+    6.528024757872425,
+    6.981902364318225,
+    7.489996426300313,
+    7.53430773891369
+  ],
+  "body_rmse_px": 28.266320558274163,
+  "hand_rmse_px": 10.756970465951778,
+  "body_reload_max_abs_m": 0.0,
+  "fusion_reload_max_abs_m": 0.0,
+  "obj_reload_max_abs_m": 0.0,
+  "minimum_fused_vertex_z_m": 0.05890852212905884,
+  "hand_reports": {
+    "left": {
+      "changed": true,
+      "standard_wrist_radius_m": 0.025128144770860672,
+      "posed_wrist_radius_m": 0.024952415376901627,
+      "lifted_mano_wrist_radius_m": 0.02991586923599243,
+      "baseline_hand_metrics": {
+        "edge_log_rms": 0.10229101032018661,
+        "edge_ratio_p01": 0.5861662244796753,
+        "edge_ratio_p99": 1.1209875321388245,
+        "normal_reversals_vs_target": 0,
+        "minimum_double_area": 4.289147454983322e-06
+      },
+      "baseline_hand_rmse_px": 12.14460717149637,
+      "selected": {
+        "alpha": "toward_mano_0.5",
+        "accepted": true,
+        "hand_metrics": {
+          "edge_log_rms": 0.047750625759363174,
+          "edge_ratio_p01": 0.8025504851341247,
+          "edge_ratio_p99": 1.003507387638092,
+          "normal_reversals_vs_target": 0,
+          "minimum_double_area": 4.289147454983322e-06
+        },
+        "hand_rmse_px": 12.50609913077912,
+        "forearm_edge_ratio_min": 0.7932111024856567,
+        "forearm_edge_ratio_max": 1.0772793292999268,
+        "forearm_area_ratio_min": 0.7525768876075745,
+        "forearm_area_ratio_max": 1.0492479801177979,
+        "loop_radius_over_standard": 1.0294472361064062,
+        "score": 0.11575363822990578,
+        "silhouette": {
+          "outside_rms_px": 6.926901340484619,
+          "boundary_coverage_rms_px": 8.717759132385254,
+          "score": 0.008598162841796875,
+          "wrist_loop_outside_mse_normalized": 0.0
+        }
+      },
+      "candidates": [
+        {
+          "alpha": "toward_mano_0.0",
+          "accepted": true,
+          "hand_metrics": {
+            "edge_log_rms": 0.07384604960680008,
+            "edge_ratio_p01": 0.7039029824733735,
+            "edge_ratio_p99": 1.0055769443511964,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.023707046110033,
+          "forearm_edge_ratio_min": 1.0,
+          "forearm_edge_ratio_max": 1.0,
+          "forearm_area_ratio_min": 1.0,
+          "forearm_area_ratio_max": 1.0,
+          "loop_radius_over_standard": 0.9930066705854534,
+          "score": 0.13589521083036782,
+          "silhouette": {
+            "outside_rms_px": 6.888943672180176,
+            "boundary_coverage_rms_px": 7.555917739868164,
+            "score": 0.007600349426269531,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "toward_mano_0.25",
+          "accepted": true,
+          "hand_metrics": {
+            "edge_log_rms": 0.06089038774371147,
+            "edge_ratio_p01": 0.7483571016788483,
+            "edge_ratio_p99": 1.0040159583091737,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.245326089517446,
+          "forearm_edge_ratio_min": 0.8943867087364197,
+          "forearm_edge_ratio_max": 1.0372371673583984,
+          "forearm_area_ratio_min": 0.8795821666717529,
+          "forearm_area_ratio_max": 1.0194103717803955,
+          "loop_radius_over_standard": 1.006650423221554,
+          "score": 0.1257637189083421,
+          "silhouette": {
+            "outside_rms_px": 6.885317325592041,
+            "boundary_coverage_rms_px": 8.167957305908203,
+            "score": 0.00807653579711914,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "toward_mano_0.5",
+          "accepted": true,
+          "hand_metrics": {
+            "edge_log_rms": 0.047750625759363174,
+            "edge_ratio_p01": 0.8025504851341247,
+            "edge_ratio_p99": 1.003507387638092,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.50609913077912,
+          "forearm_edge_ratio_min": 0.7932111024856567,
+          "forearm_edge_ratio_max": 1.0772793292999268,
+          "forearm_area_ratio_min": 0.7525768876075745,
+          "forearm_area_ratio_max": 1.0492479801177979,
+          "loop_radius_over_standard": 1.0294472361064062,
+          "score": 0.11575363822990578,
+          "silhouette": {
+            "outside_rms_px": 6.926901340484619,
+            "boundary_coverage_rms_px": 8.717759132385254,
+            "score": 0.008598162841796875,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "toward_mano_0.75",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.034895312041044235,
+            "edge_ratio_p01": 0.84675989985466,
+            "edge_ratio_p99": 1.005890965461731,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.803322899322705,
+          "forearm_edge_ratio_min": 0.6984055042266846,
+          "forearm_edge_ratio_max": 1.1198211908340454,
+          "forearm_area_ratio_min": 0.6219409704208374,
+          "forearm_area_ratio_max": 1.089372158050537,
+          "loop_radius_over_standard": 1.0608082534689045,
+          "score": 0.10626917166110078,
+          "silhouette": {
+            "outside_rms_px": 6.948068141937256,
+            "boundary_coverage_rms_px": 9.301481246948242,
+            "score": 0.009153442764282227,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "toward_mano_1.0",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.023190177977085114,
+            "edge_ratio_p01": 0.8946978104114532,
+            "edge_ratio_p99": 1.0103664088249207,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 13.134221338955166,
+          "forearm_edge_ratio_min": 0.6129341721534729,
+          "forearm_edge_ratio_max": 1.165137529373169,
+          "forearm_area_ratio_min": 0.4967537820339203,
+          "forearm_area_ratio_max": 1.1398162841796875,
+          "loop_radius_over_standard": 1.1000002223775571,
+          "score": 0.09765928334241629,
+          "silhouette": {
+            "outside_rms_px": 6.870739459991455,
+            "boundary_coverage_rms_px": 9.914427757263184,
+            "score": 0.00964013253748417,
+            "wrist_loop_outside_mse_normalized": 4.632583260536194e-06
+          }
+        },
+        {
+          "alpha": "axis0_-30_scale0.9",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.06822390109300613,
+            "edge_ratio_p01": 0.7352777349948884,
+            "edge_ratio_p99": 1.005175666809082,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.577749741845293,
+          "forearm_edge_ratio_min": 0.6666287183761597,
+          "forearm_edge_ratio_max": 1.2699171304702759,
+          "forearm_area_ratio_min": 0.4923412501811981,
+          "forearm_area_ratio_max": 1.1660199165344238,
+          "loop_radius_over_standard": 0.9000000741258524,
+          "score": 0.1378451503172973,
+          "silhouette": {
+            "outside_rms_px": 6.618804454803467,
+            "boundary_coverage_rms_px": 9.499781608581543,
+            "score": 0.008893149948120117,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis0_-30_scale1",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.06765924394130707,
+            "edge_ratio_p01": 0.7705829322338105,
+            "edge_ratio_p99": 1.0096565294265747,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.562767552133506,
+          "forearm_edge_ratio_min": 0.6786419153213501,
+          "forearm_edge_ratio_max": 1.294419527053833,
+          "forearm_area_ratio_min": 0.5511309504508972,
+          "forearm_area_ratio_max": 1.3153283596038818,
+          "loop_radius_over_standard": 1.0,
+          "score": 0.1373565106129569,
+          "silhouette": {
+            "outside_rms_px": 6.680477619171143,
+            "boundary_coverage_rms_px": 9.435537338256836,
+            "score": 0.008914346313476562,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis0_-15_scale0.9",
+          "accepted": true,
+          "hand_metrics": {
+            "edge_log_rms": 0.060966309159994125,
+            "edge_ratio_p01": 0.7314806520938874,
+            "edge_ratio_p99": 1.0038583779335022,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.564076201382226,
+          "forearm_edge_ratio_min": 0.7593520879745483,
+          "forearm_edge_ratio_max": 1.0926975011825562,
+          "forearm_area_ratio_min": 0.6546098589897156,
+          "forearm_area_ratio_max": 1.0254290103912354,
+          "loop_radius_over_standard": 0.8999998517482953,
+          "score": 0.13002394116175758,
+          "silhouette": {
+            "outside_rms_px": 6.768770694732666,
+            "boundary_coverage_rms_px": 9.169809341430664,
+            "score": 0.008785895919799804,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis0_-15_scale1",
+          "accepted": true,
+          "hand_metrics": {
+            "edge_log_rms": 0.056896381080150604,
+            "edge_ratio_p01": 0.7730052387714386,
+            "edge_ratio_p99": 1.0050340008735656,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.547807978153704,
+          "forearm_edge_ratio_min": 0.7731466889381409,
+          "forearm_edge_ratio_max": 1.1256662607192993,
+          "forearm_area_ratio_min": 0.7260584235191345,
+          "forearm_area_ratio_max": 1.1216131448745728,
+          "loop_radius_over_standard": 0.9999999258741477,
+          "score": 0.12599881390047168,
+          "silhouette": {
+            "outside_rms_px": 6.845846176147461,
+            "boundary_coverage_rms_px": 9.07171630859375,
+            "score": 0.008801363372802734,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis0_15_scale0.9",
+          "accepted": true,
+          "hand_metrics": {
+            "edge_log_rms": 0.06483028829097748,
+            "edge_ratio_p01": 0.731156325340271,
+            "edge_ratio_p99": 1.019972040653229,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.538559655502032,
+          "forearm_edge_ratio_min": 0.7686042189598083,
+          "forearm_edge_ratio_max": 1.033029556274414,
+          "forearm_area_ratio_min": 0.7423620223999023,
+          "forearm_area_ratio_max": 0.9898822903633118,
+          "loop_radius_over_standard": 0.8999999258741477,
+          "score": 0.13319822677007237,
+          "silhouette": {
+            "outside_rms_px": 7.031033039093018,
+            "boundary_coverage_rms_px": 8.619304656982422,
+            "score": 0.008658163833618164,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis0_15_scale1",
+          "accepted": true,
+          "hand_metrics": {
+            "edge_log_rms": 0.06023356318473816,
+            "edge_ratio_p01": 0.7710824680328369,
+            "edge_ratio_p99": 1.0280525851249698,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.519276075232648,
+          "forearm_edge_ratio_min": 0.7824195623397827,
+          "forearm_edge_ratio_max": 1.0814517736434937,
+          "forearm_area_ratio_min": 0.765826404094696,
+          "forearm_area_ratio_max": 1.0699156522750854,
+          "loop_radius_over_standard": 0.9999998517482953,
+          "score": 0.12864058266613607,
+          "silhouette": {
+            "outside_rms_px": 7.135192394256592,
+            "boundary_coverage_rms_px": 8.464746475219727,
+            "score": 0.008673693466186523,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis0_30_scale0.9",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.07390736043453217,
+            "edge_ratio_p01": 0.7086427414417267,
+            "edge_ratio_p99": 1.037120351791382,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.528134349809864,
+          "forearm_edge_ratio_min": 0.6189411282539368,
+          "forearm_edge_ratio_max": 1.1597189903259277,
+          "forearm_area_ratio_min": 0.6028326749801636,
+          "forearm_area_ratio_max": 1.0925918817520142,
+          "loop_radius_over_standard": 0.9000000741258524,
+          "score": 0.1419376052694058,
+          "silhouette": {
+            "outside_rms_px": 7.114840507507324,
+            "boundary_coverage_rms_px": 8.405592918395996,
+            "score": 0.008594795227050782,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis0_30_scale1",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.07025991380214691,
+            "edge_ratio_p01": 0.7505623197555542,
+            "edge_ratio_p99": 1.0577841305732731,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.507254090216554,
+          "forearm_edge_ratio_min": 0.6176103353500366,
+          "forearm_edge_ratio_max": 1.207818627357483,
+          "forearm_area_ratio_min": 0.6255203485488892,
+          "forearm_area_ratio_max": 1.214802861213684,
+          "loop_radius_over_standard": 1.0,
+          "score": 0.1382902968452509,
+          "silhouette": {
+            "outside_rms_px": 7.220563888549805,
+            "boundary_coverage_rms_px": 8.233307838439941,
+            "score": 0.00860317497253418,
+            "wrist_loop_outside_mse_normalized": 1.52587890625e-07
+          }
+        },
+        {
+          "alpha": "axis1_-30_scale0.9",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.07980205118656158,
+            "edge_ratio_p01": 0.7061451685428619,
+            "edge_ratio_p99": 1.068434193134308,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.614961617858354,
+          "forearm_edge_ratio_min": 0.6073397397994995,
+          "forearm_edge_ratio_max": 1.3554763793945312,
+          "forearm_area_ratio_min": 0.566718339920044,
+          "forearm_area_ratio_max": 1.2655589580535889,
+          "loop_radius_over_standard": 0.9000000741258524,
+          "score": 0.15108539353543748,
+          "silhouette": {
+            "outside_rms_px": 7.026578903198242,
+            "boundary_coverage_rms_px": 9.244893074035645,
+            "score": 0.009210683822631837,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis1_-30_scale1",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.07467880845069885,
+            "edge_ratio_p01": 0.7329139518737793,
+            "edge_ratio_p99": 1.0857472920417792,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.603213510247768,
+          "forearm_edge_ratio_min": 0.6076868772506714,
+          "forearm_edge_ratio_max": 1.3874832391738892,
+          "forearm_area_ratio_min": 0.599285900592804,
+          "forearm_area_ratio_max": 1.3778785467147827,
+          "loop_radius_over_standard": 1.0000000741258523,
+          "score": 0.14639363924927057,
+          "silhouette": {
+            "outside_rms_px": 7.140154838562012,
+            "boundary_coverage_rms_px": 9.16896915435791,
+            "score": 0.009301680755615235,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis1_-15_scale0.9",
+          "accepted": true,
+          "hand_metrics": {
+            "edge_log_rms": 0.06798180192708969,
+            "edge_ratio_p01": 0.7228644931316376,
+            "edge_ratio_p99": 1.0221020841598512,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.57688542654023,
+          "forearm_edge_ratio_min": 0.7353423833847046,
+          "forearm_edge_ratio_max": 1.145649790763855,
+          "forearm_area_ratio_min": 0.6652408242225647,
+          "forearm_area_ratio_max": 1.0793718099594116,
+          "loop_radius_over_standard": 0.9000000741258524,
+          "score": 0.13792088734010668,
+          "silhouette": {
+            "outside_rms_px": 6.984062194824219,
+            "boundary_coverage_rms_px": 9.032552719116211,
+            "score": 0.008957062911987305,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis1_-15_scale1",
+          "accepted": true,
+          "hand_metrics": {
+            "edge_log_rms": 0.06249057501554489,
+            "edge_ratio_p01": 0.7562318050861359,
+            "edge_ratio_p99": 1.0355533766746523,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.56169078236521,
+          "forearm_edge_ratio_min": 0.7533866167068481,
+          "forearm_edge_ratio_max": 1.1584447622299194,
+          "forearm_area_ratio_min": 0.7409365177154541,
+          "forearm_area_ratio_max": 1.1654841899871826,
+          "loop_radius_over_standard": 0.9999999258741477,
+          "score": 0.13270166409980655,
+          "silhouette": {
+            "outside_rms_px": 7.088183879852295,
+            "boundary_coverage_rms_px": 8.936785697937012,
+            "score": 0.00901754150390625,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis1_15_scale0.9",
+          "accepted": true,
+          "hand_metrics": {
+            "edge_log_rms": 0.05554432421922684,
+            "edge_ratio_p01": 0.7589511060714722,
+            "edge_ratio_p99": 1.0032614707946779,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.53854610241123,
+          "forearm_edge_ratio_min": 0.7649070024490356,
+          "forearm_edge_ratio_max": 1.0829999446868896,
+          "forearm_area_ratio_min": 0.6898755431175232,
+          "forearm_area_ratio_max": 0.9732511043548584,
+          "loop_radius_over_standard": 0.8999999258741477,
+          "score": 0.12319907984568015,
+          "silhouette": {
+            "outside_rms_px": 6.81434440612793,
+            "boundary_coverage_rms_px": 8.800004005432129,
+            "score": 0.008515532684326171,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis1_15_scale1",
+          "accepted": true,
+          "hand_metrics": {
+            "edge_log_rms": 0.05089116469025612,
+            "edge_ratio_p01": 0.7975015151500702,
+            "edge_ratio_p99": 1.002433614730835,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.519416176408514,
+          "forearm_edge_ratio_min": 0.7343135476112366,
+          "forearm_edge_ratio_max": 1.1216888427734375,
+          "forearm_area_ratio_min": 0.7261584997177124,
+          "forearm_area_ratio_max": 1.1179473400115967,
+          "loop_radius_over_standard": 0.9999999258741477,
+          "score": 0.11844529016441105,
+          "silhouette": {
+            "outside_rms_px": 6.8901190757751465,
+            "boundary_coverage_rms_px": 8.666815757751465,
+            "score": 0.008503058624267578,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis1_30_scale0.9",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.05587543919682503,
+            "edge_ratio_p01": 0.7395633411407471,
+            "edge_ratio_p99": 1.0049866127967835,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.541535381796535,
+          "forearm_edge_ratio_min": 0.6271007061004639,
+          "forearm_edge_ratio_max": 1.2833918333053589,
+          "forearm_area_ratio_min": 0.4816567599773407,
+          "forearm_area_ratio_max": 1.145750880241394,
+          "loop_radius_over_standard": 0.8999999258741477,
+          "score": 0.12253779272103821,
+          "silhouette": {
+            "outside_rms_px": 6.7097625732421875,
+            "boundary_coverage_rms_px": 8.733573913574219,
+            "score": 0.008315856552124024,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis1_30_scale1",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.05219479650259018,
+            "edge_ratio_p01": 0.7679496157169342,
+            "edge_ratio_p99": 1.0061715030670166,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.52231945745603,
+          "forearm_edge_ratio_min": 0.5841217637062073,
+          "forearm_edge_ratio_max": 1.3318144083023071,
+          "forearm_area_ratio_min": 0.5056660175323486,
+          "forearm_area_ratio_max": 1.3197920322418213,
+          "loop_radius_over_standard": 0.9999998517482953,
+          "score": 0.11848192046388895,
+          "silhouette": {
+            "outside_rms_px": 6.766049385070801,
+            "boundary_coverage_rms_px": 8.56802749633789,
+            "score": 0.008248497009277343,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis2_-30_scale0.9",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.06504862010478973,
+            "edge_ratio_p01": 0.7351728200912475,
+            "edge_ratio_p99": 1.0130763602256778,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.507890251100209,
+          "forearm_edge_ratio_min": 0.4971473217010498,
+          "forearm_edge_ratio_max": 1.2272729873657227,
+          "forearm_area_ratio_min": 0.2701285183429718,
+          "forearm_area_ratio_max": 1.1550651788711548,
+          "loop_radius_over_standard": 0.899999777622443,
+          "score": 0.13367432110869915,
+          "silhouette": {
+            "outside_rms_px": 6.891940593719482,
+            "boundary_coverage_rms_px": 8.913023948669434,
+            "score": 0.008721984100341798,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis2_-30_scale1",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.060674380511045456,
+            "edge_ratio_p01": 0.776465767621994,
+            "edge_ratio_p99": 1.0225452756881717,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.485528752178974,
+          "forearm_edge_ratio_min": 0.43907004594802856,
+          "forearm_edge_ratio_max": 1.2854843139648438,
+          "forearm_area_ratio_min": 0.2809811532497406,
+          "forearm_area_ratio_max": 1.3031210899353027,
+          "loop_radius_over_standard": 0.9999998517482953,
+          "score": 0.12931899338954891,
+          "silhouette": {
+            "outside_rms_px": 6.984907627105713,
+            "boundary_coverage_rms_px": 8.781591415405273,
+            "score": 0.008734711074829102,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis2_-15_scale0.9",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.06013648584485054,
+            "edge_ratio_p01": 0.739943186044693,
+            "edge_ratio_p99": 1.0045198202133179,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.51993624863801,
+          "forearm_edge_ratio_min": 0.6737832427024841,
+          "forearm_edge_ratio_max": 1.0857164859771729,
+          "forearm_area_ratio_min": 0.5491723418235779,
+          "forearm_area_ratio_max": 0.9995909333229065,
+          "loop_radius_over_standard": 0.899999777622443,
+          "score": 0.1288371154069459,
+          "silhouette": {
+            "outside_rms_px": 6.922964572906494,
+            "boundary_coverage_rms_px": 8.87626838684082,
+            "score": 0.008732151412963867,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis2_-15_scale1",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.05438952147960663,
+            "edge_ratio_p01": 0.7712867796421051,
+            "edge_ratio_p99": 1.0103739237785339,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.498844968286594,
+          "forearm_edge_ratio_min": 0.6462004780769348,
+          "forearm_edge_ratio_max": 1.1346994638442993,
+          "forearm_area_ratio_min": 0.5986053943634033,
+          "forearm_area_ratio_max": 1.1207094192504883,
+          "loop_radius_over_standard": 0.9999998517482953,
+          "score": 0.12314808521073548,
+          "silhouette": {
+            "outside_rms_px": 7.02146053314209,
+            "boundary_coverage_rms_px": 8.743093490600586,
+            "score": 0.008752174758911133,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis2_15_scale0.9",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.06429637223482132,
+            "edge_ratio_p01": 0.7204115164279937,
+            "edge_ratio_p99": 1.0194577360153199,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.598597577204934,
+          "forearm_edge_ratio_min": 0.6911306381225586,
+          "forearm_edge_ratio_max": 1.1815193891525269,
+          "forearm_area_ratio_min": 0.5684282779693604,
+          "forearm_area_ratio_max": 1.1155939102172852,
+          "loop_radius_over_standard": 0.8999998517482953,
+          "score": 0.1328465680301003,
+          "silhouette": {
+            "outside_rms_px": 6.857278823852539,
+            "boundary_coverage_rms_px": 8.908841133117676,
+            "score": 0.008670600128173828,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis2_15_scale1",
+          "accepted": true,
+          "hand_metrics": {
+            "edge_log_rms": 0.06160146743059158,
+            "edge_ratio_p01": 0.7469732582569122,
+            "edge_ratio_p99": 1.0238093662261962,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.586188854625767,
+          "forearm_edge_ratio_min": 0.709775984287262,
+          "forearm_edge_ratio_max": 1.1833124160766602,
+          "forearm_area_ratio_min": 0.6483508944511414,
+          "forearm_area_ratio_max": 1.2136582136154175,
+          "loop_radius_over_standard": 0.9999998517482953,
+          "score": 0.13021524995933165,
+          "silhouette": {
+            "outside_rms_px": 6.943830966949463,
+            "boundary_coverage_rms_px": 8.793861389160156,
+            "score": 0.008688280963897706,
+            "wrist_loop_outside_mse_normalized": 2.384185791015625e-09
+          }
+        },
+        {
+          "alpha": "axis2_30_scale0.9",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.07125604897737503,
+            "edge_ratio_p01": 0.6994923627376557,
+            "edge_ratio_p99": 1.0456531643867493,
+            "normal_reversals_vs_target": 1,
+            "minimum_double_area": 4.289147454983322e-06
+          },
+          "hand_rmse_px": 12.659974207942954,
+          "forearm_edge_ratio_min": 0.5235171914100647,
+          "forearm_edge_ratio_max": 1.43461275100708,
+          "forearm_area_ratio_min": 0.3388032615184784,
+          "forearm_area_ratio_max": 1.3578212261199951,
+          "loop_radius_over_standard": 0.899999777622443,
+          "score": 0.15003886703742597,
+          "silhouette": {
+            "outside_rms_px": 6.787949562072754,
+            "boundary_coverage_rms_px": 9.038747787475586,
+            "score": 0.008692573928833007,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis2_30_scale1",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.07149145752191544,
+            "edge_ratio_p01": 0.7214559710025787,
+            "edge_ratio_p99": 1.0473709988594055,
+            "normal_reversals_vs_target": 2,
+            "minimum_double_area": 3.9593674046045635e-06
+          },
+          "hand_rmse_px": 12.654411437310962,
+          "forearm_edge_ratio_min": 0.5268477201461792,
+          "forearm_edge_ratio_max": 1.4614797830581665,
+          "forearm_area_ratio_min": 0.38926857709884644,
+          "forearm_area_ratio_max": 1.496757984161377,
+          "loop_radius_over_standard": 0.9999998517482953,
+          "score": 0.16031590348918873,
+          "silhouette": {
+            "outside_rms_px": 6.8588995933532715,
+            "boundary_coverage_rms_px": 8.942790031433105,
+            "score": 0.008703124618530273,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        }
+      ],
+      "wrist_displacement_max_m": 0.010945948772132397,
+      "forearm_support_vertices": 144,
+      "hand_transition_vertices": 139
+    },
+    "right": {
+      "changed": true,
+      "standard_wrist_radius_m": 0.025129811838269234,
+      "posed_wrist_radius_m": 0.02526446059346199,
+      "lifted_mano_wrist_radius_m": 0.024333149194717407,
+      "baseline_hand_metrics": {
+        "edge_log_rms": 0.09189292788505554,
+        "edge_ratio_p01": 0.6577235186100006,
+        "edge_ratio_p99": 1.2791136336326603,
+        "normal_reversals_vs_target": 9,
+        "minimum_double_area": 2.8929578093084274e-06
+      },
+      "baseline_hand_rmse_px": 8.401580521271166,
+      "selected": {
+        "alpha": "toward_mano_1.0",
+        "accepted": true,
+        "hand_metrics": {
+          "edge_log_rms": 0.056469764560461044,
+          "edge_ratio_p01": 0.8177045977115631,
+          "edge_ratio_p99": 1.2317540955543522,
+          "normal_reversals_vs_target": 0,
+          "minimum_double_area": 2.8929578093084274e-06
+        },
+        "hand_rmse_px": 8.661542716512288,
+        "forearm_edge_ratio_min": 0.7892876863479614,
+        "forearm_edge_ratio_max": 1.1315218210220337,
+        "forearm_area_ratio_min": 0.6051139831542969,
+        "forearm_area_ratio_max": 0.985824704170227,
+        "loop_radius_over_standard": 0.9682981796268975,
+        "score": 0.08626736161686818,
+        "silhouette": {
+          "outside_rms_px": 3.555826425552368,
+          "boundary_coverage_rms_px": 4.96087121963501,
+          "score": 0.0024949023246765138,
+          "wrist_loop_outside_mse_normalized": 0.0
+        }
+      },
+      "candidates": [
+        {
+          "alpha": "toward_mano_0.0",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.10003422200679779,
+            "edge_ratio_p01": 0.6696060168743133,
+            "edge_ratio_p99": 1.2897407579422009,
+            "normal_reversals_vs_target": 22,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 7.99241042411238,
+          "forearm_edge_ratio_min": 1.0,
+          "forearm_edge_ratio_max": 1.0,
+          "forearm_area_ratio_min": 1.0,
+          "forearm_area_ratio_max": 1.0,
+          "loop_radius_over_standard": 1.0053581282685016,
+          "score": 0.3459815017039758,
+          "silhouette": {
+            "outside_rms_px": 3.5627477169036865,
+            "boundary_coverage_rms_px": 3.8030900955200195,
+            "score": 0.0019924917697906495,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "toward_mano_0.25",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.08905966579914093,
+            "edge_ratio_p01": 0.7075796604156495,
+            "edge_ratio_p99": 1.2664677572250371,
+            "normal_reversals_vs_target": 10,
+            "minimum_double_area": 4.702621367869142e-07
+          },
+          "hand_rmse_px": 8.117839941779017,
+          "forearm_edge_ratio_min": 0.9375967383384705,
+          "forearm_edge_ratio_max": 1.0196330547332764,
+          "forearm_area_ratio_min": 0.8861181735992432,
+          "forearm_area_ratio_max": 0.990952730178833,
+          "loop_radius_over_standard": 0.9718861517262951,
+          "score": 0.21581745089967896,
+          "silhouette": {
+            "outside_rms_px": 3.554354429244995,
+            "boundary_coverage_rms_px": 4.1014084815979,
+            "score": 0.002104421043395996,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "toward_mano_0.5",
+          "accepted": true,
+          "hand_metrics": {
+            "edge_log_rms": 0.07782190293073654,
+            "edge_ratio_p01": 0.7427507758140564,
+            "edge_ratio_p99": 1.2529332208633426,
+            "normal_reversals_vs_target": 2,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.27230185581721,
+          "forearm_edge_ratio_min": 0.8808807730674744,
+          "forearm_edge_ratio_max": 1.046546220779419,
+          "forearm_area_ratio_min": 0.7880732417106628,
+          "forearm_area_ratio_max": 0.983258843421936,
+          "loop_radius_over_standard": 0.9541016487090171,
+          "score": 0.12578116280463292,
+          "silhouette": {
+            "outside_rms_px": 3.550527334213257,
+            "boundary_coverage_rms_px": 4.521740436553955,
+            "score": 0.0022829312324523926,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "toward_mano_0.75",
+          "accepted": true,
+          "hand_metrics": {
+            "edge_log_rms": 0.06649849563837051,
+            "edge_ratio_p01": 0.7783718955516815,
+            "edge_ratio_p99": 1.2318267869949342,
+            "normal_reversals_vs_target": 1,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.454133265624698,
+          "forearm_edge_ratio_min": 0.8310133814811707,
+          "forearm_edge_ratio_max": 1.0836371183395386,
+          "forearm_area_ratio_min": 0.6959857940673828,
+          "forearm_area_ratio_max": 0.9815017580986023,
+          "loop_radius_over_standard": 0.952885398286991,
+          "score": 0.10553082947613845,
+          "silhouette": {
+            "outside_rms_px": 3.5526437759399414,
+            "boundary_coverage_rms_px": 4.822210311889648,
+            "score": 0.002424813461303711,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "toward_mano_1.0",
+          "accepted": true,
+          "hand_metrics": {
+            "edge_log_rms": 0.056469764560461044,
+            "edge_ratio_p01": 0.8177045977115631,
+            "edge_ratio_p99": 1.2317540955543522,
+            "normal_reversals_vs_target": 0,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.661542716512288,
+          "forearm_edge_ratio_min": 0.7892876863479614,
+          "forearm_edge_ratio_max": 1.1315218210220337,
+          "forearm_area_ratio_min": 0.6051139831542969,
+          "forearm_area_ratio_max": 0.985824704170227,
+          "loop_radius_over_standard": 0.9682981796268975,
+          "score": 0.08626736161686818,
+          "silhouette": {
+            "outside_rms_px": 3.555826425552368,
+            "boundary_coverage_rms_px": 4.96087121963501,
+            "score": 0.0024949023246765138,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis0_-30_scale0.9",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.10022909939289093,
+            "edge_ratio_p01": 0.6982973515987396,
+            "edge_ratio_p99": 1.2708576178550735,
+            "normal_reversals_vs_target": 12,
+            "minimum_double_area": 2.243043127236888e-06
+          },
+          "hand_rmse_px": 8.242771019109197,
+          "forearm_edge_ratio_min": 0.5134353041648865,
+          "forearm_edge_ratio_max": 1.3270429372787476,
+          "forearm_area_ratio_min": 0.32588306069374084,
+          "forearm_area_ratio_max": 1.176048755645752,
+          "loop_radius_over_standard": 0.9000000370604675,
+          "score": 0.2480277255566281,
+          "silhouette": {
+            "outside_rms_px": 3.5545847415924072,
+            "boundary_coverage_rms_px": 4.470144271850586,
+            "score": 0.00226261682510376,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis0_-30_scale1",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.0920616164803505,
+            "edge_ratio_p01": 0.7268012118339539,
+            "edge_ratio_p99": 1.3151165175437933,
+            "normal_reversals_vs_target": 14,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.249615368816011,
+          "forearm_edge_ratio_min": 0.4811592698097229,
+          "forearm_edge_ratio_max": 1.3655997514724731,
+          "forearm_area_ratio_min": 0.36844322085380554,
+          "forearm_area_ratio_max": 1.3253110647201538,
+          "loop_radius_over_standard": 1.0,
+          "score": 0.259603479797786,
+          "silhouette": {
+            "outside_rms_px": 3.5560340881347656,
+            "boundary_coverage_rms_px": 4.345086097717285,
+            "score": 0.002208526515960693,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis0_-15_scale0.9",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.09474603831768036,
+            "edge_ratio_p01": 0.684757639169693,
+            "edge_ratio_p99": 1.3030389904975896,
+            "normal_reversals_vs_target": 14,
+            "minimum_double_area": 1.4181633787302417e-06
+          },
+          "hand_rmse_px": 8.276090352626504,
+          "forearm_edge_ratio_min": 0.6829241514205933,
+          "forearm_edge_ratio_max": 1.1364831924438477,
+          "forearm_area_ratio_min": 0.5700533986091614,
+          "forearm_area_ratio_max": 1.032943844795227,
+          "loop_radius_over_standard": 0.9000001111814024,
+          "score": 0.2626322286703027,
+          "silhouette": {
+            "outside_rms_px": 3.5564279556274414,
+            "boundary_coverage_rms_px": 4.476570129394531,
+            "score": 0.002266801929473877,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis0_-15_scale1",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.09163830429315567,
+            "edge_ratio_p01": 0.699299852848053,
+            "edge_ratio_p99": 1.3575080347061164,
+            "normal_reversals_vs_target": 15,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.2865580785264,
+          "forearm_edge_ratio_min": 0.681023359298706,
+          "forearm_edge_ratio_max": 1.1604139804840088,
+          "forearm_area_ratio_min": 0.6414213180541992,
+          "forearm_area_ratio_max": 1.143345594406128,
+          "loop_radius_over_standard": 0.999999925879065,
+          "score": 0.2692896989917734,
+          "silhouette": {
+            "outside_rms_px": 3.5588269233703613,
+            "boundary_coverage_rms_px": 4.356904029846191,
+            "score": 0.002215655708312988,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis0_15_scale0.9",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.09793202579021454,
+            "edge_ratio_p01": 0.6429105234146119,
+            "edge_ratio_p99": 1.3267947983741786,
+            "normal_reversals_vs_target": 23,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.346375777413444,
+          "forearm_edge_ratio_min": 0.7168391942977905,
+          "forearm_edge_ratio_max": 1.096839189529419,
+          "forearm_area_ratio_min": 0.6778282523155212,
+          "forearm_area_ratio_max": 1.0336878299713135,
+          "loop_radius_over_standard": 0.8999999629395325,
+          "score": 0.3559111366551916,
+          "silhouette": {
+            "outside_rms_px": 3.5624475479125977,
+            "boundary_coverage_rms_px": 4.445601463317871,
+            "score": 0.0022572718620300293,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis0_15_scale1",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.09832639247179031,
+            "edge_ratio_p01": 0.6583146178722381,
+            "edge_ratio_p99": 1.3800140762329145,
+            "normal_reversals_vs_target": 25,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.365215843445203,
+          "forearm_edge_ratio_min": 0.7464960217475891,
+          "forearm_edge_ratio_max": 1.1356829404830933,
+          "forearm_area_ratio_min": 0.7472898364067078,
+          "forearm_area_ratio_max": 1.158408284187317,
+          "loop_radius_over_standard": 1.0000002223628048,
+          "score": 0.376097174595845,
+          "silhouette": {
+            "outside_rms_px": 3.5656068325042725,
+            "boundary_coverage_rms_px": 4.32831335067749,
+            "score": 0.002208070087432861,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis0_30_scale0.9",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.10246393829584122,
+            "edge_ratio_p01": 0.6421601784229278,
+            "edge_ratio_p99": 1.3649411654472365,
+            "normal_reversals_vs_target": 28,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.3780455251731,
+          "forearm_edge_ratio_min": 0.5080292820930481,
+          "forearm_edge_ratio_max": 1.2997257709503174,
+          "forearm_area_ratio_min": 0.5039169788360596,
+          "forearm_area_ratio_max": 1.2401264905929565,
+          "loop_radius_over_standard": 0.9000001111814024,
+          "score": 0.4103439383427695,
+          "silhouette": {
+            "outside_rms_px": 3.566784381866455,
+            "boundary_coverage_rms_px": 4.364829063415527,
+            "score": 0.0022247817993164064,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis0_30_scale1",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.10398862510919571,
+            "edge_ratio_p01": 0.6504827201366424,
+            "edge_ratio_p99": 1.4165685367584238,
+            "normal_reversals_vs_target": 30,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.400936250293464,
+          "forearm_edge_ratio_min": 0.5402758121490479,
+          "forearm_edge_ratio_max": 1.3535282611846924,
+          "forearm_area_ratio_min": 0.5746836066246033,
+          "forearm_area_ratio_max": 1.3940927982330322,
+          "loop_radius_over_standard": 1.0000002223628048,
+          "score": 0.43166215891521015,
+          "silhouette": {
+            "outside_rms_px": 3.570814371109009,
+            "boundary_coverage_rms_px": 4.237896919250488,
+            "score": 0.00217433226108551,
+            "wrist_loop_outside_mse_normalized": 1.2722253799438477e-06
+          }
+        },
+        {
+          "alpha": "axis1_-30_scale0.9",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.06915660947561264,
+            "edge_ratio_p01": 0.7386638021469116,
+            "edge_ratio_p99": 1.170548467636109,
+            "normal_reversals_vs_target": 3,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.27996436076166,
+          "forearm_edge_ratio_min": 0.6191109418869019,
+          "forearm_edge_ratio_max": 1.2759671211242676,
+          "forearm_area_ratio_min": 0.47823548316955566,
+          "forearm_area_ratio_max": 1.1105067729949951,
+          "loop_radius_over_standard": 0.8999998146976625,
+          "score": 0.12761283755931857,
+          "silhouette": {
+            "outside_rms_px": 3.544455051422119,
+            "boundary_coverage_rms_px": 4.739079475402832,
+            "score": 0.0023792598724365235,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis1_-30_scale1",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.07033105194568634,
+            "edge_ratio_p01": 0.760864930152893,
+            "edge_ratio_p99": 1.2260401368141174,
+            "normal_reversals_vs_target": 3,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.289554851025361,
+          "forearm_edge_ratio_min": 0.6238284111022949,
+          "forearm_edge_ratio_max": 1.2933896780014038,
+          "forearm_area_ratio_min": 0.5004104971885681,
+          "forearm_area_ratio_max": 1.266233205795288,
+          "loop_radius_over_standard": 1.000000074120935,
+          "score": 0.12856494012826683,
+          "silhouette": {
+            "outside_rms_px": 3.5450870990753174,
+            "boundary_coverage_rms_px": 4.635065078735352,
+            "score": 0.002330955696105957,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis1_-15_scale0.9",
+          "accepted": true,
+          "hand_metrics": {
+            "edge_log_rms": 0.07870081067085266,
+            "edge_ratio_p01": 0.7119786524772644,
+            "edge_ratio_p99": 1.2273594546318063,
+            "normal_reversals_vs_target": 5,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.296701487362993,
+          "forearm_edge_ratio_min": 0.7214218974113464,
+          "forearm_edge_ratio_max": 1.0938851833343506,
+          "forearm_area_ratio_min": 0.6387309432029724,
+          "forearm_area_ratio_max": 0.9720690250396729,
+          "loop_radius_over_standard": 0.9000000370604675,
+          "score": 0.15683737313044194,
+          "silhouette": {
+            "outside_rms_px": 3.551647901535034,
+            "boundary_coverage_rms_px": 4.576486587524414,
+            "score": 0.002308631896972656,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis1_-15_scale1",
+          "accepted": true,
+          "hand_metrics": {
+            "edge_log_rms": 0.07809961587190628,
+            "edge_ratio_p01": 0.7267796790599823,
+            "edge_ratio_p99": 1.2698699402809144,
+            "normal_reversals_vs_target": 6,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.308669047472199,
+          "forearm_edge_ratio_min": 0.7359035015106201,
+          "forearm_edge_ratio_max": 1.1158050298690796,
+          "forearm_area_ratio_min": 0.687702476978302,
+          "forearm_area_ratio_max": 1.0792124271392822,
+          "loop_radius_over_standard": 0.999999925879065,
+          "score": 0.16600439140581552,
+          "silhouette": {
+            "outside_rms_px": 3.5529417991638184,
+            "boundary_coverage_rms_px": 4.461273193359375,
+            "score": 0.0022574874877929686,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis1_15_scale0.9",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.11091939359903336,
+            "edge_ratio_p01": 0.5893497705459595,
+            "edge_ratio_p99": 1.388285245895386,
+            "normal_reversals_vs_target": 25,
+            "minimum_double_area": 2.0380566638777964e-06
+          },
+          "hand_rmse_px": 8.321697240964104,
+          "forearm_edge_ratio_min": 0.7505477666854858,
+          "forearm_edge_ratio_max": 1.0877825021743774,
+          "forearm_area_ratio_min": 0.6708888411521912,
+          "forearm_area_ratio_max": 0.9799652695655823,
+          "loop_radius_over_standard": 0.8999998888185975,
+          "score": 0.38888831431844934,
+          "silhouette": {
+            "outside_rms_px": 3.565866470336914,
+            "boundary_coverage_rms_px": 4.457723617553711,
+            "score": 0.002265105247497559,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis1_15_scale1",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.1110670268535614,
+            "edge_ratio_p01": 0.6051434826850891,
+            "edge_ratio_p99": 1.4390524625778203,
+            "normal_reversals_vs_target": 27,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.338549764267295,
+          "forearm_edge_ratio_min": 0.7513461112976074,
+          "forearm_edge_ratio_max": 1.1301093101501465,
+          "forearm_area_ratio_min": 0.7508963942527771,
+          "forearm_area_ratio_max": 1.0992101430892944,
+          "loop_radius_over_standard": 1.00000029648374,
+          "score": 0.408851623597367,
+          "silhouette": {
+            "outside_rms_px": 3.5696568489074707,
+            "boundary_coverage_rms_px": 4.352595329284668,
+            "score": 0.0022214994430541993,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis1_30_scale0.9",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.1230536550283432,
+            "edge_ratio_p01": 0.549065203666687,
+            "edge_ratio_p99": 1.4226654767990121,
+            "normal_reversals_vs_target": 29,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.324763942715101,
+          "forearm_edge_ratio_min": 0.6194725632667542,
+          "forearm_edge_ratio_max": 1.249690294265747,
+          "forearm_area_ratio_min": 0.5921489596366882,
+          "forearm_area_ratio_max": 1.1059200763702393,
+          "loop_radius_over_standard": 0.9000000370604675,
+          "score": 0.44104256746959003,
+          "silhouette": {
+            "outside_rms_px": 3.5719029903411865,
+            "boundary_coverage_rms_px": 4.4542741775512695,
+            "score": 0.00226787691116333,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis1_30_scale1",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.12417639791965485,
+            "edge_ratio_p01": 0.5609046280384063,
+            "edge_ratio_p99": 1.4914982795715392,
+            "normal_reversals_vs_target": 30,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.342973992955567,
+          "forearm_edge_ratio_min": 0.614246666431427,
+          "forearm_edge_ratio_max": 1.3041725158691406,
+          "forearm_area_ratio_min": 0.6418980360031128,
+          "forearm_area_ratio_max": 1.2515169382095337,
+          "loop_radius_over_standard": 0.99999985175813,
+          "score": 0.4519936439707515,
+          "silhouette": {
+            "outside_rms_px": 3.5764646530151367,
+            "boundary_coverage_rms_px": 4.352355003356934,
+            "score": 0.0022262596130371093,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis2_-30_scale0.9",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.10620768368244171,
+            "edge_ratio_p01": 0.5883259534835815,
+            "edge_ratio_p99": 1.3853131222724915,
+            "normal_reversals_vs_target": 29,
+            "minimum_double_area": 2.326419917153544e-06
+          },
+          "hand_rmse_px": 8.373582540077102,
+          "forearm_edge_ratio_min": 0.5252817869186401,
+          "forearm_edge_ratio_max": 1.3848698139190674,
+          "forearm_area_ratio_min": 0.36212286353111267,
+          "forearm_area_ratio_max": 1.2866765260696411,
+          "loop_radius_over_standard": 0.8999999629395325,
+          "score": 0.4243679246865156,
+          "silhouette": {
+            "outside_rms_px": 3.565239429473877,
+            "boundary_coverage_rms_px": 4.497826099395752,
+            "score": 0.0022826151847839355,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis2_-30_scale1",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.10666138678789139,
+            "edge_ratio_p01": 0.6001908588409424,
+            "edge_ratio_p99": 1.476707863807683,
+            "normal_reversals_vs_target": 30,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.396242484166782,
+          "forearm_edge_ratio_min": 0.5194758176803589,
+          "forearm_edge_ratio_max": 1.4007823467254639,
+          "forearm_area_ratio_min": 0.39532220363616943,
+          "forearm_area_ratio_max": 1.3940668106079102,
+          "loop_radius_over_standard": 1.0,
+          "score": 0.43460412982049496,
+          "silhouette": {
+            "outside_rms_px": 3.567922592163086,
+            "boundary_coverage_rms_px": 4.372672080993652,
+            "score": 0.002230051612854004,
+            "wrist_loop_outside_mse_normalized": 1.031494140625e-06
+          }
+        },
+        {
+          "alpha": "axis2_-15_scale0.9",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.09954697638750076,
+            "edge_ratio_p01": 0.6155004537105561,
+            "edge_ratio_p99": 1.3681263256073002,
+            "normal_reversals_vs_target": 20,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.345733956989658,
+          "forearm_edge_ratio_min": 0.6775295734405518,
+          "forearm_edge_ratio_max": 1.1670221090316772,
+          "forearm_area_ratio_min": 0.5752815008163452,
+          "forearm_area_ratio_max": 1.088971495628357,
+          "loop_radius_over_standard": 0.8999999629395325,
+          "score": 0.3276008558005035,
+          "silhouette": {
+            "outside_rms_px": 3.5633769035339355,
+            "boundary_coverage_rms_px": 4.478206634521484,
+            "score": 0.0022724822998046873,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis2_-15_scale1",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.09943696856498718,
+            "edge_ratio_p01": 0.63246084690094,
+            "edge_ratio_p99": 1.4353300142288226,
+            "normal_reversals_vs_target": 24,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.364679655213097,
+          "forearm_edge_ratio_min": 0.6879866719245911,
+          "forearm_edge_ratio_max": 1.1595255136489868,
+          "forearm_area_ratio_min": 0.638863205909729,
+          "forearm_area_ratio_max": 1.1626373529434204,
+          "loop_radius_over_standard": 0.999999925879065,
+          "score": 0.367272690695085,
+          "silhouette": {
+            "outside_rms_px": 3.566270112991333,
+            "boundary_coverage_rms_px": 4.357624053955078,
+            "score": 0.002221272563934326,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis2_15_scale0.9",
+          "accepted": true,
+          "hand_metrics": {
+            "edge_log_rms": 0.09211113303899765,
+            "edge_ratio_p01": 0.6941578733921051,
+            "edge_ratio_p99": 1.2703545880317706,
+            "normal_reversals_vs_target": 9,
+            "minimum_double_area": 2.9916120070083707e-07
+          },
+          "hand_rmse_px": 8.273678816937966,
+          "forearm_edge_ratio_min": 0.7923411130905151,
+          "forearm_edge_ratio_max": 1.0351173877716064,
+          "forearm_area_ratio_min": 0.5993027091026306,
+          "forearm_area_ratio_max": 0.9949544668197632,
+          "loop_radius_over_standard": 0.9000000370604675,
+          "score": 0.21029075814800174,
+          "silhouette": {
+            "outside_rms_px": 3.554227828979492,
+            "boundary_coverage_rms_px": 4.611290454864502,
+            "score": 0.0023264534950256347,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis2_15_scale1",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.08958383649587631,
+            "edge_ratio_p01": 0.718567168712616,
+            "edge_ratio_p99": 1.3079104471206684,
+            "normal_reversals_vs_target": 12,
+            "minimum_double_area": 2.6650091058399994e-06
+          },
+          "hand_rmse_px": 8.283644227932196,
+          "forearm_edge_ratio_min": 0.7370311617851257,
+          "forearm_edge_ratio_max": 1.0741472244262695,
+          "forearm_area_ratio_min": 0.647844672203064,
+          "forearm_area_ratio_max": 1.115465521812439,
+          "loop_radius_over_standard": 1.000000074120935,
+          "score": 0.2375123219465222,
+          "silhouette": {
+            "outside_rms_px": 3.5559046268463135,
+            "boundary_coverage_rms_px": 4.489529132843018,
+            "score": 0.0022722393989562987,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis2_30_scale0.9",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.08527779579162598,
+            "edge_ratio_p01": 0.7465537106990814,
+            "edge_ratio_p99": 1.2368220448493967,
+            "normal_reversals_vs_target": 7,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.23533029705685,
+          "forearm_edge_ratio_min": 0.6553183794021606,
+          "forearm_edge_ratio_max": 1.207902431488037,
+          "forearm_area_ratio_min": 0.30911529064178467,
+          "forearm_area_ratio_max": 1.1922082901000977,
+          "loop_radius_over_standard": 0.8999999629395325,
+          "score": 0.18372208395303094,
+          "silhouette": {
+            "outside_rms_px": 3.548896312713623,
+            "boundary_coverage_rms_px": 4.764995098114014,
+            "score": 0.002394725513458252,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        },
+        {
+          "alpha": "axis2_30_scale1",
+          "accepted": false,
+          "hand_metrics": {
+            "edge_log_rms": 0.08279182761907578,
+            "edge_ratio_p01": 0.7596638774871827,
+            "edge_ratio_p99": 1.2809909319877626,
+            "normal_reversals_vs_target": 7,
+            "minimum_double_area": 2.8929578093084274e-06
+          },
+          "hand_rmse_px": 8.240868146995668,
+          "forearm_edge_ratio_min": 0.6089231967926025,
+          "forearm_edge_ratio_max": 1.258734941482544,
+          "forearm_area_ratio_min": 0.32723918557167053,
+          "forearm_area_ratio_max": 1.3389244079589844,
+          "loop_radius_over_standard": 0.999999925879065,
+          "score": 0.18088502602930856,
+          "silhouette": {
+            "outside_rms_px": 3.5500290393829346,
+            "boundary_coverage_rms_px": 4.608734607696533,
+            "score": 0.002322292423248291,
+            "wrist_loop_outside_mse_normalized": 0.0
+          }
+        }
+      ],
+      "wrist_displacement_max_m": 0.022267496213316917,
+      "forearm_support_vertices": 144,
+      "hand_transition_vertices": 139
+    }
+  },
+  "manual_annotations_used": false,
+  "accuracy_reference": "automatic predictions, not human ground truth",
+  "input_image_sha256": "d5ca8a442d42c33e3725f98acd48650e60867077abc48dbfe3ca7764b023f49d",
+  "calibration_sha256": "a039ea9d23f497fd5099a54b6e45e315400409addacc907a32b6744f49af468b",
+  "artifact_sha256": {
+    "raw/mesh.obj": "2058dff3614c9cdbb3f3383820ceaef4fb054055cb6ff2b2d7df211ec0584930",
+    "raw/params.npz": "3315c686c431d7c2f3225925ef95d0d724af038219527f771aa8a3792a8a0151",
+    "raw/wireframe.jpg": "5de1d840fb6f87e783d56063732b6bb6ef06348ae6ee79e14498e2291c00612c",
+    "guided_body/optimization.json": "4cf6a19c54f587fee5f24bc2b175b412f0fd27fa56e034dbd91619f43bd34760",
+    "guided_body/mesh.obj": "06faac820335650ea05a360152a65ca692efcbfc0a4dbcfa02c9c944806239ef",
+    "guided_body/params.npz": "0967d3a5a8b59278a71105092cb031d411609d21b37ff7c83e5c88a99038c9ce",
+    "guided_body/wireframe.jpg": "0ac63b268b70ca6f31d568490752d27f40899f97237d66fed7b56a32485388a6",
+    "baseline_fused/recipe.json": "ff8388cc5a92cd8a3bbd00e8b16cf125541d63f32388afd2803dcc922ed36d12",
+    "baseline_fused/mesh.npz": "5cef1776cecfd5a21bcea5fc60b74255027935d3e5f64fe9fc88bfd335efbaf8",
+    "baseline_fused/skeleton.jpg": "292bf1777028f60a19ce07d05bca521f2db8d57e950ede257a8c91e043ffc688",
+    "baseline_fused/mesh.obj": "a78e66c4a2d7b46003a8456fe738035535657dbafd6210f108cab7d969d75436",
+    "baseline_fused/wireframe.jpg": "345e0db769038375bdd07699117302c1630339d4392cefd798459cf9ac5a0254",
+    "baseline_fused/wilor_predictions.npz": "385cd6dadc733e06afa9dda9a5d6d1304af48aedc81992eb3c95a30eefe36aa6",
+    "fused/silhouette_targets.json": "3ddcd0efe614f01e3b9f3a9c311c9ac8b1304de2d6e7fdbf82afdd5d4f11b070",
+    "fused/geometry_report.json": "d0992bf4a9e015c52e3e04400b400ddcbb565b129a1b3f482f92ae2dacce5f53",
+    "fused/recipe.json": "ad78c87185ee37cd2a5ea7127c1b4bacae468e3a7ff3ded178a54dfaf43fea51",
+    "fused/refinement.json": "c3072b68e51e5c97e82df07a8c3a585e4ea2bea89b96ae9ba77c0edebe1c2dc2",
+    "fused/optimization.json": "4cf6a19c54f587fee5f24bc2b175b412f0fd27fa56e034dbd91619f43bd34760",
+    "fused/mesh.npz": "1644aa79b2bc226192f27129312370826329b396664b7c911e907ce6f649424b",
+    "fused/skeleton.jpg": "8cd183464a8cb86e1ad62da3c59f833acebef215cdabe33c1ca2eadd182bc357",
+    "fused/acceptance.json": "e0e9324da06ae31f8f8161aaf8a66c366cd22e61e28febf0bf4e9572af834602",
+    "fused/body_params.npz": "0967d3a5a8b59278a71105092cb031d411609d21b37ff7c83e5c88a99038c9ce",
+    "fused/reload_validation.json": "5542cb95533402f958920aac0ff3c95b3a4d792cc0743401e9eeb3aa57350a09",
+    "fused/geometry_validation.json": "143d964744d271f20df9b8932518fb7d02cc19ba961e559eae0a937a45951033",
+    "fused/segmentation_labels.npy": "b7e244474fc64f47835f0906323987a1ae23e8994699261f764f4f2a3b9bf149",
+    "fused/mesh.obj": "63b6a7f465225a1c42cca609f9fe9b7a4e769ad54729254515c238ac9cf126a0",
+    "fused/wireframe.jpg": "f3242907e26d7cc813db8298de0a1bf4bf1d437121289d300fe1688d87079314",
+    "fused/seam_report.json": "ab04e899d00018a0e04dbd7e9a7c26c773fbb40d3a8a76888837e1dc61bf6fd0",
+    "fused/wilor_predictions.npz": "385cd6dadc733e06afa9dda9a5d6d1304af48aedc81992eb3c95a30eefe36aa6",
+    "rigid/keypoint_diagnostic.jpg": "752e53611be99a9d33e78d34dfbc17734724efe91ced815c2084b8c9b29d295d",
+    "rigid/optimized_wireframe.jpg": "22c6718ce4ee67727ab017dffe17e1abc852a6ba5b42645d4aab0917afe6d42a",
+    "rigid/optimized_mesh.obj": "30d6134b280d8cb40ac10644b139c1de6818c515e9ff8538fd9f1065009bb047",
+    "rigid/comparison.jpg": "dc395595e736f3635f9612fe20a1807dce5a7656b8e745a716aa3a3432962b5f",
+    "rigid/optimized_params.npz": "b546d6ffc3ae4b650555fe9f7e8d03279c8911a0ef07627b9abe3ec1f4af85b7",
+    "rigid/optimization_report.json": "08ce82669fb67c1364dc6018c0d0b6a684dd888dc508e67f88d7f9ad5a497817",
+    "rigid/raw_wireframe.jpg": "5de1d840fb6f87e783d56063732b6bb6ef06348ae6ee79e14498e2291c00612c",
+    "body/mesh.obj": "ea236042505f95db3e8b71c8cd284b55cf6e8abb58ce0baa8d2f4a218bdcb87a",
+    "body/params.npz": "81e32f2eb75900813e32834ac088cee944bf22e975f7690c9b94e8a587208240",
+    "body/wireframe.jpg": "8996a83657ed3396921c8a91c3bcb4adaacff8c7def17e90affedd6365c291c4",
+    "body_fit/stage2_comparison.jpg": "b52130acfac3fab0be99eb5cae2f6ba1649aaf37304da2dae64a314707dbfb04",
+    "body_fit/comparison_summary.json": "1d6d126e3c5b98490849453b369f79d7afc105aedf69d8cc6eacee8983c421e3",
+    "body_fit/automatic/refined_params.npz": "bb4d9eb89a526a06c7dd019e43173d14364cf4a59910fe39872a3a178a16e9d0",
+    "body_fit/automatic/keypoint_diagnostic.jpg": "6a907e623f1baf7cb645712433b421179d3088f61531244a9ab50fc6ae689a8c",
+    "body_fit/automatic/refined_mesh.obj": "ea236042505f95db3e8b71c8cd284b55cf6e8abb58ce0baa8d2f4a218bdcb87a",
+    "body_fit/automatic/refinement_report.json": "955011213d7e2480d51a109923b7e3b0fb58417d2334dd2d091aeb103c15847f",
+    "body_fit/automatic/refined_wireframe.jpg": "8996a83657ed3396921c8a91c3bcb4adaacff8c7def17e90affedd6365c291c4"
+  },
+  "pipeline_profile": "mano_guided_original_seam_20260929_v1",
+  "head_neck_settings": {
+    "enabled": true,
+    "neck_enabled": false,
+    "guard_enabled": false,
+    "shoulders_enabled": false,
+    "rigid_head_enabled": true,
+    "rigid_head_weight": 0.1
+  },
+  "mano_guided_body": true,
+  "local_surface_accepted": false,
+  "surface_audit_scope": "Local forearm/seam faces versus full surface; shared-vertex pairs excluded; no coplanar overlap or whole-body collision certificate",
+  "stage2_body_error_px": [
+    30.251205444335938,
+    74.2409439086914,
+    14.980056762695312,
+    3.928446054458618,
+    0.06261079758405685,
+    29.973190307617188,
+    0.051146186888217926,
+    38.28865051269531,
+    15.23459243774414,
+    0.06988565623760223,
+    0.04125981032848358,
+    0.02166464366018772,
+    0.025324294343590736
+  ],
+  "stage2_body_rmse_px": 26.693716049194336,
+  "local_surface_optimizer": true,
+  "selected_body_candidate": "strong"
+}

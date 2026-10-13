@@ -1,0 +1,12 @@
+{
+  "frame": "cam3_f00001153",
+  "bitwise_equal": {
+    "body_pose": true,
+    "global_orient": true,
+    "transl": true,
+    "smplx_mesh_cam": true,
+    "stage2_target_joint_pixels": true,
+    "stage2_selected_joint_indices": true
+  },
+  "passed": true
+}

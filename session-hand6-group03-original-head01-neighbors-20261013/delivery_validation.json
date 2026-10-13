@@ -1,0 +1,140 @@
+{
+  "frame_count": 10,
+  "newly_run_frames": 8,
+  "reused_centers": 2,
+  "new_automatic_points_per_frame": 0,
+  "original_body_targets": 111,
+  "all_input_hashes_unchanged": true,
+  "core_source_hashes_verified": true,
+  "only_algorithm_setting_change": "Head reference weight 0.1, unchanged from centers",
+  "checks": [
+    {
+      "id": "cam3_f00001094",
+      "raw_and_rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "no_additional_automatic_points": true,
+      "head_direction_distance_guard_disabled": true,
+      "rigid_head_soft_reference_enabled": true,
+      "hand_candidate_identities_unchanged": true,
+      "artifact_sha256_verified": true,
+      "independent_reload_passed": true
+    },
+    {
+      "id": "cam3_f00001124",
+      "raw_and_rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "no_additional_automatic_points": true,
+      "head_direction_distance_guard_disabled": true,
+      "rigid_head_soft_reference_enabled": true,
+      "hand_candidate_identities_unchanged": true,
+      "artifact_sha256_verified": true,
+      "independent_reload_passed": true
+    },
+    {
+      "id": "cam3_f00001153",
+      "raw_and_rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "no_additional_automatic_points": true,
+      "head_direction_distance_guard_disabled": true,
+      "rigid_head_soft_reference_enabled": true,
+      "hand_candidate_identities_unchanged": true,
+      "artifact_sha256_verified": true,
+      "independent_reload_passed": true
+    },
+    {
+      "id": "cam3_f00001182",
+      "raw_and_rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "no_additional_automatic_points": true,
+      "head_direction_distance_guard_disabled": true,
+      "rigid_head_soft_reference_enabled": true,
+      "hand_candidate_identities_unchanged": true,
+      "artifact_sha256_verified": true,
+      "independent_reload_passed": true
+    },
+    {
+      "id": "cam3_f00001212",
+      "raw_and_rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "no_additional_automatic_points": true,
+      "head_direction_distance_guard_disabled": true,
+      "rigid_head_soft_reference_enabled": true,
+      "hand_candidate_identities_unchanged": true,
+      "artifact_sha256_verified": true,
+      "independent_reload_passed": true
+    },
+    {
+      "id": "cam4_f00001088",
+      "raw_and_rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "no_additional_automatic_points": true,
+      "head_direction_distance_guard_disabled": true,
+      "rigid_head_soft_reference_enabled": true,
+      "hand_candidate_identities_unchanged": true,
+      "artifact_sha256_verified": true,
+      "independent_reload_passed": true
+    },
+    {
+      "id": "cam4_f00001118",
+      "raw_and_rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "no_additional_automatic_points": true,
+      "head_direction_distance_guard_disabled": true,
+      "rigid_head_soft_reference_enabled": true,
+      "hand_candidate_identities_unchanged": true,
+      "artifact_sha256_verified": true,
+      "independent_reload_passed": true
+    },
+    {
+      "id": "cam4_f00001147",
+      "raw_and_rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "no_additional_automatic_points": true,
+      "head_direction_distance_guard_disabled": true,
+      "rigid_head_soft_reference_enabled": true,
+      "hand_candidate_identities_unchanged": true,
+      "artifact_sha256_verified": true,
+      "independent_reload_passed": true
+    },
+    {
+      "id": "cam4_f00001176",
+      "raw_and_rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "no_additional_automatic_points": true,
+      "head_direction_distance_guard_disabled": true,
+      "rigid_head_soft_reference_enabled": true,
+      "hand_candidate_identities_unchanged": true,
+      "artifact_sha256_verified": true,
+      "independent_reload_passed": true
+    },
+    {
+      "id": "cam4_f00001206",
+      "raw_and_rigid_bitwise_equal": true,
+      "original_body_targets_identical": true,
+      "no_additional_automatic_points": true,
+      "head_direction_distance_guard_disabled": true,
+      "rigid_head_soft_reference_enabled": true,
+      "hand_candidate_identities_unchanged": true,
+      "artifact_sha256_verified": true,
+      "independent_reload_passed": true
+    }
+  ],
+  "previous_cam3_disabled_regression": {
+    "frame": "cam3_f00001153",
+    "bitwise_equal": {
+      "body_pose": true,
+      "global_orient": true,
+      "transl": true,
+      "smplx_mesh_cam": true,
+      "stage2_target_joint_pixels": true,
+      "stage2_selected_joint_indices": true
+    },
+    "passed": true
+  },
+  "previous_regression_source": {
+    "source_experiment": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/session_hand6_group03_original_head01_20261013_v1",
+    "source_code_sha256_identical": true,
+    "disabled_regression": "Existing cam3 head-disabled 1600-step regression inherited; not rerun here",
+    "center_outputs": "Reused head reference weight 0.1 center outputs and revalidated in ten-frame delivery"
+  }
+}
