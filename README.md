@@ -1,5 +1,21 @@
 # EgoFishPose 自动优化流程与结果
 
+## 2026-10-14：100张验证、身体与手部10对评测、阶段定位
+
+[实验网页](https://cdh290718-oss.github.io/egofishpose-demo/head01-benchmark-20261014/) · [同10对论文比较CSV](head01-benchmark-20261014/downloads/comparison_same10.csv) · [逐张阶段指标](head01-benchmark-20261014/downloads/per_image_stages.csv)
+
+原流程＋刚体头部参考0.1，保留原权重、原点集、原步数和原接缝。
+
+- 自采视频：固定100张全部推理完成；只有6张完成外扩审查，94张未审。没有真实三维标注，投影展示不代表所有场景都已解决。
+- 身体：UnrealEgo-RW固定S9十对，使用官方相机标定和原snapshot_11权重，输入为全图／无检测器。身体PA-MPJPE 110.4496 mm。
+- 手部：DexYCB S0 test固定十对，原WiLoR权重；官方二维点确定手框、裁剪倍率2.0。手部PA-MPJPE 4.3675 mm、PA-MPVPE 4.1717 mm。
+- 论文同样样本参考来自历史逐样本缓存，未重新运行论文模型。全测试集数值独立标注，不作为小样本排名。
+- 已有阶段诊断：81.2940 → 81.2940 → 101.2229 → 110.4496 mm。姿态拟合18/20张变差；最终MANO身体引导相对轮廓处理在同13张上增加12.4689 mm，10/13张变差。
+- 所有GT仅用于评测和诊断绘图。网页整理与阶段诊断不重跑推理、不改参数、不更换样本。
+
+模型权重仍保留在开发机，网页提供投影图、指标、实验清单和哈希。既有页面与结果目录保留。
+
+
 当前采用版本（2026-09-30）：**MANO 辅助身体优化 → 原有有界轮廓接缝融合**。
 
 [流程首页](https://cdh290718-oss.github.io/egofishpose-demo/) · [八帧与 figure9.2 对比](https://cdh290718-oss.github.io/egofishpose-demo/eight-mano-guided-original-seam/)

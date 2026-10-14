@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="EgoFishPose 原流程＋刚体头部参考0.1：100张自采投影、身体与手部各10对固定样本评测，以及已有拟合阶段的误差诊断。">
+  <meta name="theme-color" content="#f4f5ef">
+  <title>EgoFishPose · 100张验证与身体／手部评测</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="results.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到实验内容</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">✳</span><strong>EgoFishPose</strong><span class="brand-sub">实验记录</span></a>
+      <nav aria-label="页面导航"><a href="#native">100 张展示</a><a href="#benchmark">基准评测</a><a href="#diagnosis">阶段诊断</a><a href="#protocol">复现资料</a></nav>
+      <a class="repo-link" href="https://github.com/cdh290718-oss/egofishpose-demo" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span>实验快照 <time datetime="2026-10-14">2026.10.14</time></p>
+        <h1 id="hero-title">身体与手部<br><span>固定样本评测</span></h1>
+        <p class="hero-lead">原流程＋刚体头部参考 <strong>0.1</strong>。从自采视频的 100 张投影，到身体、手部各 10 对的三维误差，再逐阶段定位拟合中的变化。</p>
+        <div class="hero-tags"><span>原模型权重</span><span>固定采样</span><span>无人工拟合标注</span></div>
+        <div class="hero-actions"><a class="button primary" href="#benchmark">查看指标 <span aria-hidden="true">↓</span></a><a class="text-link" href="#diagnosis">查看阶段定位 →</a></div>
+      </div>
+      <figure class="hero-figure">
+        <button class="image-button" data-image="assets/stages/body01_left_final.webp" data-title="body01_left · 最终身体投影" aria-label="放大 body01_left 最终身体投影"><img src="assets/stages/body01_left_final.webp" width="872" height="872" alt="UnrealEgo-RW body01_left：最终身体骨架、官方二维标注与自动目标的叠加投影"></button>
+        <figcaption><span>UNREALEGO-RW / S9</span><span>body01_left · 最终投影 ↗</span></figcaption>
+      </figure>
+    </section>
+    <div class="summary-strip wrap" aria-label="实验概览">
+      <div><span class="summary-label">自采视频推理完成</span><strong>100<span>/100</span></strong><small>投影展示；无真实三维标注</small></div>
+      <div><span class="summary-label">身体最终 PA-MPJPE</span><strong>110.45<span> mm</span></strong><small>UnrealEgo-RW · 固定 10 对</small></div>
+      <div><span class="summary-label">手部 PA-MPJPE</span><strong>4.37<span> mm</span></strong><small>DexYCB S0 test · 固定 10 对</small></div>
+    </div>
+
+    <section id="native" class="section wrap">
+      <div class="section-heading"><div><p class="eyebrow">01 / 自采视频</p><h2>100 张最终融合投影</h2></div><a class="text-link" href="assets/final_100_contact_sheet.jpg" download>下载原始拼图 · 10.3 MB ↗</a></div>
+      <p class="section-intro">session_hand_6 的左下、右下相机。固定 50 个名义时间 × 两个相机，排除 18–21 秒及旧 20 帧附近；样本不随结果替换。</p>
+      <div class="review-strip"><strong>100/100 推理完成</strong><span>已审 6 张：未见明显外扩</span><span class="review-pending">94 张未审</span><span>失败／缺失 0 张</span></div>
+      <figure class="sheet-figure">
+        <button class="image-button" data-image="assets/final_100_contact_sheet.jpg" data-title="100 张最终融合投影 · 原始6400×4000拼图" aria-label="放大100张最终融合投影拼图"><img src="assets/final_100_contact_sheet-preview.webp" width="1600" height="1000" loading="lazy" alt="100张最终融合投影拼图，各图标注相机、时间及审查状态"></button>
+        <figcaption>点击放大，可切换原图尺寸查看相机／时间／审查状态。推理完成和重载通过不能代替视觉判断。</figcaption>
+      </figure>
+      <p class="scope-note">本批展示投影观感，不能据此给出真实三维误差，也不代表所有场景的外扩问题都已解决。后续按要求停止外扩审查，94 张保留“未审”状态。</p>
+    </section>
+
+    <section id="benchmark" class="section wrap">
+      <div class="section-heading"><div><p class="eyebrow">02 / 三维基准评测</p><h2>身体 10 对＋手部 10 对</h2></div><span class="section-badge">每对含两张同步图</span></div>
+      <p class="section-intro">每个视图独立推理、独立 PA 对齐，再取双目平均。此次未加入论文的双目融合或时序算法，官方三维标注只用于评分。</p>
+      <div class="benchmark-toolbar"><div class="segmented" role="tablist" aria-label="评测分支"><button role="tab" id="body-tab" aria-selected="true" aria-controls="benchmark-panel" data-branch="body">身体 · UnrealEgo-RW</button><button role="tab" id="hand-tab" aria-selected="false" aria-controls="benchmark-panel" data-branch="hand">手部 · DexYCB</button></div><a id="sheet-download" class="text-link" href="assets/body_10_contact_sheet.jpg" download>下载完整 10 对拼图 ↗</a></div>
+      <div id="benchmark-panel" role="tabpanel" aria-labelledby="body-tab" class="sample-panel">
+        <div class="sample-header"><div><p class="overline" id="sample-dataset">UNREALEGO-RW / S9 / GT15</p><h3 id="sample-title">身体样本 01</h3><p id="sample-sequence" class="muted"></p></div><div class="sample-picker"><label for="pair-select">固定样本</label><select id="pair-select" aria-label="选择双目样本"></select><button id="prev-pair" aria-label="上一对样本">←</button><button id="next-pair" aria-label="下一对样本">→</button></div></div>
+        <button id="sample-image-button" class="image-button sample-image" data-image="assets/samples/body_01.webp" data-title="身体样本01 · 左右投影与三维对齐图" aria-label="放大当前样本投影与三维对齐图"><img id="sample-image" src="assets/samples/body_01.webp" width="2000" height="430" loading="lazy" alt="身体第1对样本：左右相机最终投影及PA对齐后的三维骨架"></button>
+        <div class="sample-footer"><span>绿色：官方标注　金色／紫色：两个视图预测</span><strong id="pair-metric"></strong></div>
+      </div>
+      <p id="branch-protocol" class="scope-note">身体：S9 的十段预选测试序列中点；原网络权重、原拟合，采用全图／无检测器输入。GT15 不含 Head，脚尖沿用论文 heel proxy。</p>
+
+      <div class="comparison-heading"><h3>与 EgoWholeView 论文比较</h3><div class="segmented compact" role="tablist" aria-label="论文参考范围"><button role="tab" aria-selected="true" data-reference="same">同样 10 对</button><button role="tab" aria-selected="false" data-reference="full">论文全测试集</button></div></div>
+      <div class="table-scroll"><table class="comparison-table"><caption id="comparison-caption">单位 mm，越低越好。论文同样10对来自历史逐样本缓存，本方法为本次新推理。</caption><thead><tr id="comparison-header"></tr></thead><tbody id="comparison-body"></tbody></table></div>
+      <p id="reference-note" class="scope-note">论文参考来自已核对全量均值的历史逐样本缓存，未重跑论文模型。相同样本不等于相同算法条件；论文还包含模型微调、形状聚合和双目融合。</p>
+      <details class="metric-details"><summary>指标如何计算，以及能说明什么</summary><div><p><b>PA-MPJPE：</b>每张图把预测关节通过缩放、旋转和平移对齐到真实关节，再计算平均欧氏距离，单位毫米；不允许反射。身体用 15 点，手部用 21 点。</p><p><b>PA-MPVPE：</b>在手部 778 个 MANO 顶点上单独求 PA 对齐并计算平均距离，不能复用关节的对齐变换。</p><p>左右图分别评分，先取每对平均，再取 10 对平均。PA 指标反映对齐后的姿态／形状，不能验证绝对位置、头部网格或身体—手部接缝。手部评测使用官方二维点确定的手框，评价的是手部分支。</p></div></details>
+    </section>
+
+    <section id="diagnosis" class="section diagnosis-section">
+      <div class="wrap">
+        <div class="section-heading"><div><p class="eyebrow">03 / 已有阶段诊断</p><h2>误差在哪一步增加？</h2></div><span class="section-badge">未重新推理 · 未改参数</span></div>
+        <p class="section-intro">固定 20 张身体图，直接重建已保存的阶段参数。主要三维误差增加发生在姿态拟合和最后的 MANO 身体引导；网络初值仍保留了较好的基础。</p>
+        <div class="stage-summary" id="stage-summary" aria-label="四阶段平均三维误差"></div>
+        <p class="scope-note">刚体调整只改变整体旋转和平移，PA 会消除这些变化；PA 不变不能证明刚体调整正确。与官方二维标注的投影误差在刚体阶段已从 29.0 升到 50.3 px。</p>
+        <div class="findings"><div><span class="finding-number">18/20</span><h3>姿态拟合后变差</h3><p>平均增加 19.9 mm。每张实际只采用 4–8 个自动目标，没有膝、踝观测进入本批姿态拟合。</p></div><div><span class="finding-number">10/13</span><h3>最终身体引导后变差</h3><p>同样 13 张匹配到手的图，相比轮廓处理增加 12.5 mm。其余 7 张按原流程回退到身体拟合结果。</p></div><div><span class="finding-number">61.3 → 28.5</span><h3>自动点残差下降，单位 px</h3><p>拟合更贴近自动检测结果，官方三维误差却上升。部分髋、腕目标偏移明显，但仍通过原置信度筛选。</p></div></div>
+        <div class="diagnostic-controls"><div><p class="overline">逐张查看 / 原分辨率872×872投影</p><h3>四阶段投影对照</h3></div><div><label for="stage-select">身体图像</label><select id="stage-select"></select></div></div>
+        <p id="stage-meta" class="muted"></p>
+        <div id="stage-gallery" class="stage-gallery"></div>
+        <p class="legend"><span class="legend-green">● 官方二维标注</span><span class="legend-red">× 自动目标</span><span>彩色骨架：当前阶段预测；投影图未经 PA 对齐</span></p>
+        <details class="metric-details"><summary>当前图像的自动目标与官方标注偏差</summary><div class="table-scroll"><table class="target-table"><caption>像素误差为适配后1280×720坐标。鼻点不在GT15中，不参与此表；原872图坐标误差见下载CSV。</caption><thead><tr><th>关节</th><th>自动置信度</th><th>与官方二维标注的距离</th></tr></thead><tbody id="target-body"></tbody></table></div></details>
+        <details class="metric-details"><summary>手部处理的细分阶段：同样13张图</summary><div><p>实际顺序是身体姿态拟合 → 腕部处理 → 轮廓处理 → MANO 身体引导。下表只比较同样 13 张，不能与全 20 张均值直接相减。</p><div class="table-scroll"><table><thead><tr><th>子阶段</th><th>PA-MPJPE，mm</th></tr></thead><tbody id="hand-stage-body"></tbody></table></div><p>腕部处理平均增加 1.8 mm，轮廓处理平均变化约 −0.07 mm，最终身体引导增加 12.5 mm。身体引导后的参数与最终融合导出的身体参数一致，不能当成两个独立阶段。</p></div></details>
+        <div class="diagnosis-conclusion"><strong>定位结论</strong><p>优先检查自动关键点的可靠性，以及稀疏观测下对初始三维姿态的保持。这里只定位了误差发生的阶段，尚未隔离各损失项的因果影响，不能单独归因于头部参考权重 0.1，也不能据 10 对样本判定方法在所有场景的表现。</p></div>
+      </div>
+    </section>
+
+    <section id="protocol" class="section wrap">
+      <div class="section-heading"><div><p class="eyebrow">04 / 实验协议与资料</p><h2>相机标定、模型与评分口径</h2></div><a class="text-link" href="downloads/experiment_manifest.json" download>下载实验清单 JSON ↗</a></div>
+      <div class="protocol-grid"><article><h3>自采 100 张</h3><dl><dt>相机</dt><dd>cam3_left_lower／cam4_right_lower，自采设备标定。</dd><dt>输入</dt><dd>原去畸变检测裁剪流程；原13点、原步数、原WiLoR与原接缝。</dd><dt>记录</dt><dd>100/100完成；6张外扩已审，94张未审。没有真实三维标注。</dd></dl></article><article><h3>身体 10 对</h3><dl><dt>相机</dt><dd>UnrealEgo-RW官方左右Scaramuzza标定。872等比缩至720，左右补边到1280×720，标定同步转换。</dd><dt>权重</dt><dd>原配置 snapshot_11.pth.tar；没有换成UnrealEgo模型权重。</dd><dt>输入与真值</dt><dd>全图、无检测器；官方稀疏GT15，仅用于评分与绘图。</dd></dl></article><article><h3>手部 10 对</h3><dl><dt>数据与输入</dt><dd>DexYCB S0 test；官方二维点确定手框，裁剪倍率2.0。</dd><dt>权重</dt><dd>原配置 wilor_final.ckpt；每个视图独立推理。</dd><dt>真值</dt><dd>官方21关节与778顶点，仅用于评分；未加入论文双目融合。</dd></dl></article></div>
+      <div class="method-strip"><span><b>rigid_head_weight</b> = 0.1</span><span>neck／新增肩点／head guard 关闭</span><span>原步数 1800／1600／1400</span></div>
+      <p class="scope-note">Benchmark 的全图输入与自采100张的去畸变检测裁剪输入不同。预选样本不按结果替换；失败尝试、日志和中间结果保留在开发机。页面整理与阶段诊断没有启动新的推理或参数对照。</p>
+      <details class="metric-details"><summary>权重校验与完整回退</summary><div><p>身体 checkpoint SHA256：<code>c7d30f04d13ed80f1941226458a43dfd50fc0ab0e5902701b6c9895e1f92a3b3</code></p><p>WiLoR checkpoint SHA256：<code>22fb2660f6ac3f611919c9abd5c412372a212309d04fcf3697b291da25a29456</code></p><p>完整回退：<code>checkpoint/before-original-head01-default-20261013</code>，提交 <code>7ebf5c4</code>。用独立 worktree 恢复，保留新旧结果。阶段诊断已核验读取的原源代码和阶段参数前后哈希一致。</p></div></details>
+      <h3 class="downloads-title">结果下载</h3>
+      <div class="download-grid">
+        <a href="downloads/comparison_same10.csv" download><span>同10对论文比较</span><small>CSV · 3项指标</small><b aria-hidden="true">↓</b></a>
+        <a href="downloads/comparison_full_test.csv" download><span>论文全测试集参考</span><small>CSV · 单独标注样本范围</small><b aria-hidden="true">↓</b></a>
+        <a href="downloads/per_pair_metrics.csv" download><span>逐双目样本指标</span><small>CSV · 身体10对＋手部10对</small><b aria-hidden="true">↓</b></a>
+        <a href="downloads/per_image_stages.csv" download><span>逐张阶段指标</span><small>CSV · 身体20张</small><b aria-hidden="true">↓</b></a>
+        <a href="downloads/automatic_targets_vs_gt.csv" download><span>自动目标偏差</span><small>CSV · 置信度与二维距离</small><b aria-hidden="true">↓</b></a>
+        <a href="downloads/diagnosis.md" download><span>阶段定位说明</span><small>Markdown · 口径与结论</small><b aria-hidden="true">↓</b></a>
+        <a href="downloads/metrics_summary.csv" download><span>指标统计</span><small>CSV · 均值／中位数／P90／P95</small><b aria-hidden="true">↓</b></a>
+        <a href="downloads/expansion_review.csv" download><span>100张审查记录</span><small>CSV · 含94张未审状态</small><b aria-hidden="true">↓</b></a>
+      </div>
+      <div class="source-links"><span>资料来源</span><a href="https://github.com/cdh290718-oss/EgoSmplx" target="_blank" rel="noopener">原方法代码 ↗</a><a href="https://arxiv.org/abs/2610.16256" target="_blank" rel="noopener">EgoWholeView 论文 ↗</a><a href="https://unrealego.mpi-inf.mpg.de/" target="_blank" rel="noopener">UnrealEgo ↗</a><a href="https://dex-ycb.github.io/" target="_blank" rel="noopener">DexYCB ↗</a></div>
+    </section>
+  </main>
+  <footer class="site-footer wrap"><a class="brand" href="../"><span class="brand-mark" aria-hidden="true">✳</span><strong>EgoFishPose</strong></a><p>固定样本 · 原权重 · 可核对结果<br><small>实验记录 2026-10-13—14 · <a href="downloads/artifact_hashes.json">图像 SHA256</a></small></p><a class="text-link" href="#main">返回顶部 ↑</a></footer>
+  <dialog id="image-dialog" aria-labelledby="image-title">
+    <div class="dialog-toolbar"><h2 id="image-title">投影图</h2><div><button id="fit-image">适应窗口</button><button id="native-image">原图尺寸</button><a id="dialog-download" href="#" download>下载 ↗</a><button id="close-image" aria-label="关闭大图">✕</button></div></div>
+    <div class="dialog-viewport"><img id="dialog-image" src="" alt=""></div>
+    <p class="dialog-help">原图尺寸下可滚动查看细节；按 Esc 关闭。</p>
+  </dialog>
+  <noscript><p class="wrap">交互查看需要JavaScript。可直接下载 <a href="assets/body_10_contact_sheet.jpg">身体拼图</a>、<a href="assets/hand_10_contact_sheet.jpg">手部拼图</a>和<a href="downloads/per_image_stages.csv">阶段指标</a>。</p></noscript>
+</body>
+</html>

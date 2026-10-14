@@ -1,0 +1,4 @@
+metric,our_10_pair_mean_mm,paper_full_test_mono_avg_mm,paper_full_test_equal_fusion_mm,paper_full_test_vubtf_mm,paper_full_test_vubtf_temporal_mm
+Body PA-MPJPE / GT15,110.44962702311969,79.8905,77.3151,76.9409,76.5428
+Hand PA-MPJPE / 21 joints,4.367467449288915,4.8285,4.3642,4.2872,4.2621
+Hand PA-MPVPE / 778 vertices,4.17174554823012,4.6872,4.2422,4.1741,

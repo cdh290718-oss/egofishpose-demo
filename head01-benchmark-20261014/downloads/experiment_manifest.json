@@ -1,0 +1,79 @@
+{
+  "published": "2026-10-14",
+  "method": "Original pipeline + rigid_head_weight=0.1",
+  "body_checkpoint": "snapshot_11.pth.tar",
+  "body_checkpoint_sha256": "c7d30f04d13ed80f1941226458a43dfd50fc0ab0e5902701b6c9895e1f92a3b3",
+  "hand_checkpoint": "wilor_final.ckpt",
+  "hand_checkpoint_sha256": "22fb2660f6ac3f611919c9abd5c412372a212309d04fcf3697b291da25a29456",
+  "fitting_steps": {
+    "rigid_steps": 1800,
+    "pose_steps": 1600,
+    "mano_guided_steps": 1400
+  },
+  "head_neck": {
+    "enabled": true,
+    "neck_enabled": false,
+    "guard_enabled": false,
+    "shoulders_enabled": false,
+    "rigid_head_enabled": true,
+    "rigid_head_weight": 0.1
+  },
+  "native100": {
+    "count": 100,
+    "nominal_times": 50,
+    "cameras": [
+      "cam3",
+      "cam4"
+    ],
+    "calibrations": [
+      "cam3_left_lower.egosmplx.json",
+      "cam4_right_lower.egosmplx.json"
+    ],
+    "selection": "Fixed nominal times; exclude 18–21 seconds and old 20-frame neighborhoods; no outcome-based replacement.",
+    "review": {
+      "yes": 0,
+      "no": 6,
+      "uncertain": 0,
+      "unreviewed": 94,
+      "failed_or_missing": 0
+    },
+    "ground_truth_3d": false
+  },
+  "body10": {
+    "pairs": 10,
+    "images": 20,
+    "dataset": "UnrealEgo-RW",
+    "subject": "S9",
+    "selection": "Ten preselected test-sequence midpoints in the available official RGB archive; no replacements.",
+    "calibration": "Official left/right Scaramuzza calibration; uniform 872→720 resize and horizontal padding to1280×720, calibration transformed consistently.",
+    "network_input": "full_image; no_detector",
+    "gt": "Official sparse GT15; Head excluded, ToeBase uses paper heel proxy.",
+    "stereo_fusion": false,
+    "hand_guided": 13,
+    "hand_skipped": 7
+  },
+  "hand10": {
+    "pairs": 10,
+    "images": 20,
+    "dataset": "DexYCB S0 test",
+    "joints": 21,
+    "vertices": 778,
+    "crops": "Official 2D-keypoint-derived hand boxes; rescale_factor=2.0, following paper benchmark conditions.",
+    "stereo_fusion": false,
+    "gt_used_for_3d_fitting": false
+  },
+  "scoring": "Independent proper similarity PA (scale, rotation, translation, no reflection) per image; average left/right errors, then ten pairs. PA-MPVPE is aligned separately on778 vertices. Units mm.",
+  "paper_reference": "EgoWholeView, arXiv:2610.16256v1; exact same-sample historical cache, not a fresh paper-model run. Published full-test means are separately labeled.",
+  "diagnosis": "Only reconstruct and score existing saved parameters; no network inference, no optimization, no parameter change.",
+  "rollback": {
+    "tag": "checkpoint/before-original-head01-default-20261013",
+    "commit": "7ebf5c451762fab2aab391b1274f56bf1829c548",
+    "mode": "Independent worktree; preserve old and new results."
+  },
+  "sources": {
+    "method": "https://github.com/cdh290718-oss/EgoSmplx",
+    "paper": "https://arxiv.org/abs/2610.16256",
+    "body_dataset": "https://unrealego.mpi-inf.mpg.de/",
+    "hand_dataset": "https://dex-ycb.github.io/"
+  }
+}
