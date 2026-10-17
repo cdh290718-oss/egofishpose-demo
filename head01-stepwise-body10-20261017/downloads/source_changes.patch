@@ -1,0 +1,465 @@
+--- original/body_pose.py
++++ S1_reliability/body_pose.py
+@@ -55,6 +55,8 @@
+     layer.requires_grad_(False)
+     fixed_keys = ['betas', 'left_hand_pose', 'right_hand_pose', 'jaw_pose', 'leye_pose', 'reye_pose', 'expression']
+     fixed = {k: t(raw[k]).reshape(1, -1) for k in fixed_keys}
++    from egosmplx_pipeline.experiment_controls import observation_weights, ARM_NAMES, canonical, keep_loss
++    reliability_weights = observation_weights(names,t)
+     body0, glob0, cam0 = t(raw['body_pose']).reshape(21, 3), t(raw['global_orient']).reshape(3), t(raw['transl']).reshape(3)
+     active = list(MAX_DELTA_DEG)
+     active_indices = torch.tensor([BODY_POSE_NAMES.index(n) for n in active])
+@@ -108,7 +110,7 @@
+             body = body0.clone()
+             body[active_indices] = body[active_indices] + delta
+             mesh, local, joints, pixels = forward(body, glob0 + gd, cam)
+-            rep = F.smooth_l1_loss((pixels[indices] - target) / t([w, h]), torch.zeros_like(target), beta=.003)
++            rep = (F.smooth_l1_loss((pixels[indices] - target) / t([w, h]), torch.zeros_like(target), beta=.003,reduction='none').mean(1)*reliability_weights).mean()
+             pp = (delta / caps[:, None]).square().mean()
+             cp = ((cam - cam0) / t([.10, .10, .18])).square().mean()
+             gp = (gd / np.deg2rad(8.)).square().mean()
+--- original/body_rigid.py
++++ S1_reliability/body_rigid.py
+@@ -97,7 +97,8 @@
+     if np.linalg.svd(target.cpu().numpy() - target.cpu().numpy().mean(0), compute_uv=False)[1] < 10:
+         raise ValueError('Automatic targets have insufficient 2D spatial spread')
+     indices = torch.tensor([j['index'] for j in selected], device=dev)
+-    weights = t([np.clip(j['score'], 0, 1)**2 for j in selected])
++    from egosmplx_pipeline.experiment_controls import observation_weights
++    weights = observation_weights([j['name'] for j in selected],t)
+     cam = cam0.clone().requires_grad_(True)
+     delta = torch.zeros(3, device=dev, requires_grad=True)
+     scale = t([w, h])
+@@ -118,7 +119,7 @@
+         joints, mesh, pixels = geometry()
+         residual = (pixels[indices] - target) / scale
+         robust = F.smooth_l1_loss(residual, torch.zeros_like(residual), beta=.005, reduction='none').mean(1)
+-        reprojection = (robust * weights).sum() / weights.sum()
++        reprojection = (robust * weights).mean()
+         prior_t = (((cam - cam0) / t([.25, .25, .50]))**2).mean()
+         loss = reprojection + 1e-4 * prior_t + 2e-4 * delta.square().mean() + F.relu(.02 - mesh[:, 2].min()).square()
+         if not torch.isfinite(loss):
+--- original/experiment_controls.py
++++ S1_reliability/experiment_controls.py
+@@ -0,0 +1,17 @@
++"""Prediction-only fixed observation weights and local-pose preservation."""
++import json,os
++from pathlib import Path
++import torch
++from egosmplx_pipeline.body_common import axis_angle_rotation
++
++ARM_NAMES={'L_Shoulder','R_Shoulder','L_Elbow','R_Elbow','L_Wrist','R_Wrist'}
++
++def observation_weights(names,t):
++    quality=json.loads(Path(os.environ['EGOSMPLX_RELIABILITY_JSON']).read_text())
++    return t([quality['points'].get(name,{}).get('weight',0.) for name in names])
++
++def canonical(joints,global_axis):
++    return (joints[:25]-joints[:1]) @ axis_angle_rotation(global_axis.reshape(3))
++
++def keep_loss(joints,global_axis,reference):
++    return .005*((canonical(joints,global_axis)-reference)/.05).square().mean()
+--- original/reference/contour_refine.py
++++ S1_reliability/reference/contour_refine.py
+@@ -1,5 +1,6 @@
+ """Fixed-shape SMPL-X wrist and projected seam compatibility refinement."""
+ from pathlib import Path
++from egosmplx_pipeline.experiment_controls import observation_weights, ARM_NAMES, canonical, keep_loss
+ import os
+ import sys,copy,argparse,time
+ import numpy as np
+@@ -31,7 +32,7 @@
+   initp=p
+   delta=(t(initp['body_pose']).reshape(21,3)-b0)[ai].clone().requires_grad_();gd=(t(initp['global_orient']).reshape(3)-g0).clone().requires_grad_();tr=t(initp['transl']).reshape(3).clone().requires_grad_()
+   names=[n for n in JOINT_MAPPING if lookup[n]['score']>=.3 and np.isfinite([lookup[n]['x'],lookup[n]['y']]).all() and 0<=lookup[n]['x']<1280 and 0<=lookup[n]['y']<720]
+-  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=t([min(1,lookup[n]['score'])**2 for n in names]);bw/=bw.mean()
++  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=observation_weights(names,t)
+   ix=torch.tensor([12+SIDES.index(s) for s in matches],device=dev);goals=t([w['joints_2d'][m['candidate'],0] for s,m in matches.items()])
+   _,srcj=geometry(source);_,rigj=geometry(rigid);floor=t(np.maximum(np.linalg.norm(srcj[[12,13]],axis=1),np.linalg.norm(rigj[[12,13]],axis=1))*.85)
+   bodylimit=float(np.sqrt(np.mean(np.sum((cam.world2camera(srcj.astype(np.float64))[bi.cpu().numpy()]-arr(bt))**2,axis=1))))+5
+--- original/reference/contour_refine_strong.py
++++ S1_reliability/reference/contour_refine_strong.py
+@@ -1,5 +1,6 @@
+ """Fixed-shape SMPL-X wrist and projected seam compatibility refinement."""
+ from pathlib import Path
++from egosmplx_pipeline.experiment_controls import observation_weights, ARM_NAMES, canonical, keep_loss
+ import os
+ import sys,copy,argparse,time
+ import numpy as np
+@@ -31,7 +32,7 @@
+   initp=p
+   delta=(t(initp['body_pose']).reshape(21,3)-b0)[ai].clone().requires_grad_();gd=(t(initp['global_orient']).reshape(3)-g0).clone().requires_grad_();tr=t(initp['transl']).reshape(3).clone().requires_grad_()
+   names=[n for n in JOINT_MAPPING if lookup[n]['score']>=.3 and np.isfinite([lookup[n]['x'],lookup[n]['y']]).all() and 0<=lookup[n]['x']<1280 and 0<=lookup[n]['y']<720]
+-  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=t([min(1,lookup[n]['score'])**2 for n in names]);bw/=bw.mean()
++  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=observation_weights(names,t)
+   ix=torch.tensor([12+SIDES.index(s) for s in matches],device=dev);goals=t([w['joints_2d'][m['candidate'],0] for s,m in matches.items()])
+   _,srcj=geometry(source);_,rigj=geometry(rigid);floor=t(np.maximum(np.linalg.norm(srcj[[12,13]],axis=1),np.linalg.norm(rigj[[12,13]],axis=1))*.85)
+   bodylimit=float(np.sqrt(np.mean(np.sum((cam.world2camera(srcj.astype(np.float64))[bi.cpu().numpy()]-arr(bt))**2,axis=1))))+5
+--- original/reference/guided_body.py
++++ S1_reliability/reference/guided_body.py
+@@ -4,6 +4,7 @@
+ The manifest is built from this run's automatic observations, never manual data.
+ """
+ from pathlib import Path
++from egosmplx_pipeline.experiment_controls import observation_weights, ARM_NAMES, canonical, keep_loss
+ import os,argparse,copy,time,hashlib
+ import numpy as np,cv2,torch
+ import torch.nn.functional as TF
+@@ -54,7 +55,7 @@
+  layer=copy.deepcopy(smpl_x.layer['neutral']).to(dev).eval();layer.requires_grad_(False);t=lambda x:torch.as_tensor(x,dtype=torch.float32,device=dev)
+  hn=head_neck_context(rigid,cam,lookup,dev)
+  data=prepare(data,dev);names=[n for n in JOINT_MAPPING if lookup[n]['score']>=.3 and 0<=lookup[n]['x']<1280 and 0<=lookup[n]['y']<720]
+- bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=t([lookup[n]['score']**2 for n in names]);bw/=bw.mean()
++ bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=observation_weights(names,t)
+  active=list(MAX_DELTA_DEG);ai=torch.tensor([BODY_POSE_NAMES.index(n) for n in active],device=dev);caps=t(np.deg2rad([MAX_DELTA_DEG[n] for n in active]));b0=t(rigid['body_pose']).reshape(21,3);g0=t(rigid['global_orient']).reshape(3);tr0=t(rigid['transl']).reshape(3)
+  delta=(t(p['body_pose']).reshape(21,3)-b0)[ai].clone().requires_grad_();gd=(t(p['global_orient']).reshape(3)-g0).clone().requires_grad_();tr=t(p['transl']).reshape(3).clone().requires_grad_();variables=[delta,gd,tr]
+  _,sj=geometry(source);_,rj=geometry(rigid);floor=t(np.maximum(np.linalg.norm(sj[[12,13]],axis=1),np.linalg.norm(rj[[12,13]],axis=1))*.85)
+--- original/reference/wrist_refine.py
++++ S1_reliability/reference/wrist_refine.py
+@@ -1,5 +1,6 @@
+ """Fixed-shape SMPL-X wrist and projected seam compatibility refinement."""
+ from pathlib import Path
++from egosmplx_pipeline.experiment_controls import observation_weights, ARM_NAMES, canonical, keep_loss
+ import os
+ import sys,copy,argparse,time
+ import numpy as np
+@@ -30,7 +31,7 @@
+   initp=load(init_path) if a.active_projection and init_path.exists() else p
+   delta=(t(initp['body_pose']).reshape(21,3)-b0)[ai].clone().requires_grad_();gd=(t(initp['global_orient']).reshape(3)-g0).clone().requires_grad_();tr=t(initp['transl']).reshape(3).clone().requires_grad_()
+   names=[n for n in JOINT_MAPPING if lookup[n]['score']>=.3 and np.isfinite([lookup[n]['x'],lookup[n]['y']]).all() and 0<=lookup[n]['x']<1280 and 0<=lookup[n]['y']<720]
+-  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=t([min(1,lookup[n]['score'])**2 for n in names]);bw/=bw.mean()
++  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=observation_weights(names,t)
+   ix=torch.tensor([12+SIDES.index(s) for s in matches],device=dev);goals=t([w['joints_2d'][m['candidate'],0] for s,m in matches.items()])
+   _,srcj=geometry(source);_,rigj=geometry(rigid);floor=t(np.maximum(np.linalg.norm(srcj[[12,13]],axis=1),np.linalg.norm(rigj[[12,13]],axis=1))*.85)
+   bodylimit=float(np.sqrt(np.mean(np.sum((cam.world2camera(srcj.astype(np.float64))[bi.cpu().numpy()]-arr(bt))**2,axis=1))))+5
+--- original/body_pose.py
++++ S2_pose_keep/body_pose.py
+@@ -55,8 +55,10 @@
+     layer.requires_grad_(False)
+     fixed_keys = ['betas', 'left_hand_pose', 'right_hand_pose', 'jaw_pose', 'leye_pose', 'reye_pose', 'expression']
+     fixed = {k: t(raw[k]).reshape(1, -1) for k in fixed_keys}
++    from egosmplx_pipeline.experiment_controls import observation_weights, ARM_NAMES, canonical, keep_loss
++    reliability_weights = observation_weights(names,t)
+     body0, glob0, cam0 = t(raw['body_pose']).reshape(21, 3), t(raw['global_orient']).reshape(3), t(raw['transl']).reshape(3)
+-    active = list(MAX_DELTA_DEG)
++    active = [n for n in MAX_DELTA_DEG if n in ARM_NAMES]
+     active_indices = torch.tensor([BODY_POSE_NAMES.index(n) for n in active])
+     caps = t([np.deg2rad(MAX_DELTA_DEG[n]) for n in active])
+     wrists = [smpl_x.joints_name.index('L_Wrist'), smpl_x.joints_name.index('R_Wrist')]
+@@ -73,6 +75,7 @@
+         wrist_floor = initial_wrists * .85
+         source_error = float((initial[0] - t(raw['smplx_mesh_cam'])).abs().max())
+         assert source_error < 1e-5
++    reference_local_pose = canonical(initial[2],glob0).detach()
+     from egosmplx_pipeline.head_neck import HeadNeck
+     head_ids = np.where(layer.lbs_weights.detach().numpy().argmax(1)==smpl_x.orig_joints_name.index('Head'))[0]
+     head_neck = HeadNeck(initial[0].detach(),head_ids,smpl_x.joints_name.index('Neck'),lookup,(w,h),project=camera.world2camera_pytorch)
+@@ -108,7 +111,7 @@
+             body = body0.clone()
+             body[active_indices] = body[active_indices] + delta
+             mesh, local, joints, pixels = forward(body, glob0 + gd, cam)
+-            rep = F.smooth_l1_loss((pixels[indices] - target) / t([w, h]), torch.zeros_like(target), beta=.003)
++            rep = (F.smooth_l1_loss((pixels[indices] - target) / t([w, h]), torch.zeros_like(target), beta=.003,reduction='none').mean(1)*reliability_weights).mean()
+             pp = (delta / caps[:, None]).square().mean()
+             cp = ((cam - cam0) / t([.10, .10, .18])).square().mean()
+             gp = (gd / np.deg2rad(8.)).square().mean()
+@@ -117,7 +120,7 @@
+             # Start the barrier before the hard near plane. The legacy penalty
+             # in raw meters was too weak relative to normalized pixel residuals.
+             depth = F.relu((.03 - mesh[:, 2].min()) / .02).square()
+-            loss = rep + .0008*pp + .0002*cp + .0004*gp + .002*guard + .02*depth + head_neck.loss(mesh,pixels)
++            loss = rep + .0008*pp + .0002*cp + .0004*gp + .002*guard + .02*depth + head_neck.loss(mesh,pixels) + keep_loss(joints,glob0+gd,reference_local_pose)
+             if not torch.isfinite(loss):
+                 raise RuntimeError('Nonfinite objective')
+             feasible = head_neck.feasible(mesh) and bool((wrist_dist >= wrist_floor - 1e-6).all() and mesh[:, 2].min() >= .02 - 1e-6)
+--- original/body_rigid.py
++++ S2_pose_keep/body_rigid.py
+@@ -97,7 +97,8 @@
+     if np.linalg.svd(target.cpu().numpy() - target.cpu().numpy().mean(0), compute_uv=False)[1] < 10:
+         raise ValueError('Automatic targets have insufficient 2D spatial spread')
+     indices = torch.tensor([j['index'] for j in selected], device=dev)
+-    weights = t([np.clip(j['score'], 0, 1)**2 for j in selected])
++    from egosmplx_pipeline.experiment_controls import observation_weights
++    weights = observation_weights([j['name'] for j in selected],t)
+     cam = cam0.clone().requires_grad_(True)
+     delta = torch.zeros(3, device=dev, requires_grad=True)
+     scale = t([w, h])
+@@ -118,7 +119,7 @@
+         joints, mesh, pixels = geometry()
+         residual = (pixels[indices] - target) / scale
+         robust = F.smooth_l1_loss(residual, torch.zeros_like(residual), beta=.005, reduction='none').mean(1)
+-        reprojection = (robust * weights).sum() / weights.sum()
++        reprojection = (robust * weights).mean()
+         prior_t = (((cam - cam0) / t([.25, .25, .50]))**2).mean()
+         loss = reprojection + 1e-4 * prior_t + 2e-4 * delta.square().mean() + F.relu(.02 - mesh[:, 2].min()).square()
+         if not torch.isfinite(loss):
+--- original/experiment_controls.py
++++ S2_pose_keep/experiment_controls.py
+@@ -0,0 +1,17 @@
++"""Prediction-only fixed observation weights and local-pose preservation."""
++import json,os
++from pathlib import Path
++import torch
++from egosmplx_pipeline.body_common import axis_angle_rotation
++
++ARM_NAMES={'L_Shoulder','R_Shoulder','L_Elbow','R_Elbow','L_Wrist','R_Wrist'}
++
++def observation_weights(names,t):
++    quality=json.loads(Path(os.environ['EGOSMPLX_RELIABILITY_JSON']).read_text())
++    return t([quality['points'].get(name,{}).get('weight',0.) for name in names])
++
++def canonical(joints,global_axis):
++    return (joints[:25]-joints[:1]) @ axis_angle_rotation(global_axis.reshape(3))
++
++def keep_loss(joints,global_axis,reference):
++    return .005*((canonical(joints,global_axis)-reference)/.05).square().mean()
+--- original/reference/contour_refine.py
++++ S2_pose_keep/reference/contour_refine.py
+@@ -1,5 +1,6 @@
+ """Fixed-shape SMPL-X wrist and projected seam compatibility refinement."""
+ from pathlib import Path
++from egosmplx_pipeline.experiment_controls import observation_weights, ARM_NAMES, canonical, keep_loss
+ import os
+ import sys,copy,argparse,time
+ import numpy as np
+@@ -31,7 +32,7 @@
+   initp=p
+   delta=(t(initp['body_pose']).reshape(21,3)-b0)[ai].clone().requires_grad_();gd=(t(initp['global_orient']).reshape(3)-g0).clone().requires_grad_();tr=t(initp['transl']).reshape(3).clone().requires_grad_()
+   names=[n for n in JOINT_MAPPING if lookup[n]['score']>=.3 and np.isfinite([lookup[n]['x'],lookup[n]['y']]).all() and 0<=lookup[n]['x']<1280 and 0<=lookup[n]['y']<720]
+-  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=t([min(1,lookup[n]['score'])**2 for n in names]);bw/=bw.mean()
++  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=observation_weights(names,t)
+   ix=torch.tensor([12+SIDES.index(s) for s in matches],device=dev);goals=t([w['joints_2d'][m['candidate'],0] for s,m in matches.items()])
+   _,srcj=geometry(source);_,rigj=geometry(rigid);floor=t(np.maximum(np.linalg.norm(srcj[[12,13]],axis=1),np.linalg.norm(rigj[[12,13]],axis=1))*.85)
+   bodylimit=float(np.sqrt(np.mean(np.sum((cam.world2camera(srcj.astype(np.float64))[bi.cpu().numpy()]-arr(bt))**2,axis=1))))+5
+--- original/reference/contour_refine_strong.py
++++ S2_pose_keep/reference/contour_refine_strong.py
+@@ -1,5 +1,6 @@
+ """Fixed-shape SMPL-X wrist and projected seam compatibility refinement."""
+ from pathlib import Path
++from egosmplx_pipeline.experiment_controls import observation_weights, ARM_NAMES, canonical, keep_loss
+ import os
+ import sys,copy,argparse,time
+ import numpy as np
+@@ -31,7 +32,7 @@
+   initp=p
+   delta=(t(initp['body_pose']).reshape(21,3)-b0)[ai].clone().requires_grad_();gd=(t(initp['global_orient']).reshape(3)-g0).clone().requires_grad_();tr=t(initp['transl']).reshape(3).clone().requires_grad_()
+   names=[n for n in JOINT_MAPPING if lookup[n]['score']>=.3 and np.isfinite([lookup[n]['x'],lookup[n]['y']]).all() and 0<=lookup[n]['x']<1280 and 0<=lookup[n]['y']<720]
+-  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=t([min(1,lookup[n]['score'])**2 for n in names]);bw/=bw.mean()
++  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=observation_weights(names,t)
+   ix=torch.tensor([12+SIDES.index(s) for s in matches],device=dev);goals=t([w['joints_2d'][m['candidate'],0] for s,m in matches.items()])
+   _,srcj=geometry(source);_,rigj=geometry(rigid);floor=t(np.maximum(np.linalg.norm(srcj[[12,13]],axis=1),np.linalg.norm(rigj[[12,13]],axis=1))*.85)
+   bodylimit=float(np.sqrt(np.mean(np.sum((cam.world2camera(srcj.astype(np.float64))[bi.cpu().numpy()]-arr(bt))**2,axis=1))))+5
+--- original/reference/guided_body.py
++++ S2_pose_keep/reference/guided_body.py
+@@ -4,6 +4,7 @@
+ The manifest is built from this run's automatic observations, never manual data.
+ """
+ from pathlib import Path
++from egosmplx_pipeline.experiment_controls import observation_weights, ARM_NAMES, canonical, keep_loss
+ import os,argparse,copy,time,hashlib
+ import numpy as np,cv2,torch
+ import torch.nn.functional as TF
+@@ -54,7 +55,7 @@
+  layer=copy.deepcopy(smpl_x.layer['neutral']).to(dev).eval();layer.requires_grad_(False);t=lambda x:torch.as_tensor(x,dtype=torch.float32,device=dev)
+  hn=head_neck_context(rigid,cam,lookup,dev)
+  data=prepare(data,dev);names=[n for n in JOINT_MAPPING if lookup[n]['score']>=.3 and 0<=lookup[n]['x']<1280 and 0<=lookup[n]['y']<720]
+- bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=t([lookup[n]['score']**2 for n in names]);bw/=bw.mean()
++ bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=observation_weights(names,t)
+  active=list(MAX_DELTA_DEG);ai=torch.tensor([BODY_POSE_NAMES.index(n) for n in active],device=dev);caps=t(np.deg2rad([MAX_DELTA_DEG[n] for n in active]));b0=t(rigid['body_pose']).reshape(21,3);g0=t(rigid['global_orient']).reshape(3);tr0=t(rigid['transl']).reshape(3)
+  delta=(t(p['body_pose']).reshape(21,3)-b0)[ai].clone().requires_grad_();gd=(t(p['global_orient']).reshape(3)-g0).clone().requires_grad_();tr=t(p['transl']).reshape(3).clone().requires_grad_();variables=[delta,gd,tr]
+  _,sj=geometry(source);_,rj=geometry(rigid);floor=t(np.maximum(np.linalg.norm(sj[[12,13]],axis=1),np.linalg.norm(rj[[12,13]],axis=1))*.85)
+--- original/reference/wrist_refine.py
++++ S2_pose_keep/reference/wrist_refine.py
+@@ -1,5 +1,6 @@
+ """Fixed-shape SMPL-X wrist and projected seam compatibility refinement."""
+ from pathlib import Path
++from egosmplx_pipeline.experiment_controls import observation_weights, ARM_NAMES, canonical, keep_loss
+ import os
+ import sys,copy,argparse,time
+ import numpy as np
+@@ -30,7 +31,7 @@
+   initp=load(init_path) if a.active_projection and init_path.exists() else p
+   delta=(t(initp['body_pose']).reshape(21,3)-b0)[ai].clone().requires_grad_();gd=(t(initp['global_orient']).reshape(3)-g0).clone().requires_grad_();tr=t(initp['transl']).reshape(3).clone().requires_grad_()
+   names=[n for n in JOINT_MAPPING if lookup[n]['score']>=.3 and np.isfinite([lookup[n]['x'],lookup[n]['y']]).all() and 0<=lookup[n]['x']<1280 and 0<=lookup[n]['y']<720]
+-  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=t([min(1,lookup[n]['score'])**2 for n in names]);bw/=bw.mean()
++  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=observation_weights(names,t)
+   ix=torch.tensor([12+SIDES.index(s) for s in matches],device=dev);goals=t([w['joints_2d'][m['candidate'],0] for s,m in matches.items()])
+   _,srcj=geometry(source);_,rigj=geometry(rigid);floor=t(np.maximum(np.linalg.norm(srcj[[12,13]],axis=1),np.linalg.norm(rigj[[12,13]],axis=1))*.85)
+   bodylimit=float(np.sqrt(np.mean(np.sum((cam.world2camera(srcj.astype(np.float64))[bi.cpu().numpy()]-arr(bt))**2,axis=1))))+5
+--- original/body_pose.py
++++ S3_local_mano/body_pose.py
+@@ -55,8 +55,10 @@
+     layer.requires_grad_(False)
+     fixed_keys = ['betas', 'left_hand_pose', 'right_hand_pose', 'jaw_pose', 'leye_pose', 'reye_pose', 'expression']
+     fixed = {k: t(raw[k]).reshape(1, -1) for k in fixed_keys}
++    from egosmplx_pipeline.experiment_controls import observation_weights, ARM_NAMES, canonical, keep_loss
++    reliability_weights = observation_weights(names,t)
+     body0, glob0, cam0 = t(raw['body_pose']).reshape(21, 3), t(raw['global_orient']).reshape(3), t(raw['transl']).reshape(3)
+-    active = list(MAX_DELTA_DEG)
++    active = [n for n in MAX_DELTA_DEG if n in ARM_NAMES]
+     active_indices = torch.tensor([BODY_POSE_NAMES.index(n) for n in active])
+     caps = t([np.deg2rad(MAX_DELTA_DEG[n]) for n in active])
+     wrists = [smpl_x.joints_name.index('L_Wrist'), smpl_x.joints_name.index('R_Wrist')]
+@@ -73,6 +75,7 @@
+         wrist_floor = initial_wrists * .85
+         source_error = float((initial[0] - t(raw['smplx_mesh_cam'])).abs().max())
+         assert source_error < 1e-5
++    reference_local_pose = canonical(initial[2],glob0).detach()
+     from egosmplx_pipeline.head_neck import HeadNeck
+     head_ids = np.where(layer.lbs_weights.detach().numpy().argmax(1)==smpl_x.orig_joints_name.index('Head'))[0]
+     head_neck = HeadNeck(initial[0].detach(),head_ids,smpl_x.joints_name.index('Neck'),lookup,(w,h),project=camera.world2camera_pytorch)
+@@ -108,7 +111,7 @@
+             body = body0.clone()
+             body[active_indices] = body[active_indices] + delta
+             mesh, local, joints, pixels = forward(body, glob0 + gd, cam)
+-            rep = F.smooth_l1_loss((pixels[indices] - target) / t([w, h]), torch.zeros_like(target), beta=.003)
++            rep = (F.smooth_l1_loss((pixels[indices] - target) / t([w, h]), torch.zeros_like(target), beta=.003,reduction='none').mean(1)*reliability_weights).mean()
+             pp = (delta / caps[:, None]).square().mean()
+             cp = ((cam - cam0) / t([.10, .10, .18])).square().mean()
+             gp = (gd / np.deg2rad(8.)).square().mean()
+@@ -117,7 +120,7 @@
+             # Start the barrier before the hard near plane. The legacy penalty
+             # in raw meters was too weak relative to normalized pixel residuals.
+             depth = F.relu((.03 - mesh[:, 2].min()) / .02).square()
+-            loss = rep + .0008*pp + .0002*cp + .0004*gp + .002*guard + .02*depth + head_neck.loss(mesh,pixels)
++            loss = rep + .0008*pp + .0002*cp + .0004*gp + .002*guard + .02*depth + head_neck.loss(mesh,pixels) + keep_loss(joints,glob0+gd,reference_local_pose)
+             if not torch.isfinite(loss):
+                 raise RuntimeError('Nonfinite objective')
+             feasible = head_neck.feasible(mesh) and bool((wrist_dist >= wrist_floor - 1e-6).all() and mesh[:, 2].min() >= .02 - 1e-6)
+--- original/body_rigid.py
++++ S3_local_mano/body_rigid.py
+@@ -97,7 +97,8 @@
+     if np.linalg.svd(target.cpu().numpy() - target.cpu().numpy().mean(0), compute_uv=False)[1] < 10:
+         raise ValueError('Automatic targets have insufficient 2D spatial spread')
+     indices = torch.tensor([j['index'] for j in selected], device=dev)
+-    weights = t([np.clip(j['score'], 0, 1)**2 for j in selected])
++    from egosmplx_pipeline.experiment_controls import observation_weights
++    weights = observation_weights([j['name'] for j in selected],t)
+     cam = cam0.clone().requires_grad_(True)
+     delta = torch.zeros(3, device=dev, requires_grad=True)
+     scale = t([w, h])
+@@ -118,7 +119,7 @@
+         joints, mesh, pixels = geometry()
+         residual = (pixels[indices] - target) / scale
+         robust = F.smooth_l1_loss(residual, torch.zeros_like(residual), beta=.005, reduction='none').mean(1)
+-        reprojection = (robust * weights).sum() / weights.sum()
++        reprojection = (robust * weights).mean()
+         prior_t = (((cam - cam0) / t([.25, .25, .50]))**2).mean()
+         loss = reprojection + 1e-4 * prior_t + 2e-4 * delta.square().mean() + F.relu(.02 - mesh[:, 2].min()).square()
+         if not torch.isfinite(loss):
+--- original/experiment_controls.py
++++ S3_local_mano/experiment_controls.py
+@@ -0,0 +1,17 @@
++"""Prediction-only fixed observation weights and local-pose preservation."""
++import json,os
++from pathlib import Path
++import torch
++from egosmplx_pipeline.body_common import axis_angle_rotation
++
++ARM_NAMES={'L_Shoulder','R_Shoulder','L_Elbow','R_Elbow','L_Wrist','R_Wrist'}
++
++def observation_weights(names,t):
++    quality=json.loads(Path(os.environ['EGOSMPLX_RELIABILITY_JSON']).read_text())
++    return t([quality['points'].get(name,{}).get('weight',0.) for name in names])
++
++def canonical(joints,global_axis):
++    return (joints[:25]-joints[:1]) @ axis_angle_rotation(global_axis.reshape(3))
++
++def keep_loss(joints,global_axis,reference):
++    return .005*((canonical(joints,global_axis)-reference)/.05).square().mean()
+--- original/reference/contour_refine.py
++++ S3_local_mano/reference/contour_refine.py
+@@ -1,5 +1,6 @@
+ """Fixed-shape SMPL-X wrist and projected seam compatibility refinement."""
+ from pathlib import Path
++from egosmplx_pipeline.experiment_controls import observation_weights, ARM_NAMES, canonical, keep_loss
+ import os
+ import sys,copy,argparse,time
+ import numpy as np
+@@ -31,7 +32,7 @@
+   initp=p
+   delta=(t(initp['body_pose']).reshape(21,3)-b0)[ai].clone().requires_grad_();gd=(t(initp['global_orient']).reshape(3)-g0).clone().requires_grad_();tr=t(initp['transl']).reshape(3).clone().requires_grad_()
+   names=[n for n in JOINT_MAPPING if lookup[n]['score']>=.3 and np.isfinite([lookup[n]['x'],lookup[n]['y']]).all() and 0<=lookup[n]['x']<1280 and 0<=lookup[n]['y']<720]
+-  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=t([min(1,lookup[n]['score'])**2 for n in names]);bw/=bw.mean()
++  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=observation_weights(names,t)
+   ix=torch.tensor([12+SIDES.index(s) for s in matches],device=dev);goals=t([w['joints_2d'][m['candidate'],0] for s,m in matches.items()])
+   _,srcj=geometry(source);_,rigj=geometry(rigid);floor=t(np.maximum(np.linalg.norm(srcj[[12,13]],axis=1),np.linalg.norm(rigj[[12,13]],axis=1))*.85)
+   bodylimit=float(np.sqrt(np.mean(np.sum((cam.world2camera(srcj.astype(np.float64))[bi.cpu().numpy()]-arr(bt))**2,axis=1))))+5
+--- original/reference/contour_refine_strong.py
++++ S3_local_mano/reference/contour_refine_strong.py
+@@ -1,5 +1,6 @@
+ """Fixed-shape SMPL-X wrist and projected seam compatibility refinement."""
+ from pathlib import Path
++from egosmplx_pipeline.experiment_controls import observation_weights, ARM_NAMES, canonical, keep_loss
+ import os
+ import sys,copy,argparse,time
+ import numpy as np
+@@ -31,7 +32,7 @@
+   initp=p
+   delta=(t(initp['body_pose']).reshape(21,3)-b0)[ai].clone().requires_grad_();gd=(t(initp['global_orient']).reshape(3)-g0).clone().requires_grad_();tr=t(initp['transl']).reshape(3).clone().requires_grad_()
+   names=[n for n in JOINT_MAPPING if lookup[n]['score']>=.3 and np.isfinite([lookup[n]['x'],lookup[n]['y']]).all() and 0<=lookup[n]['x']<1280 and 0<=lookup[n]['y']<720]
+-  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=t([min(1,lookup[n]['score'])**2 for n in names]);bw/=bw.mean()
++  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=observation_weights(names,t)
+   ix=torch.tensor([12+SIDES.index(s) for s in matches],device=dev);goals=t([w['joints_2d'][m['candidate'],0] for s,m in matches.items()])
+   _,srcj=geometry(source);_,rigj=geometry(rigid);floor=t(np.maximum(np.linalg.norm(srcj[[12,13]],axis=1),np.linalg.norm(rigj[[12,13]],axis=1))*.85)
+   bodylimit=float(np.sqrt(np.mean(np.sum((cam.world2camera(srcj.astype(np.float64))[bi.cpu().numpy()]-arr(bt))**2,axis=1))))+5
+--- original/reference/guided_body.py
++++ S3_local_mano/reference/guided_body.py
+@@ -4,6 +4,7 @@
+ The manifest is built from this run's automatic observations, never manual data.
+ """
+ from pathlib import Path
++from egosmplx_pipeline.experiment_controls import observation_weights, ARM_NAMES, canonical, keep_loss
+ import os,argparse,copy,time,hashlib
+ import numpy as np,cv2,torch
+ import torch.nn.functional as TF
+@@ -54,11 +55,12 @@
+  layer=copy.deepcopy(smpl_x.layer['neutral']).to(dev).eval();layer.requires_grad_(False);t=lambda x:torch.as_tensor(x,dtype=torch.float32,device=dev)
+  hn=head_neck_context(rigid,cam,lookup,dev)
+  data=prepare(data,dev);names=[n for n in JOINT_MAPPING if lookup[n]['score']>=.3 and 0<=lookup[n]['x']<1280 and 0<=lookup[n]['y']<720]
+- bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=t([lookup[n]['score']**2 for n in names]);bw/=bw.mean()
+- active=list(MAX_DELTA_DEG);ai=torch.tensor([BODY_POSE_NAMES.index(n) for n in active],device=dev);caps=t(np.deg2rad([MAX_DELTA_DEG[n] for n in active]));b0=t(rigid['body_pose']).reshape(21,3);g0=t(rigid['global_orient']).reshape(3);tr0=t(rigid['transl']).reshape(3)
+- delta=(t(p['body_pose']).reshape(21,3)-b0)[ai].clone().requires_grad_();gd=(t(p['global_orient']).reshape(3)-g0).clone().requires_grad_();tr=t(p['transl']).reshape(3).clone().requires_grad_();variables=[delta,gd,tr]
++ bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=observation_weights(names,t)
++ active=[n for n in MAX_DELTA_DEG if n in ARM_NAMES and ((n.startswith('L_') and 'left' in matches) or (n.startswith('R_') and 'right' in matches))];ai=torch.tensor([BODY_POSE_NAMES.index(n) for n in active],device=dev);caps=t(np.deg2rad([MAX_DELTA_DEG[n] for n in active]));b0=t(p['body_pose']).reshape(21,3);g0=t(p['global_orient']).reshape(3);tr0=t(p['transl']).reshape(3)
++ delta=(t(p['body_pose']).reshape(21,3)-b0)[ai].clone().requires_grad_();gd=(t(p['global_orient']).reshape(3)-g0).clone().requires_grad_();tr=t(p['transl']).reshape(3).clone().requires_grad_();variables=[delta]
+  _,sj=geometry(source);_,rj=geometry(rigid);floor=t(np.maximum(np.linalg.norm(sj[[12,13]],axis=1),np.linalg.norm(rj[[12,13]],axis=1))*.85)
+  _,initial_j=geometry(p)
++ reference_local_pose=canonical(t(initial_j),g0).detach()
+  bodylimit=min(rmse(cam.world2camera(sj.astype(np.float64))[bi.cpu().numpy()],arr(bt))+5,rmse(cam.world2camera(initial_j.astype(np.float64))[bi.cpu().numpy()],arr(bt))+.5)
+  wi=torch.tensor([12+SIDES.index(s) for s in matches],device=dev);wg=t([w['joints_2d'][m['candidate'],0] for s,m in matches.items()])
+  ids=[];goals=[];pis=[];pgs=[]
+@@ -78,12 +80,13 @@
+   palm=torch.stack([huber(uv[ix],g).mean() for ix,g in zip(pis,pgs)]).mean()
+   loop=torch.stack([huber(cam.world2camera_pytorch(v[ix]),g).mean() for ix,g in zip(ids,goals)]).mean()
+   priors=.003*(delta/caps[:,None]).square().mean()+.001*((tr-tr0)/t([.10,.10,.18])).square().mean()+.001*(gd/np.deg2rad(8)).square().mean()
+-  return 4*body+4*wrist+1*palm+5*loop+1.5*sil_loss(v,cam,data)+priors+hn.loss(v,uv)
++  return 4*body+4*wrist+1*palm+5*loop+1.5*sil_loss(v,cam,data)+priors+hn.loss(v,uv)+keep_loss(j,g0+gd,reference_local_pose)
+  def clip():
++  gd.zero_();tr.copy_(tr0)
+   delta.mul_(torch.minimum(torch.ones_like(caps),caps/delta.norm(dim=1).clamp_min(1e-8))[:,None]);gd.mul_(torch.clamp(t(np.deg2rad(8))/gd.norm().clamp_min(1e-8),max=1));tr[2].clamp_(.05,3)
+  def violations(v,j,uv):return torch.cat([(torch.sqrt((uv[bi]-bt).square().sum(1).mean())-bodylimit+.01).reshape(1)/10,(.0205-v[:,2].min()).reshape(1)/.02,(floor+1e-5-j[[12,13]].norm(dim=1))/.05,hn.violations(v)])
+  def valid(v,j,uv):return bool(violations(v,j,uv).max()<=0)
+- opt=torch.optim.Adam([{'params':[delta],'lr':.002},{'params':[gd],'lr':.0008},{'params':[tr],'lr':.0015}]);start=time.time();trace=[]
++ opt=torch.optim.Adam([{'params':[delta],'lr':.002}]);start=time.time();trace=[]
+  with torch.no_grad():v,j,uv=forward();bestloss=float(objective(v,j,uv));best=[x.clone() for x in variables]
+  initial=metrics(p,w,old,matches,cam,lookup,data);rejected=0;last_improvement=0
+  for step in range(steps):
+--- original/reference/wrist_refine.py
++++ S3_local_mano/reference/wrist_refine.py
+@@ -1,5 +1,6 @@
+ """Fixed-shape SMPL-X wrist and projected seam compatibility refinement."""
+ from pathlib import Path
++from egosmplx_pipeline.experiment_controls import observation_weights, ARM_NAMES, canonical, keep_loss
+ import os
+ import sys,copy,argparse,time
+ import numpy as np
+@@ -30,7 +31,7 @@
+   initp=load(init_path) if a.active_projection and init_path.exists() else p
+   delta=(t(initp['body_pose']).reshape(21,3)-b0)[ai].clone().requires_grad_();gd=(t(initp['global_orient']).reshape(3)-g0).clone().requires_grad_();tr=t(initp['transl']).reshape(3).clone().requires_grad_()
+   names=[n for n in JOINT_MAPPING if lookup[n]['score']>=.3 and np.isfinite([lookup[n]['x'],lookup[n]['y']]).all() and 0<=lookup[n]['x']<1280 and 0<=lookup[n]['y']<720]
+-  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=t([min(1,lookup[n]['score'])**2 for n in names]);bw/=bw.mean()
++  bi=torch.tensor([JI[JOINT_MAPPING[n]] for n in names],device=dev);bt=t([[lookup[n]['x'],lookup[n]['y']] for n in names]);bw=observation_weights(names,t)
+   ix=torch.tensor([12+SIDES.index(s) for s in matches],device=dev);goals=t([w['joints_2d'][m['candidate'],0] for s,m in matches.items()])
+   _,srcj=geometry(source);_,rigj=geometry(rigid);floor=t(np.maximum(np.linalg.norm(srcj[[12,13]],axis=1),np.linalg.norm(rigj[[12,13]],axis=1))*.85)
+   bodylimit=float(np.sqrt(np.mean(np.sum((cam.world2camera(srcj.astype(np.float64))[bi.cpu().numpy()]-arr(bt))**2,axis=1))))+5

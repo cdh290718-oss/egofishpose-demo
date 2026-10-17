@@ -1,0 +1,436 @@
+{
+  "gt_used_for_this_audit": false,
+  "definition": "Proposals limited relative to incoming contour pose; original CPU acceptance limited relative to rigid pose. No optimizer or parameter changed.",
+  "samples": {
+    "body10_left": {
+      "actual_retained_fraction": 0.0,
+      "all30_candidates_exceed_angle_caps": true,
+      "trials": [
+        {
+          "alpha": 1.0,
+          "exceeded_original_angle_caps": {
+            "R_Elbow": {
+              "angle_deg": 30.948537826538086,
+              "cap_deg": 25.0
+            },
+            "R_Wrist": {
+              "angle_deg": 26.839651107788086,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.9,
+          "exceeded_original_angle_caps": {
+            "R_Elbow": {
+              "angle_deg": 29.18923568725586,
+              "cap_deg": 25.0
+            },
+            "R_Wrist": {
+              "angle_deg": 25.506471633911133,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.81,
+          "exceeded_original_angle_caps": {
+            "R_Elbow": {
+              "angle_deg": 27.703405380249023,
+              "cap_deg": 25.0
+            },
+            "R_Wrist": {
+              "angle_deg": 24.32322883605957,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.7290000000000001,
+          "exceeded_original_angle_caps": {
+            "R_Elbow": {
+              "angle_deg": 26.458568572998047,
+              "cap_deg": 25.0
+            },
+            "R_Wrist": {
+              "angle_deg": 23.27383804321289,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.6561,
+          "exceeded_original_angle_caps": {
+            "R_Elbow": {
+              "angle_deg": 25.42415428161621,
+              "cap_deg": 25.0
+            },
+            "R_Wrist": {
+              "angle_deg": 22.343738555908203,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.5904900000000001,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 21.519794464111328,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.531441,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 20.790157318115234,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.4782969000000001,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 20.144187927246094,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.4304672100000001,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 19.572351455688477,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.3874204890000001,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 19.066118240356445,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.3486784401000001,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 18.617889404296875,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.31381059609000006,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 18.220901489257812,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.2824295364810001,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 17.86916160583496,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.2541865828329001,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 17.557361602783203,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.2287679245496101,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 17.280813217163086,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.20589113209464907,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 17.035377502441406,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.18530201888518416,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 16.81740951538086,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.16677181699666577,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 16.623699188232422,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.15009463529699918,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 16.451427459716797,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.13508517176729928,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 16.298105239868164,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.12157665459056935,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 16.161556243896484,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.10941898913151242,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 16.03985595703125,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.09847709021836118,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 15.931316375732422,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.08862938119652507,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 15.834450721740723,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.07976644307687256,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 15.747942924499512,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.0717897987691853,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 15.670645713806152,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.06461081889226677,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 15.601532936096191,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.058149737003040096,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 15.53970718383789,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.05233476330273609,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 15.484371185302734,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.047101286972462485,
+          "exceeded_original_angle_caps": {
+            "R_Wrist": {
+              "angle_deg": 15.434821128845215,
+              "cap_deg": 15.0
+            }
+          }
+        },
+        {
+          "alpha": 0.0,
+          "exceeded_original_angle_caps": {}
+        }
+      ]
+    },
+    "body10_right": {
+      "actual_retained_fraction": 1.0,
+      "all30_candidates_exceed_angle_caps": false,
+      "trials": [
+        {
+          "alpha": 1.0,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.9,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.81,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.7290000000000001,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.6561,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.5904900000000001,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.531441,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.4782969000000001,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.4304672100000001,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.3874204890000001,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.3486784401000001,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.31381059609000006,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.2824295364810001,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.2541865828329001,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.2287679245496101,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.20589113209464907,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.18530201888518416,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.16677181699666577,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.15009463529699918,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.13508517176729928,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.12157665459056935,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.10941898913151242,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.09847709021836118,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.08862938119652507,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.07976644307687256,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.0717897987691853,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.06461081889226677,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.058149737003040096,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.05233476330273609,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.047101286972462485,
+          "exceeded_original_angle_caps": {}
+        },
+        {
+          "alpha": 0.0,
+          "exceeded_original_angle_caps": {}
+        }
+      ]
+    }
+  }
+}

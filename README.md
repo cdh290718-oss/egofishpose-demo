@@ -1,5 +1,12 @@
 # EgoFishPose 自动优化流程与结果
 
+## 2026-10-17：固定body10一对的三步开发对照
+
+[对比网页](https://cdh290718-oss.github.io/egofishpose-demo/head01-stepwise-body10-20261017/) · [指标CSV](head01-stepwise-body10-20261017/downloads/step_summary.csv) · [结论](head01-stepwise-body10-20261017/downloads/CONCLUSIONS.md)
+
+原流程基线与三个预注册累加版本全部报告，样本固定为body10_left/right，仅复用网络缓存。S1改变Sapiens数据可靠性，S2增加姿态范围与三维保持，S3收紧最终MANO身体引导。GT只评分和绘图；单对结果不代表泛化。原100张与10对页面保留。
+
+
 ## 2026-10-14：100张验证、身体与手部10对评测、阶段定位
 
 [实验网页](https://cdh290718-oss.github.io/egofishpose-demo/head01-benchmark-20261014/) · [同10对论文比较CSV](head01-benchmark-20261014/downloads/comparison_same10.csv) · [逐张阶段指标](head01-benchmark-20261014/downloads/per_image_stages.csv)

@@ -1,0 +1,39 @@
+{
+  "original_code_and_inputs_unchanged": true,
+  "inactive_parameter_assertions": [
+    {
+      "variant": "S2_pose_keep",
+      "id": "body10_left",
+      "pose_inactive_joints_bitwise_unchanged": true
+    },
+    {
+      "variant": "S2_pose_keep",
+      "id": "body10_right",
+      "pose_inactive_joints_bitwise_unchanged": true
+    },
+    {
+      "variant": "S3_local_mano",
+      "id": "body10_left",
+      "pose_inactive_joints_bitwise_unchanged": true
+    },
+    {
+      "variant": "S3_local_mano",
+      "id": "body10_left",
+      "mano_global_rigid_bitwise_frozen": true,
+      "mano_nonarm_pose_bitwise_frozen": true
+    },
+    {
+      "variant": "S3_local_mano",
+      "id": "body10_right",
+      "pose_inactive_joints_bitwise_unchanged": true
+    },
+    {
+      "variant": "S3_local_mano",
+      "id": "body10_right",
+      "mano_global_rigid_bitwise_frozen": true,
+      "mano_nonarm_pose_bitwise_frozen": true
+    }
+  ],
+  "all_variants_reported": true,
+  "baseline_score_reproduced": true
+}
