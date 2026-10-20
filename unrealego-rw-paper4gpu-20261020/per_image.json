@@ -1,0 +1,1722 @@
+[
+  {
+    "id": "body01_left",
+    "pair": 1,
+    "camera": "left",
+    "sequence": "studio/2023_08_23/S9/seq_1-1-4",
+    "frame_index": 167,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 104.26733216946,
+          "body_auto_rmse_px": 43.73904415162333,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body01_left/frames/body01_left/raw/params.npz",
+          "parameter_sha256": "7ee29e7cb424cd202be43bacadf4f79be33c4786e830133c1cac8d98fd688685",
+          "overlay": "images/body01_left_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 89.2269058764217,
+          "body_auto_rmse_px": 46.63396091112295,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body01_left/frames/body01_left/raw/params.npz",
+          "parameter_sha256": "d1eb23bbcfbc4be59b87a42feb46f9cb0236c5c1e4311ce91d2f1abbfb90f61a",
+          "overlay": "images/body01_left_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 104.2673431815872,
+          "body_auto_rmse_px": 51.01168823934198,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body01_left/frames/body01_left/rigid/optimized_params.npz",
+          "parameter_sha256": "2675acd7301b239e722902a34e773a2317b7ffd96404e04e6f2640a137e12f7d",
+          "overlay": "images/body01_left_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 89.22689216559996,
+          "body_auto_rmse_px": 52.67446229564853,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body01_left/frames/body01_left/rigid/optimized_params.npz",
+          "parameter_sha256": "38bdce1819bd8ef561a377b4374ccfc7b92e62da9e77c949d16331ed323c581c",
+          "overlay": "images/body01_left_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 95.33887163784603,
+          "body_auto_rmse_px": 19.234816100557165,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body01_left/frames/body01_left/body/params.npz",
+          "parameter_sha256": "c2171147005d5355c54fd7c7d2d20bcba8e16f13940efcd64b58fbcc4b9b7deb",
+          "overlay": "images/body01_left_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 84.52560865117684,
+          "body_auto_rmse_px": 20.33692696417862,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body01_left/frames/body01_left/body/params.npz",
+          "parameter_sha256": "d4d201a8c5cd13d3c12e511b90f62c8b5f32a381d8a7b3e146b55d83f5449941",
+          "overlay": "images/body01_left_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 128.30208267612414,
+          "body_auto_rmse_px": 11.188934577397994,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body01_left/frames/body01_left/fused/body_params.npz",
+          "parameter_sha256": "ffbaed6bdc4db27f4c48b6a200954accad4ac4711d1b980531e75e5ff36fd7bc",
+          "overlay": "images/body01_left_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 134.6172426347449,
+          "body_auto_rmse_px": 11.160742223607196,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body01_left/frames/body01_left/fused/body_params.npz",
+          "parameter_sha256": "e6e7ac85f809191942bae94edf45e6af8e3cb1b001fe3f0c12337a9306f6cb28",
+          "overlay": "images/body01_left_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 1,
+      "body_target_count": 4,
+      "local_surface_accepted": true
+    },
+    "4gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 1,
+      "body_target_count": 4,
+      "local_surface_accepted": true
+    },
+    "final_delta_4gpu_minus_8gpu_mm": 6.315159958620768
+  },
+  {
+    "id": "body01_right",
+    "pair": 1,
+    "camera": "right",
+    "sequence": "studio/2023_08_23/S9/seq_1-1-4",
+    "frame_index": 167,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 64.15284845719916,
+          "body_auto_rmse_px": 55.24087538240891,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body01_right/frames/body01_right/raw/params.npz",
+          "parameter_sha256": "f5fc6179f4e3985f8de2c6383c9043451be53e435dfa9ea1b8cc88d3fee772dc",
+          "overlay": "images/body01_right_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 64.20378092880037,
+          "body_auto_rmse_px": 56.09950853716018,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body01_right/frames/body01_right/raw/params.npz",
+          "parameter_sha256": "258ecdbc25cbe5fae7ce721dbf7519b7f89ba06549272f55574fd98914e1dbba",
+          "overlay": "images/body01_right_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 64.15285032088943,
+          "body_auto_rmse_px": 54.725089002821825,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body01_right/frames/body01_right/rigid/optimized_params.npz",
+          "parameter_sha256": "3a61bc5095369d317aced5aabe16aaaf3fab69e27f3796dc66ae20863cdf8dc1",
+          "overlay": "images/body01_right_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 64.20377909137947,
+          "body_auto_rmse_px": 53.046969895365045,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body01_right/frames/body01_right/rigid/optimized_params.npz",
+          "parameter_sha256": "967c2efcf16ab8fabe868eee6399e956f1264d81c6a652294196683a34e9326b",
+          "overlay": "images/body01_right_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 84.33408879374636,
+          "body_auto_rmse_px": 45.734198551624075,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body01_right/frames/body01_right/body/params.npz",
+          "parameter_sha256": "cf451c1b3a70c714366aa2d888f05088a862fb647b1f9bd02305e0e424c4d5b9",
+          "overlay": "images/body01_right_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 82.75454176449622,
+          "body_auto_rmse_px": 46.12404012506912,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body01_right/frames/body01_right/body/params.npz",
+          "parameter_sha256": "26f1370429ab7f8c6dd859c8de53854d6532c3f87c973bef8c049daad4249646",
+          "overlay": "images/body01_right_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 84.33408879374636,
+          "body_auto_rmse_px": 45.734198551624075,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body01_right/frames/body01_right/body/params.npz",
+          "parameter_sha256": "cf451c1b3a70c714366aa2d888f05088a862fb647b1f9bd02305e0e424c4d5b9",
+          "overlay": "images/body01_right_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 82.75454176449622,
+          "body_auto_rmse_px": 46.12404012506912,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body01_right/frames/body01_right/body/params.npz",
+          "parameter_sha256": "26f1370429ab7f8c6dd859c8de53854d6532c3f87c973bef8c049daad4249646",
+          "overlay": "images/body01_right_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": true,
+      "matched_hands": 0,
+      "body_target_count": 7,
+      "local_surface_accepted": null
+    },
+    "4gpu": {
+      "no_matched_hand": true,
+      "matched_hands": 0,
+      "body_target_count": 7,
+      "local_surface_accepted": null
+    },
+    "final_delta_4gpu_minus_8gpu_mm": -1.5795470292501363
+  },
+  {
+    "id": "body02_left",
+    "pair": 2,
+    "camera": "left",
+    "sequence": "studio/2023_08_23/S9/seq_1-0-3",
+    "frame_index": 19,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 75.99295852693875,
+          "body_auto_rmse_px": 52.44632118544859,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body02_left/frames/body02_left/raw/params.npz",
+          "parameter_sha256": "e19ebc3d09ab7f94126e2395d576d313eaeb37420a9c26f136ad204bd26efef9",
+          "overlay": "images/body02_left_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 79.08175647575051,
+          "body_auto_rmse_px": 54.56776106671053,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body02_left/frames/body02_left/raw/params.npz",
+          "parameter_sha256": "89f443e4713b2520aa6fdc08c4d287384efbfd7afadb08d153387fcd5fb291c1",
+          "overlay": "images/body02_left_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 75.99296828230459,
+          "body_auto_rmse_px": 44.86934379152909,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body02_left/frames/body02_left/rigid/optimized_params.npz",
+          "parameter_sha256": "92f4e2ac66d3f30651fb8dee55aed5c30fb01d80d4b15c56cfc8546053be0e02",
+          "overlay": "images/body02_left_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 79.08176360058322,
+          "body_auto_rmse_px": 44.867046333262245,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body02_left/frames/body02_left/rigid/optimized_params.npz",
+          "parameter_sha256": "316f694ff7defb1f4a10a88e377fdc32cf77fd2ac45cc4906654934fd71ae6b6",
+          "overlay": "images/body02_left_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 114.6078453077572,
+          "body_auto_rmse_px": 22.373426041602222,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body02_left/frames/body02_left/body/params.npz",
+          "parameter_sha256": "d65c751a092905100ca2814ad379b323aa466a9d54cc27ce676be3434ba1f084",
+          "overlay": "images/body02_left_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 114.54346868545969,
+          "body_auto_rmse_px": 22.69313469803318,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body02_left/frames/body02_left/body/params.npz",
+          "parameter_sha256": "63a6914178414a2ae146385b769770897f1ca58f45ae7ec6397139627ecb85e6",
+          "overlay": "images/body02_left_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 104.12678661796873,
+          "body_auto_rmse_px": 16.088516715888396,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body02_left/frames/body02_left/fused/body_params.npz",
+          "parameter_sha256": "945f7db5abe78fb40136b6c9a084fb13af58092bb9d80900b9d30ad69906f979",
+          "overlay": "images/body02_left_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 104.66683238717971,
+          "body_auto_rmse_px": 16.20716902654048,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body02_left/frames/body02_left/fused/body_params.npz",
+          "parameter_sha256": "c89e52b337822432616d3ce4b5b3a8d4a8f79e7e7bc4f2763c46ba75a15ee577",
+          "overlay": "images/body02_left_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 2,
+      "body_target_count": 6,
+      "local_surface_accepted": false
+    },
+    "4gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 2,
+      "body_target_count": 6,
+      "local_surface_accepted": false
+    },
+    "final_delta_4gpu_minus_8gpu_mm": 0.5400457692109768
+  },
+  {
+    "id": "body02_right",
+    "pair": 2,
+    "camera": "right",
+    "sequence": "studio/2023_08_23/S9/seq_1-0-3",
+    "frame_index": 19,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 89.43681640389804,
+          "body_auto_rmse_px": 36.30837502152378,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body02_right/frames/body02_right/raw/params.npz",
+          "parameter_sha256": "e6d38b76acc3d8e56771c5de2e5a424051d40cec00e4fd7d32bfa8689eafa22f",
+          "overlay": "images/body02_right_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 88.22734312174848,
+          "body_auto_rmse_px": 40.374455543347146,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body02_right/frames/body02_right/raw/params.npz",
+          "parameter_sha256": "2456f1f5093dcc62a5df9daad5cfbf2c9e9c872362fb972345fc89acf0d5e5f4",
+          "overlay": "images/body02_right_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 89.43679967731912,
+          "body_auto_rmse_px": 44.61751769238121,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body02_right/frames/body02_right/rigid/optimized_params.npz",
+          "parameter_sha256": "ecfead85bdded6930d380b3f002faac840d3c4c617b83a348e2c63c70570b2cc",
+          "overlay": "images/body02_right_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 88.22734313777951,
+          "body_auto_rmse_px": 43.61656409752584,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body02_right/frames/body02_right/rigid/optimized_params.npz",
+          "parameter_sha256": "e2e87e5b41a0a3a179d806109c27dcc85b92902cf8f03a1832516be4cef72eb4",
+          "overlay": "images/body02_right_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 97.88985140361147,
+          "body_auto_rmse_px": 21.493855344049546,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body02_right/frames/body02_right/body/params.npz",
+          "parameter_sha256": "62a44ae178223871167580769e0e28fec0003aefb071e7fba416e98f0a160c4f",
+          "overlay": "images/body02_right_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 96.82151927794239,
+          "body_auto_rmse_px": 20.648915998812967,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body02_right/frames/body02_right/body/params.npz",
+          "parameter_sha256": "57d2a5836d18c2c7670b60de20c9cdb637c0665031fbf39427e5007c3e0b5b69",
+          "overlay": "images/body02_right_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 119.94404477825725,
+          "body_auto_rmse_px": 10.784703177575112,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body02_right/frames/body02_right/fused/body_params.npz",
+          "parameter_sha256": "fef39da8de95cc0d452440beef906d025e30ccfd688113311f498a8d80530a27",
+          "overlay": "images/body02_right_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 117.69392442156366,
+          "body_auto_rmse_px": 9.945702455521566,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body02_right/frames/body02_right/fused/body_params.npz",
+          "parameter_sha256": "d0fe11fcab5c9b409beab25d6c4de1a18b4f5ffef6ad0b5a145bcab5246ed730",
+          "overlay": "images/body02_right_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 1,
+      "body_target_count": 5,
+      "local_surface_accepted": false
+    },
+    "4gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 1,
+      "body_target_count": 5,
+      "local_surface_accepted": false
+    },
+    "final_delta_4gpu_minus_8gpu_mm": -2.2501203566935857
+  },
+  {
+    "id": "body03_left",
+    "pair": 3,
+    "camera": "left",
+    "sequence": "studio/2023_08_23/S9/seq_1-0-34",
+    "frame_index": 63,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 60.01609513187649,
+          "body_auto_rmse_px": 68.08173022575733,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body03_left/frames/body03_left/raw/params.npz",
+          "parameter_sha256": "fe792a4f5525382d1099dc7dc6845a5b1ac55d0ec4cca4d9bb076f3303fa3d61",
+          "overlay": "images/body03_left_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 62.28341697305939,
+          "body_auto_rmse_px": 65.17830484796684,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body03_left/frames/body03_left/raw/params.npz",
+          "parameter_sha256": "95400760aea10472d2f598747ceed6b5ee91a4ee2883077361d9934e05ead7a7",
+          "overlay": "images/body03_left_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 60.016107811443874,
+          "body_auto_rmse_px": 48.22302971998357,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body03_left/frames/body03_left/rigid/optimized_params.npz",
+          "parameter_sha256": "7adc33221abbfd5efdbf3011e9ced8f83328c03b5cd373c1b8c6109c4a6fc0fd",
+          "overlay": "images/body03_left_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 62.283411612900935,
+          "body_auto_rmse_px": 45.93760117157747,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body03_left/frames/body03_left/rigid/optimized_params.npz",
+          "parameter_sha256": "eb8a98fc11f8409eb088c78275d5774a1c192bd07a85254170e1dd4a2221e755",
+          "overlay": "images/body03_left_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 100.83713841686534,
+          "body_auto_rmse_px": 14.494614346402532,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body03_left/frames/body03_left/body/params.npz",
+          "parameter_sha256": "4a1230ac2a9ff2e14efae011b88951c75fb5db28c7c80232196da6da6eb8fd15",
+          "overlay": "images/body03_left_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 101.64860581703212,
+          "body_auto_rmse_px": 15.59193626427101,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body03_left/frames/body03_left/body/params.npz",
+          "parameter_sha256": "1310747d4c094bc215857c00d666bafc57a268f2f210ed4bd32832fe06f9760e",
+          "overlay": "images/body03_left_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 100.83713841686534,
+          "body_auto_rmse_px": 14.494614346402532,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body03_left/frames/body03_left/body/params.npz",
+          "parameter_sha256": "4a1230ac2a9ff2e14efae011b88951c75fb5db28c7c80232196da6da6eb8fd15",
+          "overlay": "images/body03_left_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 101.64860581703212,
+          "body_auto_rmse_px": 15.59193626427101,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body03_left/frames/body03_left/body/params.npz",
+          "parameter_sha256": "1310747d4c094bc215857c00d666bafc57a268f2f210ed4bd32832fe06f9760e",
+          "overlay": "images/body03_left_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": true,
+      "matched_hands": 0,
+      "body_target_count": 5,
+      "local_surface_accepted": null
+    },
+    "4gpu": {
+      "no_matched_hand": true,
+      "matched_hands": 0,
+      "body_target_count": 5,
+      "local_surface_accepted": null
+    },
+    "final_delta_4gpu_minus_8gpu_mm": 0.8114674001667765
+  },
+  {
+    "id": "body03_right",
+    "pair": 3,
+    "camera": "right",
+    "sequence": "studio/2023_08_23/S9/seq_1-0-34",
+    "frame_index": 63,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 80.27682016333536,
+          "body_auto_rmse_px": 63.89340852968684,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body03_right/frames/body03_right/raw/params.npz",
+          "parameter_sha256": "c9b8f6401119b706da4bbe492eca05673456b79c1a785c1c93c3f9a738311a5e",
+          "overlay": "images/body03_right_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 77.96761530600253,
+          "body_auto_rmse_px": 67.85496030411545,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body03_right/frames/body03_right/raw/params.npz",
+          "parameter_sha256": "cc756d30e31e1df18ca66296e53cfc58c262cdf143274bc39dc2224c571f4ef5",
+          "overlay": "images/body03_right_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 80.27681713880438,
+          "body_auto_rmse_px": 64.44886081065555,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body03_right/frames/body03_right/rigid/optimized_params.npz",
+          "parameter_sha256": "35a23e5392de79db44352bf1cd52e9f1f61f066dd3641bccebe20af6b0c2a160",
+          "overlay": "images/body03_right_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 77.96762400645449,
+          "body_auto_rmse_px": 64.60760110209029,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body03_right/frames/body03_right/rigid/optimized_params.npz",
+          "parameter_sha256": "7923343a5f2fc935de702267f7e60cd5760fe4284fe68b2245f8834b3f398add",
+          "overlay": "images/body03_right_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 127.00805788170507,
+          "body_auto_rmse_px": 57.701059264733885,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body03_right/frames/body03_right/body/params.npz",
+          "parameter_sha256": "65b65ae8c1248e88167e6927e43e663ba366b47aeace7d4880f387ded384d30e",
+          "overlay": "images/body03_right_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 109.68379278900223,
+          "body_auto_rmse_px": 57.48971708946627,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body03_right/frames/body03_right/body/params.npz",
+          "parameter_sha256": "3b1f437c9898c451815c01eafd7c3853936f234a05bde463e5b254e891ea065f",
+          "overlay": "images/body03_right_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 127.00805788170507,
+          "body_auto_rmse_px": 57.701059264733885,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body03_right/frames/body03_right/body/params.npz",
+          "parameter_sha256": "65b65ae8c1248e88167e6927e43e663ba366b47aeace7d4880f387ded384d30e",
+          "overlay": "images/body03_right_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 109.68379278900223,
+          "body_auto_rmse_px": 57.48971708946627,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body03_right/frames/body03_right/body/params.npz",
+          "parameter_sha256": "3b1f437c9898c451815c01eafd7c3853936f234a05bde463e5b254e891ea065f",
+          "overlay": "images/body03_right_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": true,
+      "matched_hands": 0,
+      "body_target_count": 6,
+      "local_surface_accepted": null
+    },
+    "4gpu": {
+      "no_matched_hand": true,
+      "matched_hands": 0,
+      "body_target_count": 6,
+      "local_surface_accepted": null
+    },
+    "final_delta_4gpu_minus_8gpu_mm": -17.324265092702845
+  },
+  {
+    "id": "body04_left",
+    "pair": 4,
+    "camera": "left",
+    "sequence": "studio/2023_08_23/S9/seq_1-1-20",
+    "frame_index": 45,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 73.88322836769724,
+          "body_auto_rmse_px": 75.02982620382429,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body04_left/frames/body04_left/raw/params.npz",
+          "parameter_sha256": "8653234f6bf553144fcd494aababa9a272ee15dc2ffab9e9cbc52ae8652219fb",
+          "overlay": "images/body04_left_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 77.77513879052736,
+          "body_auto_rmse_px": 73.45878366543714,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body04_left/frames/body04_left/raw/params.npz",
+          "parameter_sha256": "14a882373a4f891503703b6b1c94b25ebfbe1f935036af8a98438b444003c4aa",
+          "overlay": "images/body04_left_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 73.88321670553712,
+          "body_auto_rmse_px": 39.724474109637804,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body04_left/frames/body04_left/rigid/optimized_params.npz",
+          "parameter_sha256": "c2aeed1f2e63e18b1361e395b58642020f9aff6da034231ed7dc52a3cc7efdc4",
+          "overlay": "images/body04_left_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 77.77514430423263,
+          "body_auto_rmse_px": 38.951952772225525,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body04_left/frames/body04_left/rigid/optimized_params.npz",
+          "parameter_sha256": "1ae1e640994d6f8a22bb5ba3453476a8f2aecb58af558ab718032206e732047a",
+          "overlay": "images/body04_left_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 92.81306318118713,
+          "body_auto_rmse_px": 12.784312717981145,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body04_left/frames/body04_left/body/params.npz",
+          "parameter_sha256": "c0feed9149906a1b50eddefb568be133f416b3c0985efdfd86a78a276cbcec1b",
+          "overlay": "images/body04_left_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 93.23626348804254,
+          "body_auto_rmse_px": 10.152214926420484,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body04_left/frames/body04_left/body/params.npz",
+          "parameter_sha256": "a12f580d2fefccecfbc1a611a1d2f937e7c518c36b8ad108152c41174f216ef7",
+          "overlay": "images/body04_left_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 88.57556024035613,
+          "body_auto_rmse_px": 15.109465555781892,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body04_left/frames/body04_left/fused/body_params.npz",
+          "parameter_sha256": "2059fb968960089357a51a1cb6de97171e7f89513d6ee0904a05c5ea38100f83",
+          "overlay": "images/body04_left_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 88.59695199421374,
+          "body_auto_rmse_px": 13.5708509530393,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body04_left/frames/body04_left/fused/body_params.npz",
+          "parameter_sha256": "f36a550d2821e22cbf49175cbbc134dcfd9a6cf5578473805742626239ac069b",
+          "overlay": "images/body04_left_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 1,
+      "body_target_count": 4,
+      "local_surface_accepted": false
+    },
+    "4gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 1,
+      "body_target_count": 4,
+      "local_surface_accepted": false
+    },
+    "final_delta_4gpu_minus_8gpu_mm": 0.02139175385761405
+  },
+  {
+    "id": "body04_right",
+    "pair": 4,
+    "camera": "right",
+    "sequence": "studio/2023_08_23/S9/seq_1-1-20",
+    "frame_index": 45,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 75.72361012222697,
+          "body_auto_rmse_px": 77.24372527003213,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body04_right/frames/body04_right/raw/params.npz",
+          "parameter_sha256": "68e00fac3b5b7933b8122d1b4e3bdf62399a9ef8e91272b1686205e4518f1063",
+          "overlay": "images/body04_right_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 80.09536280631205,
+          "body_auto_rmse_px": 81.68191055899857,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body04_right/frames/body04_right/raw/params.npz",
+          "parameter_sha256": "b5bd570398bfddac940312b325238324e32f3ccf3f8dd62d5b0562117f7eafcb",
+          "overlay": "images/body04_right_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 75.72359925383802,
+          "body_auto_rmse_px": 40.05646074016329,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body04_right/frames/body04_right/rigid/optimized_params.npz",
+          "parameter_sha256": "47ebcc9378d2592f4a352070c19aa450744b82a84bfe8d5798125cad66fd4c80",
+          "overlay": "images/body04_right_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 80.09535317635877,
+          "body_auto_rmse_px": 41.57089162286452,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body04_right/frames/body04_right/rigid/optimized_params.npz",
+          "parameter_sha256": "b7e557a45bcddfc06d6f69bda38c24707fbae36effc1b101be54b6ab793c7753",
+          "overlay": "images/body04_right_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 107.05822178796615,
+          "body_auto_rmse_px": 16.17300345734423,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body04_right/frames/body04_right/body/params.npz",
+          "parameter_sha256": "394bbccf90153fac441786fd4e70b5479aea09685e13107ad5dccde189a388b5",
+          "overlay": "images/body04_right_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 104.38877413185558,
+          "body_auto_rmse_px": 16.85585067129615,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body04_right/frames/body04_right/body/params.npz",
+          "parameter_sha256": "c2274914b6c3c13aa78fde5a69caa3d43de0e400099e6fd1e6cbb848b20c2124",
+          "overlay": "images/body04_right_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 122.26811477701246,
+          "body_auto_rmse_px": 12.204725545225067,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body04_right/frames/body04_right/fused/body_params.npz",
+          "parameter_sha256": "c2d7a6a7d20f201d463b9610e8c1862e7bf7cf8cd4405c12a9186a672d2f44b6",
+          "overlay": "images/body04_right_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 121.44097220982577,
+          "body_auto_rmse_px": 13.823096787022704,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body04_right/frames/body04_right/fused/body_params.npz",
+          "parameter_sha256": "866504f764de5dddd8a532fea892d69af0b9f4e3a60be26de8d1b2070f7cf0e6",
+          "overlay": "images/body04_right_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 1,
+      "body_target_count": 4,
+      "local_surface_accepted": true
+    },
+    "4gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 1,
+      "body_target_count": 4,
+      "local_surface_accepted": true
+    },
+    "final_delta_4gpu_minus_8gpu_mm": -0.8271425671866837
+  },
+  {
+    "id": "body05_left",
+    "pair": 5,
+    "camera": "left",
+    "sequence": "studio/2023_08_23/S9/seq_1-1-12",
+    "frame_index": 445,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 74.00798896902482,
+          "body_auto_rmse_px": 61.72651452261653,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body05_left/frames/body05_left/raw/params.npz",
+          "parameter_sha256": "26a478d46ae5e76f2ea687a3c5bd1be01697e94e9cf0c6c757553357bc47fd69",
+          "overlay": "images/body05_left_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 71.51983957975796,
+          "body_auto_rmse_px": 54.34639494726521,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body05_left/frames/body05_left/raw/params.npz",
+          "parameter_sha256": "573c60acd7e5113a2812e343cdca50e396ed94d5899757801ae0dbcc3349113d",
+          "overlay": "images/body05_left_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 74.0079654292257,
+          "body_auto_rmse_px": 66.87456921638385,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body05_left/frames/body05_left/rigid/optimized_params.npz",
+          "parameter_sha256": "153f9ca53fe88909a9cb78c8c26c979cb2b9bb5dfdeacad3c9bbde7a864c9032",
+          "overlay": "images/body05_left_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 71.51983539408285,
+          "body_auto_rmse_px": 60.88440094673287,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body05_left/frames/body05_left/rigid/optimized_params.npz",
+          "parameter_sha256": "f24260edf007862865ac472e9690094ff855a15fae85e6e1c04b0811d32beb57",
+          "overlay": "images/body05_left_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 75.99578884707704,
+          "body_auto_rmse_px": 39.34768989464084,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body05_left/frames/body05_left/body/params.npz",
+          "parameter_sha256": "cd05014fe2e022d50f2529d78e46feef6b39b259281b7b22c29d93cc60274923",
+          "overlay": "images/body05_left_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 76.20139704647525,
+          "body_auto_rmse_px": 31.624771341478773,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body05_left/frames/body05_left/body/params.npz",
+          "parameter_sha256": "c04f01435c8ab54609e97390253280b96c62bd8cc4e7cf8af9d5df6be2af2449",
+          "overlay": "images/body05_left_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 103.46465456160328,
+          "body_auto_rmse_px": 11.787023877407748,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body05_left/frames/body05_left/fused/body_params.npz",
+          "parameter_sha256": "9befe112511100f746eb37d77d1108be28397bf846f644235af6244c6cef1983",
+          "overlay": "images/body05_left_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 92.95936619485614,
+          "body_auto_rmse_px": 10.803505218957852,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body05_left/frames/body05_left/fused/body_params.npz",
+          "parameter_sha256": "67d877f0ebce75a48846b9fb4124f81a883a7177baae6f205c4a0a33b445d573",
+          "overlay": "images/body05_left_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 2,
+      "body_target_count": 4,
+      "local_surface_accepted": false
+    },
+    "4gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 2,
+      "body_target_count": 4,
+      "local_surface_accepted": false
+    },
+    "final_delta_4gpu_minus_8gpu_mm": -10.505288366747138
+  },
+  {
+    "id": "body05_right",
+    "pair": 5,
+    "camera": "right",
+    "sequence": "studio/2023_08_23/S9/seq_1-1-12",
+    "frame_index": 445,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 82.16814450859296,
+          "body_auto_rmse_px": 32.80618920658885,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body05_right/frames/body05_right/raw/params.npz",
+          "parameter_sha256": "5c1b1598cbd756dcd0c98347b4d9dd6f89a42f0a684ec20978104ddb3d5f6b39",
+          "overlay": "images/body05_right_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 95.83275504193364,
+          "body_auto_rmse_px": 38.62655670078119,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body05_right/frames/body05_right/raw/params.npz",
+          "parameter_sha256": "04ed1638ae965f844c41159e8b9fda774d7773e61f7e655fa42028da40512808",
+          "overlay": "images/body05_right_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 82.16813371714217,
+          "body_auto_rmse_px": 38.563249876108735,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body05_right/frames/body05_right/rigid/optimized_params.npz",
+          "parameter_sha256": "3e1cd2f0d6083d9010bc6ece5e11ff77721e11e1ca9b400cf421c5caae3bcd04",
+          "overlay": "images/body05_right_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 95.83276466870073,
+          "body_auto_rmse_px": 44.669996977122516,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body05_right/frames/body05_right/rigid/optimized_params.npz",
+          "parameter_sha256": "cd6fe9dfbc931601b8560926c211bb82449304fb97ad4578374d2dc3c4ffb78e",
+          "overlay": "images/body05_right_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 117.85728103204991,
+          "body_auto_rmse_px": 16.053115489202842,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body05_right/frames/body05_right/body/params.npz",
+          "parameter_sha256": "f7039eda8c56c06c82d56310d711dc86f95a3d134fbb444ad6c4ce170aa6fa20",
+          "overlay": "images/body05_right_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 136.57595924455885,
+          "body_auto_rmse_px": 20.567160553861235,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body05_right/frames/body05_right/body/params.npz",
+          "parameter_sha256": "33700c576e66ef7c207d79a9995fb3fb2f5177469558832d1c3bb5095590795d",
+          "overlay": "images/body05_right_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 124.94981681546527,
+          "body_auto_rmse_px": 12.497046413902982,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body05_right/frames/body05_right/fused/body_params.npz",
+          "parameter_sha256": "cec0009cfcfeed04bcf3daa47c66c1adea07a232535bec78818e57ce82602fd5",
+          "overlay": "images/body05_right_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 137.56458102429818,
+          "body_auto_rmse_px": 12.98210916387794,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body05_right/frames/body05_right/fused/body_params.npz",
+          "parameter_sha256": "cba6f59d8564f7286f44ac0ae3c6c03d67631578307826552288f711ceb6bb7c",
+          "overlay": "images/body05_right_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 2,
+      "body_target_count": 6,
+      "local_surface_accepted": false
+    },
+    "4gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 2,
+      "body_target_count": 6,
+      "local_surface_accepted": false
+    },
+    "final_delta_4gpu_minus_8gpu_mm": 12.61476420883291
+  },
+  {
+    "id": "body06_left",
+    "pair": 6,
+    "camera": "left",
+    "sequence": "studio/2023_08_23/S9/seq_1-0-33",
+    "frame_index": 110,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 75.18504800548428,
+          "body_auto_rmse_px": 51.033527711831034,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body06_left/frames/body06_left/raw/params.npz",
+          "parameter_sha256": "b2fdfe5192d32cf84fa4f7999d84537185e3dce7db4c1bedd5f9a83c9ef88ee5",
+          "overlay": "images/body06_left_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 75.05157394788225,
+          "body_auto_rmse_px": 50.563789878343854,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body06_left/frames/body06_left/raw/params.npz",
+          "parameter_sha256": "e6602e96c24b4dae02798403831e3ddfe65aa5bc1acf3d72157f417cb6e96a5d",
+          "overlay": "images/body06_left_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 75.18503910094323,
+          "body_auto_rmse_px": 50.8532245868187,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body06_left/frames/body06_left/rigid/optimized_params.npz",
+          "parameter_sha256": "a9841da09a394052e8ccb104bf465f50d7d11f094f65fe807e8b742e5732a4b1",
+          "overlay": "images/body06_left_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 75.05157557779877,
+          "body_auto_rmse_px": 52.37309720925719,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body06_left/frames/body06_left/rigid/optimized_params.npz",
+          "parameter_sha256": "9d44e1fc269e31aa406fdf2f99192fd719c59cf8d8216d2efbf33b83ab6ff22e",
+          "overlay": "images/body06_left_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 102.65340013961116,
+          "body_auto_rmse_px": 27.299980440567275,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body06_left/frames/body06_left/body/params.npz",
+          "parameter_sha256": "1322058e31aafcea1ed4cc2aab364a2acb7bf6411d5db1cd02167670c719ebec",
+          "overlay": "images/body06_left_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 100.33411749921687,
+          "body_auto_rmse_px": 26.791740303135004,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body06_left/frames/body06_left/body/params.npz",
+          "parameter_sha256": "1728e9e88847e99afa011813d6b226fcf713f7f17c87a5acad2100899e5e08b6",
+          "overlay": "images/body06_left_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 124.17756502886803,
+          "body_auto_rmse_px": 17.966434057622116,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body06_left/frames/body06_left/fused/body_params.npz",
+          "parameter_sha256": "2791439ae1febedc8058d355c846c4a6f19f45c0334f630bd83532b4496613f3",
+          "overlay": "images/body06_left_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 119.18300172120954,
+          "body_auto_rmse_px": 18.71172745517805,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body06_left/frames/body06_left/fused/body_params.npz",
+          "parameter_sha256": "d9b56a58a11238ea61fa9d0524493f5aabdce64af593425dfc857fb96930d9dd",
+          "overlay": "images/body06_left_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 2,
+      "body_target_count": 6,
+      "local_surface_accepted": false
+    },
+    "4gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 2,
+      "body_target_count": 6,
+      "local_surface_accepted": false
+    },
+    "final_delta_4gpu_minus_8gpu_mm": -4.994563307658495
+  },
+  {
+    "id": "body06_right",
+    "pair": 6,
+    "camera": "right",
+    "sequence": "studio/2023_08_23/S9/seq_1-0-33",
+    "frame_index": 110,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 74.81831514360077,
+          "body_auto_rmse_px": 37.3839415641096,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body06_right/frames/body06_right/raw/params.npz",
+          "parameter_sha256": "220d85601d4448f131d67f4ddcd0720bdb1423a71cda6f500207c8c8dbd77c21",
+          "overlay": "images/body06_right_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 75.15921220766738,
+          "body_auto_rmse_px": 38.34098411675282,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body06_right/frames/body06_right/raw/params.npz",
+          "parameter_sha256": "12d6fe30ca9e140524b69541d11357be53ca073c9b187711d201a9c0d1ff593a",
+          "overlay": "images/body06_right_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 74.81831314258157,
+          "body_auto_rmse_px": 46.736144943447584,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body06_right/frames/body06_right/rigid/optimized_params.npz",
+          "parameter_sha256": "30d5f78a7c531f004cf6e847a0ea66abb3c22a948c8b13afeb989b889173248e",
+          "overlay": "images/body06_right_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 75.15922295058962,
+          "body_auto_rmse_px": 47.39168506772722,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body06_right/frames/body06_right/rigid/optimized_params.npz",
+          "parameter_sha256": "b90c35d01846dc0b3cee4cc4e9bfb35b67d25e26ca4462b6c50e7073f9e9f5d8",
+          "overlay": "images/body06_right_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 95.26361084878911,
+          "body_auto_rmse_px": 26.812510901901746,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body06_right/frames/body06_right/body/params.npz",
+          "parameter_sha256": "9c5e2d6c05e19050e896106933b820bc5ecdb2f8b6a96ed55afa7f5f183dad17",
+          "overlay": "images/body06_right_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 103.04346403282189,
+          "body_auto_rmse_px": 24.926600154425273,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body06_right/frames/body06_right/body/params.npz",
+          "parameter_sha256": "91e4eb5fea63e44e5eb25dfbe382af8ee099d5f818c898463b61788632e3cad1",
+          "overlay": "images/body06_right_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 117.53101531342621,
+          "body_auto_rmse_px": 20.19781171608065,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body06_right/frames/body06_right/fused/body_params.npz",
+          "parameter_sha256": "ffe7ebf091335bf01dc5de4d2a84353ab473c9bf6a435794f97a36178a0c0f24",
+          "overlay": "images/body06_right_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 121.96476095320703,
+          "body_auto_rmse_px": 21.130801380847604,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body06_right/frames/body06_right/fused/body_params.npz",
+          "parameter_sha256": "c203397bac3ed8df584f59f8a6c64c2b40f4fea80ca46526220c39303da08a0c",
+          "overlay": "images/body06_right_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 2,
+      "body_target_count": 6,
+      "local_surface_accepted": false
+    },
+    "4gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 2,
+      "body_target_count": 6,
+      "local_surface_accepted": false
+    },
+    "final_delta_4gpu_minus_8gpu_mm": 4.433745639780824
+  },
+  {
+    "id": "body07_left",
+    "pair": 7,
+    "camera": "left",
+    "sequence": "studio/2023_08_23/S9/seq_1-1-3",
+    "frame_index": 21,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 74.19057116536739,
+          "body_auto_rmse_px": 76.39707620848534,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body07_left/frames/body07_left/raw/params.npz",
+          "parameter_sha256": "99808bd60de06e2a09dfa6479eb4325fb293bb19855c334a65ce47e976d76d0a",
+          "overlay": "images/body07_left_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 125.74233036916102,
+          "body_auto_rmse_px": 76.46196898938017,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body07_left/frames/body07_left/raw/params.npz",
+          "parameter_sha256": "b0050d4503b1cc03f1a7b24de8f7260a15862396978f12fcaa5d53c2ed2c585a",
+          "overlay": "images/body07_left_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 74.19054622210479,
+          "body_auto_rmse_px": 69.98466484139439,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body07_left/frames/body07_left/rigid/optimized_params.npz",
+          "parameter_sha256": "e2e89231cc80ef5e3c7a3440935bda223bff831ab6ff0ea5150797da0875fe1d",
+          "overlay": "images/body07_left_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 125.74233446058538,
+          "body_auto_rmse_px": 64.9169722505208,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body07_left/frames/body07_left/rigid/optimized_params.npz",
+          "parameter_sha256": "f14737ff6ed0e286cfa8bb6d4bfacdcbfc882cdac14b39448ed767bc02580ec4",
+          "overlay": "images/body07_left_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 104.64625426607437,
+          "body_auto_rmse_px": 52.9279284016764,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body07_left/frames/body07_left/body/params.npz",
+          "parameter_sha256": "7b485424602a9dcebd9904a5cf914d9dda57d94a6c72686fa501d55585bb6a06",
+          "overlay": "images/body07_left_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 98.87259413896822,
+          "body_auto_rmse_px": 48.778461791765714,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body07_left/frames/body07_left/body/params.npz",
+          "parameter_sha256": "3ea8b93de291f55935839ed41c27f90b7441da470a4bdd5b9ec8e2a706357c35",
+          "overlay": "images/body07_left_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 104.64625426607437,
+          "body_auto_rmse_px": 52.9279284016764,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body07_left/frames/body07_left/body/params.npz",
+          "parameter_sha256": "7b485424602a9dcebd9904a5cf914d9dda57d94a6c72686fa501d55585bb6a06",
+          "overlay": "images/body07_left_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 98.87259413896822,
+          "body_auto_rmse_px": 48.778461791765714,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body07_left/frames/body07_left/body/params.npz",
+          "parameter_sha256": "3ea8b93de291f55935839ed41c27f90b7441da470a4bdd5b9ec8e2a706357c35",
+          "overlay": "images/body07_left_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": true,
+      "matched_hands": 0,
+      "body_target_count": 6,
+      "local_surface_accepted": null
+    },
+    "4gpu": {
+      "no_matched_hand": true,
+      "matched_hands": 0,
+      "body_target_count": 6,
+      "local_surface_accepted": null
+    },
+    "final_delta_4gpu_minus_8gpu_mm": -5.77366012710614
+  },
+  {
+    "id": "body07_right",
+    "pair": 7,
+    "camera": "right",
+    "sequence": "studio/2023_08_23/S9/seq_1-1-3",
+    "frame_index": 21,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 79.78770371474535,
+          "body_auto_rmse_px": 73.4258287824161,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body07_right/frames/body07_right/raw/params.npz",
+          "parameter_sha256": "1adbb8463222b80e1f637e43dd616c178d4f3fd6ba2badb31a4c9c9d4601718d",
+          "overlay": "images/body07_right_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 83.67047037616666,
+          "body_auto_rmse_px": 75.68427696281783,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body07_right/frames/body07_right/raw/params.npz",
+          "parameter_sha256": "9b3c68c2b78327bedbfe46764c3bf6c28b5b0397d8292ada3ad0f0422be14a32",
+          "overlay": "images/body07_right_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 79.78771785427244,
+          "body_auto_rmse_px": 76.36579499228596,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body07_right/frames/body07_right/rigid/optimized_params.npz",
+          "parameter_sha256": "60264411009d19da02a64e8511b79c1dcb6af206c2c3f9e1ed05414be4e7e577",
+          "overlay": "images/body07_right_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 83.67047398026702,
+          "body_auto_rmse_px": 75.64628935452953,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body07_right/frames/body07_right/rigid/optimized_params.npz",
+          "parameter_sha256": "7801a4b477f39166015555e8eba60dca40b98d3bfc2386abdd2f0a459a6ced26",
+          "overlay": "images/body07_right_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 81.11513301093521,
+          "body_auto_rmse_px": 54.27098513286637,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body07_right/frames/body07_right/body/params.npz",
+          "parameter_sha256": "0247dea3ecfeb7c4561de272dd5ae3b3c2f94c9b49e3c49878618e7dafcb16b4",
+          "overlay": "images/body07_right_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 82.73729794639515,
+          "body_auto_rmse_px": 53.73869019838518,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body07_right/frames/body07_right/body/params.npz",
+          "parameter_sha256": "4c2f4eb7d99688d00e6c71483cba884b4bf67ae95ee28f79c7ac5efd386f0d97",
+          "overlay": "images/body07_right_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 81.11513301093521,
+          "body_auto_rmse_px": 54.27098513286637,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body07_right/frames/body07_right/body/params.npz",
+          "parameter_sha256": "0247dea3ecfeb7c4561de272dd5ae3b3c2f94c9b49e3c49878618e7dafcb16b4",
+          "overlay": "images/body07_right_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 82.73729794639515,
+          "body_auto_rmse_px": 53.73869019838518,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body07_right/frames/body07_right/body/params.npz",
+          "parameter_sha256": "4c2f4eb7d99688d00e6c71483cba884b4bf67ae95ee28f79c7ac5efd386f0d97",
+          "overlay": "images/body07_right_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": true,
+      "matched_hands": 0,
+      "body_target_count": 5,
+      "local_surface_accepted": null
+    },
+    "4gpu": {
+      "no_matched_hand": true,
+      "matched_hands": 0,
+      "body_target_count": 5,
+      "local_surface_accepted": null
+    },
+    "final_delta_4gpu_minus_8gpu_mm": 1.622164935459935
+  },
+  {
+    "id": "body08_left",
+    "pair": 8,
+    "camera": "left",
+    "sequence": "studio/2023_08_23/S9/seq_1-0-4",
+    "frame_index": 78,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 85.00280884497722,
+          "body_auto_rmse_px": 57.267923969008514,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body08_left/frames/body08_left/raw/params.npz",
+          "parameter_sha256": "2094e38f37a08d44f486feb0a408e2c37ccd4bd15d8e32133b172add940b2ef5",
+          "overlay": "images/body08_left_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 85.46618980961559,
+          "body_auto_rmse_px": 58.24071025775835,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body08_left/frames/body08_left/raw/params.npz",
+          "parameter_sha256": "4468ff443ff3ecb208580000c03b989a0e42b3e80e2a41e905164367f1040741",
+          "overlay": "images/body08_left_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 85.00279943747904,
+          "body_auto_rmse_px": 59.88271565189954,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body08_left/frames/body08_left/rigid/optimized_params.npz",
+          "parameter_sha256": "b8fc2095384cd063fa1035f19b4fe0ebc736a1ba84acceffbc6eb565218189dc",
+          "overlay": "images/body08_left_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 85.46618391275194,
+          "body_auto_rmse_px": 60.200555557773264,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body08_left/frames/body08_left/rigid/optimized_params.npz",
+          "parameter_sha256": "027906c0f888feccbd4202ed3903e837b1de363074057342d43ae3e97412249e",
+          "overlay": "images/body08_left_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 88.37049982750241,
+          "body_auto_rmse_px": 38.50313159338495,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body08_left/frames/body08_left/body/params.npz",
+          "parameter_sha256": "3e9f3c1159b181e2befa6881538846c2aaa16804cf7e01fca7ff19568ee409cb",
+          "overlay": "images/body08_left_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 86.86635379611599,
+          "body_auto_rmse_px": 38.62829782125189,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body08_left/frames/body08_left/body/params.npz",
+          "parameter_sha256": "feeb13f626e9b41bbac4a115c846fe3bbe6e1ac8fa4481dfb1e3e6e2a0cac531",
+          "overlay": "images/body08_left_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 88.37049982750241,
+          "body_auto_rmse_px": 38.50313159338495,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body08_left/frames/body08_left/body/params.npz",
+          "parameter_sha256": "3e9f3c1159b181e2befa6881538846c2aaa16804cf7e01fca7ff19568ee409cb",
+          "overlay": "images/body08_left_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 86.86635379611599,
+          "body_auto_rmse_px": 38.62829782125189,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body08_left/frames/body08_left/body/params.npz",
+          "parameter_sha256": "feeb13f626e9b41bbac4a115c846fe3bbe6e1ac8fa4481dfb1e3e6e2a0cac531",
+          "overlay": "images/body08_left_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": true,
+      "matched_hands": 0,
+      "body_target_count": 6,
+      "local_surface_accepted": null
+    },
+    "4gpu": {
+      "no_matched_hand": true,
+      "matched_hands": 0,
+      "body_target_count": 6,
+      "local_surface_accepted": null
+    },
+    "final_delta_4gpu_minus_8gpu_mm": -1.5041460313864263
+  },
+  {
+    "id": "body08_right",
+    "pair": 8,
+    "camera": "right",
+    "sequence": "studio/2023_08_23/S9/seq_1-0-4",
+    "frame_index": 78,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 66.73036164351412,
+          "body_auto_rmse_px": 69.65153842938325,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body08_right/frames/body08_right/raw/params.npz",
+          "parameter_sha256": "b745e38c15ae4723631850bed88566adce8206fdbdf6e37a2165790c0532070b",
+          "overlay": "images/body08_right_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 69.00260405547654,
+          "body_auto_rmse_px": 70.07559523219896,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body08_right/frames/body08_right/raw/params.npz",
+          "parameter_sha256": "e6d16ed0a43b45fcf27a2e98997b529a59ebcf840756e99d625fb722cdb5d98d",
+          "overlay": "images/body08_right_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 66.73038692007455,
+          "body_auto_rmse_px": 70.26460790495652,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body08_right/frames/body08_right/rigid/optimized_params.npz",
+          "parameter_sha256": "1939a2fc0655991520879c03315361154e65548ed955eb0b01e75530ba786107",
+          "overlay": "images/body08_right_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 69.00259111273738,
+          "body_auto_rmse_px": 70.85291181155733,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body08_right/frames/body08_right/rigid/optimized_params.npz",
+          "parameter_sha256": "93b6985aada7e35da03f766f9658d68c8f936e7e17e8296ff452c28a9c97dca3",
+          "overlay": "images/body08_right_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 89.15117964428333,
+          "body_auto_rmse_px": 56.27456179849357,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body08_right/frames/body08_right/body/params.npz",
+          "parameter_sha256": "6e949328a8c556e0195e33abae23918350ed43f2a6e7061aa3bd212d5b60b90e",
+          "overlay": "images/body08_right_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 82.06652710845725,
+          "body_auto_rmse_px": 56.16690644944716,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body08_right/frames/body08_right/body/params.npz",
+          "parameter_sha256": "6d06652d8a08c9fbb3e3cb56eef5562c3e4886ccc53f226b13b2b0678169d605",
+          "overlay": "images/body08_right_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 107.59224780474655,
+          "body_auto_rmse_px": 53.63666554017638,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body08_right/frames/body08_right/fused/body_params.npz",
+          "parameter_sha256": "7136abcddcef212b6d183509f35445de17e4c37f11151765158d8e8b6c6846c1",
+          "overlay": "images/body08_right_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 113.85082220567563,
+          "body_auto_rmse_px": 53.83217078391851,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body08_right/frames/body08_right/fused/body_params.npz",
+          "parameter_sha256": "e3658c2c7ec456caa5f55792766cf71e9cee5d2b6cbae1168ef348f0241b1b3b",
+          "overlay": "images/body08_right_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 1,
+      "body_target_count": 7,
+      "local_surface_accepted": false
+    },
+    "4gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 1,
+      "body_target_count": 7,
+      "local_surface_accepted": false
+    },
+    "final_delta_4gpu_minus_8gpu_mm": 6.258574400929078
+  },
+  {
+    "id": "body09_left",
+    "pair": 9,
+    "camera": "left",
+    "sequence": "studio/2023_08_23/S9/seq_1-1-9",
+    "frame_index": 122,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 77.23454270303866,
+          "body_auto_rmse_px": 65.10051513953198,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body09_left/frames/body09_left/raw/params.npz",
+          "parameter_sha256": "1a866698b620323132bc13ce5ae6bf58ce4320965d5a79301be3ea94ca8fef32",
+          "overlay": "images/body09_left_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 74.18476610228333,
+          "body_auto_rmse_px": 66.24566805030116,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body09_left/frames/body09_left/raw/params.npz",
+          "parameter_sha256": "34d345258c18da2dbbfe4badea1a7731cc7591e7aa0ebbaecceae69bbd88480f",
+          "overlay": "images/body09_left_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 77.23453234009062,
+          "body_auto_rmse_px": 52.18508750454623,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body09_left/frames/body09_left/rigid/optimized_params.npz",
+          "parameter_sha256": "2dbf2602f6bc85ddd56669ab87e645ae45420c9a19c90f4566b201f82980cfc3",
+          "overlay": "images/body09_left_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 74.18478073375408,
+          "body_auto_rmse_px": 52.10612526469098,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body09_left/frames/body09_left/rigid/optimized_params.npz",
+          "parameter_sha256": "794099904652e91a47a56eaf32fd6a45dd8238c2c558b15f8f23cad321ee30b8",
+          "overlay": "images/body09_left_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 81.51573832419906,
+          "body_auto_rmse_px": 31.542902819166688,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body09_left/frames/body09_left/body/params.npz",
+          "parameter_sha256": "6d4f6d4a3e4b43c86d8f2b049b7381c0ce1aa17360daa4b99cf4cffced295496",
+          "overlay": "images/body09_left_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 88.71026303875294,
+          "body_auto_rmse_px": 31.366028939798593,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body09_left/frames/body09_left/body/params.npz",
+          "parameter_sha256": "cec9a7d0aaa8296e96de74988f82bf17a0003116512d9c65adcb076edab70777",
+          "overlay": "images/body09_left_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 79.7369650604542,
+          "body_auto_rmse_px": 31.784510411876234,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body09_left/frames/body09_left/fused/body_params.npz",
+          "parameter_sha256": "3fd54f4667bd6ea6434364319c3925d4ace178dfedbd6cdf8f9993c2727e49e1",
+          "overlay": "images/body09_left_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 90.04057820426543,
+          "body_auto_rmse_px": 31.517541522733968,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body09_left/frames/body09_left/fused/body_params.npz",
+          "parameter_sha256": "64b3b111324e2f881ea16a0d408cefc737736d03e21682532d65af1e299abbd9",
+          "overlay": "images/body09_left_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 1,
+      "body_target_count": 8,
+      "local_surface_accepted": false
+    },
+    "4gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 1,
+      "body_target_count": 8,
+      "local_surface_accepted": false
+    },
+    "final_delta_4gpu_minus_8gpu_mm": 10.303613143811233
+  },
+  {
+    "id": "body09_right",
+    "pair": 9,
+    "camera": "right",
+    "sequence": "studio/2023_08_23/S9/seq_1-1-9",
+    "frame_index": 122,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 109.4549482773079,
+          "body_auto_rmse_px": 58.439923304724296,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body09_right/frames/body09_right/raw/params.npz",
+          "parameter_sha256": "ab3b3db02c3fb8cc62c513cc9ead5bf13589ed79a9ad6be3bfe50702034e1a0d",
+          "overlay": "images/body09_right_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 106.8012063343411,
+          "body_auto_rmse_px": 58.2861511058863,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body09_right/frames/body09_right/raw/params.npz",
+          "parameter_sha256": "bf146862b81687f59e5087bcba888585b3107211437d919f03f7c3f65221b626",
+          "overlay": "images/body09_right_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 109.45494422097418,
+          "body_auto_rmse_px": 68.1744952698491,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body09_right/frames/body09_right/rigid/optimized_params.npz",
+          "parameter_sha256": "ede5167bf6302d9ccabfa8bf14cae07cb3ab8580cbeced6cebc1ae556ecf099d",
+          "overlay": "images/body09_right_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 106.80120916420202,
+          "body_auto_rmse_px": 67.01289266836523,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body09_right/frames/body09_right/rigid/optimized_params.npz",
+          "parameter_sha256": "6c3e5968e5c917790e0184d8c5b40692388124230735e0a66c7d5bc061308f47",
+          "overlay": "images/body09_right_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 93.74872585185862,
+          "body_auto_rmse_px": 27.23558911198379,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body09_right/frames/body09_right/body/params.npz",
+          "parameter_sha256": "ce4f700d797775e753775ec471321cc516ab2603d00f2627a04aeecd00f2f667",
+          "overlay": "images/body09_right_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 93.78413596572359,
+          "body_auto_rmse_px": 27.16504156807047,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body09_right/frames/body09_right/body/params.npz",
+          "parameter_sha256": "db50e23d074133be2a4134abec12ef0733f5116074f1adfc78900d6637d23492",
+          "overlay": "images/body09_right_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 93.74872585185862,
+          "body_auto_rmse_px": 27.23558911198379,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body09_right/frames/body09_right/body/params.npz",
+          "parameter_sha256": "ce4f700d797775e753775ec471321cc516ab2603d00f2627a04aeecd00f2f667",
+          "overlay": "images/body09_right_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 93.78413596572359,
+          "body_auto_rmse_px": 27.16504156807047,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body09_right/frames/body09_right/body/params.npz",
+          "parameter_sha256": "db50e23d074133be2a4134abec12ef0733f5116074f1adfc78900d6637d23492",
+          "overlay": "images/body09_right_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": true,
+      "matched_hands": 0,
+      "body_target_count": 5,
+      "local_surface_accepted": null
+    },
+    "4gpu": {
+      "no_matched_hand": true,
+      "matched_hands": 0,
+      "body_target_count": 5,
+      "local_surface_accepted": null
+    },
+    "final_delta_4gpu_minus_8gpu_mm": 0.03541011386496962
+  },
+  {
+    "id": "body10_left",
+    "pair": 10,
+    "camera": "left",
+    "sequence": "studio/2023_08_23/S9/seq_1-0-0",
+    "frame_index": 129,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 97.534242238406,
+          "body_auto_rmse_px": 50.78826730367623,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body10_left/frames/body10_left/raw/params.npz",
+          "parameter_sha256": "365587dfb9484b07f67d881b7e8926865de49a341b0670f49ea3009dda2f5753",
+          "overlay": "images/body10_left_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 96.29552430407047,
+          "body_auto_rmse_px": 57.77323636108394,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body10_left/frames/body10_left/raw/params.npz",
+          "parameter_sha256": "c7bd55bd5c9bb24cc09554e400059ad19d5b3f7efb12a59e35b306af3a69609a",
+          "overlay": "images/body10_left_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 97.53424349763527,
+          "body_auto_rmse_px": 19.504656961365203,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body10_left/frames/body10_left/rigid/optimized_params.npz",
+          "parameter_sha256": "2513a0ba49c3c16b01fa3ef491f0c83c1392194115accdd511950bbe125fc5a6",
+          "overlay": "images/body10_left_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 96.29552051664321,
+          "body_auto_rmse_px": 26.136073974198037,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body10_left/frames/body10_left/rigid/optimized_params.npz",
+          "parameter_sha256": "987fc60c047cb97e62884840d9d9bfb30f01d25cc60707c6633366b5370ac032",
+          "overlay": "images/body10_left_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 141.77018257189982,
+          "body_auto_rmse_px": 0.9582200308490995,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body10_left/frames/body10_left/body/params.npz",
+          "parameter_sha256": "cc6c61572c67a3aaa2a30e9efa620693a3a8af61ddb4402492e3d1a04275dbf7",
+          "overlay": "images/body10_left_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 142.03195572902357,
+          "body_auto_rmse_px": 1.030268621135687,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body10_left/frames/body10_left/body/params.npz",
+          "parameter_sha256": "9c1526d2dce857f05bd391d8b02db938816f8dff8d206161ea540acb9862580c",
+          "overlay": "images/body10_left_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 137.62794099636184,
+          "body_auto_rmse_px": 4.203077066105699,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body10_left/frames/body10_left/fused/body_params.npz",
+          "parameter_sha256": "611e27145caae2aa687ac0d6df3e9cfd1b459e4954fec463b519fac8d7003d86",
+          "overlay": "images/body10_left_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 136.87435432526618,
+          "body_auto_rmse_px": 4.2672014204852955,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body10_left/frames/body10_left/fused/body_params.npz",
+          "parameter_sha256": "7608c4b8cd0b7b48655415e87477a9c25ed066466f69f25fcd8cfd59a16826a2",
+          "overlay": "images/body10_left_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 1,
+      "body_target_count": 4,
+      "local_surface_accepted": true
+    },
+    "4gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 1,
+      "body_target_count": 4,
+      "local_surface_accepted": true
+    },
+    "final_delta_4gpu_minus_8gpu_mm": -0.7535866710956611
+  },
+  {
+    "id": "body10_right",
+    "pair": 10,
+    "camera": "right",
+    "sequence": "studio/2023_08_23/S9/seq_1-0-0",
+    "frame_index": 129,
+    "stages": {
+      "raw": {
+        "8gpu": {
+          "pa_mpjpe_mm": 106.01503407720998,
+          "body_auto_rmse_px": 119.95677945976125,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body10_right/frames/body10_right/raw/params.npz",
+          "parameter_sha256": "484ef7235760ff173077defa79a8f2a019eef5b80db4df675d799e07ea4fa199",
+          "overlay": "images/body10_right_8gpu_raw.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 99.01600179831904,
+          "body_auto_rmse_px": 122.40467321073362,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body10_right/frames/body10_right/raw/params.npz",
+          "parameter_sha256": "1fa8096144c3704819ca693cb58efdfde96ba7cc166160ff38b6f4c830bf3475",
+          "overlay": "images/body10_right_4gpu_raw.jpg"
+        }
+      },
+      "rigid": {
+        "8gpu": {
+          "pa_mpjpe_mm": 106.0150556984865,
+          "body_auto_rmse_px": 110.96899115321669,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body10_right/frames/body10_right/rigid/optimized_params.npz",
+          "parameter_sha256": "8416c0fedae0c84d7b67829065283ff82ccd0b279caf1b82db3a466969b43044",
+          "overlay": "images/body10_right_8gpu_rigid.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 99.01601030713584,
+          "body_auto_rmse_px": 113.84405410418545,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body10_right/frames/body10_right/rigid/optimized_params.npz",
+          "parameter_sha256": "e28e6fdf4a2fcadb6ec3d355fbab461f1b8af61e76fc2d776070ede8937d1472",
+          "overlay": "images/body10_right_4gpu_rigid.jpg"
+        }
+      },
+      "body": {
+        "8gpu": {
+          "pa_mpjpe_mm": 132.48334959286055,
+          "body_auto_rmse_px": 90.2871212358903,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body10_right/frames/body10_right/body/params.npz",
+          "parameter_sha256": "523f2b58750a6afdd284e944460e84ad22fb464cbbaf0e4f939fa44e57fda1ba",
+          "overlay": "images/body10_right_8gpu_body.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 136.79530599455393,
+          "body_auto_rmse_px": 87.60636367390875,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body10_right/frames/body10_right/body/params.npz",
+          "parameter_sha256": "60d048fa0e8c3be38892608f7fc0198454a2c42f99ac2f598f82025976118f94",
+          "overlay": "images/body10_right_4gpu_body.jpg"
+        }
+      },
+      "final": {
+        "8gpu": {
+          "pa_mpjpe_mm": 170.63584774306224,
+          "body_auto_rmse_px": 61.838542511046334,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_body_hand10_head01_20261014_v1/body_work_full_image/body10_right/frames/body10_right/fused/body_params.npz",
+          "parameter_sha256": "be7be46e1c7a1b99df098f1601c4d26b47c11442b89f6f5b6cd9df3b00a32a9d",
+          "overlay": "images/body10_right_8gpu_final.jpg"
+        },
+        "4gpu": {
+          "pa_mpjpe_mm": 167.68373153510925,
+          "body_auto_rmse_px": 62.976921884715054,
+          "parameter_file": "/vepfs-mlp2/mlp-public/huyaoqing/EgoFishPose/experiments/benchmark_unrealego_rw_paper4gpu_head01_20261020_v1/work/body10_right/frames/body10_right/fused/body_params.npz",
+          "parameter_sha256": "83a6615c6710c1513f31812cceb3e7761f034ac26402f60afebd933884de0a1c",
+          "overlay": "images/body10_right_4gpu_final.jpg"
+        }
+      }
+    },
+    "8gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 1,
+      "body_target_count": 7,
+      "local_surface_accepted": true
+    },
+    "4gpu": {
+      "no_matched_hand": false,
+      "matched_hands": 1,
+      "body_target_count": 7,
+      "local_surface_accepted": true
+    },
+    "final_delta_4gpu_minus_8gpu_mm": -2.9521162079529972
+  }
+]

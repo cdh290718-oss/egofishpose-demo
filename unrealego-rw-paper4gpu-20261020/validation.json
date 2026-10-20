@@ -1,0 +1,166 @@
+{
+  "frames": [
+    {
+      "id": "body01_left",
+      "passed": true,
+      "no_matched_hand": false,
+      "recorded_artifact_hashes_checked": 46,
+      "independent_final_reload": true,
+      "local_surface_accepted": true
+    },
+    {
+      "id": "body01_right",
+      "passed": true,
+      "no_matched_hand": true,
+      "recorded_artifact_hashes_checked": 32,
+      "independent_final_reload": null,
+      "local_surface_accepted": null
+    },
+    {
+      "id": "body02_left",
+      "passed": true,
+      "no_matched_hand": false,
+      "recorded_artifact_hashes_checked": 46,
+      "independent_final_reload": true,
+      "local_surface_accepted": false
+    },
+    {
+      "id": "body02_right",
+      "passed": true,
+      "no_matched_hand": false,
+      "recorded_artifact_hashes_checked": 46,
+      "independent_final_reload": true,
+      "local_surface_accepted": false
+    },
+    {
+      "id": "body03_left",
+      "passed": true,
+      "no_matched_hand": true,
+      "recorded_artifact_hashes_checked": 32,
+      "independent_final_reload": null,
+      "local_surface_accepted": null
+    },
+    {
+      "id": "body03_right",
+      "passed": true,
+      "no_matched_hand": true,
+      "recorded_artifact_hashes_checked": 32,
+      "independent_final_reload": null,
+      "local_surface_accepted": null
+    },
+    {
+      "id": "body04_left",
+      "passed": true,
+      "no_matched_hand": false,
+      "recorded_artifact_hashes_checked": 46,
+      "independent_final_reload": true,
+      "local_surface_accepted": false
+    },
+    {
+      "id": "body04_right",
+      "passed": true,
+      "no_matched_hand": false,
+      "recorded_artifact_hashes_checked": 46,
+      "independent_final_reload": true,
+      "local_surface_accepted": true
+    },
+    {
+      "id": "body05_left",
+      "passed": true,
+      "no_matched_hand": false,
+      "recorded_artifact_hashes_checked": 46,
+      "independent_final_reload": true,
+      "local_surface_accepted": false
+    },
+    {
+      "id": "body05_right",
+      "passed": true,
+      "no_matched_hand": false,
+      "recorded_artifact_hashes_checked": 46,
+      "independent_final_reload": true,
+      "local_surface_accepted": false
+    },
+    {
+      "id": "body06_left",
+      "passed": true,
+      "no_matched_hand": false,
+      "recorded_artifact_hashes_checked": 46,
+      "independent_final_reload": true,
+      "local_surface_accepted": false
+    },
+    {
+      "id": "body06_right",
+      "passed": true,
+      "no_matched_hand": false,
+      "recorded_artifact_hashes_checked": 46,
+      "independent_final_reload": true,
+      "local_surface_accepted": false
+    },
+    {
+      "id": "body07_left",
+      "passed": true,
+      "no_matched_hand": true,
+      "recorded_artifact_hashes_checked": 32,
+      "independent_final_reload": null,
+      "local_surface_accepted": null
+    },
+    {
+      "id": "body07_right",
+      "passed": true,
+      "no_matched_hand": true,
+      "recorded_artifact_hashes_checked": 32,
+      "independent_final_reload": null,
+      "local_surface_accepted": null
+    },
+    {
+      "id": "body08_left",
+      "passed": true,
+      "no_matched_hand": true,
+      "recorded_artifact_hashes_checked": 32,
+      "independent_final_reload": null,
+      "local_surface_accepted": null
+    },
+    {
+      "id": "body08_right",
+      "passed": true,
+      "no_matched_hand": false,
+      "recorded_artifact_hashes_checked": 46,
+      "independent_final_reload": true,
+      "local_surface_accepted": false
+    },
+    {
+      "id": "body09_left",
+      "passed": true,
+      "no_matched_hand": false,
+      "recorded_artifact_hashes_checked": 46,
+      "independent_final_reload": true,
+      "local_surface_accepted": false
+    },
+    {
+      "id": "body09_right",
+      "passed": true,
+      "no_matched_hand": true,
+      "recorded_artifact_hashes_checked": 32,
+      "independent_final_reload": null,
+      "local_surface_accepted": null
+    },
+    {
+      "id": "body10_left",
+      "passed": true,
+      "no_matched_hand": false,
+      "recorded_artifact_hashes_checked": 46,
+      "independent_final_reload": true,
+      "local_surface_accepted": true
+    },
+    {
+      "id": "body10_right",
+      "passed": true,
+      "no_matched_hand": false,
+      "recorded_artifact_hashes_checked": 46,
+      "independent_final_reload": true,
+      "local_surface_accepted": true
+    }
+  ],
+  "baseline_recomputed_max_difference_mm": 2.842170943040401e-14,
+  "metric_similarity_and_reflection_tests_passed": true
+}

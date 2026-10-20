@@ -1,0 +1,308 @@
+{
+  "passed": true,
+  "count": 20,
+  "tolerance": 1e-06,
+  "scope": "Fresh 8GPU network predictions under current external backend vs saved old 8GPU predictions; no 8GPU optimization rerun",
+  "per_image": [
+    {
+      "id": "body01_left",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    },
+    {
+      "id": "body01_right",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    },
+    {
+      "id": "body02_left",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    },
+    {
+      "id": "body02_right",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    },
+    {
+      "id": "body03_left",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    },
+    {
+      "id": "body03_right",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    },
+    {
+      "id": "body04_left",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    },
+    {
+      "id": "body04_right",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    },
+    {
+      "id": "body05_left",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    },
+    {
+      "id": "body05_right",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    },
+    {
+      "id": "body06_left",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    },
+    {
+      "id": "body06_right",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    },
+    {
+      "id": "body07_left",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    },
+    {
+      "id": "body07_right",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    },
+    {
+      "id": "body08_left",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    },
+    {
+      "id": "body08_right",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    },
+    {
+      "id": "body09_left",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    },
+    {
+      "id": "body09_right",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    },
+    {
+      "id": "body10_left",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    },
+    {
+      "id": "body10_right",
+      "max_abs_by_parameter": {
+        "betas": 0.0,
+        "body_pose": 0.0,
+        "global_orient_network": 0.0,
+        "transl_network": 0.0,
+        "left_hand_pose": 0.0,
+        "right_hand_pose": 0.0,
+        "jaw_pose": 0.0,
+        "expression": 0.0,
+        "leye_pose": 0.0,
+        "reye_pose": 0.0
+      }
+    }
+  ]
+}

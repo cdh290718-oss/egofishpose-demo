@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "frames": 20,
+  "known_similarity_transform_and_no_reflection": true,
+  "alternate_pa_max_abs_m": 8.881784197001252e-16,
+  "only_changed_model": "EgoSMPLX body checkpoint",
+  "other_config_identical": true,
+  "official_calibration": {
+    "left": {
+      "max_projection_affine_difference_px": 5.684341886080801e-13,
+      "random_rays": 1000
+    },
+    "right": {
+      "max_projection_affine_difference_px": 3.410605131648481e-13,
+      "random_rays": 1000
+    }
+  },
+  "recorded_network_checkpoint_path_verified": 20,
+  "input_and_automatic_cache_hashes_verified": 100,
+  "source_commit": "269ec28d10b779045136b907d1fe2f9ee2acf0f7",
+  "optimizer_source_modified": false
+}

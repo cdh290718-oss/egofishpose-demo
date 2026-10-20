@@ -1,0 +1,10 @@
+{
+  "left": {
+    "official_zip_json_equal": true,
+    "sha256": "0bc4f339373026e5c3c22c10318b9cdb5d84f13657f6d08776574e912b0f7e2b"
+  },
+  "right": {
+    "official_zip_json_equal": true,
+    "sha256": "8b61cf7c4750fbfed38da80f71c4ca6a6bcef185c04a2b0cda75657e53fc6b1d"
+  }
+}

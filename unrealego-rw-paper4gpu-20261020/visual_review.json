@@ -1,0 +1,65 @@
+{
+  "all_20_final_images_reviewed": true,
+  "compared_to_all_20_previous_8gpu_final_images": true,
+  "scope": "Qualitative visual review of actual saved final projections, using paired preview mosaics; not human fitting labels or a numerical silhouette-accuracy test.",
+  "previews": [
+    "previews/first_two_pairs.jpg",
+    "previews/pairs_03_05.jpg",
+    "previews/pairs_06_07.jpg",
+    "previews/pairs_08_09.jpg",
+    "previews/pairs_10_10.jpg"
+  ],
+  "conclusion_zh": "新旧权重的投影偏差模式接近。可见身体的位置与轮廓和网格仍有明显偏离，不能把完成推理或PA数值的小幅变化解释为投影已经准确。没有为改善外观重调参数。",
+  "per_pair": [
+    {
+      "pair": 1,
+      "reviewed": true,
+      "notes_zh": "4GPU和8GPU均存在明显投影错位；保留实际输出，不做展示性修正。"
+    },
+    {
+      "pair": 2,
+      "reviewed": true,
+      "notes_zh": "4GPU和8GPU均存在明显投影错位；保留实际输出，不做展示性修正。"
+    },
+    {
+      "pair": 3,
+      "reviewed": true,
+      "notes_zh": "4GPU和8GPU均存在明显投影错位；保留实际输出，不做展示性修正。"
+    },
+    {
+      "pair": 4,
+      "reviewed": true,
+      "notes_zh": "4GPU和8GPU均存在明显投影错位；保留实际输出，不做展示性修正。"
+    },
+    {
+      "pair": 5,
+      "reviewed": true,
+      "notes_zh": "4GPU和8GPU均存在明显投影错位；保留实际输出，不做展示性修正。"
+    },
+    {
+      "pair": 6,
+      "reviewed": true,
+      "notes_zh": "4GPU和8GPU均存在明显投影错位；保留实际输出，不做展示性修正。"
+    },
+    {
+      "pair": 7,
+      "reviewed": true,
+      "notes_zh": "4GPU和8GPU均存在明显投影错位；保留实际输出，不做展示性修正。"
+    },
+    {
+      "pair": 8,
+      "reviewed": true,
+      "notes_zh": "4GPU和8GPU均存在明显投影错位；保留实际输出，不做展示性修正。"
+    },
+    {
+      "pair": 9,
+      "reviewed": true,
+      "notes_zh": "4GPU和8GPU均存在明显投影错位；保留实际输出，不做展示性修正。"
+    },
+    {
+      "pair": 10,
+      "reviewed": true,
+      "notes_zh": "4GPU和8GPU均存在明显投影错位；保留实际输出，不做展示性修正。"
+    }
+  ]
+}

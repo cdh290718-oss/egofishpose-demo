@@ -1,0 +1,115 @@
+{
+  "stages": {
+    "raw": {
+      "8gpu": {
+        "image_mean_mm": 81.29397093169507,
+        "pair_statistics_mm": {
+          "mean": 81.29397093169507,
+          "median": 77.53860208943263,
+          "p90": 94.18773475693675,
+          "p95": 97.98118645737236,
+          "max": 101.77463815780798
+        }
+      },
+      "4gpu": {
+        "image_mean_mm": 83.83018971026488,
+        "pair_statistics_mm": {
+          "mean": 83.83018971026488,
+          "median": 81.2949002985846,
+          "p90": 98.36082678334166,
+          "p95": 101.53361357800274,
+          "max": 104.70640037266384
+        }
+      },
+      "delta_4gpu_minus_8gpu_mm": 2.536218778569804
+    },
+    "rigid": {
+      "8gpu": {
+        "image_mean_mm": 81.2939689976367,
+        "pair_statistics_mm": {
+          "mean": 81.29396899763668,
+          "median": 77.53859080568628,
+          "p90": 94.18772941228524,
+          "p95": 97.98118950517306,
+          "max": 101.77464959806089
+        }
+      },
+      "4gpu": {
+        "image_mean_mm": 83.83019069372688,
+        "pair_statistics_mm": {
+          "mean": 83.8301906937269,
+          "median": 81.29490105473853,
+          "p90": 98.36082929274319,
+          "p95": 101.53361675658469,
+          "max": 104.70640422042621
+        }
+      },
+      "delta_4gpu_minus_8gpu_mm": 2.5362216960901804
+    },
+    "body": {
+      "8gpu": {
+        "image_mean_mm": 101.22291411839126,
+        "pair_statistics_mm": {
+          "mean": 101.22291411839127,
+          "median": 97.9425202168818,
+          "p90": 116.2430149425947,
+          "p95": 126.68489051248741,
+          "max": 137.1267660823802
+        }
+      },
+      "4gpu": {
+        "image_mean_mm": 100.78109730730355,
+        "pair_statistics_mm": {
+          "mean": 100.78109730730355,
+          "median": 100.25065478798422,
+          "p90": 109.69117341714421,
+          "p95": 124.55240213946645,
+          "max": 139.41363086178876
+        }
+      },
+      "delta_4gpu_minus_8gpu_mm": -0.44181681108770476
+    },
+    "final": {
+      "8gpu": {
+        "image_mean_mm": 110.44962702311969,
+        "pair_statistics_mm": {
+          "mean": 110.44962702311969,
+          "median": 109.17675071652411,
+          "p90": 124.18205059100359,
+          "p95": 139.15697248035778,
+          "max": 154.13189436971203
+        }
+      },
+      "4gpu": {
+        "image_mean_mm": 110.17422210145745,
+        "pair_statistics_mm": {
+          "mean": 110.17422210145742,
+          "median": 107.17604575131887,
+          "p90": 123.74439749650622,
+          "p95": 138.01172021334693,
+          "max": 152.2790429301877
+        }
+      },
+      "delta_4gpu_minus_8gpu_mm": -0.2754049216622434
+    }
+  },
+  "pair_count": 10,
+  "image_count": 20,
+  "joint_count": 15,
+  "final_improved_images": 10,
+  "final_improved_pairs": 6,
+  "source_commit": "269ec28d10b779045136b907d1fe2f9ee2acf0f7",
+  "weight": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/output/train_5datasets_4gpu_camtrans_w10_12ep_fixed_20260809_20260809_021838/model_dump/snapshot_11.pth.tar",
+  "weight_sha256": "1cdb9bc25bf3a208694620218b00419d1ceeba36adbc63ec1f954598ecb7204b",
+  "baseline_weight": "/vepfs-mlp2/mlp-public/huyaoqing/EgoSMPLX/output/train_5datasets_8gpu_camtrans_w10_12ep_fixed_20260809_20260809_163018/model_dump/snapshot_11.pth.tar",
+  "metric": "Per-image scale + proper rotation (no reflection) + translation; mean GT15 Euclidean joint error in mm; pair score is mean of independent left/right views.",
+  "gt": "Official UnrealEgo-RW sparse test GT15; Head excluded, ToeBase follows historical heel proxy. No pseudo-GT. Evaluation only.",
+  "scope": "10 fixed S9 sequence midpoints; not full benchmark; no stereo fusion. Final PA scores standard body joints before local seam surface offsets; not final surface accuracy.",
+  "reused_8gpu_max_difference_mm": 2.842170943040401e-14,
+  "reloaded_4gpu_count": 20,
+  "local_surface_4gpu_counts": {
+    "True": 4,
+    "False": 9,
+    "None": 7
+  }
+}
