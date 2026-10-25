@@ -1,0 +1,563 @@
+{
+  "title": "session_hand_6 当前标定双目联合拟合",
+  "version": "v2 · 固定原手指姿态",
+  "date": "2026-10-25",
+  "decision": "探索结果，暂不替换原成品",
+  "temporal_optimization": false,
+  "calibration": "current original non-identity stereo extrinsics; not validated on this sequence",
+  "metric_note": "对自动 Sapiens/WiLoR 关键点的二维 RMSE，非三维真值精度；汇总为各视图/手的 RMSE 算术均值",
+  "aggregate": {
+    "new": {
+      "body": {
+        "original_mean_rmse_px": 57.5445442199707,
+        "joint_mean_rmse_px": 70.27249654134114,
+        "relative_change_percent": 22.118434499570206,
+        "number_of_rmse_terms": [
+          6,
+          6
+        ]
+      },
+      "hands": {
+        "original_mean_rmse_px": 10.659890413284302,
+        "joint_mean_rmse_px": 7.822814663251241,
+        "relative_change_percent": -26.61449264522937,
+        "number_of_rmse_terms": [
+          12,
+          12
+        ]
+      }
+    },
+    "old": {
+      "body": {
+        "original_mean_rmse_px": 32.59263467788696,
+        "joint_mean_rmse_px": 60.302090644836426,
+        "relative_change_percent": 85.01753921032171,
+        "number_of_rmse_terms": [
+          4,
+          4
+        ]
+      },
+      "hands": {
+        "original_mean_rmse_px": 25.360365009307863,
+        "joint_mean_rmse_px": 80.41445999145508,
+        "relative_change_percent": 217.08715533842292,
+        "number_of_rmse_terms": [
+          5,
+          5
+        ]
+      }
+    }
+  },
+  "pairs": [
+    {
+      "id": "new_001",
+      "label": "新样本 001 · 29.0 秒",
+      "target_seconds": 29.0,
+      "actual_seconds": {
+        "cam3": 28.995216666666668,
+        "cam4": 28.99545
+      },
+      "timestamp_difference_ms": 0.23333333333397377,
+      "original": [
+        {
+          "camera": "cam3",
+          "body_rmse_px": 74.83663940429688,
+          "body_mean_px": 37.33067321777344,
+          "body_points": 13,
+          "minimum_depth_m": 0.16197580099105835,
+          "hands": {
+            "left": {
+              "rmse_px": 9.64548110961914,
+              "mean_px": 9.48219108581543,
+              "wrist_px": 15.875986099243164,
+              "points": 21
+            },
+            "right": {
+              "rmse_px": 11.56843090057373,
+              "mean_px": 11.448418617248535,
+              "wrist_px": 17.540626525878906,
+              "points": 21
+            }
+          }
+        },
+        {
+          "camera": "cam4",
+          "body_rmse_px": 77.28315734863281,
+          "body_mean_px": 39.01983642578125,
+          "body_points": 13,
+          "minimum_depth_m": 0.16195504367351532,
+          "hands": {
+            "left": {
+              "rmse_px": 8.497116088867188,
+              "mean_px": 8.24824047088623,
+              "wrist_px": 16.603206634521484,
+              "points": 21
+            },
+            "right": {
+              "rmse_px": 10.869696617126465,
+              "mean_px": 10.772558212280273,
+              "wrist_px": 15.828829765319824,
+              "points": 21
+            }
+          }
+        }
+      ],
+      "joint": [
+        {
+          "camera": "cam3",
+          "body_rmse_px": 94.77146911621094,
+          "body_mean_px": 46.79088592529297,
+          "body_points": 13,
+          "minimum_depth_m": 0.16301709413528442,
+          "hands": {
+            "left": {
+              "rmse_px": 7.627465724945068,
+              "mean_px": 7.410810947418213,
+              "wrist_px": 5.447388172149658,
+              "points": 21
+            },
+            "right": {
+              "rmse_px": 10.662089347839355,
+              "mean_px": 9.89218521118164,
+              "wrist_px": 20.980661392211914,
+              "points": 21
+            }
+          }
+        },
+        {
+          "camera": "cam4",
+          "body_rmse_px": 99.65552520751953,
+          "body_mean_px": 49.12213134765625,
+          "body_points": 13,
+          "minimum_depth_m": 0.17109423875808716,
+          "hands": {
+            "left": {
+              "rmse_px": 7.129755020141602,
+              "mean_px": 6.8366193771362305,
+              "wrist_px": 12.640317916870117,
+              "points": 21
+            },
+            "right": {
+              "rmse_px": 5.88152551651001,
+              "mean_px": 5.284268856048584,
+              "wrist_px": 8.012177467346191,
+              "points": 21
+            }
+          }
+        }
+      ],
+      "crossings": {
+        "left": {
+          "before": 6,
+          "after": 195
+        },
+        "right": {
+          "before": 5,
+          "after": 30
+        }
+      }
+    },
+    {
+      "id": "new_022",
+      "label": "新样本 022 · 31.1 秒",
+      "target_seconds": 31.1,
+      "actual_seconds": {
+        "cam3": 31.105,
+        "cam4": 31.105066666666666
+      },
+      "timestamp_difference_ms": 0.06666666666532706,
+      "original": [
+        {
+          "camera": "cam3",
+          "body_rmse_px": 38.21945571899414,
+          "body_mean_px": 22.373184204101562,
+          "body_points": 12,
+          "minimum_depth_m": 0.20995181798934937,
+          "hands": {
+            "left": {
+              "rmse_px": 9.720992088317871,
+              "mean_px": 9.341569900512695,
+              "wrist_px": 20.404909133911133,
+              "points": 21
+            },
+            "right": {
+              "rmse_px": 5.984454154968262,
+              "mean_px": 5.888658046722412,
+              "wrist_px": 9.362049102783203,
+              "points": 21
+            }
+          }
+        },
+        {
+          "camera": "cam4",
+          "body_rmse_px": 33.68047332763672,
+          "body_mean_px": 20.08414077758789,
+          "body_points": 12,
+          "minimum_depth_m": 0.1442524492740631,
+          "hands": {
+            "left": {
+              "rmse_px": 8.730916023254395,
+              "mean_px": 8.325480461120605,
+              "wrist_px": 19.585290908813477,
+              "points": 21
+            },
+            "right": {
+              "rmse_px": 6.5637311935424805,
+              "mean_px": 6.403589248657227,
+              "wrist_px": 6.548079967498779,
+              "points": 21
+            }
+          }
+        }
+      ],
+      "joint": [
+        {
+          "camera": "cam3",
+          "body_rmse_px": 40.650291442871094,
+          "body_mean_px": 24.708419799804688,
+          "body_points": 12,
+          "minimum_depth_m": 0.1867288053035736,
+          "hands": {
+            "left": {
+              "rmse_px": 7.791835784912109,
+              "mean_px": 7.519307613372803,
+              "wrist_px": 15.005396842956543,
+              "points": 21
+            },
+            "right": {
+              "rmse_px": 4.826117515563965,
+              "mean_px": 4.02246618270874,
+              "wrist_px": 12.142223358154297,
+              "points": 21
+            }
+          }
+        },
+        {
+          "camera": "cam4",
+          "body_rmse_px": 42.60118103027344,
+          "body_mean_px": 24.670604705810547,
+          "body_points": 12,
+          "minimum_depth_m": 0.19484680891036987,
+          "hands": {
+            "left": {
+              "rmse_px": 7.988654613494873,
+              "mean_px": 7.6653618812561035,
+              "wrist_px": 11.50502872467041,
+              "points": 21
+            },
+            "right": {
+              "rmse_px": 7.72504186630249,
+              "mean_px": 7.210067272186279,
+              "wrist_px": 4.97761869430542,
+              "points": 21
+            }
+          }
+        }
+      ],
+      "crossings": {
+        "left": {
+          "before": 70,
+          "after": 25
+        },
+        "right": {
+          "before": 0,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": "new_100",
+      "label": "新样本 100 · 38.9 秒",
+      "target_seconds": 38.9,
+      "actual_seconds": {
+        "cam3": 38.906333333333336,
+        "cam4": 38.906216666666666
+      },
+      "timestamp_difference_ms": -0.1166666666705396,
+      "original": [
+        {
+          "camera": "cam3",
+          "body_rmse_px": 65.85034942626953,
+          "body_mean_px": 35.20284652709961,
+          "body_points": 13,
+          "minimum_depth_m": 0.0661587119102478,
+          "hands": {
+            "left": {
+              "rmse_px": 14.10903549194336,
+              "mean_px": 13.80458927154541,
+              "wrist_px": 22.46697998046875,
+              "points": 21
+            },
+            "right": {
+              "rmse_px": 14.067776679992676,
+              "mean_px": 13.812552452087402,
+              "wrist_px": 22.738496780395508,
+              "points": 21
+            }
+          }
+        },
+        {
+          "camera": "cam4",
+          "body_rmse_px": 55.39719009399414,
+          "body_mean_px": 31.681514739990234,
+          "body_points": 13,
+          "minimum_depth_m": 0.04785855859518051,
+          "hands": {
+            "left": {
+              "rmse_px": 14.083425521850586,
+              "mean_px": 13.851876258850098,
+              "wrist_px": 22.825973510742188,
+              "points": 21
+            },
+            "right": {
+              "rmse_px": 14.077629089355469,
+              "mean_px": 13.842779159545898,
+              "wrist_px": 22.448894500732422,
+              "points": 21
+            }
+          }
+        }
+      ],
+      "joint": [
+        {
+          "camera": "cam3",
+          "body_rmse_px": 64.9904556274414,
+          "body_mean_px": 34.65471649169922,
+          "body_points": 13,
+          "minimum_depth_m": 0.07657773047685623,
+          "hands": {
+            "left": {
+              "rmse_px": 8.73807144165039,
+              "mean_px": 8.132052421569824,
+              "wrist_px": 18.514341354370117,
+              "points": 21
+            },
+            "right": {
+              "rmse_px": 8.202214241027832,
+              "mean_px": 7.398463249206543,
+              "wrist_px": 22.127389907836914,
+              "points": 21
+            }
+          }
+        },
+        {
+          "camera": "cam4",
+          "body_rmse_px": 78.96605682373047,
+          "body_mean_px": 38.82865905761719,
+          "body_points": 13,
+          "minimum_depth_m": 0.0804075226187706,
+          "hands": {
+            "left": {
+              "rmse_px": 11.96747875213623,
+              "mean_px": 10.090063095092773,
+              "wrist_px": 24.426416397094727,
+              "points": 21
+            },
+            "right": {
+              "rmse_px": 5.333526134490967,
+              "mean_px": 4.597940921783447,
+              "wrist_px": 13.866756439208984,
+              "points": 21
+            }
+          }
+        }
+      ],
+      "crossings": {
+        "left": {
+          "before": 27,
+          "after": 22
+        },
+        "right": {
+          "before": 0,
+          "after": 4
+        }
+      }
+    },
+    {
+      "id": "old_011",
+      "label": "旧样本 11 · 目标 15.70 秒",
+      "target_seconds": 15.7,
+      "actual_seconds": {
+        "cam3": 15.888,
+        "cam4": 15.988733333333334
+      },
+      "timestamp_difference_ms": 100.73333333333423,
+      "original": [
+        {
+          "camera": "cam3",
+          "body_rmse_px": 37.244842529296875,
+          "body_mean_px": 33.04419708251953,
+          "body_points": 7,
+          "minimum_depth_m": 0.14259082078933716,
+          "hands": {
+            "left": {
+              "rmse_px": 23.914344787597656,
+              "mean_px": 21.054594039916992,
+              "wrist_px": 17.627788543701172,
+              "points": 21
+            },
+            "right": null
+          }
+        },
+        {
+          "camera": "cam4",
+          "body_rmse_px": 28.509798049926758,
+          "body_mean_px": 23.328948974609375,
+          "body_points": 5,
+          "minimum_depth_m": 0.23258431255817413,
+          "hands": {
+            "left": {
+              "rmse_px": 71.95159912109375,
+              "mean_px": 71.49678039550781,
+              "wrist_px": 67.06563568115234,
+              "points": 21
+            },
+            "right": {
+              "rmse_px": 4.160635471343994,
+              "mean_px": 3.5393056869506836,
+              "wrist_px": 10.1030912399292,
+              "points": 21
+            }
+          }
+        }
+      ],
+      "joint": [
+        {
+          "camera": "cam3",
+          "body_rmse_px": 72.38938903808594,
+          "body_mean_px": 56.92455291748047,
+          "body_points": 7,
+          "minimum_depth_m": 0.18973442912101746,
+          "hands": {
+            "left": {
+              "rmse_px": 24.700576782226562,
+              "mean_px": 17.785619735717773,
+              "wrist_px": 55.2221794128418,
+              "points": 21
+            },
+            "right": null
+          }
+        },
+        {
+          "camera": "cam4",
+          "body_rmse_px": 54.98169708251953,
+          "body_mean_px": 47.41312789916992,
+          "body_points": 5,
+          "minimum_depth_m": 0.19388428330421448,
+          "hands": {
+            "left": {
+              "rmse_px": 322.269287109375,
+              "mean_px": 311.39105224609375,
+              "wrist_px": 111.1474838256836,
+              "points": 21
+            },
+            "right": {
+              "rmse_px": 16.88589859008789,
+              "mean_px": 15.364126205444336,
+              "wrist_px": 5.36675500869751,
+              "points": 21
+            }
+          }
+        }
+      ],
+      "crossings": {
+        "left": {
+          "before": 84,
+          "after": 63
+        },
+        "right": {
+          "before": 0,
+          "after": 5
+        }
+      }
+    },
+    {
+      "id": "old_012",
+      "label": "旧样本 12 · 目标 17.15 秒",
+      "target_seconds": 17.15,
+      "actual_seconds": {
+        "cam3": 17.32775,
+        "cam4": 17.4283
+      },
+      "timestamp_difference_ms": 100.54999999999836,
+      "original": [
+        {
+          "camera": "cam3",
+          "body_rmse_px": 43.01637649536133,
+          "body_mean_px": 36.393028259277344,
+          "body_points": 7,
+          "minimum_depth_m": 0.14991283416748047,
+          "hands": {
+            "left": {
+              "rmse_px": 22.30839729309082,
+              "mean_px": 19.96244239807129,
+              "wrist_px": 18.253313064575195,
+              "points": 21
+            },
+            "right": null
+          }
+        },
+        {
+          "camera": "cam4",
+          "body_rmse_px": 21.59952163696289,
+          "body_mean_px": 14.796073913574219,
+          "body_points": 5,
+          "minimum_depth_m": 0.22001223266124725,
+          "hands": {
+            "left": null,
+            "right": {
+              "rmse_px": 4.466848373413086,
+              "mean_px": 3.9858992099761963,
+              "wrist_px": 11.152464866638184,
+              "points": 21
+            }
+          }
+        }
+      ],
+      "joint": [
+        {
+          "camera": "cam3",
+          "body_rmse_px": 58.15836715698242,
+          "body_mean_px": 49.28484344482422,
+          "body_points": 7,
+          "minimum_depth_m": 0.1770731657743454,
+          "hands": {
+            "left": {
+              "rmse_px": 20.377382278442383,
+              "mean_px": 14.26821517944336,
+              "wrist_px": 45.47571563720703,
+              "points": 21
+            },
+            "right": null
+          }
+        },
+        {
+          "camera": "cam4",
+          "body_rmse_px": 55.67890930175781,
+          "body_mean_px": 45.253997802734375,
+          "body_points": 5,
+          "minimum_depth_m": 0.18064525723457336,
+          "hands": {
+            "left": null,
+            "right": {
+              "rmse_px": 17.839155197143555,
+              "mean_px": 16.464942932128906,
+              "wrist_px": 1.9734681844711304,
+              "points": 21
+            }
+          }
+        }
+      ],
+      "crossings": {
+        "left": {
+          "before": 33,
+          "after": 9
+        },
+        "right": {
+          "before": 12,
+          "after": 0
+        }
+      }
+    }
+  ]
+}
