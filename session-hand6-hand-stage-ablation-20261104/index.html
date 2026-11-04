@@ -1,0 +1,201 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>新三对：手部约束阶段消融</title><style>
+body{font:16px/1.6 system-ui,sans-serif;max-width:1500px;margin:32px auto;padding:0 20px;color:#182433;background:#f5f7fa}h1,h2{line-height:1.3}p{max-width:1100px}.table{overflow-x:auto}table{border-collapse:collapse;background:white;width:100%;margin:12px 0 28px}td,th{padding:9px 12px;text-align:right;border-bottom:1px solid #dce2e8}td:first-child,th:first-child{text-align:left}th{background:#e8eef5}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}figure{margin:0;background:white;padding:8px}img{width:100%;height:auto}figcaption{font-size:14px}.card{background:white;border:1px solid #dce2e8;padding:18px;margin:24px 0}.bad{color:#a52b24}.ok{color:#14633d}a{color:#1558a6}summary{cursor:pointer}small{color:#536274}@media(max-width:850px){.grid{grid-template-columns:1fr}body{padding:0 12px}}
+</style><h1>新三对：手部约束阶段消融</h1><p>A 是恢复肩点后的 v2；B 仅移除刚体阶段的 WiLoR 二维和三角化三维手约束；C 在 B 上，将后续手部、腕环和前臂轮廓目标的直接梯度限制到锁骨、肩、肘、腕。Sapiens 身体腕点保留，身体和头部观测仍可调整整体。</p><p>六视角、固定自动观测，非人工真值。身体数值是六视角 RMSE 的均值，手部是十二个手／视角 RMSE 的均值。第 7 项未实施，原 MANO 替换与接缝融合保留。SMPL-X 手误差与融合手误差分别列出。</p><p><a href="metrics.json">完整数值 JSON</a> · <a href="https://github.com/cdh290718-oss/DownSight/tree/main/runs/2026-11-04_hand-stage-ablation">代码与报告</a></p>
+<h2>刚体与最终结果</h2><div class="table"><table><tr><th>阶段 / 组别</th><th>肩 RMSE px</th><th>骨盆深度 m</th><th>投影肩宽 px</th><th>手 2D RMSE px</th><th>手 3D RMSE mm</th></tr>
+<tr><td>刚体结束 / A</td><td>153.95</td><td>0.888</td><td>263.7</td><td>35.70</td><td>157.84</td></tr>
+<tr><td>刚体结束 / B</td><td>140.31</td><td>0.851</td><td>271.5</td><td>41.68</td><td>207.01</td></tr>
+<tr><td>刚体结束 / C</td><td>140.31</td><td>0.851</td><td>271.5</td><td>41.68</td><td>207.01</td></tr>
+<tr><td>最终融合 / A</td><td>139.63</td><td>0.817</td><td>268.9</td><td>8.85</td><td>30.16</td></tr>
+<tr><td>最终融合 / B</td><td>127.88</td><td>0.793</td><td>283.5</td><td>8.96</td><td>27.77</td></tr>
+<tr><td>最终融合 / C</td><td>142.69</td><td>0.808</td><td>267.3</td><td>10.15</td><td>57.25</td></tr>
+</table></div><details><summary>展开全部阶段均值</summary><div class="table"><table><tr><th>阶段 / 组别</th><th>肩 RMSE px</th><th>骨盆深度 m</th><th>投影肩宽 px</th><th>手 2D RMSE px</th><th>手 3D RMSE mm</th></tr>
+<tr><td>网络初值 / A</td><td>153.67</td><td>0.590</td><td>498.1</td><td>1603.46</td><td>473.41</td></tr>
+<tr><td>网络初值 / B</td><td>153.67</td><td>0.590</td><td>498.1</td><td>1603.46</td><td>473.41</td></tr>
+<tr><td>网络初值 / C</td><td>153.67</td><td>0.590</td><td>498.1</td><td>1603.46</td><td>473.41</td></tr>
+<tr><td>刚体结束 / A</td><td>153.95</td><td>0.888</td><td>263.7</td><td>35.70</td><td>157.84</td></tr>
+<tr><td>刚体结束 / B</td><td>140.31</td><td>0.851</td><td>271.5</td><td>41.68</td><td>207.01</td></tr>
+<tr><td>刚体结束 / C</td><td>140.31</td><td>0.851</td><td>271.5</td><td>41.68</td><td>207.01</td></tr>
+<tr><td>姿态结束 / A</td><td>144.99</td><td>0.831</td><td>260.5</td><td>13.48</td><td>29.19</td></tr>
+<tr><td>姿态结束 / B</td><td>131.40</td><td>0.803</td><td>276.5</td><td>13.42</td><td>29.46</td></tr>
+<tr><td>姿态结束 / C</td><td>138.27</td><td>0.818</td><td>269.0</td><td>19.01</td><td>88.80</td></tr>
+<tr><td>腕部细化 / A</td><td>145.34</td><td>0.830</td><td>260.8</td><td>13.42</td><td>28.88</td></tr>
+<tr><td>腕部细化 / B</td><td>131.48</td><td>0.802</td><td>277.4</td><td>13.35</td><td>29.01</td></tr>
+<tr><td>腕部细化 / C</td><td>139.13</td><td>0.817</td><td>268.0</td><td>18.62</td><td>87.92</td></tr>
+<tr><td>轮廓细化 / A</td><td>144.00</td><td>0.830</td><td>260.5</td><td>14.40</td><td>30.85</td></tr>
+<tr><td>轮廓细化 / B</td><td>130.69</td><td>0.801</td><td>276.5</td><td>14.13</td><td>31.06</td></tr>
+<tr><td>轮廓细化 / C</td><td>140.11</td><td>0.819</td><td>266.2</td><td>18.93</td><td>89.60</td></tr>
+<tr><td>Guided 身体 / A</td><td>139.63</td><td>0.817</td><td>268.9</td><td>14.01</td><td>30.07</td></tr>
+<tr><td>Guided 身体 / B</td><td>127.88</td><td>0.793</td><td>283.5</td><td>13.67</td><td>30.21</td></tr>
+<tr><td>Guided 身体 / C</td><td>142.69</td><td>0.808</td><td>267.3</td><td>19.25</td><td>79.07</td></tr>
+<tr><td>最终融合 / A</td><td>139.63</td><td>0.817</td><td>268.9</td><td>8.85</td><td>30.16</td></tr>
+<tr><td>最终融合 / B</td><td>127.88</td><td>0.793</td><td>283.5</td><td>8.96</td><td>27.77</td></tr>
+<tr><td>最终融合 / C</td><td>142.69</td><td>0.808</td><td>267.3</td><td>10.15</td><td>57.25</td></tr>
+</table></div></details><p><small>最终融合行使用替换后的 MANO 网格；其余行使用 SMPL-X 网格。三维腕点采用身体骨骼腕中心，其余手点由网格回归。C 隔离直接梯度，但候选评分、回退及身体／头部目标仍会间接影响整体位姿。</small></p>
+<h2>手部是否明显变差</h2><p>预先约定的实用门槛：相对 A，融合手二维均值增加 ≤ 1 px、最差手／视角 ≤ 3 px；三维均值增加 ≤ 5 mm、最差手／视角 ≤ 15 mm。这不是统计显著性检验。</p>
+<p class="ok"><b>B：通过</b>。二维均值变化 +0.11 px，最差 +1.23 px；三维均值变化 -2.39 mm，最差 +3.24 mm。</p>
+<p class="bad"><b>C：未通过</b>。二维均值变化 +1.30 px，最差 +5.74 px；三维均值变化 +27.09 mm，最差 +308.52 mm。</p>
+<h2>其他检查</h2><p>最终头部入画顶点合计：A 1615，B 2，C 3。局部表面检查通过视角：A 6/6、B 5/6、C 2/6。B 的 new_001 / cam4 左侧前臂／接缝局部检查发现 47 对相交面，因此 B 是有收益的候选方案，尚不能视为几何全面验收通过。<a href="surface_checks.json">局部检查证据及范围</a>。</p>
+<h2>逐视角最终投影</h2>
+<section class="card"><h3>new_001 · cam3</h3><div class="grid">
+<figure><a href="assets/new_001-cam3-A.jpg"><img loading="lazy" src="assets/new_001-cam3-A.jpg" alt="new_001 cam3 A · 当前 v2"></a><figcaption><b>A · 当前 v2</b><br>肩 156.11 px · 深度 0.850 m · 肩宽 251.9 px<br>融合手 2D：left 8.32 / right 9.93 px<br><span class="ok">局部表面检查：通过</span></figcaption></figure>
+<figure><a href="assets/new_001-cam3-B.jpg"><img loading="lazy" src="assets/new_001-cam3-B.jpg" alt="new_001 cam3 B · 刚体不用手约束"></a><figcaption><b>B · 刚体不用手约束</b><br>肩 152.97 px · 深度 0.843 m · 肩宽 255.3 px<br>融合手 2D：left 8.40 / right 10.17 px<br><span class="ok">局部表面检查：通过</span></figcaption></figure>
+<figure><a href="assets/new_001-cam3-C.jpg"><img loading="lazy" src="assets/new_001-cam3-C.jpg" alt="new_001 cam3 C · B + 手部梯度仅到手臂"></a><figcaption><b>C · B + 手部梯度仅到手臂</b><br>肩 151.94 px · 深度 0.853 m · 肩宽 243.3 px<br>融合手 2D：left 8.35 / right 11.71 px<br><span class="bad">局部表面检查：未通过</span></figcaption></figure>
+</div><details><summary>该视角各阶段及左右手数值</summary><div class="table"><table><tr><th>阶段 / 组别</th><th>肩 px</th><th>深度 m</th><th>肩宽 px</th><th>左手 2D px</th><th>右手 2D px</th><th>左手 3D mm</th><th>右手 3D mm</th></tr>
+<tr><td>网络初值 / A</td><td>184.05</td><td>0.573</td><td>489.4</td><td>631.84</td><td>801.46</td><td>604.13</td><td>586.44</td></tr>
+<tr><td>网络初值 / B</td><td>184.05</td><td>0.573</td><td>489.4</td><td>631.84</td><td>801.46</td><td>604.13</td><td>586.44</td></tr>
+<tr><td>网络初值 / C</td><td>184.05</td><td>0.573</td><td>489.4</td><td>631.84</td><td>801.46</td><td>604.13</td><td>586.44</td></tr>
+<tr><td>刚体结束 / A</td><td>150.75</td><td>0.921</td><td>247.8</td><td>22.08</td><td>28.29</td><td>171.18</td><td>190.02</td></tr>
+<tr><td>刚体结束 / B</td><td>144.21</td><td>0.866</td><td>248.9</td><td>27.56</td><td>36.85</td><td>241.48</td><td>281.81</td></tr>
+<tr><td>刚体结束 / C</td><td>144.21</td><td>0.866</td><td>248.9</td><td>27.56</td><td>36.85</td><td>241.48</td><td>281.81</td></tr>
+<tr><td>姿态结束 / A</td><td>158.87</td><td>0.860</td><td>247.2</td><td>6.75</td><td>12.88</td><td>22.96</td><td>30.51</td></tr>
+<tr><td>姿态结束 / B</td><td>152.27</td><td>0.852</td><td>250.5</td><td>7.02</td><td>12.63</td><td>22.59</td><td>29.95</td></tr>
+<tr><td>姿态结束 / C</td><td>144.39</td><td>0.841</td><td>243.4</td><td>10.82</td><td>14.34</td><td>25.82</td><td>58.22</td></tr>
+<tr><td>腕部细化 / A</td><td>157.79</td><td>0.857</td><td>248.5</td><td>6.60</td><td>12.69</td><td>21.82</td><td>29.69</td></tr>
+<tr><td>腕部细化 / B</td><td>151.96</td><td>0.851</td><td>251.3</td><td>6.97</td><td>12.57</td><td>21.92</td><td>29.24</td></tr>
+<tr><td>腕部细化 / C</td><td>143.98</td><td>0.842</td><td>243.3</td><td>10.59</td><td>15.15</td><td>25.14</td><td>63.70</td></tr>
+<tr><td>轮廓细化 / A</td><td>157.22</td><td>0.856</td><td>248.2</td><td>6.52</td><td>13.30</td><td>21.63</td><td>35.62</td></tr>
+<tr><td>轮廓细化 / B</td><td>153.23</td><td>0.850</td><td>250.0</td><td>6.90</td><td>13.92</td><td>22.34</td><td>38.82</td></tr>
+<tr><td>轮廓细化 / C</td><td>151.94</td><td>0.853</td><td>243.3</td><td>8.25</td><td>19.01</td><td>27.66</td><td>68.01</td></tr>
+<tr><td>Guided 身体 / A</td><td>156.11</td><td>0.850</td><td>251.9</td><td>6.44</td><td>13.10</td><td>21.21</td><td>37.28</td></tr>
+<tr><td>Guided 身体 / B</td><td>152.97</td><td>0.843</td><td>255.3</td><td>6.42</td><td>12.92</td><td>21.52</td><td>39.11</td></tr>
+<tr><td>Guided 身体 / C</td><td>151.94</td><td>0.853</td><td>243.3</td><td>8.25</td><td>19.01</td><td>27.66</td><td>68.01</td></tr>
+<tr><td>最终融合 / A</td><td>156.11</td><td>0.850</td><td>251.9</td><td>8.32</td><td>9.93</td><td>27.73</td><td>15.25</td></tr>
+<tr><td>最终融合 / B</td><td>152.97</td><td>0.843</td><td>255.3</td><td>8.40</td><td>10.17</td><td>29.58</td><td>13.01</td></tr>
+<tr><td>最终融合 / C</td><td>151.94</td><td>0.853</td><td>243.3</td><td>8.35</td><td>11.71</td><td>20.75</td><td>28.94</td></tr>
+</table></div></details></section>
+<section class="card"><h3>new_001 · cam4</h3><div class="grid">
+<figure><a href="assets/new_001-cam4-A.jpg"><img loading="lazy" src="assets/new_001-cam4-A.jpg" alt="new_001 cam4 A · 当前 v2"></a><figcaption><b>A · 当前 v2</b><br>肩 136.37 px · 深度 0.835 m · 肩宽 258.9 px<br>融合手 2D：left 5.60 / right 9.30 px<br><span class="ok">局部表面检查：通过</span></figcaption></figure>
+<figure><a href="assets/new_001-cam4-B.jpg"><img loading="lazy" src="assets/new_001-cam4-B.jpg" alt="new_001 cam4 B · 刚体不用手约束"></a><figcaption><b>B · 刚体不用手约束</b><br>肩 123.89 px · 深度 0.800 m · 肩宽 275.8 px<br>融合手 2D：left 5.78 / right 8.31 px<br><span class="bad">局部表面检查：未通过</span></figcaption></figure>
+<figure><a href="assets/new_001-cam4-C.jpg"><img loading="lazy" src="assets/new_001-cam4-C.jpg" alt="new_001 cam4 C · B + 手部梯度仅到手臂"></a><figcaption><b>C · B + 手部梯度仅到手臂</b><br>肩 125.78 px · 深度 0.803 m · 肩宽 264.4 px<br>融合手 2D：left 6.66 / right 9.14 px<br><span class="ok">局部表面检查：通过</span></figcaption></figure>
+</div><details><summary>该视角各阶段及左右手数值</summary><div class="table"><table><tr><th>阶段 / 组别</th><th>肩 px</th><th>深度 m</th><th>肩宽 px</th><th>左手 2D px</th><th>右手 2D px</th><th>左手 3D mm</th><th>右手 3D mm</th></tr>
+<tr><td>网络初值 / A</td><td>135.45</td><td>0.580</td><td>476.1</td><td>438.55</td><td>975.33</td><td>564.85</td><td>523.71</td></tr>
+<tr><td>网络初值 / B</td><td>135.45</td><td>0.580</td><td>476.1</td><td>438.55</td><td>975.33</td><td>564.85</td><td>523.71</td></tr>
+<tr><td>网络初值 / C</td><td>135.45</td><td>0.580</td><td>476.1</td><td>438.55</td><td>975.33</td><td>564.85</td><td>523.71</td></tr>
+<tr><td>刚体结束 / A</td><td>152.79</td><td>0.884</td><td>250.5</td><td>32.19</td><td>47.45</td><td>264.63</td><td>221.44</td></tr>
+<tr><td>刚体结束 / B</td><td>138.21</td><td>0.844</td><td>262.3</td><td>37.29</td><td>46.44</td><td>302.59</td><td>260.49</td></tr>
+<tr><td>刚体结束 / C</td><td>138.21</td><td>0.844</td><td>262.3</td><td>37.29</td><td>46.44</td><td>302.59</td><td>260.49</td></tr>
+<tr><td>姿态结束 / A</td><td>139.76</td><td>0.843</td><td>252.8</td><td>10.72</td><td>12.11</td><td>22.71</td><td>33.16</td></tr>
+<tr><td>姿态结束 / B</td><td>126.57</td><td>0.808</td><td>272.6</td><td>10.44</td><td>11.39</td><td>23.46</td><td>26.33</td></tr>
+<tr><td>姿态结束 / C</td><td>130.82</td><td>0.803</td><td>271.6</td><td>11.94</td><td>11.29</td><td>31.56</td><td>32.76</td></tr>
+<tr><td>腕部细化 / A</td><td>139.56</td><td>0.842</td><td>253.5</td><td>10.68</td><td>12.12</td><td>22.27</td><td>33.75</td></tr>
+<tr><td>腕部细化 / B</td><td>126.43</td><td>0.807</td><td>273.0</td><td>10.43</td><td>11.21</td><td>22.34</td><td>27.03</td></tr>
+<tr><td>腕部细化 / C</td><td>130.47</td><td>0.804</td><td>271.6</td><td>12.34</td><td>11.52</td><td>31.93</td><td>32.47</td></tr>
+<tr><td>轮廓细化 / A</td><td>138.94</td><td>0.843</td><td>252.8</td><td>11.84</td><td>12.61</td><td>24.23</td><td>29.43</td></tr>
+<tr><td>轮廓细化 / B</td><td>125.84</td><td>0.808</td><td>271.8</td><td>11.42</td><td>11.65</td><td>24.39</td><td>24.53</td></tr>
+<tr><td>轮廓细化 / C</td><td>125.78</td><td>0.803</td><td>264.4</td><td>13.67</td><td>15.38</td><td>51.85</td><td>31.39</td></tr>
+<tr><td>Guided 身体 / A</td><td>136.37</td><td>0.835</td><td>258.9</td><td>9.48</td><td>11.02</td><td>23.52</td><td>30.31</td></tr>
+<tr><td>Guided 身体 / B</td><td>123.89</td><td>0.800</td><td>275.8</td><td>9.19</td><td>10.61</td><td>23.53</td><td>24.04</td></tr>
+<tr><td>Guided 身体 / C</td><td>125.78</td><td>0.803</td><td>264.4</td><td>13.67</td><td>15.38</td><td>51.85</td><td>31.39</td></tr>
+<tr><td>最终融合 / A</td><td>136.37</td><td>0.835</td><td>258.9</td><td>5.60</td><td>9.30</td><td>28.57</td><td>56.11</td></tr>
+<tr><td>最终融合 / B</td><td>123.89</td><td>0.800</td><td>275.8</td><td>5.78</td><td>8.31</td><td>22.49</td><td>42.35</td></tr>
+<tr><td>最终融合 / C</td><td>125.78</td><td>0.803</td><td>264.4</td><td>6.66</td><td>9.14</td><td>26.25</td><td>31.61</td></tr>
+</table></div></details></section>
+<section class="card"><h3>new_022 · cam3</h3><div class="grid">
+<figure><a href="assets/new_022-cam3-A.jpg"><img loading="lazy" src="assets/new_022-cam3-A.jpg" alt="new_022 cam3 A · 当前 v2"></a><figcaption><b>A · 当前 v2</b><br>肩 146.92 px · 深度 0.835 m · 肩宽 255.4 px<br>融合手 2D：left 9.72 / right 10.52 px<br><span class="ok">局部表面检查：通过</span></figcaption></figure>
+<figure><a href="assets/new_022-cam3-B.jpg"><img loading="lazy" src="assets/new_022-cam3-B.jpg" alt="new_022 cam3 B · 刚体不用手约束"></a><figcaption><b>B · 刚体不用手约束</b><br>肩 147.33 px · 深度 0.836 m · 肩宽 252.2 px<br>融合手 2D：left 9.80 / right 10.29 px<br><span class="ok">局部表面检查：通过</span></figcaption></figure>
+<figure><a href="assets/new_022-cam3-C.jpg"><img loading="lazy" src="assets/new_022-cam3-C.jpg" alt="new_022 cam3 C · B + 手部梯度仅到手臂"></a><figcaption><b>C · B + 手部梯度仅到手臂</b><br>肩 181.31 px · 深度 0.906 m · 肩宽 215.6 px<br>融合手 2D：left 13.05 / right 11.27 px<br><span class="bad">局部表面检查：未通过</span></figcaption></figure>
+</div><details><summary>该视角各阶段及左右手数值</summary><div class="table"><table><tr><th>阶段 / 组别</th><th>肩 px</th><th>深度 m</th><th>肩宽 px</th><th>左手 2D px</th><th>右手 2D px</th><th>左手 3D mm</th><th>右手 3D mm</th></tr>
+<tr><td>网络初值 / A</td><td>173.35</td><td>0.563</td><td>507.5</td><td>457.49</td><td>2060.83</td><td>537.43</td><td>582.76</td></tr>
+<tr><td>网络初值 / B</td><td>173.35</td><td>0.563</td><td>507.5</td><td>457.49</td><td>2060.83</td><td>537.43</td><td>582.76</td></tr>
+<tr><td>网络初值 / C</td><td>173.35</td><td>0.563</td><td>507.5</td><td>457.49</td><td>2060.83</td><td>537.43</td><td>582.76</td></tr>
+<tr><td>刚体结束 / A</td><td>155.58</td><td>0.933</td><td>235.2</td><td>18.56</td><td>40.32</td><td>50.72</td><td>251.76</td></tr>
+<tr><td>刚体结束 / B</td><td>157.79</td><td>0.920</td><td>228.9</td><td>30.14</td><td>56.97</td><td>65.19</td><td>329.30</td></tr>
+<tr><td>刚体结束 / C</td><td>157.79</td><td>0.920</td><td>228.9</td><td>30.14</td><td>56.97</td><td>65.19</td><td>329.30</td></tr>
+<tr><td>姿态结束 / A</td><td>149.50</td><td>0.841</td><td>252.7</td><td>7.41</td><td>15.83</td><td>21.65</td><td>45.38</td></tr>
+<tr><td>姿态结束 / B</td><td>148.41</td><td>0.843</td><td>248.2</td><td>7.65</td><td>18.34</td><td>22.72</td><td>55.33</td></tr>
+<tr><td>姿态结束 / C</td><td>178.99</td><td>0.865</td><td>231.7</td><td>6.91</td><td>46.94</td><td>26.23</td><td>426.11</td></tr>
+<tr><td>腕部细化 / A</td><td>149.50</td><td>0.841</td><td>252.7</td><td>7.41</td><td>15.83</td><td>21.65</td><td>45.38</td></tr>
+<tr><td>腕部细化 / B</td><td>148.41</td><td>0.843</td><td>248.2</td><td>7.65</td><td>18.34</td><td>22.72</td><td>55.33</td></tr>
+<tr><td>腕部细化 / C</td><td>177.36</td><td>0.858</td><td>235.0</td><td>6.86</td><td>44.90</td><td>27.37</td><td>407.33</td></tr>
+<tr><td>轮廓细化 / A</td><td>147.87</td><td>0.844</td><td>248.8</td><td>8.42</td><td>19.20</td><td>23.43</td><td>51.27</td></tr>
+<tr><td>轮廓细化 / B</td><td>148.48</td><td>0.844</td><td>247.3</td><td>8.09</td><td>19.59</td><td>23.32</td><td>58.44</td></tr>
+<tr><td>轮廓细化 / C</td><td>178.04</td><td>0.860</td><td>234.3</td><td>6.69</td><td>44.67</td><td>25.97</td><td>409.44</td></tr>
+<tr><td>Guided 身体 / A</td><td>146.92</td><td>0.835</td><td>255.4</td><td>7.47</td><td>20.07</td><td>21.33</td><td>51.40</td></tr>
+<tr><td>Guided 身体 / B</td><td>147.33</td><td>0.836</td><td>252.2</td><td>7.25</td><td>20.76</td><td>21.98</td><td>60.54</td></tr>
+<tr><td>Guided 身体 / C</td><td>181.31</td><td>0.906</td><td>215.6</td><td>8.59</td><td>62.64</td><td>45.16</td><td>482.25</td></tr>
+<tr><td>最终融合 / A</td><td>146.92</td><td>0.835</td><td>255.4</td><td>9.72</td><td>10.52</td><td>19.91</td><td>28.02</td></tr>
+<tr><td>最终融合 / B</td><td>147.33</td><td>0.836</td><td>252.2</td><td>9.80</td><td>10.29</td><td>22.42</td><td>31.26</td></tr>
+<tr><td>最终融合 / C</td><td>181.31</td><td>0.906</td><td>215.6</td><td>13.05</td><td>11.27</td><td>27.96</td><td>336.53</td></tr>
+</table></div></details></section>
+<section class="card"><h3>new_022 · cam4</h3><div class="grid">
+<figure><a href="assets/new_022-cam4-A.jpg"><img loading="lazy" src="assets/new_022-cam4-A.jpg" alt="new_022 cam4 A · 当前 v2"></a><figcaption><b>A · 当前 v2</b><br>肩 142.38 px · 深度 0.822 m · 肩宽 274.6 px<br>融合手 2D：left 5.89 / right 8.90 px<br><span class="ok">局部表面检查：通过</span></figcaption></figure>
+<figure><a href="assets/new_022-cam4-B.jpg"><img loading="lazy" src="assets/new_022-cam4-B.jpg" alt="new_022 cam4 B · 刚体不用手约束"></a><figcaption><b>B · 刚体不用手约束</b><br>肩 136.28 px · 深度 0.809 m · 肩宽 281.0 px<br>融合手 2D：left 5.75 / right 8.82 px<br><span class="ok">局部表面检查：通过</span></figcaption></figure>
+<figure><a href="assets/new_022-cam4-C.jpg"><img loading="lazy" src="assets/new_022-cam4-C.jpg" alt="new_022 cam4 C · B + 手部梯度仅到手臂"></a><figcaption><b>C · B + 手部梯度仅到手臂</b><br>肩 141.78 px · 深度 0.796 m · 肩宽 261.7 px<br>融合手 2D：left 7.52 / right 8.93 px<br><span class="bad">局部表面检查：未通过</span></figcaption></figure>
+</div><details><summary>该视角各阶段及左右手数值</summary><div class="table"><table><tr><th>阶段 / 组别</th><th>肩 px</th><th>深度 m</th><th>肩宽 px</th><th>左手 2D px</th><th>右手 2D px</th><th>左手 3D mm</th><th>右手 3D mm</th></tr>
+<tr><td>网络初值 / A</td><td>148.22</td><td>0.590</td><td>493.2</td><td>279.37</td><td>11385.18</td><td>432.53</td><td>549.98</td></tr>
+<tr><td>网络初值 / B</td><td>148.22</td><td>0.590</td><td>493.2</td><td>279.37</td><td>11385.18</td><td>432.53</td><td>549.98</td></tr>
+<tr><td>网络初值 / C</td><td>148.22</td><td>0.590</td><td>493.2</td><td>279.37</td><td>11385.18</td><td>432.53</td><td>549.98</td></tr>
+<tr><td>刚体结束 / A</td><td>147.98</td><td>0.902</td><td>249.9</td><td>25.63</td><td>55.88</td><td>77.65</td><td>242.50</td></tr>
+<tr><td>刚体结束 / B</td><td>142.96</td><td>0.888</td><td>250.8</td><td>30.21</td><td>62.30</td><td>90.05</td><td>268.82</td></tr>
+<tr><td>刚体结束 / C</td><td>142.96</td><td>0.888</td><td>250.8</td><td>30.21</td><td>62.30</td><td>90.05</td><td>268.82</td></tr>
+<tr><td>姿态结束 / A</td><td>140.55</td><td>0.826</td><td>266.1</td><td>9.80</td><td>34.56</td><td>20.81</td><td>79.92</td></tr>
+<tr><td>姿态结束 / B</td><td>134.54</td><td>0.812</td><td>272.5</td><td>9.73</td><td>34.83</td><td>21.03</td><td>81.34</td></tr>
+<tr><td>姿态结束 / C</td><td>145.61</td><td>0.841</td><td>247.6</td><td>15.83</td><td>56.70</td><td>62.70</td><td>320.00</td></tr>
+<tr><td>腕部细化 / A</td><td>140.55</td><td>0.826</td><td>266.1</td><td>9.80</td><td>34.56</td><td>20.81</td><td>79.92</td></tr>
+<tr><td>腕部细化 / B</td><td>134.27</td><td>0.811</td><td>273.9</td><td>9.44</td><td>35.04</td><td>20.45</td><td>81.32</td></tr>
+<tr><td>腕部细化 / C</td><td>152.26</td><td>0.839</td><td>239.8</td><td>12.23</td><td>56.37</td><td>47.99</td><td>338.73</td></tr>
+<tr><td>轮廓细化 / A</td><td>142.09</td><td>0.829</td><td>265.3</td><td>11.60</td><td>34.72</td><td>25.31</td><td>82.94</td></tr>
+<tr><td>轮廓细化 / B</td><td>135.48</td><td>0.813</td><td>272.0</td><td>11.44</td><td>35.12</td><td>26.26</td><td>85.01</td></tr>
+<tr><td>轮廓细化 / C</td><td>152.40</td><td>0.839</td><td>239.7</td><td>11.91</td><td>54.20</td><td>46.18</td><td>339.03</td></tr>
+<tr><td>Guided 身体 / A</td><td>142.38</td><td>0.822</td><td>274.6</td><td>9.59</td><td>37.51</td><td>25.57</td><td>77.79</td></tr>
+<tr><td>Guided 身体 / B</td><td>136.28</td><td>0.809</td><td>281.0</td><td>9.29</td><td>37.32</td><td>25.88</td><td>78.78</td></tr>
+<tr><td>Guided 身体 / C</td><td>141.78</td><td>0.796</td><td>261.7</td><td>10.04</td><td>38.51</td><td>42.38</td><td>121.10</td></tr>
+<tr><td>最终融合 / A</td><td>142.38</td><td>0.822</td><td>274.6</td><td>5.89</td><td>8.90</td><td>19.13</td><td>32.06</td></tr>
+<tr><td>最终融合 / B</td><td>136.28</td><td>0.809</td><td>281.0</td><td>5.75</td><td>8.82</td><td>19.10</td><td>33.58</td></tr>
+<tr><td>最终融合 / C</td><td>141.78</td><td>0.796</td><td>261.7</td><td>7.52</td><td>8.93</td><td>24.99</td><td>81.13</td></tr>
+</table></div></details></section>
+<section class="card"><h3>new_100 · cam3</h3><div class="grid">
+<figure><a href="assets/new_100-cam3-A.jpg"><img loading="lazy" src="assets/new_100-cam3-A.jpg" alt="new_100 cam3 A · 当前 v2"></a><figcaption><b>A · 当前 v2</b><br>肩 143.32 px · 深度 0.787 m · 肩宽 272.8 px<br>融合手 2D：left 10.01 / right 9.20 px<br><span class="ok">局部表面检查：通过</span></figcaption></figure>
+<figure><a href="assets/new_100-cam3-B.jpg"><img loading="lazy" src="assets/new_100-cam3-B.jpg" alt="new_100 cam3 B · 刚体不用手约束"></a><figcaption><b>B · 刚体不用手约束</b><br>肩 118.52 px · 深度 0.737 m · 肩宽 301.8 px<br>融合手 2D：left 9.91 / right 10.43 px<br><span class="ok">局部表面检查：通过</span></figcaption></figure>
+<figure><a href="assets/new_100-cam3-C.jpg"><img loading="lazy" src="assets/new_100-cam3-C.jpg" alt="new_100 cam3 C · B + 手部梯度仅到手臂"></a><figcaption><b>C · B + 手部梯度仅到手臂</b><br>肩 133.06 px · 深度 0.748 m · 肩宽 303.7 px<br>融合手 2D：left 12.17 / right 10.03 px<br><span class="ok">局部表面检查：通过</span></figcaption></figure>
+</div><details><summary>该视角各阶段及左右手数值</summary><div class="table"><table><tr><th>阶段 / 组别</th><th>肩 px</th><th>深度 m</th><th>肩宽 px</th><th>左手 2D px</th><th>右手 2D px</th><th>左手 3D mm</th><th>右手 3D mm</th></tr>
+<tr><td>网络初值 / A</td><td>157.03</td><td>0.619</td><td>495.7</td><td>469.43</td><td>868.15</td><td>341.91</td><td>353.60</td></tr>
+<tr><td>网络初值 / B</td><td>157.03</td><td>0.619</td><td>495.7</td><td>469.43</td><td>868.15</td><td>341.91</td><td>353.60</td></tr>
+<tr><td>网络初值 / C</td><td>157.03</td><td>0.619</td><td>495.7</td><td>469.43</td><td>868.15</td><td>341.91</td><td>353.60</td></tr>
+<tr><td>刚体结束 / A</td><td>169.30</td><td>0.850</td><td>288.3</td><td>29.90</td><td>40.18</td><td>93.83</td><td>118.40</td></tr>
+<tr><td>刚体结束 / B</td><td>143.88</td><td>0.800</td><td>306.7</td><td>29.47</td><td>44.85</td><td>150.24</td><td>177.15</td></tr>
+<tr><td>刚体结束 / C</td><td>143.88</td><td>0.800</td><td>306.7</td><td>29.47</td><td>44.85</td><td>150.24</td><td>177.15</td></tr>
+<tr><td>姿态结束 / A</td><td>155.03</td><td>0.815</td><td>257.9</td><td>9.65</td><td>12.74</td><td>14.24</td><td>25.62</td></tr>
+<tr><td>姿态结束 / B</td><td>126.42</td><td>0.755</td><td>292.3</td><td>9.13</td><td>12.50</td><td>13.86</td><td>23.31</td></tr>
+<tr><td>姿态结束 / C</td><td>120.96</td><td>0.783</td><td>296.1</td><td>9.61</td><td>12.51</td><td>14.49</td><td>29.89</td></tr>
+<tr><td>腕部细化 / A</td><td>157.10</td><td>0.814</td><td>257.8</td><td>9.57</td><td>12.63</td><td>14.25</td><td>24.73</td></tr>
+<tr><td>腕部细化 / B</td><td>127.78</td><td>0.753</td><td>293.0</td><td>9.07</td><td>12.34</td><td>13.88</td><td>21.62</td></tr>
+<tr><td>腕部细化 / C</td><td>121.67</td><td>0.781</td><td>294.8</td><td>9.66</td><td>12.35</td><td>15.04</td><td>27.58</td></tr>
+<tr><td>轮廓细化 / A</td><td>154.15</td><td>0.812</td><td>261.2</td><td>9.63</td><td>14.69</td><td>14.12</td><td>28.91</td></tr>
+<tr><td>轮廓细化 / B</td><td>124.12</td><td>0.747</td><td>295.0</td><td>9.17</td><td>14.17</td><td>13.54</td><td>22.43</td></tr>
+<tr><td>轮廓细化 / C</td><td>123.12</td><td>0.782</td><td>293.5</td><td>9.81</td><td>12.93</td><td>14.49</td><td>24.75</td></tr>
+<tr><td>Guided 身体 / A</td><td>143.32</td><td>0.787</td><td>272.8</td><td>9.96</td><td>16.09</td><td>13.58</td><td>26.68</td></tr>
+<tr><td>Guided 身体 / B</td><td>118.52</td><td>0.737</td><td>301.8</td><td>9.54</td><td>15.07</td><td>12.99</td><td>22.10</td></tr>
+<tr><td>Guided 身体 / C</td><td>133.06</td><td>0.748</td><td>303.7</td><td>10.83</td><td>15.33</td><td>17.13</td><td>22.66</td></tr>
+<tr><td>最终融合 / A</td><td>143.32</td><td>0.787</td><td>272.8</td><td>10.01</td><td>9.20</td><td>34.20</td><td>16.43</td></tr>
+<tr><td>最终融合 / B</td><td>118.52</td><td>0.737</td><td>301.8</td><td>9.91</td><td>10.43</td><td>29.52</td><td>15.21</td></tr>
+<tr><td>最终融合 / C</td><td>133.06</td><td>0.748</td><td>303.7</td><td>12.17</td><td>10.03</td><td>24.44</td><td>16.64</td></tr>
+</table></div></details></section>
+<section class="card"><h3>new_100 · cam4</h3><div class="grid">
+<figure><a href="assets/new_100-cam4-A.jpg"><img loading="lazy" src="assets/new_100-cam4-A.jpg" alt="new_100 cam4 A · 当前 v2"></a><figcaption><b>A · 当前 v2</b><br>肩 112.66 px · 深度 0.776 m · 肩宽 299.9 px<br>融合手 2D：left 9.62 / right 9.18 px<br><span class="ok">局部表面检查：通过</span></figcaption></figure>
+<figure><a href="assets/new_100-cam4-B.jpg"><img loading="lazy" src="assets/new_100-cam4-B.jpg" alt="new_100 cam4 B · 刚体不用手约束"></a><figcaption><b>B · 刚体不用手约束</b><br>肩 88.30 px · 深度 0.731 m · 肩宽 334.7 px<br>融合手 2D：left 10.61 / right 9.23 px<br><span class="ok">局部表面检查：通过</span></figcaption></figure>
+<figure><a href="assets/new_100-cam4-C.jpg"><img loading="lazy" src="assets/new_100-cam4-C.jpg" alt="new_100 cam4 C · B + 手部梯度仅到手臂"></a><figcaption><b>C · B + 手部梯度仅到手臂</b><br>肩 122.26 px · 深度 0.741 m · 肩宽 314.7 px<br>融合手 2D：left 15.35 / right 7.62 px<br><span class="bad">局部表面检查：未通过</span></figcaption></figure>
+</div><details><summary>该视角各阶段及左右手数值</summary><div class="table"><table><tr><th>阶段 / 组别</th><th>肩 px</th><th>深度 m</th><th>肩宽 px</th><th>左手 2D px</th><th>右手 2D px</th><th>左手 3D mm</th><th>右手 3D mm</th></tr>
+<tr><td>网络初值 / A</td><td>123.89</td><td>0.614</td><td>526.7</td><td>424.25</td><td>449.59</td><td>323.20</td><td>280.32</td></tr>
+<tr><td>网络初值 / B</td><td>123.89</td><td>0.614</td><td>526.7</td><td>424.25</td><td>449.59</td><td>323.20</td><td>280.32</td></tr>
+<tr><td>网络初值 / C</td><td>123.89</td><td>0.614</td><td>526.7</td><td>424.25</td><td>449.59</td><td>323.20</td><td>280.32</td></tr>
+<tr><td>刚体结束 / A</td><td>147.33</td><td>0.837</td><td>310.3</td><td>33.22</td><td>54.76</td><td>121.17</td><td>90.72</td></tr>
+<tr><td>刚体结束 / B</td><td>114.81</td><td>0.787</td><td>331.3</td><td>39.16</td><td>58.98</td><td>175.77</td><td>141.17</td></tr>
+<tr><td>刚体结束 / C</td><td>114.81</td><td>0.787</td><td>331.3</td><td>39.16</td><td>58.98</td><td>175.77</td><td>141.17</td></tr>
+<tr><td>姿态结束 / A</td><td>126.23</td><td>0.802</td><td>286.0</td><td>15.97</td><td>13.33</td><td>14.53</td><td>18.76</td></tr>
+<tr><td>姿态结束 / B</td><td>100.20</td><td>0.752</td><td>322.7</td><td>14.37</td><td>12.99</td><td>16.77</td><td>16.84</td></tr>
+<tr><td>姿态结束 / C</td><td>108.81</td><td>0.777</td><td>323.3</td><td>17.70</td><td>13.57</td><td>19.28</td><td>18.47</td></tr>
+<tr><td>腕部细化 / A</td><td>127.54</td><td>0.801</td><td>286.1</td><td>15.84</td><td>13.29</td><td>14.07</td><td>18.20</td></tr>
+<tr><td>腕部细化 / B</td><td>100.02</td><td>0.748</td><td>325.2</td><td>14.19</td><td>12.89</td><td>16.39</td><td>15.90</td></tr>
+<tr><td>腕部细化 / C</td><td>109.04</td><td>0.777</td><td>323.2</td><td>18.18</td><td>13.32</td><td>20.18</td><td>17.52</td></tr>
+<tr><td>轮廓细化 / A</td><td>123.72</td><td>0.799</td><td>286.6</td><td>15.70</td><td>14.56</td><td>14.52</td><td>18.80</td></tr>
+<tr><td>轮廓细化 / B</td><td>97.01</td><td>0.744</td><td>323.2</td><td>14.46</td><td>13.65</td><td>17.01</td><td>16.58</td></tr>
+<tr><td>轮廓细化 / C</td><td>109.35</td><td>0.778</td><td>322.1</td><td>17.13</td><td>13.55</td><td>18.74</td><td>17.67</td></tr>
+<tr><td>Guided 身体 / A</td><td>112.66</td><td>0.776</td><td>299.9</td><td>13.72</td><td>13.73</td><td>14.19</td><td>17.97</td></tr>
+<tr><td>Guided 身体 / B</td><td>88.30</td><td>0.731</td><td>334.7</td><td>12.53</td><td>13.16</td><td>15.83</td><td>16.21</td></tr>
+<tr><td>Guided 身体 / C</td><td>122.26</td><td>0.741</td><td>314.7</td><td>14.58</td><td>14.13</td><td>22.10</td><td>17.14</td></tr>
+<tr><td>最终融合 / A</td><td>112.66</td><td>0.776</td><td>299.9</td><td>9.62</td><td>9.18</td><td>49.88</td><td>34.63</td></tr>
+<tr><td>最终融合 / B</td><td>88.30</td><td>0.731</td><td>334.7</td><td>10.61</td><td>9.23</td><td>44.40</td><td>30.37</td></tr>
+<tr><td>最终融合 / C</td><td>122.26</td><td>0.741</td><td>314.7</td><td>15.35</td><td>7.62</td><td>36.22</td><td>31.52</td></tr>
+</table></div></details></section>
+</html>

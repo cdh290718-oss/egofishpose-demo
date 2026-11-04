@@ -1,0 +1,671 @@
+{
+  "scope": "Pipeline local forearm/seam checks versus full surface; excludes shared vertices and coplanar overlap; not a global intersection certificate",
+  "rows": [
+    {
+      "group": "A",
+      "pair": "new_001",
+      "camera": "cam3",
+      "passed": true,
+      "source_sha256": "9fef74e1e28898b512ed0a1d26b642beb32e86873e5d62b22a5ba2a34b917fb9",
+      "sides": {
+        "left": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 158,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 171,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 75,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 77,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      }
+    },
+    {
+      "group": "A",
+      "pair": "new_001",
+      "camera": "cam4",
+      "passed": true,
+      "source_sha256": "80d06b7910f6af562b221be6dbe492de7fa23064a979d314a8e0181c8e00c986",
+      "sides": {
+        "left": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 105,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 241,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 110,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 104,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      }
+    },
+    {
+      "group": "A",
+      "pair": "new_022",
+      "camera": "cam3",
+      "passed": true,
+      "source_sha256": "69c3a95fd3cefc4805b447eac2b2cb6e115e139ca2052feb03eb89df9410b870",
+      "sides": {
+        "left": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 144,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 170,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 86,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 95,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      }
+    },
+    {
+      "group": "A",
+      "pair": "new_022",
+      "camera": "cam4",
+      "passed": true,
+      "source_sha256": "b499c0ca38e688dfc8bccb89455464fcd14780a109ea4bf2a87dd6baba6618be",
+      "sides": {
+        "left": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 100,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 102,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 66,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 60,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      }
+    },
+    {
+      "group": "A",
+      "pair": "new_100",
+      "camera": "cam3",
+      "passed": true,
+      "source_sha256": "f31484576845763029d3037845e161afd7431ab2b67a97f0c03e4b67622bffdd",
+      "sides": {
+        "left": {
+          "before": {
+            "proper_crossings": 7,
+            "candidate_face_pairs_tested": 302,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 297,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 142,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 145,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      }
+    },
+    {
+      "group": "A",
+      "pair": "new_100",
+      "camera": "cam4",
+      "passed": true,
+      "source_sha256": "eee0ed8699c8b6b7e2996a7fcd8cab01b35383bf0c1df87684f783574500d137",
+      "sides": {
+        "left": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 139,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 135,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 138,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 172,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      }
+    },
+    {
+      "group": "B",
+      "pair": "new_001",
+      "camera": "cam3",
+      "passed": true,
+      "source_sha256": "0a8eaba73d888bf2b3fd2ba65e985927ba48c599d9521aa40a6350eff1258193",
+      "sides": {
+        "left": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 165,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 240,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 80,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 102,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      }
+    },
+    {
+      "group": "B",
+      "pair": "new_001",
+      "camera": "cam4",
+      "passed": false,
+      "source_sha256": "3b488cff80037e4dab7b9002f7c678562f0c515e5d15f8f1e0f16ee563d14779",
+      "sides": {
+        "left": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 262,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 47,
+            "candidate_face_pairs_tested": 440,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 82,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 75,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      }
+    },
+    {
+      "group": "B",
+      "pair": "new_022",
+      "camera": "cam3",
+      "passed": true,
+      "source_sha256": "a07e459101fc68f3a5865746355c281d02a8d765cd3ea62df82278980e49311c",
+      "sides": {
+        "left": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 137,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 127,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 144,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 108,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      }
+    },
+    {
+      "group": "B",
+      "pair": "new_022",
+      "camera": "cam4",
+      "passed": true,
+      "source_sha256": "6d17e3d56adf055162cf97d01e2dfb796df0bf36eec8c8a7c2e1058887c4acb3",
+      "sides": {
+        "left": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 106,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 98,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 106,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 57,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      }
+    },
+    {
+      "group": "B",
+      "pair": "new_100",
+      "camera": "cam3",
+      "passed": true,
+      "source_sha256": "78f4642d4c1ff5b08afbf0d27df749a8a68336763d1b6e88334a2e212775efaa",
+      "sides": {
+        "left": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 142,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 138,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 156,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 141,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      }
+    },
+    {
+      "group": "B",
+      "pair": "new_100",
+      "camera": "cam4",
+      "passed": true,
+      "source_sha256": "811fd98b433cb66fc3fdf44fea4b993ff5a37ffeb025a7e26b23f5492922913b",
+      "sides": {
+        "left": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 107,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 153,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 170,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 183,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      }
+    },
+    {
+      "group": "C",
+      "pair": "new_001",
+      "camera": "cam3",
+      "passed": false,
+      "source_sha256": "5501b013dbebec5e094423418fdd9917d271b1facd341c195c92570793149343",
+      "sides": {
+        "left": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 155,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 155,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 18,
+            "candidate_face_pairs_tested": 276,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 18,
+            "candidate_face_pairs_tested": 276,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      }
+    },
+    {
+      "group": "C",
+      "pair": "new_001",
+      "camera": "cam4",
+      "passed": true,
+      "source_sha256": "007979b2e6f613132c357b9e13c4ab5266bab330d3bc044191943e75a896d041",
+      "sides": {
+        "left": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 282,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 282,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 93,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 93,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      }
+    },
+    {
+      "group": "C",
+      "pair": "new_022",
+      "camera": "cam3",
+      "passed": false,
+      "source_sha256": "750e53a2120fb8480f3c76989cad87e73df58e9cbee7a991319336c77feeabc4",
+      "sides": {
+        "left": {
+          "before": {
+            "proper_crossings": 100,
+            "candidate_face_pairs_tested": 596,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 52,
+            "candidate_face_pairs_tested": 350,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 30,
+            "candidate_face_pairs_tested": 481,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 30,
+            "candidate_face_pairs_tested": 663,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      }
+    },
+    {
+      "group": "C",
+      "pair": "new_022",
+      "camera": "cam4",
+      "passed": false,
+      "source_sha256": "fa5be88eb38b83b7761710bd49dae9dd3d3a3892fb8b4cb30fe2d8396ece9edd",
+      "sides": {
+        "left": {
+          "before": {
+            "proper_crossings": 108,
+            "candidate_face_pairs_tested": 593,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 130,
+            "candidate_face_pairs_tested": 776,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 35,
+            "candidate_face_pairs_tested": 405,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 74,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      }
+    },
+    {
+      "group": "C",
+      "pair": "new_100",
+      "camera": "cam3",
+      "passed": true,
+      "source_sha256": "bc4ab52d5fc71c79b25e69b25b0bbf1b3bf2f6e2cdfe3da1018504353007246c",
+      "sides": {
+        "left": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 171,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 124,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 160,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 163,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      }
+    },
+    {
+      "group": "C",
+      "pair": "new_100",
+      "camera": "cam4",
+      "passed": false,
+      "source_sha256": "983e787b3e191ea81ab0a3ac7daf3437999cdb0cbfbe5390ce07f87fac02fd61",
+      "sides": {
+        "left": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 140,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 61,
+            "candidate_face_pairs_tested": 471,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        },
+        "right": {
+          "before": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 161,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          },
+          "after": {
+            "proper_crossings": 0,
+            "candidate_face_pairs_tested": 158,
+            "local_faces_tested": 482,
+            "coplanar_overlaps_checked": false
+          }
+        }
+      }
+    }
+  ]
+}
